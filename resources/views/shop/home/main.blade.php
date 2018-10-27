@@ -1,5 +1,15 @@
 @extends('shop.main')
 
+@section('extra-css')
+    <!--owlcarousel-Best Of Our Store and Popular Brands-->
+    {{ Html::style('assets/css/owl.theme.default.min.css') }}
+    {{ Html::style('assets/js/carousel/owlcarousel/assets/owl.carousel.min.css') }}
+    {{ Html::style('assets/js/carousel/owlcarousel/assets/owl.theme.default.min.css') }}
+
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+    {{ Html::style('assets/slider/css/settings.css') }}
+@endsection
+
 @section('content')
     <div class="tp-banner-container">
         <div class="tp-banner" >
