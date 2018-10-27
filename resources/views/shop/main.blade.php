@@ -16,14 +16,6 @@
         <!-- Fonts -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
 
-        <!--owlcarousel-Best Of Our Store and Popular Brands-->
-        {{ Html::style('assets/css/owl.theme.default.min.css') }}
-        {{ Html::style('assets/js/carousel/owlcarousel/assets/owl.carousel.min.css') }}
-        {{ Html::style('assets/js/carousel/owlcarousel/assets/owl.theme.default.min.css') }}
-
-        <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
-        {{ Html::style('assets/slider/css/settings.css') }}
-
         <!-- CSS STYLE-->
         {{ Html::style('assets/slider/css/style.css') }}
 
