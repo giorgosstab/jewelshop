@@ -17,3 +17,4 @@
 
 
 Route::view('/','shop.home.main');
+Route::view('/shop','shop.products.main');
