@@ -161,78 +161,17 @@
                     <h2 class="title-h wow fadeInDown"><span>Popular</span> Collections</h2>
                 </div>
                 <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-6 text-center wow fadeIn">
-                        <div class="box-css"> <a href="product-detail.html"> <img src="assets/images/products/pro1.jpg" class="img-fluid" alt="" title="" >
-                                <div class="opacitybox white">
-                                    <div class="boxcontent">
-                                        <h4 class="white">Products Name</h4>
-                                        <img src="assets/images/search.svg" width="35" alt="" title="" ></div>
-                                </div>
-                            </a> </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3 col-xs-6 text-center wow fadeIn">
-                        <div class="box-css"> <a href="product-detail.html"> <img src="assets/images/products/pro2.jpg" class="img-fluid" alt="" title="" >
-                                <div class="opacitybox white">
-                                    <div class="boxcontent">
-                                        <h4 class="white">Products Name</h4>
-                                        <img src="assets/images/search.svg" width="35" alt="" title="" > </div>
-                                </div>
-                            </a> </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3 col-xs-6 text-center  wow fadeIn">
-                        <div class="box-css"> <a href="product-detail.html"> <img src="assets/images/products/pro3.jpg" class="img-fluid" alt="" title="" >
-                                <div class="opacitybox white">
-                                    <div class="boxcontent">
-                                        <h4 class="white">Products Name</h4>
-                                        <img src="assets/images/search.svg" width="35" alt="" title="" > </div>
-                                </div>
-                            </a> </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3 col-xs-6 text-center  wow fadeIn">
-                        <div class="box-css"> <a href="product-detail.html"> <img src="assets/images/products/pro4.jpg" class="img-fluid" alt="" title="" >
-                                <div class="opacitybox white">
-                                    <div class="boxcontent">
-                                        <h4 class="white">Products Name</h4>
-                                        <img src="assets/images/search.svg" width="35" alt="" title="" > </div>
-                                </div>
-                            </a> </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3 col-xs-6 text-center  wow fadeIn">
-                        <div class="box-css"> <a href="product-detail.html"> <img src="assets/images/products/pro5.jpg" class="img-fluid" alt="" title="" >
-                                <div class="opacitybox white">
-                                    <div class="boxcontent">
-                                        <h4 class="white">Products Name</h4>
-                                        <img src="assets/images/search.svg" width="35" alt="" title=""> </div>
-                                </div>
-                            </a> </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3 col-xs-6 text-center wow fadeIn">
-                        <div class="box-css"> <a href="product-detail.html"> <img src="assets/images/products/pro6.jpg" class="img-fluid" alt="" title="" >
-                                <div class="opacitybox white">
-                                    <div class="boxcontent">
-                                        <h4 class="white">Products Name</h4>
-                                        <img src="assets/images/search.svg" width="35" alt="" title=""> </div>
-                                </div>
-                            </a> </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3 col-xs-6 text-center wow fadeIn">
-                        <div class="box-css"> <a href="product-detail.html"> <img src="assets/images/products/pro7.jpg" class="img-fluid" alt="" title="" >
-                                <div class="opacitybox white">
-                                    <div class="boxcontent">
-                                        <h4 class="white">Products Name</h4>
-                                        <img src="assets/images/search.svg" width="35" alt="" title=""> </div>
-                                </div>
-                            </a> </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3 col-xs-6 text-center wow fadeIn">
-                        <div class="box-css"> <a href="product-detail.html"> <img src="assets/images/products/pro8.jpg" class="img-fluid" alt="" title="" >
-                                <div class="opacitybox white">
-                                    <div class="boxcontent">
-                                        <h4 class="white">Products Name</h4>
-                                        <img src="assets/images/search.svg" width="35" alt="" title="" > </div>
-                                </div>
-                            </a> </div>
-                    </div>
+                    @foreach($products as $product)
+                        <div class="col-md-3 col-sm-3 col-xs-6 text-center wow fadeIn">
+                            <div class="box-css"> <a href="product-detail.html"> <img src="assets/images/products/{{ $product->slug }}.jpg" class="img-fluid" alt="" title="" >
+                                    <div class="opacitybox white">
+                                        <div class="boxcontent">
+                                            <h4 class="white">{{ $product->name }}</h4>
+                                            <img src="assets/images/search.svg" width="35" alt="" title="" ></div>
+                                    </div>
+                                </a> </div>
+                        </div>
+                    @endforeach
                 </div>
                 <div class="clearfix"></div>
                 <div class="View-all  wow fadeInDown"><a href="#">View all Collections <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
