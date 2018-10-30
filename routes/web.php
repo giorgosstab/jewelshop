@@ -15,6 +15,5 @@
 //     return view('welcome');
 // });
 
-
-Route::view('/','shop.home.main');
+Route::get('/','HomePageController@index')->name('shop.home.main');
 Route::view('/shop','shop.products.main');
