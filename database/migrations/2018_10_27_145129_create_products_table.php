@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('sku')->unique();
             $table->integer('price');
             $table->text('description');
-            $table->boolean('featured')->default(false);
+            $table->boolean('bestof')->default(false);
             $table->timestamps();
         });
     }
