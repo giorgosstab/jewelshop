@@ -380,7 +380,12 @@
                                 <div class="col-lg-3 col-md-4 col-sm-6 col-12 thum-mrg wow fadeIn">
                                     <div class="col-lg-12 padd0">
                                         <div class="product-hover">
-                                            <div><a href="product-detail2.html"> <img  src="assets/images/magnifier.svg"  width="20" height="20" alt="" title=""></a> &nbsp;&nbsp; <a href="cart.html"> <img  src="assets/images/add-to-cart.svg"  width="25" height="25" alt="" title=""></a></div>
+                                            <div>
+                                                <a href="{{ route('shop.products.details', $product->slug) }}">
+                                                    <img  src="assets/images/magnifier.svg"  width="20" height="20" alt="" title="">
+                                                </a> &nbsp;&nbsp;
+                                                <a href="cart.html"> <img  src="assets/images/add-to-cart.svg"  width="25" height="25" alt="" title=""></a>
+                                            </div>
                                         </div>
                                         <div><img  src="assets/images/products/product{{ $product->id }}.jpg" alt="" title="" class="img-fluid img-boder-css"></div>
                                         <div class="clearfix"></div>
