@@ -8,7 +8,7 @@
         <section>
             <div class="inner-bg">
                 <div class="inner-head wow fadeInDown">
-                    <h3>Product</h3>
+                    <h3>Shop</h3>
                 </div>
             </div>
         </section>
@@ -19,7 +19,7 @@
                 <div class="col-md-12">
                     <div class="bread2">
                         <ul>
-                            <li><a href="index-2.html">HOME</a>
+                            <li><a href="{{ route('shop.home.main') }}">HOME</a>
                             <li>/</li>
                             <li>SHOP</li>
                         </ul>
@@ -376,262 +376,30 @@
                         </div>
                         <div class="clearfix"></div>
                         <div class="row">
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 thum-mrg wow fadeIn">
-                                <div class="col-lg-12 padd0">
-                                    <div class="product-hover">
-                                        <div><a href="product-detail2.html"> <img  src="assets/images/magnifier.svg"  width="20" height="20" alt="" title=""></a> &nbsp;&nbsp; <a href="cart.html"> <img  src="assets/images/add-to-cart.svg"  width="25" height="25" alt="" title=""></a></div>
+                            @foreach($products as $product)
+                                <div class="col-lg-3 col-md-4 col-sm-6 col-12 thum-mrg wow fadeIn">
+                                    <div class="col-lg-12 padd0">
+                                        <div class="product-hover">
+                                            <div><a href="product-detail2.html"> <img  src="assets/images/magnifier.svg"  width="20" height="20" alt="" title=""></a> &nbsp;&nbsp; <a href="cart.html"> <img  src="assets/images/add-to-cart.svg"  width="25" height="25" alt="" title=""></a></div>
+                                        </div>
+                                        <div><img  src="assets/images/products/product{{ $product->id }}.jpg" alt="" title="" class="img-fluid img-boder-css"></div>
+                                        <div class="clearfix"></div>
                                     </div>
-                                    <div><img  src="assets/images/products/product1.jpg" alt="" title="" class="img-fluid img-boder-css"></div>
                                     <div class="clearfix"></div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12 name-pro">Jewellery Name</div>
-                                    <div class="clearfix"></div>
-                                    <div class="col-md-6 col-sm-6 name-pro"><span>$ 36.00 </span>&nbsp;<span class="text-0">$ 36.00</span></div>
-                                    <div class="col-md-6 col-sm-6 text-right"><img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str3.jpg" alt="" title=""></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 thum-mrg wow fadeIn">
-                                <div class="col-lg-12 padd0">
-                                    <div class="product-hover">
-                                        <div><a href="product-detail2.html"> <img  src="assets/images/magnifier.svg"  width="20" height="20" alt="" title=""></a> &nbsp;&nbsp; <a href="cart.html"> <img  src="assets/images/add-to-cart.svg"  width="25" height="25" alt="" title="" ></a></div>
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12 name-pro">{{ $product->name }}</div>
+                                        <div class="clearfix"></div>
+                                        <div class="col-md-5 col-sm-5 name-pro"><span>€{{ $product->presentPrice() }}</span></div>
+                                        <div class="col-md-7 col-sm-7 text-right">
+                                            <img  src="assets/images/products/str2.jpg" alt="" title="">
+                                            <img  src="assets/images/products/str2.jpg" alt="" title="">
+                                            <img  src="assets/images/products/str2.jpg" alt="" title="">
+                                            <img  src="assets/images/products/str2.jpg" alt="" title="">
+                                            <img  src="assets/images/products/str3.jpg" alt="" title="">
+                                        </div>
                                     </div>
-                                    <div><img  src="assets/images/products/product2.jpg" alt="" title="" class="img-fluid img-boder-css"></div>
-                                    <div class="clearfix"></div>
                                 </div>
-                                <div class="clearfix"></div>
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12 name-pro">Jewellery Name</div>
-                                    <div class="clearfix"></div>
-                                    <div class="col-md-6 col-sm-6 name-pro"><span>$ 36.00</span></div>
-                                    <div class="col-md-6 col-sm-6 text-right"><img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img alt="" title=""  src="assets/images/products/str2.jpg"> <img alt="" title=""  src="assets/images/products/str3.jpg"></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 thum-mrg  wow fadeIn">
-                                <div class="col-lg-12 padd0">
-                                    <div class="product-hover">
-                                        <div><a href="product-detail2.html"> <img  src="assets/images/magnifier.svg"  width="20" height="20" alt="" title=""></a> &nbsp;&nbsp; <a href="cart.html"> <img  src="assets/images/add-to-cart.svg"  width="25" height="25" alt="" title=""></a></div>
-                                    </div>
-                                    <div><img  src="assets/images/products/product3.jpg" class="img-fluid img-boder-css" alt="" title=""></div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12 name-pro">Jewellery Name</div>
-                                    <div class="clearfix"></div>
-                                    <div class="col-md-6 col-sm-6 name-pro"><span>$ 36.00</span></div>
-                                    <div class="col-md-6 col-sm-6 text-right"><img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str3.jpg" alt="" title=""></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 thum-mrg  wow fadeIn">
-                                <div class="col-lg-12 padd0">
-                                    <div class="product-hover">
-                                        <div><a href="product-detail2.html"> <img  src="assets/images/magnifier.svg"  width="20" height="20" alt="" title=""></a> &nbsp;&nbsp; <a href="cart.html"> <img  src="assets/images/add-to-cart.svg"  width="25" height="25" alt="" title=""></a></div>
-                                    </div>
-                                    <div><img  src="assets/images/products/product4.jpg" class="img-fluid img-boder-css" alt="" title=""></div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12 name-pro">Jewellery Name</div>
-                                    <div class="clearfix"></div>
-                                    <div class="col-md-6 col-sm-6 name-pro"><span>$ 36.00</span></div>
-                                    <div class="col-md-6 col-sm-6 text-right"><img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str3.jpg" alt="" title=""></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 thum-mrg  wow fadeIn">
-                                <div class="col-lg-12 padd0">
-                                    <div class="product-hover">
-                                        <div><a href="product-detail2.html"> <img  src="assets/images/magnifier.svg"  width="20" height="20" alt="" title=""></a> &nbsp;&nbsp; <a href="cart.html"> <img  src="assets/images/add-to-cart.svg"  width="25" height="25" alt="" title=""></a></div>
-                                    </div>
-                                    <div><img  src="assets/images/products/product5.jpg" class="img-fluid img-boder-css" alt="" title=""></div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12 name-pro">Jewellery Name</div>
-                                    <div class="clearfix"></div>
-                                    <div class="col-md-6 col-sm-6 name-pro"><span>$ 36.00</span></div>
-                                    <div class="col-md-6 col-sm-6 text-right"><img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str3.jpg" alt="" title=""></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 thum-mrg  wow fadeIn">
-                                <div class="col-lg-12 padd0">
-                                    <div class="product-hover">
-                                        <div><a href="product-detail2.html"> <img  src="assets/images/magnifier.svg"  width="20" height="20" alt="" title=""></a> &nbsp;&nbsp; <a href="cart.html"> <img  src="assets/images/add-to-cart.svg"  width="25" height="25" alt="" title=""></a></div>
-                                    </div>
-                                    <div><img  src="assets/images/products/product6.jpg" class="img-fluid img-boder-css" alt="" title=""></div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12 name-pro">Jewellery Name</div>
-                                    <div class="clearfix"></div>
-                                    <div class="col-md-6 col-sm-6 name-pro"><span>$ 36.00</span></div>
-                                    <div class="col-md-6 col-sm-6 text-right"><img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str3.jpg" alt="" title=""></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 thum-mrg  wow fadeIn">
-                                <div class="col-lg-12 padd0">
-                                    <div class="product-hover">
-                                        <div><a href="product-detail2.html"> <img  src="assets/images/magnifier.svg"  width="20" height="20" alt="" title=""></a> &nbsp;&nbsp; <a href="cart.html"> <img  src="assets/images/add-to-cart.svg"  width="25" height="25" alt="" title=""></a></div>
-                                    </div>
-                                    <div><img  src="assets/images/products/product7.jpg" class="img-fluid img-boder-css" alt="" title=""></div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12 name-pro">Jewellery Name</div>
-                                    <div class="clearfix"></div>
-                                    <div class="col-md-6 col-sm-6 name-pro"><span>$ 36.00</span></div>
-                                    <div class="col-md-6 col-sm-6 text-right"><img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str3.jpg" alt="" title=""></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 thum-mrg  wow fadeIn">
-                                <div class="col-lg-12 padd0">
-                                    <div class="product-hover">
-                                        <div><a href="product-detail2.html"> <img  src="assets/images/magnifier.svg"  width="20" height="20" alt="" title=""></a> &nbsp;&nbsp; <a href="cart.html"> <img  src="assets/images/add-to-cart.svg"  width="25" height="25" alt="" title=""></a></div>
-                                    </div>
-                                    <div><img  src="assets/images/products/product8.jpg" class="img-fluid img-boder-css" alt="" title=""></div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12 name-pro">Jewellery Name</div>
-                                    <div class="clearfix"></div>
-                                    <div class="col-md-6 col-sm-6 name-pro"><span>$ 36.00</span></div>
-                                    <div class="col-md-6 col-sm-6 text-right"><img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str3.jpg" alt="" title=""></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 thum-mrg  wow fadeIn">
-                                <div class="col-lg-12 padd0">
-                                    <div class="product-hover">
-                                        <div><a href="product-detail2.html"> <img  src="assets/images/magnifier.svg"  width="20" height="20" alt="" title=""></a> &nbsp;&nbsp; <a href="cart.html"> <img  src="assets/images/add-to-cart.svg"  width="25" height="25" alt="" title=""></a></div>
-                                    </div>
-                                    <div><img  src="assets/images/products/product9.jpg" class="img-fluid img-boder-css" alt="" title=""></div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12 name-pro">Jewellery Name</div>
-                                    <div class="clearfix"></div>
-                                    <div class="col-md-6 col-sm-6 name-pro"><span>$ 36.00</span></div>
-                                    <div class="col-md-6 col-sm-6 text-right"><img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str3.jpg" alt="" title=""></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 thum-mrg wow fadeIn">
-                                <div class="col-lg-12 padd0">
-                                    <div class="product-hover">
-                                        <div><a href="product-detail2.html"> <img  src="assets/images/magnifier.svg"  width="20" height="20" alt="" title=""></a> &nbsp;&nbsp; <a href="cart.html"> <img  src="assets/images/add-to-cart.svg"  width="25" height="25" alt="" title=""></a></div>
-                                    </div>
-                                    <div><img  src="assets/images/products/product1.jpg" alt="" title="" class="img-fluid img-boder-css"></div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12 name-pro">Jewellery Name</div>
-                                    <div class="clearfix"></div>
-                                    <div class="col-md-6 col-sm-6 name-pro"><span>$ 36.00 </span>&nbsp;<span class="text-0">$ 36.00</span></div>
-                                    <div class="col-md-6 col-sm-6 text-right"><img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str3.jpg" alt="" title=""></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 thum-mrg wow fadeIn">
-                                <div class="col-lg-12 padd0">
-                                    <div class="product-hover">
-                                        <div><a href="product-detail2.html"> <img  src="assets/images/magnifier.svg"  width="20" height="20" alt="" title=""></a> &nbsp;&nbsp; <a href="cart.html"> <img  src="assets/images/add-to-cart.svg"  width="25" height="25" alt="" title="" ></a></div>
-                                    </div>
-                                    <div><img  src="assets/images/products/product2.jpg" alt="" title="" class="img-fluid img-boder-css"></div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12 name-pro">Jewellery Name</div>
-                                    <div class="clearfix"></div>
-                                    <div class="col-md-6 col-sm-6 name-pro"><span>$ 36.00</span></div>
-                                    <div class="col-md-6 col-sm-6 text-right"><img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img alt="" title=""  src="assets/images/products/str2.jpg"> <img alt="" title=""  src="assets/images/products/str3.jpg"></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 thum-mrg  wow fadeIn">
-                                <div class="col-lg-12 padd0">
-                                    <div class="product-hover">
-                                        <div><a href="product-detail2.html"> <img  src="assets/images/magnifier.svg"  width="20" height="20" alt="" title=""></a> &nbsp;&nbsp; <a href="cart.html"> <img  src="assets/images/add-to-cart.svg"  width="25" height="25" alt="" title=""></a></div>
-                                    </div>
-                                    <div><img  src="assets/images/products/product3.jpg" class="img-fluid img-boder-css" alt="" title=""></div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12 name-pro">Jewellery Name</div>
-                                    <div class="clearfix"></div>
-                                    <div class="col-md-6 col-sm-6 name-pro"><span>$ 36.00</span></div>
-                                    <div class="col-md-6 col-sm-6 text-right"><img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str3.jpg" alt="" title=""></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 thum-mrg  wow fadeIn">
-                                <div class="col-lg-12 padd0">
-                                    <div class="product-hover">
-                                        <div><a href="product-detail2.html"> <img  src="assets/images/magnifier.svg"  width="20" height="20" alt="" title=""></a> &nbsp;&nbsp; <a href="cart.html"> <img  src="assets/images/add-to-cart.svg"  width="25" height="25" alt="" title=""></a></div>
-                                    </div>
-                                    <div><img  src="assets/images/products/product7.jpg" class="img-fluid img-boder-css" alt="" title=""></div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12 name-pro">Jewellery Name</div>
-                                    <div class="clearfix"></div>
-                                    <div class="col-md-6 col-sm-6 name-pro"><span>$ 36.00</span></div>
-                                    <div class="col-md-6 col-sm-6 text-right"><img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str3.jpg" alt="" title=""></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 thum-mrg  wow fadeIn">
-                                <div class="col-lg-12 padd0">
-                                    <div class="product-hover">
-                                        <div><a href="product-detail2.html"> <img  src="assets/images/magnifier.svg"  width="20" height="20" alt="" title=""></a> &nbsp;&nbsp; <a href="cart.html"> <img  src="assets/images/add-to-cart.svg"  width="25" height="25" alt="" title=""></a></div>
-                                    </div>
-                                    <div><img  src="assets/images/products/product8.jpg" class="img-fluid img-boder-css" alt="" title=""></div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12 name-pro">Jewellery Name</div>
-                                    <div class="clearfix"></div>
-                                    <div class="col-md-6 col-sm-6 name-pro"><span>$ 36.00</span></div>
-                                    <div class="col-md-6 col-sm-6 text-right"><img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str3.jpg" alt="" title=""></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 thum-mrg  wow fadeIn">
-                                <div class="col-lg-12 padd0">
-                                    <div class="product-hover">
-                                        <div><a href="product-detail2.html"> <img  src="assets/images/magnifier.svg"  width="20" height="20" alt="" title=""></a> &nbsp;&nbsp; <a href="cart.html"> <img  src="assets/images/add-to-cart.svg"  width="25" height="25" alt="" title=""></a></div>
-                                    </div>
-                                    <div><img  src="assets/images/products/product9.jpg" class="img-fluid img-boder-css" alt="" title=""></div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12 name-pro">Jewellery Name</div>
-                                    <div class="clearfix"></div>
-                                    <div class="col-md-6 col-sm-6 name-pro"><span>$ 36.00</span></div>
-                                    <div class="col-md-6 col-sm-6 text-right"><img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str3.jpg" alt="" title=""></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 thum-mrg wow fadeIn">
-                                <div class="col-lg-12 padd0">
-                                    <div class="product-hover">
-                                        <div><a href="product-detail2.html"> <img  src="assets/images/magnifier.svg"  width="20" height="20" alt="" title=""></a> &nbsp;&nbsp; <a href="cart.html"> <img  src="assets/images/add-to-cart.svg"  width="25" height="25" alt="" title=""></a></div>
-                                    </div>
-                                    <div><img  src="assets/images/products/product1.jpg" alt="" title="" class="img-fluid img-boder-css"></div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12 name-pro">Jewellery Name</div>
-                                    <div class="clearfix"></div>
-                                    <div class="col-md-6 col-sm-6 name-pro"><span>$ 36.00 </span>&nbsp;<span class="text-0">$ 36.00</span></div>
-                                    <div class="col-md-6 col-sm-6 text-right"><img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str2.jpg" alt="" title=""> <img  src="assets/images/products/str3.jpg" alt="" title=""></div>
-                                </div>
-                            </div>
+                            @endforeach
                             <div class="clearfix"></div>
                         </div>
                         <div class="clearfix"></div>
