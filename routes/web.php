@@ -16,4 +16,4 @@
 // });
 
 Route::get('/','HomePageController@index')->name('shop.home.main');
-Route::view('/shop','shop.products.main');
+Route::get('/shop','ShopController@index')->name('shop.products.main');
