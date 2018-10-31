@@ -8,6 +8,7 @@
         <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
         <title>Jewelery E-shop @yield('title' , '')</title>
         <!--all-->
+        {{ Html::style('assets/css/mega-menu.css') }}
         {{ Html::style('assets/css/default.css') }}
 
         <!--animate-->

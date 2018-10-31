@@ -90,16 +90,65 @@
         <!-- Navbar links -->
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
-                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#"   data-toggle="dropdown">Home Page</a>
-                    <div class="dropdown-menu dropdown-menu1"> <a class="dropdown-item" href="index-2.html">Home 1</a> <a class="dropdown-item" href="home-2.html">Home 2</a> <a class="dropdown-item" href="home-3.html">Home 3 sticky header</a> <a class="dropdown-item" href="home-4.html">Home 4 Left Side Menu</a> <a class="dropdown-item" href="mega-menu.html">Home 5 Mega Menu</a> </div>
-                </li>
+                <li class="nav-item"><a  class="nav-link"  href="{{ route('shop.home.main') }}">Home</a></li>
                 <li class="nav-item"> <a class="nav-link " href="about-us.html">About</a> </li>
-                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown"> Shop </a>
-                    <div class="dropdown-menu"> <a class="dropdown-item" href="product.html">Category 1</a> <a class="dropdown-item" href="product-2.html">Category 2</a> <a class="dropdown-item" href="product.html">Category 3</a> <a class="dropdown-item" href="product.html">Category 4</a> <a class="dropdown-item" href="product.html">View All</a> </div>
+                <li class="nav-item dropdown  mega-dropdown"> <a class="nav-link dropdown-toggle text-uppercase no-caret" id="navbarDropdownMenuLink1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Shop </a>
+                    <div class="dropdown-menu mega-menu v-2 row m-0 z-depth-1 special-color" aria-labelledby="navbarDropdownMenuLink1">
+                        <div class="row mx-md-4 mx-1">
+                            <div class="col-md-6 col-xl-3 sub-menu my-xl-5 mt-md-5 mt-1 mb-1">
+                                <h6 class="sub-title text-uppercase font-weight-bold white-text">Related</h6>
+                                <!--Featured image-->
+                                <div class="view overlay mb-3 z-depth-1"> <img src="assets/images/menu-img.jpg" class="img-fluid" alt="First sample image">
+                                    <div class="mask rgba-white-slight flex-center">
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <h4 class="mb-2"><a class="news-title-2 pl-0" href="#">THE SAADIA DROP EARRINGS</a></h4>
+                                <p class="font-small text-uppercase white-text"><i class="fa fa-clock-o pr-2" aria-hidden="true"></i>July 17, 2017 / <i class="fa fa-comments-o px-1" aria-hidden="true"></i> 20</p>
+                            </div>
+                            <div class="col-md-6 col-xl-3 sub-menu my-xl-5 mt-md-5 mt-1 mb-1">
+                                <h6 class="sub-title text-uppercase font-weight-bold white-text">GOLD JEWELLERY</h6>
+                                <ul class="caret-style pl-0">
+                                    <li class=""><a class="menu-item" href="#">Rings</a></li>
+                                    <li class=""><a class="menu-item" href="#">Earrings</a></li>
+                                    <li class=""><a class="menu-item" href="#">Pendants</a></li>
+                                    <li class=""><a class="menu-item" href="#">Bangles</a></li>
+                                    <li class=""><a class="menu-item" href="#">Bracelets</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 col-xl-3 sub-menu my-xl-5 mt-1 mb-1">
+                                <h6 class="sub-title text-uppercase font-weight-bold white-text">Latest Jewellery</h6>
+                                <ul class="caret-style pl-0">
+                                    <li class=""><a class="menu-item" href="product.html">Product</a></li>
+                                    <li class=""><a class="menu-item" href="product-2.html">product 2</a></li>
+                                    <li class=""><a class="menu-item" href="product.html">Product 3</a></li>
+                                    <li class=""><a class="menu-item" href="product.html">Product 4</a></li>
+                                    <li class=""><a class="menu-item" href="product.html">Product 5</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 col-xl-3 sub-menu my-xl-5 mt-1 mb-1">
+                                <h6 class="sub-title text-uppercase font-weight-bold white-text">NECKLACES</h6>
+                                <ul class="caret-style pl-0">
+                                    <li class=""><a class="menu-item" href="#">Necklaces</a></li>
+                                    <li class=""><a class="menu-item" href="#">Mangalsutras</a></li>
+                                    <li class=""><a class="menu-item" href="#">Nose Pins</a></li>
+                                    <li class=""><a class="menu-item" href="#">Necklaces</a></li>
+                                    <li class=""><a class="menu-item" href="#">Mangalsutras</a></li>
+                                    <li class=""><a class="menu-item" href="#">Nose Pins</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </li>
                 <li class="nav-item"> <a class="nav-link" href="#">Blog</a> </li>
                 <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> Pages </a>
-                    <div class="dropdown-menu"> <a class="dropdown-item"  href="404.html">404</a> <a class="dropdown-item"  href="faq.html">FAQ</a> <a class="dropdown-item" href="privacy.html">Privacy</a> <a class="dropdown-item" href="coming-soon.html">Coming soon</a> <a class="dropdown-item" href="terms-and-conditions.html">Terms &amp; Condition</a> </div>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item"  href="404.html">404</a>
+                        <a class="dropdown-item"  href="faq.html">FAQ</a>
+                        <a class="dropdown-item" href="privacy.html">Privacy</a>
+                        <a class="dropdown-item" href="coming-soon.html">Coming soon</a>
+                        <a class="dropdown-item" href="terms-and-conditions.html">Terms &amp; Condition</a>
+                    </div>
                 </li>
                 <li class="nav-item"><a  class="nav-link"  href="contact-us.html">Contact us</a></li>
             </ul>
