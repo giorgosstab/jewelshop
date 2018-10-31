@@ -12,7 +12,7 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-        for($i = 1; $i <= 16; $i++){
+        for($i = 1; $i <= 20; $i++){
             Product::create([
                 'name' => 'Product ' .$i,
                 'slug' => 'product-' .$i,
