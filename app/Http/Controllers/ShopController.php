@@ -29,7 +29,7 @@ class ShopController extends Controller
         $mightAlsoLike = Product::where('slug','!=',$slug)->inRandomOrder()->take(4)->get();
         return view('shop.products.details')->with([
             'product' => $product,
-            'mightAlsoLike' => $mightAlsoLike
+            'mightAlsoLike' => $mightAlsoLike,
         ]);
     }
 }
