@@ -208,73 +208,19 @@
                 <div class="best-of-our-store">
                     <h2 class="wow fadeInUp"><span>Best</span> of our store</h2>
                     <div class="owl-carousel owl-theme wow fadeIn">
-                        <div class="item img-title">
-                            <div class="owl-item-boder">
-                                <div class="hover-div">
-                                    <div class="our-store"> <a href="product-detail.html"><img src="assets/images/search.svg" width="35" alt="" title="" ></a> </div>
-                                    <img src="assets/images/thum1.jpg" alt="" title="" class="img-fluid">
-                                    <div class="round-circles">Sale</div>
+                        @foreach($bestproducts as $bestof)
+                            <div class="item img-title">
+                                <div class="owl-item-boder">
+                                    <div class="hover-div">
+                                        <div class="our-store"> <a href="product-detail.html"><img src="assets/images/search.svg" width="35" alt="" title="" ></a> </div>
+                                        <img src="assets/images/thum{{ $bestof->id }}.jpg" alt="" title="" class="img-fluid">
+                                        <div class="round-circles">Sale</div>
+                                    </div>
                                 </div>
+                                <h4>{{ $bestof->name }}</h4>
+                                <p class="price"><span>€{{ $bestof->presentPrice() }}</span>&nbsp;&nbsp;<samp>$56.00</samp></p>
                             </div>
-                            <h4>Product Name</h4>
-                            <p class="price"><span>$34.00</span>&nbsp;&nbsp;<samp>$56.00</samp></p>
-                        </div>
-                        <div class="item img-title">
-                            <div class="owl-item-boder">
-                                <div class="hover-div">
-                                    <div class="our-store"> <a href="product-detail.html"><img src="assets/images/search.svg" width="35" alt="" title="" ></a> </div>
-                                    <img src="assets/images/thum2.jpg" alt="" title="" class="img-fluid"> </div>
-                            </div>
-                            <h4>Product Name</h4>
-                            <p class="price"><span>$34.00</span>&nbsp;&nbsp;<samp>$56.00</samp></p>
-                        </div>
-                        <div class="item img-title">
-                            <div class="owl-item-boder">
-                                <div class="hover-div">
-                                    <div class="our-store"> <a href="product-detail.html"><img src="assets/images/search.svg" width="35" alt="" title="" ></a> </div>
-                                    <img src="assets/images/thum3.jpg"  alt="" title="" class="img-fluid"> </div>
-                            </div>
-                            <h4>Product Name</h4>
-                            <p class="price"><span>$34.00</span>&nbsp;&nbsp;<samp>$56.00</samp></p>
-                        </div>
-                        <div class="item img-title">
-                            <div class="owl-item-boder">
-                                <div class="hover-div">
-                                    <div class="our-store"> <a href="product-detail.html"><img src="assets/images/search.svg" width="35" alt="" title="" ></a> </div>
-                                    <img src="assets/images/thum4.jpg" alt="" title="" class="img-fluid"> </div>
-                            </div>
-                            <h4>Product Name</h4>
-                            <p class="price"><span>$34.00</span>&nbsp;&nbsp;<samp>$56.00</samp></p>
-                        </div>
-                        <div class="item img-title">
-                            <div class="owl-item-boder">
-                                <div class="hover-div">
-                                    <div class="our-store"> <a href="product-detail.html"><img src="assets/images/search.svg" width="35" alt="" title="" ></a> </div>
-                                    <img src="assets/images/thum1.jpg" alt="" title="" class="img-fluid">
-                                    <div class="our-store"> <a href="product-detail.html"><img src="assets/images/search.svg" width="35" alt="" title="" ></a> </div>
-                                </div>
-                            </div>
-                            <h4>Product Name</h4>
-                            <p class="price"><span>$34.00</span>&nbsp;&nbsp;<samp>$56.00</samp></p>
-                        </div>
-                        <div class="item img-title">
-                            <div class="owl-item-boder">
-                                <div class="hover-div">
-                                    <div class="our-store"> <a href="product-detail.html"><img src="assets/images/search.svg" width="35" alt="" title="" ></a> </div>
-                                    <img src="assets/images/thum2.jpg" alt="" title="" class="img-fluid" > </div>
-                            </div>
-                            <h4>Product Name</h4>
-                            <p class="price"><span>$34.00</span>&nbsp;&nbsp;<samp>$56.00</samp></p>
-                        </div>
-                        <div class="item img-title">
-                            <div class="owl-item-boder">
-                                <div class="hover-div">
-                                    <div class="our-store"> <a href="product-detail.html"><img src="assets/images/search.svg" width="35" alt="" title="" ></a> </div>
-                                    <img src="assets/images/thum3.jpg" alt="" title="" class="img-fluid"> </div>
-                            </div>
-                            <h4>Product Name</h4>
-                            <p class="price"><span>$34.00</span>&nbsp;&nbsp;<samp>$56.00</samp></p>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="clearfix"></div>
