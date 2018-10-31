@@ -29,8 +29,8 @@
             <div class="col-md-12">
                 <div class="list2">
                     <ul>
-                        <li><a href="#" data-toggle="modal" data-target="#myModalHorizontal"><img src="assets/images/padlock.png" alt="" title=""></a></li>
-                        <li><a href="#"  data-toggle="modal" data-target="#myModalHorizontal2"><img src="assets/images/user2.png" alt="" title=""></a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#myModalHorizontal"><img src="{{ asset('assets/images/padlock.png') }}" alt="" title=""></a></li>
+                        <li><a href="#"  data-toggle="modal" data-target="#myModalHorizontal2"><img src="{{ asset('assets/images/user2.png') }}" alt="" title=""></a></li>
                     </ul>
                 </div>
             </div>
@@ -41,7 +41,7 @@
         <div class="clearfix"></div>
         <div class="container">
             <div class="row">
-                <div class="col-md-4 col-sm-4"><a href="index-2.html"><img src="assets/images/logo-right.png" alt="" title="" /></a></div>
+                <div class="col-md-4 col-sm-4"><a href="{{ route('shop.home.main') }}"><img src="{{ asset('assets/images/logo-right.png') }}" alt="" title="" /></a></div>
                 <div class="col-md-8 col-sm-8">
                     <div class="pull-right">
                         <div class="input-group">
@@ -57,7 +57,7 @@
                                         <ul>
                                             <li>
                                                 <div class="row">
-                                                    <div class="col-3"><img src="assets/images/small-1.jpg" alt="" title=""></div>
+                                                    <div class="col-3"><img src="{{ asset('assets/images/small-1.jpg') }}" alt="" title=""></div>
                                                     <div class="col-9">
                                                         <p>Latest Jewellery</p>
                                                         <span>$79.00</span></div>
@@ -65,7 +65,7 @@
                                             </li>
                                             <li>
                                                 <div class="row">
-                                                    <div class="col-3"><img src="assets/images/small-2.jpg" alt="" title=""></div>
+                                                    <div class="col-3"><img src="{{ asset('assets/images/small-2.jpg') }}" alt="" title=""></div>
                                                     <div class="col-9">
                                                         <p>Latest Jewellery</p>
                                                         <span>79.00</span></div>
@@ -98,7 +98,7 @@
                             <div class="col-md-6 col-xl-3 sub-menu my-xl-5 mt-md-5 mt-1 mb-1">
                                 <h6 class="sub-title text-uppercase font-weight-bold white-text">Related</h6>
                                 <!--Featured image-->
-                                <div class="view overlay mb-3 z-depth-1"> <img src="assets/images/menu-img.jpg" class="img-fluid" alt="First sample image">
+                                <div class="view overlay mb-3 z-depth-1"> <img src="{{ asset('assets/images/menu-img.jpg') }}" class="img-fluid" alt="First sample image">
                                     <div class="mask rgba-white-slight flex-center">
                                         <p></p>
                                     </div>
