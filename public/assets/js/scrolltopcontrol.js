@@ -8,7 +8,7 @@ var scrolltotop = {
         scrollduration: 1000,
         fadeduration: [500, 100]
     },
-    controlHTML: '<img src="assets/js/up.png" style="width:30px; height:30px" />', //HTML for control, which is auto wrapped in DIV w/ ID="topcontrol"
+    controlHTML: '<img src="../assets/js/up.png" style="width:30px; height:30px" />', //HTML for control, which is auto wrapped in DIV w/ ID="topcontrol"
     controlattrs: {
         offsetx: 10,
         offsety: 10
