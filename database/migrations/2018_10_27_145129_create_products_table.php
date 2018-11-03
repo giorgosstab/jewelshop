@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->integer('price');
             $table->text('description');
             $table->boolean('bestof')->default(false);
+            $table->boolean('offer')->default(false);
             $table->timestamps();
         });
     }
