@@ -382,12 +382,12 @@
                                         <div class="product-hover">
                                             <div>
                                                 <a href="{{ route('shop.products.details', $product->slug) }}">
-                                                    <img  src="assets/images/magnifier.svg"  width="20" height="20" alt="" title="">
+                                                    <img  src="{{ asset('assets/images/magnifier.svg') }}"  width="20" height="20" alt="" title="">
                                                 </a> &nbsp;&nbsp;
-                                                <a href="cart.html"> <img  src="assets/images/add-to-cart.svg"  width="25" height="25" alt="" title=""></a>
+                                                <a href="cart.html"> <img  src="{{ asset('assets/images/add-to-cart.svg') }}"  width="25" height="25" alt="" title=""></a>
                                             </div>
                                         </div>
-                                        <div><img  src="assets/images/products/product{{ $product->id }}.jpg" alt="" title="" class="img-fluid img-boder-css"></div>
+                                        <div><img  src="{{ asset('assets/images/products/product'. $product->id .'.jpg') }}" alt="" title="" class="img-fluid img-boder-css"></div>
                                         <div class="clearfix"></div>
                                     </div>
                                     <div class="clearfix"></div>
@@ -396,11 +396,11 @@
                                         <div class="clearfix"></div>
                                         <div class="col-md-5 col-sm-5 name-pro"><span>€{{ $product->presentPrice() }}</span></div>
                                         <div class="col-md-7 col-sm-7 text-right">
-                                            <img  src="assets/images/products/str2.jpg" alt="" title="">
-                                            <img  src="assets/images/products/str2.jpg" alt="" title="">
-                                            <img  src="assets/images/products/str2.jpg" alt="" title="">
-                                            <img  src="assets/images/products/str2.jpg" alt="" title="">
-                                            <img  src="assets/images/products/str3.jpg" alt="" title="">
+                                            <img  src="{{ asset('assets/images/products/str2.jpg') }}" alt="" title="">
+                                            <img  src="{{ asset('assets/images/products/str2.jpg') }}" alt="" title="">
+                                            <img  src="{{ asset('assets/images/products/str2.jpg') }}" alt="" title="">
+                                            <img  src="{{ asset('assets/images/products/str2.jpg') }}" alt="" title="">
+                                            <img  src="{{ asset('assets/images/products/str3.jpg') }}" alt="" title="">
                                         </div>
                                     </div>
                                 </div>
