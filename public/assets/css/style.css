@@ -16834,3 +16834,10 @@ font-size:13px -webkit-transition: opacity 0.4s ease-in-out;
 #preloader > img {
 	display:none
 }
+
+
+/*________________Might Also Like Border on Hover_______________ */
+.AlsoLike-border:hover {
+    outline: solid 3px #DEB75B;
+    margin: 0.2em;
+}
