@@ -22,6 +22,8 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->boolean('bestof')->default(false);
             $table->boolean('offer')->default(false);
+            $table->boolean('hotdeals')->default(false);
+            $table->integer('secondprice')->nullable();
             $table->timestamps();
         });
     }

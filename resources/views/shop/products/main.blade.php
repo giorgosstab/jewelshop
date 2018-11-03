@@ -212,75 +212,8 @@
                                         <div class="clearfix"> </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-12 col-md-6 col-sm-12">
-                                    <div class="cat-div  wow fadeIn">
-                                        <h2>HOT DEALS</h2>
-                                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                            <!-- Wrapper for slides -->
-                                            <div class="carousel-inner">
-                                                <div class="carousel-item active text-center">
-                                                    <div class="row">
-                                                        <div class="col-md-12 col-sm-5"><img alt="" title=""  src="assets/images/left-product.jpg" class="img-fluid"></div>
-                                                        <div class="col-md-12 col-sm-7">
-                                                            <div class="no-div">
-                                                                <ul>
-                                                                    <li>
-                                                                        <h5>120</h5>
-                                                                        <span>Days </span> </li>
-                                                                    <li>
-                                                                        <h5>20</h5>
-                                                                        <span>HRS</span> </li>
-                                                                    <li>
-                                                                        <h5>36</h5>
-                                                                        <span>MINS</span> </li>
-                                                                    <li>
-                                                                        <h5>60</h5>
-                                                                        <span>Sec</span> </li>
-                                                                </ul>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                            <div class="product-name">
-                                                                <h3>Jewellery Name</h3>
-                                                            </div>
-                                                            <div class="rate-css"><span>$600.00</span>&nbsp;&nbsp; <samp class="text-de">$850.00</samp></div>
-                                                            <div><img  src="assets/images/str1.jpg" alt="" title=""><img  src="assets/images/str1.jpg" alt="" title=""><img  src="assets/images/str1.jpg" alt="" title=""><img  src="assets/images/str1.jpg" alt="" title=""><img  src="assets/images/str2.jpg" alt="" title=""></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="carousel-item  text-center">
-                                                    <div class="row">
-                                                        <div class="col-md-12 col-sm-5"><img alt="" title=""  src="assets/images/left-product.jpg" class="img-fluid"></div>
-                                                        <div class="col-md-12 col-sm-7">
-                                                            <div class="no-div">
-                                                                <ul>
-                                                                    <li>
-                                                                        <h5>120</h5>
-                                                                        <span>Days </span> </li>
-                                                                    <li>
-                                                                        <h5>20</h5>
-                                                                        <span>HRS</span> </li>
-                                                                    <li>
-                                                                        <h5>36</h5>
-                                                                        <span>MINS</span> </li>
-                                                                    <li>
-                                                                        <h5>60</h5>
-                                                                        <span>Sec</span> </li>
-                                                                </ul>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                            <div class="product-name">
-                                                                <h3>Jewellery Name</h3>
-                                                            </div>
-                                                            <div class="rate-css"><span>$600.00</span>&nbsp;&nbsp; <samp class="text-de">$850.00</samp></div>
-                                                            <div><img  src="assets/images/str1.jpg" alt="" title=""><img  src="assets/images/str1.jpg" alt="" title=""><img  src="assets/images/str1.jpg" alt="" title=""><img  src="assets/images/str1.jpg" alt="" title=""><img  src="assets/images/str2.jpg" alt="" title=""></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Controls -->
-                                            <a class="left arrow-left" href="#carousel-example-generic" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a> <a class="right arrow-right" href="#carousel-example-generic" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a> </div>
-                                    </div>
-                                </div>
+
+                                @include('shop.layouts.hotdeals-shop')
 
                                 @include('shop.layouts.specialoffers-shop')
 

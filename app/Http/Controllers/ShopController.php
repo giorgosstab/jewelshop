@@ -15,9 +15,11 @@ class ShopController extends Controller
     {
         $products = Product::inRandomOrder()->take(20)->get();
         $specialOffers = Product::where('offer',true)->inRandomOrder()->take(4)->get();
+        $hotDeals = Product::where('hotdeals',true)->inRandomOrder()->take(2)->get();
         return view('shop.products.main')->with([
             'products' => $products,
             'specialOffers' => $specialOffers,
+            'hotDeals' => $hotDeals,
         ]);
     }
 
