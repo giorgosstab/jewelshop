@@ -39,26 +39,27 @@
                     </div>
                 </div>
                 <div class="clearfix"> </div>
+                <!--Left side big devices -->
                 <div class="row">
                     <!--Left side -->
                     <div class="col-lg-3 col-md-12 col-sm-12 div-none2 wow fadeInLeft">
                         <div class="cat-div">
                             <div class="row">
-                                <div class="col-md-4 col-sm-4 col-xs-4"><img  src="{{ asset('') }}assets/images/delivery-truck.svg" width="46" alt="" title=""></div>
+                                <div class="col-md-4 col-sm-4 col-xs-4"><img  src="{{ asset('assets/images/delivery-truck.svg') }}" width="46" alt="" title=""></div>
                                 <div class="col-md-8 col-sm-8 col-xs-4 icon-div">
                                     <h4>Free Delivery</h4>
                                     <p>from $50 </p>
                                 </div>
                                 <div class="clearfix"></div>
                                 <hr>
-                                <div class="col-md-4 col-sm-4 col-xs-4"><img  src="{{ asset('') }}assets/images/supermarket.svg" width="46"  alt="" title=""></div>
+                                <div class="col-md-4 col-sm-4 col-xs-4"><img  src="{{ asset('assets/images/supermarket.svg') }}" width="46"  alt="" title=""></div>
                                 <div class="col-md-8 col-sm-8 col-xs-8 icon-div">
                                     <h4>99 % Customer</h4>
                                     <p>from $50 </p>
                                 </div>
                                 <div class="clearfix"></div>
                                 <hr>
-                                <div class="col-md-4 col-sm-4 col-xs-4"><img  src="{{ asset('') }}assets/images/reuse.svg" width="46"  alt=""  title=""></div>
+                                <div class="col-md-4 col-sm-4 col-xs-4"><img  src="{{ asset('assets/images/reuse.svg') }}" width="46"  alt=""  title=""></div>
                                 <div class="col-md-8 col-sm-8 col-xs-8 icon-div">
                                     <h4>6 Days</h4>
                                     <p>from $50 </p>
@@ -66,7 +67,7 @@
                                 <div class="clearfix"></div>
                                 <hr>
                                 <div class="clearfix"></div>
-                                <div class="col-md-4 col-sm-4 col-xs-4"><img  src="{{ asset('') }}assets/images/checked.svg" width="46"  alt="" title=""></div>
+                                <div class="col-md-4 col-sm-4 col-xs-4"><img  src="{{ asset('assets/images/checked.svg') }}" width="46"  alt="" title=""></div>
                                 <div class="col-md-8 col-sm-8 col-xs-8 icon-div">
                                     <h4>Payment</h4>
                                     <p>from $50 </p>
@@ -74,86 +75,9 @@
                                 <div class="clearfix"></div>
                             </div>
                         </div>
-                        <div class="cat-div">
-                            <h2>Related Products</h2>
-                            <div id="carousel-example-generic2" class="carousel slide" data-ride="carousel">
-                                <!-- Wrapper for slides -->
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <div class="product-scroll">
-                                            <div class="row">
-                                                <div class="col-md-6 col-sm-2 col-xs-6"><img  src="{{ asset('') }}assets/images/scroll-2.jpg" alt="" title="" class="img-fluid"></div>
-                                                <div class="col-md-6 col-sm-9 col-xs-6">
-                                                    <h3>Product name</h3>
-                                                    <div>
-                                                        <img  src="{{ asset('') }}assets/images/str1.jpg" alt="" title="">
-                                                        <img  src="{{ asset('') }}assets/images/str1.jpg" alt="" title="">
-                                                        <img  src="{{ asset('') }}assets/images/str1.jpg" alt="" title="">
-                                                        <img  src="{{ asset('') }}assets/images/str1.jpg" alt="" title="">
-                                                        <img  src="{{ asset('') }}assets/images/str2.jpg" alt="" title=""></div>
-                                                    <h4>$600.00</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <div class="product-scroll">
-                                            <div class="row">
-                                                <div class="col-md-6 col-sm-2 col-xs-6"><img  src="{{ asset('') }}assets/images/scroll-2.jpg" class="img-fluid" alt="" title=""></div>
-                                                <div class="col-md-6 col-sm-9 col-xs-6">
-                                                    <h3>Product name</h3>
-                                                    <div>
-                                                        <img  src="{{ asset('') }}assets/images/str1.jpg" alt="" title="">
-                                                        <img  src="{{ asset('') }}assets/images/str1.jpg" alt="" title="">
-                                                        <img  src="{{ asset('') }}assets/images/str1.jpg" alt="" title="">
-                                                        <img  src="{{ asset('') }}assets/images/str1.jpg" alt="" title="">
-                                                        <img  src="{{ asset('') }}assets/images/str2.jpg" alt="" title="">
-                                                    </div>
-                                                    <h4>$600.00</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <div class="product-scroll">
-                                            <div class="row">
-                                                <div class="col-md-6 col-sm-2 col-xs-6"><img  src="assets/images/scroll-2.jpg" class="img-fluid" alt="" title=""></div>
-                                                <div class="col-md-6 col-sm-9 col-xs-6">
-                                                    <h3>Product name</h3>
-                                                    <div>
-                                                        <img  src="assets/images/str1.jpg" alt="" title="">
-                                                        <img  src="assets/images/str1.jpg" alt="" title="">
-                                                        <img  src="assets/images/str1.jpg" alt="" title="">
-                                                        <img  src="assets/images/str1.jpg" alt="" title="">
-                                                        <img  src="assets/images/str2.jpg" alt="" title="">
-                                                    </div>
-                                                    <h4>$600.00</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <div class="product-scroll">
-                                            <div class="row">
-                                                <div class="col-md-6 col-sm-2 col-xs-6">
-                                                    <img  src="assets/images/scroll-2.jpg" alt="" title="" class="img-fluid">
-                                                </div>
-                                                <div class="col-md-6 col-sm-9 col-xs-6">
-                                                    <h3>Product name</h3>
-                                                    <div>
-                                                        <img  src="assets/images/str1.jpg" alt="" title="">
-                                                        <img  src="assets/images/str1.jpg" alt="" title="">
-                                                        <img  src="assets/images/str1.jpg" alt="" title="">
-                                                        <img  src="assets/images/str1.jpg" alt="" title="">
-                                                        <img  src="assets/images/str2.jpg" alt="" title="">
-                                                    </div>
-                                                    <h4>$600.00</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Controls -->
-                                <a class="left arrow-left" href="#carousel-example-generic2" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a> <a class="right arrow-right" href="#carousel-example-generic2" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a> </div>
-                        </div>
+
+                       @include('shop.layouts.related-products')
+
                     </div>
                     <!--right side -->
                     <div class="col-lg-9 col-md-12 col-sm-12 div-left wow fadeInRight">
@@ -284,7 +208,7 @@
                         </div>
                     </div>
                 </div>
-                <!--Left side -->
+                <!--Left side small devices-->
                 <div class="row">
                     <div class="div-none">
                         <div class="row">
@@ -337,10 +261,18 @@
                                             <div class="carousel-item active">
                                                 <div class="product-scroll">
                                                     <div class="row">
-                                                        <div class="col-md-6 col-sm-2 col-4"><img  src="assets/images/scroll-2.jpg" alt="" title="" class="img-fluid"></div>
+                                                        <div class="col-md-6 col-sm-2 col-4">
+                                                            <img  src="{{ asset('assets/images/scroll-2.jpg') }}" alt="" title="" class="img-fluid">
+                                                        </div>
                                                         <div class="col-md-6 col-sm-9 col-8">
                                                             <h3>Product name</h3>
-                                                            <div> <img  src="assets/images/str1.jpg" alt="" title=""><img  src="assets/images/str1.jpg" alt="" title=""> <img  src="assets/images/str1.jpg" alt="" title=""><img  src="assets/images/str1.jpg" alt="" title=""><img  src="assets/images/str2.jpg" alt="" title=""></div>
+                                                            <div>
+                                                                <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
+                                                                <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
+                                                                <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
+                                                                <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
+                                                                <img  src="{{ asset('assets/images/str2.jpg') }}" alt="" title="">
+                                                            </div>
                                                             <h4>$600.00</h4>
                                                         </div>
                                                     </div>
@@ -348,10 +280,18 @@
                                                 <div class="clearfix"></div>
                                                 <div class="product-scroll">
                                                     <div class="row">
-                                                        <div class="col-md-6 col-sm-2 col-4"><img  src="assets/images/scroll-2.jpg" class="img-fluid" alt="" title=""></div>
+                                                        <div class="col-md-6 col-sm-2 col-4">
+                                                            <img  src="{{ asset('') }}assets/images/scroll-2.jpg" class="img-fluid" alt="" title="">
+                                                        </div>
                                                         <div class="col-md-6 col-sm-9 col-8">
                                                             <h3>Product name</h3>
-                                                            <div> <img  src="assets/images/str1.jpg" alt="" title=""><img  src="assets/images/str1.jpg" alt="" title=""> <img  src="assets/images/str1.jpg" alt="" title=""><img  src="assets/images/str1.jpg" alt="" title=""><img  src="assets/images/str2.jpg" alt="" title=""></div>
+                                                            <div>
+                                                                <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
+                                                                <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
+                                                                <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
+                                                                <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
+                                                                <img  src="{{ asset('assets/images/str2.jpg') }}" alt="" title="">
+                                                            </div>
                                                             <h4>$600.00</h4>
                                                         </div>
                                                     </div>
@@ -360,10 +300,18 @@
                                             <div class="carousel-item">
                                                 <div class="product-scroll">
                                                     <div class="row">
-                                                        <div class="col-md-6 col-sm-2 col-4"><img  src="assets/images/scroll-2.jpg" class="img-fluid" alt="" title=""></div>
+                                                        <div class="col-md-6 col-sm-2 col-4">
+                                                            <img  src="{{ asset('assets/images/scroll-2.jpg') }}" alt="" title="" class="img-fluid">
+                                                        </div>
                                                         <div class="col-md-6 col-sm-9 col-8">
                                                             <h3>Product name</h3>
-                                                            <div> <img  src="assets/images/str1.jpg" alt="" title=""><img  src="assets/images/str1.jpg" alt="" title=""> <img  src="assets/images/str1.jpg" alt="" title=""><img  src="assets/images/str1.jpg" alt="" title=""><img  src="assets/images/str2.jpg" alt="" title=""></div>
+                                                            <div>
+                                                                <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
+                                                                <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
+                                                                <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
+                                                                <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
+                                                                <img  src="{{ asset('assets/images/str2.jpg') }}" alt="" title="">
+                                                            </div>
                                                             <h4>$600.00</h4>
                                                         </div>
                                                     </div>
@@ -371,10 +319,18 @@
                                                 <div class="clearfix"></div>
                                                 <div class="product-scroll">
                                                     <div class="row">
-                                                        <div class="col-md-6 col-sm-2 col-4"><img  src="assets/images/scroll-2.jpg" alt="" title="" class="img-fluid"></div>
+                                                        <div class="col-md-6 col-sm-2 col-4">
+                                                            <img  src="{{ asset('') }}assets/images/scroll-2.jpg" class="img-fluid" alt="" title="">
+                                                        </div>
                                                         <div class="col-md-6 col-sm-9 col-8">
                                                             <h3>Product name</h3>
-                                                            <div><img  src="assets/images/str1.jpg" alt="" title=""><img  src="assets/images/str1.jpg" alt="" title=""><img  src="assets/images/str1.jpg" alt="" title=""><img  src="assets/images/str1.jpg" alt="" title=""><img  src="assets/images/str2.jpg" alt="" title=""></div>
+                                                            <div>
+                                                                <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
+                                                                <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
+                                                                <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
+                                                                <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
+                                                                <img  src="{{ asset('assets/images/str2.jpg') }}" alt="" title="">
+                                                            </div>
                                                             <h4>$600.00</h4>
                                                         </div>
                                                     </div>
@@ -382,7 +338,13 @@
                                             </div>
                                         </div>
                                         <!-- Controls -->
-                                        <a class="left arrow-left" href="#carousel-example-generic3" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a> <a class="right arrow-right" href="#carousel-example-generic3" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a> </div>
+                                        <a class="left arrow-left" href="#carousel-example-generic3" role="button" data-slide="prev">
+                                            <span class="glyphicon glyphicon-chevron-left"></span>
+                                        </a>
+                                        <a class="right arrow-right" href="#carousel-example-generic3" role="button" data-slide="next">
+                                            <span class="glyphicon glyphicon-chevron-right"></span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
