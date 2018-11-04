@@ -19,3 +19,5 @@ Route::get('/','HomePageController@index')->name('shop.home.main');
 
 Route::get('/shop','ShopController@index')->name('shop.products.main');
 Route::get('/shop/{product}','ShopController@show')->name('shop.products.details');
+
+Route::get('/cart','CartController@index')->name('shop.shopping-cart.main');
