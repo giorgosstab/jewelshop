@@ -1,0 +1,7 @@
+/*--shopping cart--*/
+.order-summary .order-price { float:right }
+.order-summary .name { float:left }
+.save-for-later .count { float:left; color: #d1a845 }
+.save-for-later span { color: black }
+.shopping-cart .count { color: #d1a845 }
+h4 .shopping-cart .count { font-size: 20px; }
