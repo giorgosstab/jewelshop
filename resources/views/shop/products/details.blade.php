@@ -28,9 +28,9 @@
                         <!--breadcrumbs -->
                         <div class="bread2">
                             <ul>
-                                <li><a href="{{ route('shop.home.main') }}">HOME</a></li>
+                                <li><a href="{{ route('shop.home.index') }}">HOME</a></li>
                                 <li>/</li>
-                                <li><a href="{{ route('shop.products.main') }}">SHOP</a></li>
+                                <li><a href="{{ route('shop.products.index') }}">SHOP</a></li>
                                 <li>/</li>
                                 <li>{{ $product->name }}</li>
                             </ul>

@@ -41,7 +41,7 @@
         <div class="clearfix"></div>
         <div class="container">
             <div class="row">
-                <div class="col-md-4 col-sm-4"><a href="{{ route('shop.home.main') }}"><img src="{{ asset('assets/images/logo-right.png') }}" alt="" title="" /></a></div>
+                <div class="col-md-4 col-sm-4"><a href="{{ route('shop.home.index') }}"><img src="{{ asset('assets/images/logo-right.png') }}" alt="" title="" /></a></div>
                 <div class="col-md-8 col-sm-8">
                     <div class="pull-right">
                         <div class="input-group">
@@ -90,7 +90,7 @@
         <!-- Navbar links -->
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
-                <li class="nav-item"><a  class="nav-link"  href="{{ route('shop.home.main') }}">Home</a></li>
+                <li class="nav-item"><a  class="nav-link"  href="{{ route('shop.home.index') }}">Home</a></li>
                 <li class="nav-item"> <a class="nav-link " href="about-us.html">About</a> </li>
                 <li class="nav-item dropdown  mega-dropdown"> <a class="nav-link dropdown-toggle text-uppercase no-caret" id="navbarDropdownMenuLink1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Shop </a>
                     <div class="dropdown-menu mega-menu v-2 row m-0 z-depth-1 special-color" aria-labelledby="navbarDropdownMenuLink1">

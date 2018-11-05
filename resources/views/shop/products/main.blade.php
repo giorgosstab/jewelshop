@@ -19,7 +19,7 @@
                 <div class="col-md-12">
                     <div class="bread2">
                         <ul>
-                            <li><a href="{{ route('shop.home.main') }}">HOME</a>
+                            <li><a href="{{ route('shop.home.index') }}">HOME</a>
                             <li>/</li>
                             <li>SHOP</li>
                         </ul>
@@ -260,7 +260,7 @@
                                     <div class="col-lg-12 padd0">
                                         <div class="product-hover">
                                             <div>
-                                                <a href="{{ route('shop.products.details', $product->slug) }}">
+                                                <a href="{{ route('shop.products.show', $product->slug) }}">
                                                     <img  src="{{ asset('assets/images/magnifier.svg') }}"  width="20" height="20" alt="" title="">
                                                 </a> &nbsp;&nbsp;
                                                 <a href="cart.html"> <img  src="{{ asset('assets/images/add-to-cart.svg') }}"  width="25" height="25" alt="" title=""></a>

@@ -195,7 +195,7 @@
                 <div class="col-md-6 col-sm-6 pull-right ">
                     <div class="subtotal">
                         <div class="secure">
-                            <a href="{{ route('shop.products.main') }}">
+                            <a href="{{ route('shop.products.index') }}">
                                 <i class="fa fa-chevron-left" aria-hidden="true"></i> Continue Shopping
                             </a>
                         </div>

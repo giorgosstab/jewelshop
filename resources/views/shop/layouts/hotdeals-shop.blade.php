@@ -6,7 +6,7 @@
             <div class="carousel-inner">
                 <div class="carousel-item active text-center">
                     @foreach($hotDeals->slice(0, 1) as $product)
-                        <a href="{{ route('shop.products.details', $product->slug) }}">
+                        <a href="{{ route('shop.products.show', $product->slug) }}">
                             <div class="row AlsoLike-border">
                                 <div class="col-md-12 col-sm-5"><img alt="" title=""  src="{{ asset('assets/images/left-product.jpg') }}" class="img-fluid"></div>
                                 <div class="col-md-12 col-sm-7">
@@ -51,7 +51,7 @@
 
                 <div class="carousel-item  text-center">
                     @foreach($hotDeals->slice(1, 2) as $product)
-                        <a href="{{ route('shop.products.details', $product->slug) }}">
+                        <a href="{{ route('shop.products.show', $product->slug) }}">
                             <div class="row AlsoLike-border">
                                 <div class="col-md-12 col-sm-5"><img alt="" title=""  src="{{ asset('assets/images/left-product.jpg') }}" class="img-fluid"></div>
                                 <div class="col-md-12 col-sm-7">

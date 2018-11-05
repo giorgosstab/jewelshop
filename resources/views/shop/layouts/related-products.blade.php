@@ -5,7 +5,7 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 @foreach($mightAlsoLike->slice(0, 2) as $product)
-                    <a href="{{ route('shop.products.details', $product->slug) }}">
+                    <a href="{{ route('shop.products.show', $product->slug) }}">
                         <div class="product-scroll">
                             <div class="row AlsoLike-border">
                                 <div class="col-md-6 col-sm-2 col-xs-6"><img  src="{{ asset('assets/images/scroll-2.jpg') }}" alt="" title="" class="img-fluid"></div>
@@ -29,7 +29,7 @@
             </div>
             <div class="carousel-item">
                 @foreach($mightAlsoLike->slice(2, 4) as $product)
-                    <a href="{{ route('shop.products.details', $product->slug) }}">
+                    <a href="{{ route('shop.products.show', $product->slug) }}">
                         <div class="product-scroll">
                             <div class="row AlsoLike-border">
                                 <div class="col-md-6 col-sm-2 col-xs-6"><img  src="{{ asset('assets/images/scroll-2.jpg') }}" alt="" title="" class="img-fluid"></div>
