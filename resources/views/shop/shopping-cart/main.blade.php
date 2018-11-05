@@ -54,59 +54,67 @@
                 <!--right-side-->
                 <div class="col-lg-9 col-md-12 col-sm-12">
                     <div class="checkout">
-                        <!--table-->
-                        <div class="table-responsive table-none wow fadeIn">
-                            <table class="table checkout-table">
-                                <tr class="table-h">
-                                    <td>&nbsp;</td>
-                                    <td>ITEM Details</td>
-                                    <td>UNIT PRICE</td>
-                                    <td>Quantity</td>
-                                    <td>EDIT</td>
-                                    <td>SUBTOTAL</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center"><img  src="assets/images/products/checkout.jpg" alt="" title="" class="img-fluid"></td>
-                                    <td class="product-name"><h1>Diamond Ring <br>
-                                            <span> JE-65450</span> </h1></td>
-                                    <td><div class="cost2">$ 3,200.65</div></td>
-                                    <td><div class="inc-dre">
-                                            <div class="input-group"><span class="input-group-btn">
-                  <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]"> <span class="glyphicon glyphicon-minus"></span> </button>
-                  </span>
-                                                <input name="quant[1]" class="input-number" value="1" type="text">
-                                                <span class="input-group-btn">
-                  <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]"> <span class="glyphicon glyphicon-plus"></span> </button>
-                  </span> </div>
-                                        </div></td>
-                                    <td class="remove-css text-center"><p><a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                <br>
-                                                Remove </a> </p>
-                                    </td>
-                                    <td><div class="cost">$ 3,200.65</div></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center"><img  src="assets/images/products/checkout.jpg" alt="" class="img-fluid" title=""></td>
-                                    <td class="product-name"><h1>Diamond Ring <br>
-                                            <span> JE-65450</span> </h1></td>
-                                    <td><div class="cost2">$ 3,200.65</div></td>
-                                    <td><div class="inc-dre">
-                                            <div class="input-group"><span class="input-group-btn">
-                  <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]"> <span class="glyphicon glyphicon-minus"></span> </button>
-                  </span>
-                                                <input name="quant[1]" class="input-number" value="1" type="text">
-                                                <span class="input-group-btn">
-                  <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]"> <span class="glyphicon glyphicon-plus"></span> </button>
-                  </span> </div>
-                                        </div></td>
-                                    <td class="remove-css text-center"><p><a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                <br>
-                                                Remove </a> </p></td>
-                                    <td><div class="cost">$ 3,200.65</div></td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="table-responsive table-none2 wow fadeIn">
+                        <div class="cat-div  wow fadeIn">
+                            <h2>
+                                <div class="save-for-later">
+                                    <div class="count"><span>Your currently have </span>2 item(s) <span>in your shopping cart</span></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </h2>
+                            <div class="clearfix"></div><br>
+                            <!--table-->
+                            <div class="table-responsive table-none wow fadeIn">
+                                <table class="table checkout-table">
+                                    <tr class="table-h">
+                                        <td>&nbsp;</td>
+                                        <td>ITEM Details</td>
+                                        <td>UNIT PRICE</td>
+                                        <td>Quantity</td>
+                                        <td>EDIT</td>
+                                        <td>SUBTOTAL</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center"><img  src="assets/images/products/checkout.jpg" alt="" title="" class="img-fluid"></td>
+                                        <td class="product-name"><h1>Diamond Ring <br>
+                                                <span> JE-65450</span> </h1></td>
+                                        <td><div class="cost2">$ 3,200.65</div></td>
+                                        <td><div class="inc-dre">
+                                                <div class="input-group"><span class="input-group-btn">
+                      <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]"> <span class="glyphicon glyphicon-minus"></span> </button>
+                      </span>
+                                                    <input name="quant[1]" class="input-number" value="1" type="text">
+                                                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]"> <span class="glyphicon glyphicon-plus"></span> </button>
+                      </span> </div>
+                                            </div></td>
+                                        <td class="remove-css text-center"><p><a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                    <br>
+                                                    Remove </a> </p>
+                                        </td>
+                                        <td><div class="cost">$ 3,200.65</div></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center"><img  src="assets/images/products/checkout.jpg" alt="" class="img-fluid" title=""></td>
+                                        <td class="product-name"><h1>Diamond Ring <br>
+                                                <span> JE-65450</span> </h1></td>
+                                        <td><div class="cost2">$ 3,200.65</div></td>
+                                        <td><div class="inc-dre">
+                                                <div class="input-group"><span class="input-group-btn">
+                      <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]"> <span class="glyphicon glyphicon-minus"></span> </button>
+                      </span>
+                                                    <input name="quant[1]" class="input-number" value="1" type="text">
+                                                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]"> <span class="glyphicon glyphicon-plus"></span> </button>
+                      </span> </div>
+                                            </div></td>
+                                        <td class="remove-css text-center"><p><a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                    <br>
+                                                    Remove </a> </p></td>
+                                        <td><div class="cost">$ 3,200.65</div></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="table-responsive table-none2 wow fadeIn">
                             <table class="table checkout-table">
                                 <tr>
                                     <td colspan="2" class="text-center"><img  src="assets/images/products/checkout.jpg" alt="" title="" class="img-fluid"></td>
@@ -165,6 +173,7 @@
                                     <td colspan="2"><div class="cost">$ 3,200.65</div></td>
                                 </tr>
                             </table>
+                        </div>
                         </div>
                     </div>
                 </div>
