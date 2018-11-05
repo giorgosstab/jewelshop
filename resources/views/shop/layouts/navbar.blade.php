@@ -1,4 +1,5 @@
 <nav class="navbar navbar-expand-sm bg-light navbar-light border fixed-top  navbar-custom navbar-fixed-top p-0 navbar-fixed-top2">
+    @include('shop.messages.success')
     <div class="top-bar">
         <div class="container">
             <div class="row">

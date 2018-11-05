@@ -14,9 +14,6 @@
         <!--animate-->
         {{ Html::style('assets/css/animate.css') }}
 
-        <!-- Fonts -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
-
         <!-- CSS STYLE-->
         {{ Html::style('assets/slider/css/style.css') }}
 
@@ -84,6 +81,13 @@
         <!--wow animate-->
         {{ Html::script('assets/js/wow.min.js') }}
         {{ Html::script('assets/js/animate1.js') }}
+
+        <!--animate fade messages-->
+        <script>
+            $("#message").fadeTo(4000, 500).slideUp(500, function(){
+                $("#message").slideUp(1000);
+            });
+        </script>
         
         <!--extra script-->
         @yield('extra-script')

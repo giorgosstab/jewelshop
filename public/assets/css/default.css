@@ -42,7 +42,7 @@ Input, textarea:14px Open sans,sans-serif;
 
 /*[Bootstrap Core CSS]*/
 @import url("bootstrap2.min.css");
-<!--@import url("../../../../../../cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");-->
+<!--@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");-->
 
 /*[page CSS]*/
 @import url("page.css");
