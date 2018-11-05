@@ -169,7 +169,15 @@
                         <div class="price-2">
                             <ul>
                                 <li class="tab1">PRICE: <span>€{{ $product->presentPrice() }}</span></li>
-                                <li><a href="cart.html">ADD TO CART </a></li>
+                                <li>
+                                    {!! Form::open(array('route'=>'shop.shopping-cart.store','method' => 'POST','id' => 'addToCart')) !!}
+                                    {{ csrf_field() }}
+                                    {{ Form::hidden('id', $product->id) }}
+                                    {{ Form::hidden('name', $product->name) }}
+                                    {{ Form::hidden('price', $product->price) }}
+                                    <a href="#" onclick="document.getElementById('addToCart').submit()">ADD TO CART</a>
+                                    {!! Form::close() !!}
+                                </li>
                             </ul>
                         </div>
                         <div class="share-icon"> <i class="fa fa-share-alt" aria-hidden="true"></i><br>
