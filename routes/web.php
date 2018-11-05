@@ -21,4 +21,4 @@ Route::get('/shop','ShopController@index')->name('shop.products.index');
 Route::get('/shop/{product}','ShopController@show')->name('shop.products.show');
 
 Route::get('/cart','CartController@index')->name('shop.shopping-cart.index');
-Route::post('/cart/{product}','CartController@store')->name('shop.shopping-cart.store');
+Route::post('/cart','CartController@store')->name('shop.shopping-cart.store');
