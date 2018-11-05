@@ -85,7 +85,7 @@
         <!--animate fade messages-->
         <script>
             $("#message").fadeTo(4000, 500).slideUp(500, function(){
-                $("#message").slideUp(1000);
+                $("#message").slideUp(3000);
             });
         </script>
         
