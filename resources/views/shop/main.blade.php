@@ -16,7 +16,7 @@
 
         <!-- CSS STYLE-->
         {{ Html::style('assets/slider/css/style.css') }}
-
+        {{ Html::style('assets/css/custom.css') }}
         <!--extra css-->
         @yield('extra-css')
 
@@ -84,8 +84,8 @@
 
         <!--animate fade messages-->
         <script>
-            $("#message").fadeTo(4000, 500).slideUp(500, function(){
-                $("#message").slideUp(3000);
+            $("#message").fadeTo(4000, 500).slideUp(100, function(){
+                $("#message").slideUp(5000);
             });
         </script>
         

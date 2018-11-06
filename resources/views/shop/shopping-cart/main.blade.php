@@ -3,7 +3,7 @@
 @section('title', '| Shopping Cart')
 
 @section('extra-css')
-    {{ Html::style('assets/css/custom.css') }}
+
 @endsection
 
 @section('content')
@@ -71,124 +71,191 @@
                                 @if(Cart::count() > 0)
                                     @foreach(Cart::content() as $item)
                                         <tr>
-                                            <td class="text-center"><img  src="assets/images/products/checkout.jpg" alt="" title="" class="img-fluid"></td>
+                                            <td class="text-center">
+                                                <a href="{{ route('shop.products.show', $item->model->slug) }}">
+                                                    <img  src="assets/images/products/checkout.jpg" alt="" title="" class="img-fluid">
+                                                </a>
+                                            </td>
                                             <td class="product-name">
-                                                <h1>Diamond Ring <br><span> {{ $item->model->name }}</span> </h1>
+                                                <h1>Diamond Ring <br>
+                                                    <a href="{{ route('shop.products.show', $item->model->slug) }}"><span> {{ $item->model->name }}</span></a>
+                                                </h1>
                                             </td>
                                             <td><div class="cost2">€{{ $item->model->presentPrice() }}</div></td>
                                             <td>
                                                 <div class="inc-dre">
                                                     <div class="input-group">
                                                         <span class="input-group-btn">
-                                                            <button class="btn btn-default btn-number dec-btn"> <span class="glyphicon glyphicon-minus"></span> </button>
+                                                            <button type="button" class="btn btn-default btn-number dec-btn"> <span class="glyphicon glyphicon-minus"></span> </button>
                                                         </span>
                                                         <input name="qnty" class="input-number quantity-no" value="1" type="text">
                                                         <span class="input-group-btn">
-                                                            <button type="button" class="btn btn-default btn-number inc-btn" data-type="plus" data-field="quant[1]"> <span class="glyphicon glyphicon-plus"></span> </button>
+                                                            <button type="button" class="btn btn-default btn-number inc-btn"> <span class="glyphicon glyphicon-plus"></span> </button>
                                                         </span>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="remove-css text-center">
                                                 <p>
-                                                    <a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a>&nbsp &nbsp<a href="#"><i class="fa fa-save"></i></a>
+                                                    {!! Form::open(['method' => 'POST','route' => ['shop.shopping-cart.destroy',$item->rowId], 'class' => 'deleteCart'.$item->model->id]) !!}
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
+                                                        <a href="#" onclick="document.getElementById('deleteCart{{ $item->model->id }}').submit()"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                    {!! Form::close() !!}
+                                                    &nbsp &nbsp
+                                                    {!! Form::open(['method' => 'POST','route' => ['shop.shopping-cart.destroy',$item->rowId], '' => '']) !!}
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('DELETE') }}
+                                                    <a href="#" onclick="document.getElementById('').submit()"><i class="fa fa-save" aria-hidden="true"></i></a>
+                                                    {!! Form::close() !!}
                                                 </p>
                                             </td>
                                             <td><div class="cost">€{{ number_format($item->subtotal,2) }}</div></td>
                                         </tr>
                                     @endforeach
+                                @else
+                                    <tr class="table-h">
+                                        <td colspan="6" class="text-center">
+                                            <div class="clearfix"></div><br>
+                                            <div class="clearfix"></div><br>
+                                            <div class="clearfix"></div><br>
+                                            <div class="clearfix"></div><br>
+                                            <div class="clearfix"></div><br>
+                                            <div class="shopping-cart">
+                                                <div class="count">Your Shopping Cart is Empty</div>
+                                            </div>
+                                            <div class="clearfix"></div><br>
+                                            <div class="clearfix"></div><br>
+                                            <div class="clearfix"></div><br>
+                                            <div class="clearfix"></div><br>
+                                            <div class="clearfix"></div><br>
+                                        </td>
+                                    </tr>
                                 @endif
-                                </table>
-                            </div>
-                            <div class="table-responsive table-none2 wow fadeIn">
-                            <table class="table checkout-table">
-                                <tr>
-                                    <td colspan="2" class="text-center"><img  src="assets/images/products/checkout.jpg" alt="" title="" class="img-fluid"></td>
-                                </tr>
-                                <tr class="product-name">
-                                    <td><h1>Diamond Ring <br>
-                                            <span> JE-65450</span> </h1></td>
-                                    <td><div class="cost2">$ 3,200.65</div></td>
-                                </tr>
-                                <tr>
-                                    <td><div class="inc-dre">
-                                            <div class="input-group"><span class="input-group-btn">
-                  <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]"> <span class="glyphicon glyphicon-minus"></span> </button>
-                  </span>
-                                                <input name="quant[1]" class="input-number" value="1" type="text">
-                                                <span class="input-group-btn">
-                  <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]"> <span class="glyphicon glyphicon-plus"></span> </button>
-                  </span> </div>
-                                        </div></td>
-                                    <td><p class="text-center"> <a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i><br>Remove
-
+                            </table>
+                        </div>
+                        @if(Cart::count() == 0)
+                            <div class="clearfix"></div><br>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="discount-div">
+                                        <div class="row">
+                                            <div class="col-md-2 col-sm-2 col-xs-12 text-center"><img  src="assets/images/products/icon.png" alt="" title="" class="img-fluid"></div>
+                                            <div class="col-md-10 shipping col-sm-10 col-xs-12">
+                                                <h3>Always Free! - Ground Shipping & Returns</h3>
+                                                <h4>Expedited shipping options available at checkout</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 pull-right ">
+                                    <div class="subtotal">
+                                        <div class="secure">
+                                            <a href="{{ route('shop.products.index') }}">
+                                                <i class="fa fa-chevron-left" aria-hidden="true"></i> Continue Shopping
                                             </a>
-
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2"><div class="cost">$ 3,200.65</div></td>
-                                </tr>
-                            </table>
-                            <table class="table checkout-table">
-                                <tr>
-                                    <td colspan="2" class="text-center"><img  src="assets/images/products/checkout.jpg" alt="" title="" class="img-fluid"></td>
-                                </tr>
-                                <tr class="product-name">
-                                    <td><h1>Diamond Ring <br>
-                                            <span> JE-65450</span> </h1></td>
-                                    <td><div class="cost2">$ 3,200.65</div></td>
-                                </tr>
-                                <tr>
-                                    <td><div class="inc-dre">
-                                            <div class="input-group"><span class="input-group-btn">
-                  <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]"> <span class="glyphicon glyphicon-minus"></span> </button>
-                  </span>
-                                                <input name="quant[1]" class="input-number" value="1" type="text">
-                                                <span class="input-group-btn">
-                  <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]"> <span class="glyphicon glyphicon-plus"></span> </button>
-                  </span> </div>
-                                        </div></td>
-                                    <td><p class="text-center"> <a href="#"> <i class="fa fa-trash-o" aria-hidden="true"></i><br>
-                                                Remove
-                                            </a> </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2"><div class="cost">$ 3,200.65</div></td>
-                                </tr>
-                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div><br>
+                        @endif
+                        <div class="table-responsive table-none2 wow fadeIn">
+                            @if(Cart::count() > 0)
+                                @foreach(Cart::content() as $item)
+                                    <table class="table checkout-table">
+                                        <tr>
+                                            <td colspan="2" class="text-center">
+                                                <a href="{{ route('shop.products.show', $item->model->slug) }}">
+                                                    <img  src="assets/images/products/checkout.jpg" alt="" title="" class="img-fluid">
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr class="product-name">
+                                            <td>
+                                                <h1>
+                                                    Diamond Ring <br>
+                                                    <a href="{{ route('shop.products.show', $item->model->slug) }}"><span> {{ $item->model->name }}</span></a>
+                                                </h1>
+                                            </td>
+                                            <td><div class="cost2">€{{ $item->model->presentPrice() }}</div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="inc-dre">
+                                                    <div class="input-group">
+                                                        <span class="input-group-btn">
+                                                            <button type="button" class="btn btn-default btn-number dec-btn"> <span class="glyphicon glyphicon-minus"></span> </button>
+                                                        </span>
+                                                        <input name="qnty" class="input-number quantity-no" value="1" type="text">
+                                                        <span class="input-group-btn">
+                                                            <button type="button" class="btn btn-default btn-number inc-btn"> <span class="glyphicon glyphicon-plus"></span> </button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">
+                                                <p>
+                                                    {!! Form::open(['method' => 'POST','route' => ['shop.shopping-cart.destroy',$item->rowId], 'id' => 'deleteCart'.$item->model->id]) !!}
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
+                                                        <a href="#" onclick="document.getElementById('deleteCart{{ $item->model->id }}').submit()"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                    {!! Form::close() !!}
+                                                    &nbsp &nbsp
+                                                    {!! Form::open(['method' => 'POST','route' => ['shop.shopping-cart.destroy',$item->rowId], '' => '']) !!}
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
+                                                        <a href="#" onclick="document.getElementById('').submit()"><i class="fa fa-save" aria-hidden="true"></i></a>
+                                                    {!! Form::close() !!}
+                                                </p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><div class="cost">€{{ number_format($item->subtotal,2) }}</div></td>
+                                        </tr>
+                                    </table>
+                                @endforeach
+                            @else
+                                <table class="table checkout-table">
+                                    <tr class="table-h">
+                                        <td class="text-center"><div class="shopping-cart"><div class="count">Your Shopping Cart is Empty</div></div></td>
+                                    </tr>
+                                </table>
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="clearfix"></div><br>
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <div class="discount-div">
-                        <div class="row">
-                            <div class="col-md-2 col-sm-2 col-xs-12 text-center"><img  src="assets/images/products/icon.png" alt="" title="" class="img-fluid"></div>
-                            <div class="col-md-10 shipping col-sm-10 col-xs-12">
-                                <h3>Always Free! - Ground Shipping & Returns</h3>
-                                <h4>Expedited shipping options available at checkout</h4>
+            @if(Cart::count() > 0)
+                <div class="clearfix"></div><br>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="discount-div">
+                            <div class="row">
+                                <div class="col-md-2 col-sm-2 col-xs-12 text-center"><img  src="assets/images/products/icon.png" alt="" title="" class="img-fluid"></div>
+                                <div class="col-md-10 shipping col-sm-10 col-xs-12">
+                                    <h3>Always Free! - Ground Shipping & Returns</h3>
+                                    <h4>Expedited shipping options available at checkout</h4>
+                                </div>
                             </div>
                         </div>
+                        <div class="clearfix"></div>
                     </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="col-md-6 col-sm-6 pull-right ">
-                    <div class="subtotal">
-                        <div class="secure">
-                            <a href="{{ route('shop.products.index') }}">
-                                <i class="fa fa-chevron-left" aria-hidden="true"></i> Continue Shopping
-                            </a>
+                    <div class="col-md-6 col-sm-6 pull-right ">
+                        <div class="subtotal">
+                            <div class="secure">
+                                <a href="{{ route('shop.products.index') }}">
+                                    <i class="fa fa-chevron-left" aria-hidden="true"></i> Continue Shopping
+                                </a>
+                            </div>
                         </div>
+                        <div class="clearfix"></div>
                     </div>
-                    <div class="clearfix"></div>
                 </div>
-            </div>
-            <div class="clearfix"></div><br>
+                <div class="clearfix"></div><br>
+            @endif
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">
 

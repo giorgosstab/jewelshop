@@ -51,29 +51,40 @@
                                 <button class="btn" type="button"> <i class="fa fa-search"></i> </button>
                             </div>
                             <div class=" dropdown">
-                                <div class="cart-btn "> <a href="#" class="button adc"   id="MenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">$100.00</a></div>
+                                <div class="cart-btn ">
+                                    <a href="#" class="button adc"   id="MenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">€{{ Cart::total() }}
+                                        @if(Cart::instance('default')->count() > 0)
+                                            <span class="badge badge-warning">{{ Cart::instance('default')->count() }}</span>
+                                        @endif
+                                    </a>
+                                </div>
                                 <div class="dropdown-menu dropdown-menu2" aria-labelledby="MenuButton">
-                                    <h2>2 ITEMS IN THE SHOPPING CART </h2>
+
+                                    @if(Cart::instance('default')->count() > 0)
+                                        <h2><span class="shopping-cart count">{{ Cart::instance('default')->count() }} ITEMS IN THE SHOPPING CART </span></h2>
+                                    @else
+                                        <h2><span class="shopping-cart count">YOUR SHOPPING CART IS EMPTY</span></h2>
+                                    @endif
+
                                     <div class="dropdown-menu2-in">
-                                        <ul>
-                                            <li>
-                                                <div class="row">
-                                                    <div class="col-3"><img src="{{ asset('assets/images/small-1.jpg') }}" alt="" title=""></div>
-                                                    <div class="col-9">
-                                                        <p>Latest Jewellery</p>
-                                                        <span>$79.00</span></div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="row">
-                                                    <div class="col-3"><img src="{{ asset('assets/images/small-2.jpg') }}" alt="" title=""></div>
-                                                    <div class="col-9">
-                                                        <p>Latest Jewellery</p>
-                                                        <span>79.00</span></div>
-                                                </div>
-                                            </li>
+                                        <ul class="example-1 scrollbar-ripe-malinka">
+                                            @foreach(Cart::content() as $item)
+                                                <li>
+                                                    <div class="row">
+                                                        <div class="col-3">
+                                                            <img src="{{ asset('assets/images/small-1.jpg') }}" alt="" title="">
+                                                        </div>
+                                                        <div class="col-9">
+                                                            <p>{{ $item->model->name }}</p>
+                                                            <span>€{{ $item->model->presentPrice() }}</span><br>
+                                                            <span>Quantity: {{ Cart::count() }}</span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            @endforeach
                                         </ul>
-                                        <a href="#" class="view-ct">View Cart</a> <a href="#" class="check-ct">Checkout</a>
+
+                                        <a href="{{ route('shop.shopping-cart.index') }}" class="view-ct">View Cart</a> <a href="#" class="check-ct">Checkout</a>
                                     </div>
                                 </div>
                             </div>
