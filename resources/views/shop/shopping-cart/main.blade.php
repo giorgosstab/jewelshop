@@ -319,7 +319,7 @@
                         <h2>
                             <div class="order-summary">
                                 <span class="name">Order Subtotal</span>
-                                <span class="order-price">€1,000.00</span>
+                                <span class="order-price">€{{ Cart::subtotal()}}</span>
                             </div>
                             <div class="clearfix"></div><br>
                         </h2>
@@ -335,7 +335,7 @@
                         <h2>
                             <div class="order-summary">
                                 <span class="name">Tax (24%)</span>
-                                <span class="order-price">€210.00</span>
+                                <span class="order-price">€{{ Cart::tax() }}</span>
                             </div>
                             <div class="clearfix"></div><br>
                         </h2>
@@ -343,7 +343,7 @@
                         <h2>
                             <div class="order-summary">
                                 <span class="name">Total</span>
-                                <span class="order-price price">€1,210.00</span>
+                                <span class="order-price price">€{{ Cart::total() }}</span>
                             </div>
                             <div class="clearfix"></div><br>
                         </h2>
