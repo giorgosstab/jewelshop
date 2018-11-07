@@ -71,23 +71,3 @@ h4 .shopping-cart .count { font-size: 20px; }
     overflow-y: scroll;
     height: 180px;
 }
-.shopping-cart-items {
-    position: relative;
-    overflow-y: scroll;
-    height: 415px;
-}
-.shopping-cart-items-min {
-    position: relative;
-    overflow-y: scroll;
-    height: 435px;
-}
-.saveForLater-items {
-    position: relative;
-    overflow-y: scroll;
-    height: 430px;
-}
-.saveForLater-items-min {
-    position: relative;
-    overflow-y: scroll;
-    height: 345px;
-}
