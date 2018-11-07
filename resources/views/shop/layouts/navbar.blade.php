@@ -84,8 +84,10 @@
                                                 </li>
                                             @endforeach
                                         </ul>
-
-                                        <a href="{{ route('shop.shopping-cart.index') }}" class="view-ct">View Cart</a> <a href="#" class="check-ct">Checkout</a>
+                                        <a href="{{ route('shop.shopping-cart.index') }}" class="view-ct">View Cart</a>
+                                        @if(Cart::instance('default')->count() > 0)
+                                            <a href="{{ route('shop.checkout.index') }}" class="check-ct">Checkout</a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
