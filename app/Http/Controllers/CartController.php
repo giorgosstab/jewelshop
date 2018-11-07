@@ -37,6 +37,12 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
+        $duplicates = Cart::search(function($cartItem,$rowId) use ($request){
+            return $cartItem->id === $request->id;
+        });
+        if ($duplicates->isNotEmpty()){
+            return redirect()->route('shop.shopping-cart.index')->with('warning_message','Item is already in your cart!!');
+        }
         Cart::add($request->id, $request->name, 1, $request->price)
             ->associate('App\Product');
         return redirect()->route('shop.shopping-cart.index')->with('success_message','Item was added to your shopping cart!');
@@ -86,5 +92,31 @@ class CartController extends Controller
     {
         Cart::remove($id);
         return back()->with('success_message','Product has been removed!!');
+    }
+
+    /**
+     * Shopping cart save for later
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function saveForLater($id)
+    {
+        $item = Cart::instance('default')->get($id);
+
+
+        $duplicates = Cart::instance('saveForLater')->search(function($cartItem, $rowId) use ($id){
+            return $rowId === $id;
+        });
+        if ($duplicates->isNotEmpty()){
+            return redirect()->route('shop.shopping-cart.index')->with('warning_message','Item is already Saved For Later!!');
+        }else {
+
+            Cart::instance('default')->remove($id);
+            Cart::instance('saveForLater')->add($item->id, $item->name, 1, $item->price)
+                ->associate('App\Product');
+
+            return redirect()->route('shop.shopping-cart.index')->with('success_message', 'Item has moved to Saved for Later!!');
+        }
     }
 }

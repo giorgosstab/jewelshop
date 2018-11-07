@@ -23,7 +23,15 @@ Route::get('/shop/{product}','ShopController@show')->name('shop.products.show');
 Route::get('/cart','CartController@index')->name('shop.shopping-cart.index');
 Route::post('/cart','CartController@store')->name('shop.shopping-cart.store');
 Route::delete('/cart/{product}','CartController@destroy')->name('shop.shopping-cart.destroy');
+Route::post('/cart/saveForLater/{product}','CartController@saveForLater')->name('shop.shopping-cart.saveForLater');
+
+Route::delete('/saveForLater/{product}','SaveForLaterController@destroy')->name('shop.shopping-cart.destroyForLater');
+Route::post('/saveForLater/switchToCart/{product}','SaveForLaterController@switchToCart')->name('shop.shopping-cart.switchToCart');
 
 Route::get('empty', function(){
     Cart::destroy();
+});
+
+Route::get('emptySaves', function(){
+    Cart::instance('saveForLater')->destroy();
 });

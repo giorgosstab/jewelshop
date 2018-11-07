@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-sm bg-light navbar-light border fixed-top  navbar-custom navbar-fixed-top p-0 navbar-fixed-top2">
     @include('shop.messages.success')
+    @include('shop.messages.warning')
     <div class="top-bar">
         <div class="container">
             <div class="row">
@@ -67,7 +68,7 @@
                                     @endif
 
                                     <div class="dropdown-menu2-in">
-                                        <ul class="example-1 scrollbar-ripe-malinka">
+                                        <ul class="basket scrollbar-ripe-malinka">
                                             @foreach(Cart::content() as $item)
                                                 <li>
                                                     <div class="row">
