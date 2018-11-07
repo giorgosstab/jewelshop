@@ -16609,10 +16609,10 @@ text-shadow: none; opacity:.6;
 }
 .panel-title a {
 	color:#222;
-	display:block; 	padding:15px!important;
+	display:block; 	/*padding:15px!important;*/
 }
 .panel-body {
-	border:solid 1px #ccc;
+	/*border:solid 1px #ccc;*/
 	margin:0 0 5px 0
 }
  
@@ -16816,7 +16816,7 @@ font-size:13px -webkit-transition: opacity 0.4s ease-in-out;
 }
 
 .panel-body {
-    padding: 15px;
+    /*padding: 15px;*/
     line-height: 25px;
 }
 
