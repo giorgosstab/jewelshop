@@ -28,6 +28,8 @@ Route::post('/cart/saveForLater/{product}','CartController@saveForLater')->name(
 Route::delete('/saveForLater/{product}','SaveForLaterController@destroy')->name('shop.shopping-cart.destroyForLater');
 Route::post('/saveForLater/switchToCart/{product}','SaveForLaterController@switchToCart')->name('shop.shopping-cart.switchToCart');
 
+Route::get('/checkout','CheckoutController@index')->name('shop.checkout.index');
+
 Route::get('empty', function(){
     Cart::destroy();
 });
