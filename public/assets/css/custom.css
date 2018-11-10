@@ -71,3 +71,118 @@ h4 .shopping-cart .count { font-size: 20px; }
     overflow-y: scroll;
     height: 180px;
 }
+
+/**
+ * The CSS shown here will not be introduced in the Quickstart guide, but shows
+ * how you can use CSS to style your Element's container.
+ */
+.StripeElement {
+    border-color: currentcolor currentcolor #cdcdcd;
+     border-image: none;
+     border-style: none none solid;
+     border-width: medium medium 1px;
+     display: block;
+     font-size: 13px;
+letter-spacing: 1px;
+    padding: 10px 10px 10px 5px;
+}
+.StripeElement--focus {
+    box-shadow: 0 1px 3px 0 #cfd7df;
+}
+.StripeElement--invalid {
+    border-color: #fa755a;
+}
+.StripeElement--webkit-autofill {
+    background-color: #fefde5 !important;
+}
+#card-errors {
+    color: #fa755a;
+}
+
+
+/*--collapse checkout view--*/
+a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+}
+.panel-title .trigger:before {
+    content: '\e082';
+    font-family: 'Glyphicons Halflings';
+    vertical-align: text-bottom;
+}
+
+.panel-title .trigger.collapsed:before {
+    content: '\e081';
+}
+.panel-border-circle a {
+    border-radius: 30px;
+    border-style: solid;
+    border-color: #9f7e1d;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #000;
+    background-color: #dfb859;
+    display:block; 	padding:15px!important;
+}
+.panel-border-circle a span {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+/*________________Might Also Like Border on Hover_______________ */
+.AlsoLike-border:hover {
+    outline: solid 3px #DEB75B;
+    margin: 0.2em;
+}
+
+/*________________payment options_______________ */
+.cc-selector input{
+    margin:0;padding:0;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+}
+
+.cc-selector-2 input{
+    position:absolute;
+    z-index:999;
+}
+
+.stripe{background-image:url(../../assets/images/cards/stripe.png);}
+.paypal{background-image:url(../../assets/images/cards/paypal.png);}
+.cash{background-image:url(../../assets/images/cards/cash.png);}
+
+.acs{background-image:url(../../assets/images/delivery/acs.png);}
+.geniki{background-image:url(../../assets/images/delivery/geniki.png);}
+.metaforikh{background-image:url(../../assets/images/delivery/metaforikh.png);}
+
+.cc-selector-2 input:active +.drinkcard-cc, .cc-selector input:active +.drinkcard-cc{opacity: .9;}
+.cc-selector-2 input:checked +.drinkcard-cc, .cc-selector input:checked +.drinkcard-cc{
+    -webkit-filter: none;
+    -moz-filter: none;
+    filter: none;
+}
+.drinkcard-cc{
+    cursor:pointer;
+    background-size:contain;
+    background-repeat:no-repeat;
+    display:inline-block;
+    width:100px;height:70px;
+    -webkit-transition: all 100ms ease-in;
+    -moz-transition: all 100ms ease-in;
+    transition: all 100ms ease-in;
+    -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+    -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
+    filter: brightness(1.8) grayscale(1) opacity(.7);
+}
+.drinkcard-cc:hover{
+    -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+    -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+    filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+
+/* Extras */
+
+.cc-selector-2 input{ margin: 5px 0 0 12px; }
+.cc-selector-2 label{ margin-left: 7px; }
+span.cc{ color:#6d84b4 }
