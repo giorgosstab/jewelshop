@@ -293,8 +293,7 @@
                                             I AGREE TO THE <a href="{{ route('shop.privacy.index') }}">TERMS & CONDITIONS</a></div>
                                         <div class="clearfix"></div>
                                         <div class="buy-this">
-                                            <a class="price" href="#" onclick="document.getElementById('payment-form').submit()">PAY NOW</a>
-                                            {{--<input type="submit" value="Pay" />--}}
+                                            {!! Form::button('PAY NOW',['type' => 'submit','id' => 'complete-order']) !!}
                                             <div class="clearfix"></div>
                                         </div>
                                     </div>
@@ -313,7 +312,7 @@
 @endsection
 
 @section('extra-script')
-    {{ Html::script('assets/js/credit-cart/stripe/stripe.js') }}
+    {{ Html::script('assets/js/credit-card/stripe/stripe.js') }}
     <script>
         $(function(){
             var requiredCheckboxes = $('.options :checkbox[required]');
