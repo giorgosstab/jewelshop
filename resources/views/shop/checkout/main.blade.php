@@ -290,10 +290,10 @@
                                     <div class="col-lg-12">
                                         <div class="ship2">
                                             <input type="checkbox" onClick="this.value=''" value="">
-                                            I AGREE TO THE TERMS & CONDITIONS</div>
+                                            I AGREE TO THE <a href="{{ route('shop.privacy.index') }}">TERMS & CONDITIONS</a></div>
                                         <div class="clearfix"></div>
                                         <div class="buy-this">
-                                            <a href="#" onclick="document.getElementById('payment-form').submit()">PAY NOW</a>
+                                            <a class="price" href="#" onclick="document.getElementById('payment-form').submit()">PAY NOW</a>
                                             {{--<input type="submit" value="Pay" />--}}
                                             <div class="clearfix"></div>
                                         </div>
