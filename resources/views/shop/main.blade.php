@@ -84,7 +84,7 @@
 
         <!--animate fade messages-->
         <script>
-            $("#message").fadeTo(4000, 500).slideUp(100, function(){
+            $("#message").fadeTo(4000, 1000).slideUp(500, function(){
                 $("#message").slideUp(5000);
             });
             $('.navbar-nav .dropdown > a').click(function() {
