@@ -22,14 +22,16 @@
             <!--breadcrumbs -->
             <div class="bread2">
                 <ul>
-                    <li><a href="index-2.html">HOME</a>
+                    <li><a href="{{ route('shop.home.index') }}">HOME</a>
                     <li>/</li>
-                    <li><a href="product.html">SHOP</a></li>
+                    <li><a href="{{ route('shop.products.index') }}">SHOP</a></li>
                     <li>/</li>
                     <li>Checkout</li>
                 </ul>
             </div>
             <!--breadcrumbs -->
+            <div class="clearfix"> </div>
+            @include('shop.messages.error')
             <div class="clearfix"> </div>
             <div class="checkout-boder">
                 <div class="row">
@@ -102,51 +104,46 @@
                                                 <div class="row m-0">
                                                     <div class="col-md-6 col-sm-6 col-xs-6">
                                                         <div class="form-group">
-                                                            <input type="text" placeholder="FIRST NAME">
+                                                            <input type="text" name="fname" placeholder="FIRST NAME">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input id="address" type="text" placeholder="ADDRESS">
+                                                            <input id="address" type="text" name="address" placeholder="ADDRESS">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input type="text" placeholder="EMAIL ADDRESS">
+                                                            <input type="text" name="email" placeholder="EMAIL ADDRESS">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input type="text" placeholder="PHONE NUMBER">
+                                                            <input type="text" name="phone" placeholder="PHONE NUMBER">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input id="zip-code" type="text" placeholder="ZIPCODE">
+                                                            <input id="zip-code" type="text" name="zip-code" placeholder="ZIPCODE">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-sm-6 col-xs-6">
                                                         <div class="form-group">
-                                                            <input type="text" placeholder="LAST NAME">
+                                                            <input type="text" name="lname" placeholder="LAST NAME">
                                                         </div>
                                                         <div class="clearfix"></div>
-                                                        <div class="row m-0">
-                                                            <div class="col-md-6 padd0">
+                                                        <div class="row m-0">  <div class="col-md-6 padd0">
                                                                 <div class="form-group">
                                                                     <input type="text" placeholder="HOUSE NO.">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 padd0">
                                                                 <div class="form-group">
-                                                                    <input id="locality" type="text" placeholder="LOCALITY">
+                                                                    <input id="locality" type="text" name="locality" placeholder="LOCALITY">
                                                                 </div>
-                                                            </div>
-                                                        </div>
+                                                            </div></div>
                                                         <div class="clearfix"></div>
                                                         <div class="form-group">
-                                                            <input id="city" type="text" placeholder="CITY">
+                                                            <input id="city" type="text" name="city" placeholder="CITY">
                                                         </div>
                                                         <div class="form-group">
-                                                            <select id="checkout-country" class="js-countries">
+                                                            <select id="checkout-country" class="js-countries" name="country">
                                                                 <option disabled="" selected="selected">Please select your country</option>
-                                                                <option value="38"> CANADA </option>
-                                                                <option value="232"> UNITED STATES </option>
+                                                                <option value="38">CANADA </option>
+                                                                <option value="232">UNITED STATES </option>
                                                             </select>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <input placeholder="BIRTHDATE (OPTIONAL)" type="text">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -165,24 +162,24 @@
                                                     <div class="row m-0">
                                                         <div class="col-md-6 col-sm-6 col-xs-6">
                                                             <div class="form-group">
-                                                                <input type="text" placeholder="FIRST NAME">
+                                                                <input type="text" name="fname" placeholder="FIRST NAME">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="text" placeholder="ADDRESS">
+                                                                <input type="text" name="address" placeholder="ADDRESS">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="text" placeholder="EMAIL ADDRESS">
+                                                                <input type="text" name="email" placeholder="EMAIL ADDRESS">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="text" placeholder="PHONE NUMBER">
+                                                                <input type="text" name="phone" placeholder="PHONE NUMBER">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="text" placeholder="ZIPCODE">
+                                                                <input type="text" name="zip-code" placeholder="ZIPCODE">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-sm-6 col-xs-6">
                                                             <div class="form-group">
-                                                                <input type="text" placeholder="LAST NAME">
+                                                                <input type="text" name="lname" placeholder="LAST NAME">
                                                             </div>
                                                             <div class="clearfix"></div>
                                                             <div class="row m-0">  <div class="col-md-6 padd0">
@@ -192,15 +189,15 @@
                                                                 </div>
                                                                 <div class="col-md-6 padd0">
                                                                     <div class="form-group">
-                                                                        <input type="text" placeholder="LOCALITY">
+                                                                        <input type="text" name="locality" placeholder="LOCALITY">
                                                                     </div>
                                                                 </div></div>
                                                             <div class="clearfix"></div>
                                                             <div class="form-group">
-                                                                <input type="text" placeholder="CITY">
+                                                                <input type="text" name="city" placeholder="CITY">
                                                             </div>
                                                             <div class="form-group">
-                                                                <select class="js-countries">
+                                                                <select class="js-countries" name="country">
                                                                     <option disabled="" selected="selected">Please select your country</option>
                                                                     <option value="38">CANADA </option>
                                                                     <option value="232">UNITED STATES </option>
@@ -312,7 +309,7 @@
 @endsection
 
 @section('extra-script')
-    {{ Html::script('assets/js/credit-card/stripe/stripe.js') }}
+    {{ Html::script('assets/js/credit-cart/stripe/stripe.js') }}
     <script>
         $(function(){
             var requiredCheckboxes = $('.options :checkbox[required]');
