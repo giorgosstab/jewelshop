@@ -107,7 +107,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item"><a  class="nav-link"  href="{{ route('shop.home.index') }}">Home</a></li>
                 <li class="nav-item"> <a class="nav-link " href="about-us.html">About</a> </li>
-                <li class="nav-item dropdown  mega-dropdown"> <a class="nav-link dropdown-toggle text-uppercase no-caret" id="navbarDropdownMenuLink1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Shop </a>
+                <li class="nav-item dropdown  mega-dropdown"> <a class="nav-link dropdown-toggle text-uppercase no-caret" id="navbarDropdownMenuLink1" href="{{ route('shop.products.index') }}" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false"> Shop </a>
                     <div class="dropdown-menu mega-menu v-2 row m-0 z-depth-1 special-color" aria-labelledby="navbarDropdownMenuLink1">
                         <div class="row mx-md-4 mx-1">
                             <div class="col-md-6 col-xl-3 sub-menu my-xl-5 mt-md-5 mt-1 mb-1">
