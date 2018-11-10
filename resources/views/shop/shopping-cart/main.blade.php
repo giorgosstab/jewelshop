@@ -480,7 +480,7 @@
             <!--checkout button-->
             @if(Cart::instance('default')->count() > 0)
                 <div class="col-lg-12 text-center secure">
-                    <a href="#">
+                    <a href="{{ route('shop.checkout.index') }}">
                         Proceed to checkout <i class="fa fa-long-arrow-right"></i>
                     </a>
                 </div>
