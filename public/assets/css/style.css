@@ -16816,7 +16816,7 @@ font-size:13px -webkit-transition: opacity 0.4s ease-in-out;
 }
 
 .panel-body {
-    /*padding: 15px;*/
+    padding: 15px;
     line-height: 25px;
 }
 
@@ -16833,11 +16833,4 @@ font-size:13px -webkit-transition: opacity 0.4s ease-in-out;
 }
 #preloader > img {
 	display:none
-}
-
-
-/*________________Might Also Like Border on Hover_______________ */
-.AlsoLike-border:hover {
-    outline: solid 3px #DEB75B;
-    margin: 0.2em;
 }
