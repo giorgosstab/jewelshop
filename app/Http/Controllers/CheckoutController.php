@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-
+use Illuminate\Http\Request;
+use Cartalyst\Stripe\Exception\CardErrorException;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Gloudemans\Shoppingcart\Facades\Cart;
+
 
 class CheckoutController extends Controller
 {
@@ -21,13 +23,13 @@ class CheckoutController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CheckoutRequest $request)
+    public function store(Request $request)
     {
         $content = Cart::content()->map(function($item){
-            return $item->model->slug.', '.$item->qty;
+            return 'Product Name: '.$item->model->slug.', Quantity: '.$item->qty;
         })->values()->toJson();
         try {
             $charge = Stripe::charges()->create([
