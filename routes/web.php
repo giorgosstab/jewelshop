@@ -31,6 +31,7 @@ Route::post('/saveForLater/switchToCart/{product}','SaveForLaterController@switc
 Route::get('/checkout','CheckoutController@index')->name('shop.checkout.index');
 Route::post('/checkout','CheckoutController@store')->name('shop.checkout.store');
 
+Route::get('/thankyou','ConfirmationController@index')->name('shop.checkout.confirm');
 Route::get('/terms','TermsController@index')->name('shop.privacy.index');
 
 Route::get('empty', function(){
