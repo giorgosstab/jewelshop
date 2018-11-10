@@ -63,11 +63,11 @@ $( document ).ready(function() {
             $('#complete-order').prop('disabled', true);
 
             var options = {
-                name: document.getElementById('card-name').value,
+                name: document.getElementById('holder-name').value,
                 address_line1: document.getElementById('address').value,
                 address_city: document.getElementById('city').value,
-                address_state: document.getElementById('state').value,
-                address_zip: document.getElementById('zip').value
+                address_state: document.getElementById('locality').value,
+                address_zip: document.getElementById('zip-code').value
             }
 
             stripe.createToken(card, options).then(function(result) {

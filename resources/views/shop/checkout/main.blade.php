@@ -105,7 +105,7 @@
                                                             <input type="text" placeholder="FIRST NAME">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input type="text" placeholder="ADDRESS">
+                                                            <input id="address" type="text" placeholder="ADDRESS">
                                                         </div>
                                                         <div class="form-group">
                                                             <input type="text" placeholder="EMAIL ADDRESS">
@@ -114,7 +114,7 @@
                                                             <input type="text" placeholder="PHONE NUMBER">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input type="text" placeholder="ZIPCODE">
+                                                            <input id="zip-code" type="text" placeholder="ZIPCODE">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-sm-6 col-xs-6">
@@ -130,13 +130,13 @@
                                                             </div>
                                                             <div class="col-md-6 padd0">
                                                                 <div class="form-group">
-                                                                    <input type="text" placeholder="LOCALITY">
+                                                                    <input id="locality" type="text" placeholder="LOCALITY">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="clearfix"></div>
                                                         <div class="form-group">
-                                                            <input type="text" placeholder="CITY">
+                                                            <input id="city" type="text" placeholder="CITY">
                                                         </div>
                                                         <div class="form-group">
                                                             <select id="checkout-country" class="js-countries">
@@ -260,7 +260,7 @@
 
                                                         <div id="show-stripe" class="collapse" data-parent="#credit-card">
                                                             <div class="form-group">
-                                                                <input type="text" placeholder="Holder Name">
+                                                                <input id="holder-name" type="text" placeholder="Holder Name">
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="card-element">
