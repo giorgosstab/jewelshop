@@ -15700,6 +15700,26 @@ padding:0;
 	border:solid 2px #222;
 	color:#fff;
 }
+.buy-this button {
+	font-size:20xp;
+	font-weight:600;
+	color:#000;
+	background:#fff;
+	font-family: 'Open Sans', sans-serif;
+	width:233px;
+	height:60px;
+	text-transform:uppercase;
+	float:right;
+	display:block;
+	border:solid 2px #dfb859;
+	line-height:58px;
+	margin:0
+}
+.buy-this button:hover {
+	background:#222;
+	border:solid 2px #222;
+	color:#fff;
+}
 .double-b {
 	background:url(../images/products/boder.png) repeat-x;
 	width:95%;
