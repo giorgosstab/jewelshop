@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
+use Cartalyst\Stripe\Laravel\Facades\Stripe;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CheckoutController extends Controller
 {
@@ -41,7 +43,7 @@ class CheckoutController extends Controller
             ]);
 
             Cart::instance('default')->destroy();
-            return redirect()->route('checkout.thankyou')->with('success_message','Thank you! Your payment has been successfully accepted!');
+            return redirect()->route('shop.checkout.confirm')->with('success_message','Thank you! Your payment has been successfully accepted!');
         } catch (CardErrorException $e) {
             return back()->withErrors('Error! ' . $e->getMessage());
         }
