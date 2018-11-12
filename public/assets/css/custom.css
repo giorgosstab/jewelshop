@@ -47,6 +47,7 @@ h4 .shopping-cart .count { font-size: 20px; }
 .notice-danger {
     border-color: #d73814;
     background-color: #f2dede;
+    text-align: left;
 }
 .notice-danger>strong {
     color: #d73814;
