@@ -162,24 +162,24 @@
                                                     <div class="row m-0">
                                                         <div class="col-md-6 col-sm-6 col-xs-6">
                                                             <div class="form-group">
-                                                                <input type="text" name="fname" placeholder="FIRST NAME">
+                                                                <input type="text" name="fname-sec" placeholder="FIRST NAME">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="text" name="address" placeholder="ADDRESS">
+                                                                <input type="text" name="address-sec" placeholder="ADDRESS">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="text" name="email" placeholder="EMAIL ADDRESS">
+                                                                <input type="text" name="email-sec" placeholder="EMAIL ADDRESS">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="text" name="phone" placeholder="PHONE NUMBER">
+                                                                <input type="text" name="phone-sec" placeholder="PHONE NUMBER">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="text" name="zip-code" placeholder="ZIPCODE">
+                                                                <input type="text" name="zip-code-sec" placeholder="ZIPCODE">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-sm-6 col-xs-6">
                                                             <div class="form-group">
-                                                                <input type="text" name="lname" placeholder="LAST NAME">
+                                                                <input type="text" name="lname-sec" placeholder="LAST NAME">
                                                             </div>
                                                             <div class="clearfix"></div>
                                                             <div class="row m-0">  <div class="col-md-6 padd0">
@@ -189,15 +189,15 @@
                                                                 </div>
                                                                 <div class="col-md-6 padd0">
                                                                     <div class="form-group">
-                                                                        <input type="text" name="locality" placeholder="LOCALITY">
+                                                                        <input type="text" name="locality-sec" placeholder="LOCALITY">
                                                                     </div>
                                                                 </div></div>
                                                             <div class="clearfix"></div>
                                                             <div class="form-group">
-                                                                <input type="text" name="city" placeholder="CITY">
+                                                                <input type="text" name="city-sec" placeholder="CITY">
                                                             </div>
                                                             <div class="form-group">
-                                                                <select class="js-countries" name="country">
+                                                                <select class="js-countries" name="country-sec">
                                                                     <option disabled="" selected="selected">Please select your country</option>
                                                                     <option value="38">CANADA </option>
                                                                     <option value="232">UNITED STATES </option>
@@ -310,6 +310,9 @@
 
 @section('extra-script')
     {{ Html::script('assets/js/credit-cart/stripe/stripe.js') }}
+    {{ Html::script('assets/js/validator/jquery.validate.min.js') }}
+    {{ Html::script('assets/js/validator/additional-methods.min.js') }}
+    {{ Html::script('assets/js/validator/checkout/validationCheckout.js') }}
     <script>
         $(function(){
             var requiredCheckboxes = $('.options :checkbox[required]');
