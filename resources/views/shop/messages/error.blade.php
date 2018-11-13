@@ -4,7 +4,7 @@
         <strong>Danger!</strong>
         <em>
             @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
+                <li style="list-style-type: none;">{{ $error }}</li>
             @endforeach
         </em>
     </div>
