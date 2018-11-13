@@ -99,6 +99,7 @@ letter-spacing: 1px;
 }
 #card-errors {
     color: #fa755a;
+    font-weight: bold;
 }
 
 
@@ -184,7 +185,20 @@ a:hover, a:visited, a:link, a:active {
 }
 
 /* Extras */
-
 .cc-selector-2 input{ margin: 5px 0 0 12px; }
 .cc-selector-2 label{ margin-left: 7px; }
 span.cc{ color:#6d84b4 }
+
+
+
+/*________________erros options validation_______________ */
+.checkbox.valid ~ strong {
+    color:#000!important;
+}
+input.error, select.error ~ strong{
+    border: 2px solid red!important;
+    color:red!important;
+}
+.ship2>label.error {
+    display: none!important;
+}
