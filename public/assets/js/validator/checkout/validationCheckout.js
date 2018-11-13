@@ -45,7 +45,7 @@ $(document).ready(function () {
             city: {
                 required: true,
                 minlength: 5,
-                maxlength: 30
+                maxlength: 20
             },
             phone: {
                 required: true,
@@ -123,7 +123,7 @@ $(document).ready(function () {
                     }
                 },
                 minlength: 5,
-                maxlength: 30
+                maxlength: 20
             },
             phone_sec: {
                 required: {
