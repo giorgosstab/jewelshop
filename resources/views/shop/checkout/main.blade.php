@@ -104,7 +104,7 @@
                                                 <div class="row m-0">
                                                     <div class="col-md-6 col-sm-6 col-xs-6">
                                                         <div class="form-group">
-                                                            <input type="text" name="fname" placeholder="FIRST NAME">
+                                                            <input type="text" id="fname" name="fname" placeholder="FIRST NAME">
                                                         </div>
                                                         <div class="form-group">
                                                             <input id="address" type="text" name="address" placeholder="ADDRESS">
@@ -113,10 +113,10 @@
                                                             <input type="text" name="email" placeholder="EMAIL ADDRESS">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input type="text" name="phone" placeholder="PHONE NUMBER">
+                                                            <input type="text" name="phone" placeholder="PHONE NUMBER" class="customphone">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input id="zip-code" type="text" name="zip-code" placeholder="ZIPCODE">
+                                                            <input id="zip_code" type="text" name="zip_code" placeholder="ZIPCODE" class="customzip">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-sm-6 col-xs-6">
@@ -126,7 +126,7 @@
                                                         <div class="clearfix"></div>
                                                         <div class="row m-0">  <div class="col-md-6 padd0">
                                                                 <div class="form-group">
-                                                                    <input type="text" placeholder="HOUSE NO.">
+                                                                    <input type="text" name="hnumber" placeholder="HOUSE NO.">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 padd0">
@@ -140,7 +140,7 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <select id="checkout-country" class="js-countries" name="country">
-                                                                <option disabled="" selected="selected">Please select your country</option>
+                                                                <option value="" disabled="" selected="selected">Please select your country</option>
                                                                 <option value="38">CANADA </option>
                                                                 <option value="232">UNITED STATES </option>
                                                             </select>
@@ -151,7 +151,7 @@
                                                 <div class="col-md-12">
                                                     <div class="ship2">
                                                         <div>
-                                                            <input type="checkbox" value="" data-toggle="collapse" data-target="#div-show">
+                                                            <input type="checkbox" id="dif_shipping" data-toggle="collapse" data-target="#div-show">
                                                             DIFFERENT SHIPPING ADDRESS
                                                         </div>
                                                     </div>
@@ -162,42 +162,42 @@
                                                     <div class="row m-0">
                                                         <div class="col-md-6 col-sm-6 col-xs-6">
                                                             <div class="form-group">
-                                                                <input type="text" name="fname-sec" placeholder="FIRST NAME">
+                                                                <input type="text" name="fname_sec" placeholder="FIRST NAME">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="text" name="address-sec" placeholder="ADDRESS">
+                                                                <input type="text" name="address_sec" placeholder="ADDRESS">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="text" name="email-sec" placeholder="EMAIL ADDRESS">
+                                                                <input type="text" name="email_sec" placeholder="EMAIL ADDRESS">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="text" name="phone-sec" placeholder="PHONE NUMBER">
+                                                                <input type="text" name="phone_sec" placeholder="PHONE NUMBER">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="text" name="zip-code-sec" placeholder="ZIPCODE">
+                                                                <input type="text" name="zipcode_sec" placeholder="ZIPCODE">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-sm-6 col-xs-6">
                                                             <div class="form-group">
-                                                                <input type="text" name="lname-sec" placeholder="LAST NAME">
+                                                                <input type="text" name="lname_sec" placeholder="LAST NAME">
                                                             </div>
                                                             <div class="clearfix"></div>
                                                             <div class="row m-0">  <div class="col-md-6 padd0">
                                                                     <div class="form-group">
-                                                                        <input type="text" placeholder="HOUSE NO.">
+                                                                        <input type="text" name="hnumber_sec" placeholder="HOUSE NO.">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6 padd0">
                                                                     <div class="form-group">
-                                                                        <input type="text" name="locality-sec" placeholder="LOCALITY">
+                                                                        <input type="text" name="locality_sec" placeholder="LOCALITY">
                                                                     </div>
                                                                 </div></div>
                                                             <div class="clearfix"></div>
                                                             <div class="form-group">
-                                                                <input type="text" name="city-sec" placeholder="CITY">
+                                                                <input type="text" name="city_sec" placeholder="CITY">
                                                             </div>
                                                             <div class="form-group">
-                                                                <select class="js-countries" name="country-sec">
+                                                                <select class="js-countries" name="country_sec">
                                                                     <option disabled="" selected="selected">Please select your country</option>
                                                                     <option value="38">CANADA </option>
                                                                     <option value="232">UNITED STATES </option>
@@ -222,13 +222,14 @@
                                             <div class="panel-body">
                                                 <div class="credit-card" id="credit-cardExample">
                                                     <div class="cc-selector-2 options">
-                                                        <input id="acs" type="radio" name="delivery[]" value="" required />
+                                                        <input id="acs" type="radio" name="delivery" />
                                                         <label class="drinkcard-cc acs" for="acs"></label>
-                                                        <input id="geniki" type="radio" name="delivery[]" value="" required />
+                                                        <input id="geniki" type="radio" name="delivery" />
                                                         <label class="drinkcard-cc geniki" for="geniki"></label>
-                                                        <input id="metaforikh" type="radio" name="delivery[]" value="" required />
+                                                        <input id="metaforikh" type="radio" name="delivery" />
                                                         <label class="drinkcard-cc metaforikh" for="metaforikh"></label>
                                                     </div>
+                                                    <div class="errorDelivery"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -247,14 +248,14 @@
                                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                                     <div class="credit-card" id="credit-card">
                                                         <div class="cc-selector-2 options">
-                                                            <input id="stripe" type="checkbox" name="stripecard" value="" data-toggle="collapse" data-target="#show-stripe" aria-expanded="true" aria-controls="show-stripe" required />
+                                                            <input id="stripe" type="checkbox" name="card" value="" data-toggle="collapse" data-target="#show-stripe" aria-expanded="true" aria-controls="show-stripe" />
                                                             <label class="drinkcard-cc stripe" for="stripe"></label>
-                                                            <input id="paypal" type="checkbox" name="paypalcard" value="" data-toggle="collapse" data-target="#show-paypal" aria-expanded="false" aria-controls="show-paypal" required />
+                                                            <input id="paypal" type="checkbox" name="card" value="" data-toggle="collapse" data-target="#show-paypal" aria-expanded="false" aria-controls="show-paypal" />
                                                             <label class="drinkcard-cc paypal" for="paypal"></label>
-                                                            <input id="cash" type="checkbox" name="cashcard" value="" data-toggle="collapse" data-target="#show-cash" aria-expanded="true" aria-controls="show-cash" required />
+                                                            <input id="cash" type="checkbox" name="card" value="" data-toggle="collapse" data-target="#show-cash" aria-expanded="true" aria-controls="show-cash" />
                                                             <label class="drinkcard-cc cash" for="cash"></label>
                                                         </div>
-
+                                                        <div class="errorCard"></div>
                                                         <div id="show-stripe" class="collapse" data-parent="#credit-card">
                                                             <div class="form-group">
                                                                 <input id="holder-name" type="text" placeholder="Holder Name">
@@ -286,8 +287,9 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="ship2">
-                                            <input type="checkbox" onClick="this.value=''" value="">
-                                            I AGREE TO THE <a href="{{ route('shop.privacy.index') }}">TERMS & CONDITIONS</a></div>
+                                            <input type="checkbox" class="checkbox" name="agree">
+                                            <strong class="agree">I AGREE TO THE <a href="{{ route('shop.privacy.index') }}">TERMS & CONDITIONS</a></strong>
+                                        </div>
                                         <div class="clearfix"></div>
                                         <div class="buy-this">
                                             {!! Form::button('PAY NOW',['type' => 'submit','id' => 'complete-order']) !!}
@@ -309,10 +311,10 @@
 @endsection
 
 @section('extra-script')
-    {{ Html::script('assets/js/credit-cart/stripe/stripe.js') }}
     {{ Html::script('assets/js/validator/jquery.validate.min.js') }}
     {{ Html::script('assets/js/validator/additional-methods.min.js') }}
     {{ Html::script('assets/js/validator/checkout/validationCheckout.js') }}
+    {{ Html::script('assets/js/credit-cart/stripe/stripe.js') }}
     <script>
         $(function(){
             var requiredCheckboxes = $('.options :checkbox[required]');
