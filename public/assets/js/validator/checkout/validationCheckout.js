@@ -106,7 +106,7 @@ $(document).ready(function () {
                     }
                 },
                 minlength: 5,
-                maxlength: 30
+                maxlength: 20
             },
             email_sec: {
                 required: {
@@ -171,7 +171,11 @@ $(document).ready(function () {
                 maxlength: "Maximum Length 45 letter!"
             },
             hnumber: "Min:1 Max:999!",
-            locality: "Locality Required!",
+            locality: {
+                required: "Locality Required!",
+                minlength: "Minimum Length 5 letter!",
+                maxlength: "Maximum Length 20 letter!"
+            },
             email: {
                 required: "E-mail Required!",
                 email: "Format: name@domain.com!"
@@ -181,7 +185,11 @@ $(document).ready(function () {
                 required: "Phone Required!",
                 customphone: "Format: 2106787921!"
             },
-            city: "City Required!",
+            city: {
+                required: "City Required!",
+                minlength: "Minimum Length 5 letter!",
+                maxlength: "Maximum Length 20 letter!"
+            },
             country: "Country Required!",
             zip_code: {
                 required: "Postal Code Required!",
@@ -203,12 +211,20 @@ $(document).ready(function () {
                 maxlength: "Maximum Length 45 letter!"
             },
             hnumber_sec: "Min:1 Max:999!",
-            locality_sec: "Locality Required!",
+            locality_sec: {
+                required: "Locality Required!",
+                minlength: "Minimum Length 5 letter!",
+                maxlength: "Maximum Length 20 letter!"
+            },
             email_sec: {
                 required: "E-mail Required!",
                 email: "Format: name@domain.com!"
             },
-            city_sec: "City Required!",
+            city_sec: {
+                required: "City Required!",
+                minlength: "Minimum Length 5 letter!",
+                maxlength: "Maximum Length 20 letter!"
+            },
             phone_sec: {
                 required: "Phone Required!",
                 customphone: "Format: 2106787921!"
