@@ -104,24 +104,24 @@
                                                 <div class="row m-0">
                                                     <div class="col-md-6 col-sm-6 col-xs-6">
                                                         <div class="form-group">
-                                                            <input type="text" id="fname" name="fname" placeholder="FIRST NAME">
+                                                            <input type="text" id="fname" name="fname" placeholder="FIRST NAME" value="{{ old('fname') }}">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input id="address" type="text" name="address" placeholder="ADDRESS">
+                                                            <input id="address" type="text" name="address" placeholder="ADDRESS" value="{{ old('address') }}">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input type="text" name="email" placeholder="EMAIL ADDRESS">
+                                                            <input type="text" name="email" placeholder="EMAIL ADDRESS" value="{{ old('email') }}">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input type="text" name="phone" placeholder="PHONE NUMBER" class="customphone">
+                                                            <input type="text" name="phone" placeholder="PHONE NUMBER" class="customphone" value="{{ old('phone') }}">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input id="zip_code" type="text" name="zip_code" placeholder="ZIPCODE" class="customzip">
+                                                            <input id="zip_code" type="text" name="zip_code" placeholder="ZIPCODE" class="customzip" value="{{ old('zip_code') }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-sm-6 col-xs-6">
                                                         <div class="form-group">
-                                                            <input type="text" name="lname" placeholder="LAST NAME">
+                                                            <input type="text" name="lname" placeholder="LAST NAME" value="{{ old('lname') }}">
                                                         </div>
                                                         <div class="clearfix"></div>
                                                         <div class="row m-0">  <div class="col-md-6 padd0">
@@ -131,18 +131,18 @@
                                                             </div>
                                                             <div class="col-md-6 padd0">
                                                                 <div class="form-group">
-                                                                    <input id="locality" type="text" name="locality" placeholder="LOCALITY">
+                                                                    <input id="locality" type="text" name="locality" placeholder="LOCALITY"  value="{{ old('locality') }}">
                                                                 </div>
                                                             </div></div>
                                                         <div class="clearfix"></div>
                                                         <div class="form-group">
-                                                            <input id="city" type="text" name="city" placeholder="CITY">
+                                                            <input id="city" type="text" name="city" placeholder="CITY"  value="{{ old('city') }}">
                                                         </div>
                                                         <div class="form-group">
                                                             <select id="checkout-country" class="js-countries" name="country">
                                                                 <option value="" disabled="" selected="selected">Please select your country</option>
-                                                                <option value="38">CANADA </option>
-                                                                <option value="232">UNITED STATES </option>
+                                                                <option value="38" {{ old('country') == 38 ? 'selected' : '' }}>CANADA </option>
+                                                                <option value="232" {{ old('country') == 232 ? 'selected' : '' }}>UNITED STATES </option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -151,7 +151,7 @@
                                                 <div class="col-md-12">
                                                     <div class="ship2">
                                                         <div>
-                                                            <input type="checkbox" id="dif_shipping" data-toggle="collapse" data-target="#div-show">
+                                                            <input type="checkbox" id="dif_shipping" name="dif_shipping" data-toggle="collapse" data-target="#div-show">
                                                             DIFFERENT SHIPPING ADDRESS
                                                         </div>
                                                     </div>
