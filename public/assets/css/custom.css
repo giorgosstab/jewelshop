@@ -41,6 +41,9 @@ h4 .shopping-cart .count { font-size: 20px; }
     border-color: #FEAF20;
     background-color: #fcf8e3;
 }
+.notice-warning-left {
+    text-align: left;
+}
 .notice-warning>strong {
     color: #FEAF20;
 }
