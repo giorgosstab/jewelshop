@@ -218,7 +218,7 @@ $(document).ready(function () {
             },
             email_sec: {
                 required: "E-mail Required!",
-                email: "Format: name@domain.com!"
+                email: "Format: email@example.com!"
             },
             city_sec: {
                 required: "City Required!",
