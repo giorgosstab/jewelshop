@@ -180,7 +180,6 @@ $(document).ready(function () {
                 required: "E-mail Required!",
                 email: "Format: name@domain.com!"
             },
-            city: "City Required!",
             phone: {
                 required: "Phone Required!",
                 customphone: "Format: 2106787921!"
@@ -229,7 +228,6 @@ $(document).ready(function () {
                 required: "Phone Required!",
                 customphone: "Format: 2106787921!"
             },
-            city_sec: "City Required!",
             country_sec: "Country Required!",
             zipcode_sec: {
                 required: "Postal Code Required!",
