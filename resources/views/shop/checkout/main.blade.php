@@ -124,16 +124,18 @@
                                                             <input type="text" name="lname" placeholder="LAST NAME" value="{{ old('lname') }}">
                                                         </div>
                                                         <div class="clearfix"></div>
-                                                        <div class="row m-0">  <div class="col-md-6 padd0">
+                                                        <div class="row m-0">
+                                                            <div class="col-md-6 padd0">
                                                                 <div class="form-group">
-                                                                    <input type="text" name="hnumber" placeholder="HOUSE NO.">
+                                                                    <input type="text" name="hnumber" placeholder="HOUSE NO." value="{{ old('hnumber') }}">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 padd0">
                                                                 <div class="form-group">
                                                                     <input id="locality" type="text" name="locality" placeholder="LOCALITY"  value="{{ old('locality') }}">
                                                                 </div>
-                                                            </div></div>
+                                                            </div>
+                                                        </div>
                                                         <div class="clearfix"></div>
                                                         <div class="form-group">
                                                             <input id="city" type="text" name="city" placeholder="CITY"  value="{{ old('city') }}">
@@ -162,45 +164,47 @@
                                                     <div class="row m-0">
                                                         <div class="col-md-6 col-sm-6 col-xs-6">
                                                             <div class="form-group">
-                                                                <input type="text" name="fname_sec" placeholder="FIRST NAME">
+                                                                <input type="text" name="fname_sec" placeholder="FIRST NAME" value="{{ old('fname_sec') }}">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="text" name="address_sec" placeholder="ADDRESS">
+                                                                <input type="text" name="address_sec" placeholder="ADDRESS" value="{{ old('address_sec') }}">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="text" name="email_sec" placeholder="EMAIL ADDRESS">
+                                                                <input type="text" name="email_sec" placeholder="EMAIL ADDRESS" value="{{ old('email_sec') }}">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="text" name="phone_sec" placeholder="PHONE NUMBER">
+                                                                <input type="text" name="phone_sec" placeholder="PHONE NUMBER" value="{{ old('phone_sec') }}">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="text" name="zipcode_sec" placeholder="ZIPCODE">
+                                                                <input type="text" name="zipcode_sec" placeholder="ZIPCODE" value="{{ old('zipcode_sec') }}">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-sm-6 col-xs-6">
                                                             <div class="form-group">
-                                                                <input type="text" name="lname_sec" placeholder="LAST NAME">
+                                                                <input type="text" name="lname_sec" placeholder="LAST NAME" value="{{ old('lname_sec') }}">
                                                             </div>
                                                             <div class="clearfix"></div>
-                                                            <div class="row m-0">  <div class="col-md-6 padd0">
+                                                            <div class="row m-0">
+                                                                <div class="col-md-6 padd0">
                                                                     <div class="form-group">
-                                                                        <input type="text" name="hnumber_sec" placeholder="HOUSE NO.">
+                                                                        <input type="text" name="hnumber_sec" placeholder="HOUSE NO." value="{{ old('hnumber_sec') }}">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6 padd0">
                                                                     <div class="form-group">
-                                                                        <input type="text" name="locality_sec" placeholder="LOCALITY">
+                                                                        <input type="text" name="locality_sec" placeholder="LOCALITY" value="{{ old('locality_sec') }}">
                                                                     </div>
-                                                                </div></div>
+                                                                </div>
+                                                            </div>
                                                             <div class="clearfix"></div>
                                                             <div class="form-group">
-                                                                <input type="text" name="city_sec" placeholder="CITY">
+                                                                <input type="text" name="city_sec" placeholder="CITY" value="{{ old('city_sec') }}">
                                                             </div>
                                                             <div class="form-group">
                                                                 <select class="js-countries" name="country_sec">
                                                                     <option disabled="" selected="selected">Please select your country</option>
-                                                                    <option value="38">CANADA </option>
-                                                                    <option value="232">UNITED STATES </option>
+                                                                    <option value="1" {{ old('country_sec') == 1 ? 'selected' : '' }}>CANADA </option>
+                                                                    <option value="2" {{ old('country_sec') == 2 ? 'selected' : '' }}>UNITED STATES </option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -221,7 +225,7 @@
                                         <div id="collapseDelivery" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingDelivery">
                                             <div class="panel-body">
                                                 <div class="credit-card" id="credit-cardExample">
-                                                    <div class="cc-selector-2 options">
+                                                    <div class="cc-selector-2">
                                                         <input id="acs" type="radio" name="delivery" />
                                                         <label class="drinkcard-cc acs" for="acs"></label>
                                                         <input id="geniki" type="radio" name="delivery" />
@@ -247,7 +251,7 @@
                                             <div class="panel-body">
                                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                                     <div class="credit-card" id="credit-card">
-                                                        <div class="cc-selector-2 options">
+                                                        <div class="cc-selector-2">
                                                             <input id="stripe" type="checkbox" name="card" value="" data-toggle="collapse" data-target="#show-stripe" aria-expanded="true" aria-controls="show-stripe" />
                                                             <label class="drinkcard-cc stripe" for="stripe"></label>
                                                             <input id="paypal" type="checkbox" name="card" value="" data-toggle="collapse" data-target="#show-paypal" aria-expanded="false" aria-controls="show-paypal" />
@@ -313,23 +317,7 @@
 @section('extra-script')
     {{ Html::script('assets/js/validator/jquery.validate.min.js') }}
     {{ Html::script('assets/js/validator/additional-methods.min.js') }}
+    {{ Html::script('assets/js/checkboxPayment.js') }}
     {{ Html::script('assets/js/validator/checkout/validationCheckout.js') }}
     {{ Html::script('assets/js/credit-cart/stripe/stripe.js') }}
-    <script>
-        $(function(){
-            var requiredCheckboxes = $('.options :checkbox[required]');
-            requiredCheckboxes.change(function(){
-                if(requiredCheckboxes.is(':checked')) {
-                    requiredCheckboxes.removeAttr('required');
-                } else {
-                    requiredCheckboxes.attr('required', 'required');
-                }
-            });
-        });
-        $('input[type="checkbox"]').on('change', function() {
-            $(this).siblings('input[type="checkbox"]').collapse('hide');
-            $(this).siblings('input[type="checkbox"]').prop('checked', false);
-
-        });
-    </script>
 @endsection
