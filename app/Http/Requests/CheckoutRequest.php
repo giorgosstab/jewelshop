@@ -36,19 +36,21 @@ class CheckoutRequest extends FormRequest
             'country' => 'required|not_in:0',
             'phone' => 'required|regex:/^[0-9]+$/u|min:10|max:10',
 
-            'delivery' => 'required',
-
             'dif_shipping' => 'sometimes',
 
-            'fname_sec' => 'required_with:dif_shipping,on|regex:/^[a-zA-Z]+$/u|min:3|max:15',
-            'lname_sec' => 'required_with:dif_shipping,on|regex:/^[a-zA-Z]+$/u|min:5|max:20',
-            'email_sec' => 'required_with:dif_shipping,on|email',
-            'address_sec' => 'required_with:dif_shipping,on|regex:/^[A-Za-z0-9 ]+$/u|min:5|max:45',
-            'city_sec' => 'required_with:dif_shipping,on|regex:/^[a-zA-Z]+$/u|min:5|max:20',
-            'zipcode_sec' => 'required_with:dif_shipping,on|numeric|min:10000|max:99999',
-            'locality_sec' => 'required_with:dif_shipping,on|regex:/^[a-zA-Z]+$/u|min:5|max:20',
-            'country_sec' => 'required_with:dif_shipping,on|not_in:0',
-            'phone_sec' => 'required_with:dif_shipping,on|regex:/^[0-9]+$/u|min:10|max:10',
+            'fname_sec' => 'required_with:dif_shipping,on|regex:/^[a-zA-Z]+$/u|min:3|max:15|nullable',
+            'lname_sec' => 'required_with:dif_shipping,on|regex:/^[a-zA-Z]+$/u|min:5|max:20|nullable',
+            'email_sec' => 'required_with:dif_shipping,on|email|nullable',
+            'address_sec' => 'required_with:dif_shipping,on|regex:/^[A-Za-z0-9 ]+$/u|min:5|max:45|nullable',
+            'city_sec' => 'required_with:dif_shipping,on|regex:/^[a-zA-Z]+$/u|min:5|max:20|nullable',
+            'zipcode_sec' => 'required_with:dif_shipping,on|numeric|min:10000|max:99999|nullable',
+            'locality_sec' => 'required_with:dif_shipping,on|regex:/^[a-zA-Z]+$/u|min:5|max:20|nullable',
+            'country_sec' => 'required_with:dif_shipping,on|not_in:0|nullable',
+            'phone_sec' => 'required_with:dif_shipping,on|regex:/^[0-9]+$/u|min:10|max:10|nullable',
+
+            'delivery' => 'required',
+
+            'agree' => 'required',
         ];
     }
 
@@ -100,8 +102,6 @@ class CheckoutRequest extends FormRequest
             'phone.min' => 'Phone number must be without spaces.',
             'phone.max' => 'Phone number must be without spaces.',
 
-            'delivery.required' => 'The delivery radio button is required.',
-
             'fname_sec.required_with' => 'The second first name field is required when different shipping is checked.',
             'fname_sec.regex' => 'Second First Name must be only characters.',
             'fname_sec.min' => 'Second First Name must be at least 3 characters.',
@@ -141,6 +141,10 @@ class CheckoutRequest extends FormRequest
             'phone_sec.regex' => 'Second Phone number must be only numeric and 10 numbers.',
             'phone_sec.min' => 'Second Phone number must be without spaces.',
             'phone_sec.max' => 'Second Phone number must be without spaces.',
+
+            'delivery.required' => 'The delivery radio button is required.',
+
+            'agree.required' => 'You must agree to the terms and conditions.',
         ];
     }
 }
