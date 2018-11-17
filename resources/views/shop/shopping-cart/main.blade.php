@@ -86,7 +86,7 @@
                                                         <span class="input-group-btn">
                                                             <button type="button" data-id="{{ $item->rowId }}" class="btn btn-default btn-number dec-btn"> <span class="glyphicon glyphicon-minus"></span> </button>
                                                         </span>
-                                                        <input name="qnty" class="input-number quantity-no" value="{{ $item->qty }}" type="text">
+                                                        <input name="quantity" class="input-number quantity-no" value="{{ $item->qty }}" type="text">
                                                         <span class="input-group-btn">
                                                             <button type="button" data-id="{{ $item->rowId }}" class="btn btn-default btn-number inc-btn"> <span class="glyphicon glyphicon-plus"></span> </button>
                                                         </span>
@@ -506,7 +506,7 @@
                     axios.patch(`/cart/${id}`, {
                         quantity: Textqty
                     }).then(function (response) {
-                        //console.log(response);
+                        // console.log(response);
                         window.location.href = '{{ route('shop.shopping-cart.index') }}';
                     }).catch(function (error) {
                         console.log(error);
@@ -520,7 +520,7 @@
                     axios.patch(`/cart/${id}`, {
                         quantity: Textqty1
                     }).then(function (response) {
-                        //console.log(response);
+                        // console.log(response);
                         window.location.href = '{{ route('shop.shopping-cart.index') }}';
                     }).catch(function (error) {
                         console.log(error);
