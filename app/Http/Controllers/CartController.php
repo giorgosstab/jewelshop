@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CartController extends Controller
 {
@@ -52,7 +53,6 @@ class CartController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
@@ -63,7 +63,6 @@ class CartController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
@@ -80,10 +79,10 @@ class CartController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(),[
-            'quantity' => 'required|numeric'
+            'quantity' => 'required|numeric|gt:0'
         ]);
         if($validator->fails()){
-            session()->flash('errors', collect(['Quantity must required and number!']));
+            session()->flash('errors', collect(['Quantity must be numeric/required and greater than 0!']));
             return response()->json(['success' => false], 400);
         }
 
