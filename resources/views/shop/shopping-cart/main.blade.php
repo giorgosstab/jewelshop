@@ -82,13 +82,13 @@
                                             <td><div class="cost2">€{{ $item->model->presentPrice() }}</div></td>
                                             <td>
                                                 <div class="inc-dre">
-                                                    <div class="input-group">
+                                                    <div class="input-group product-item">
                                                         <span class="input-group-btn">
-                                                            <button type="button" class="btn btn-default btn-number dec-btn"> <span class="glyphicon glyphicon-minus"></span> </button>
+                                                            <button type="button" data-id="{{ $item->rowId }}" class="btn btn-default btn-number dec-btn"> <span class="glyphicon glyphicon-minus"></span> </button>
                                                         </span>
-                                                        <input name="qnty" class="input-number quantity-no" value="1" type="text">
+                                                        <input name="qnty" class="input-number quantity-no" value="{{ $item->qty }}" type="text">
                                                         <span class="input-group-btn">
-                                                            <button type="button" class="btn btn-default btn-number inc-btn"> <span class="glyphicon glyphicon-plus"></span> </button>
+                                                            <button type="button" data-id="{{ $item->rowId }}" class="btn btn-default btn-number inc-btn"> <span class="glyphicon glyphicon-plus"></span> </button>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -493,4 +493,40 @@
 
 @section('extra-script')
     {{ Html::script('assets/js/button-inc.js') }}
+    {{ Html::script('js/app.js') }}
+    <script>
+        $(document).ready(function() {
+            const classname = document.querySelectorAll('.product-item');
+            Array.from(classname).forEach(function (element) {
+                const classnameIncButton = element.querySelector('.input-group-btn .inc-btn');
+                classnameIncButton.addEventListener('click', function () {
+                    var classnameTextQty = element.querySelector('.quantity-no');
+                    var id = classnameIncButton.getAttribute('data-id');
+                    var Textqty = classnameTextQty.value;
+                    axios.patch(`/cart/${id}`, {
+                        quantity: Textqty
+                    }).then(function (response) {
+                        //console.log(response);
+                        window.location.href = '{{ route('shop.shopping-cart.index') }}';
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+                });
+                const classnameDecButton = element.querySelector('.input-group-btn .dec-btn');
+                classnameDecButton.addEventListener('click', function () {
+                    var classnameTextQty = element.querySelector('.quantity-no');
+                    var id = classnameDecButton.getAttribute('data-id');
+                    var Textqty1 = classnameTextQty.value;
+                    axios.patch(`/cart/${id}`, {
+                        quantity: Textqty1
+                    }).then(function (response) {
+                        //console.log(response);
+                        window.location.href = '{{ route('shop.shopping-cart.index') }}';
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+                });
+            });
+        });
+    </script>
 @endsection
