@@ -55,6 +55,9 @@
                 <!--right-side-->
                 <div class="col-lg-9 col-md-12 col-sm-12">
                     <div class="checkout">
+                        <div class="clearfix"> </div>
+                        @include('shop.messages.error')
+                        <div class="clearfix"> </div>
                         <!--Table products Shopping Cart-->
                         <div class="table-responsive table-none wow fadeIn">
                             <table class="table checkout-table">
@@ -509,7 +512,8 @@
                         // console.log(response);
                         window.location.href = '{{ route('shop.shopping-cart.index') }}';
                     }).catch(function (error) {
-                        console.log(error);
+                        //console.log(error);
+                        window.location.href = '{{ route('shop.shopping-cart.index') }}';
                     });
                 });
                 const classnameDecButton = element.querySelector('.input-group-btn .dec-btn');
@@ -523,7 +527,8 @@
                         // console.log(response);
                         window.location.href = '{{ route('shop.shopping-cart.index') }}';
                     }).catch(function (error) {
-                        console.log(error);
+                        //console.log(error);
+                        window.location.href = '{{ route('shop.shopping-cart.index') }}';
                     });
                 });
             });
