@@ -78,7 +78,7 @@
                                                         <div class="col-9">
                                                             <p>{{ $item->model->name }}</p>
                                                             <span>€{{ $item->model->presentPrice() }}</span><br>
-                                                            <span>Quantity: {{ Cart::count() }}</span>
+                                                            <span>Quantity: {{ $item->qty }}</span>
                                                         </div>
                                                     </div>
                                                 </li>
