@@ -41,14 +41,17 @@
                             @if(Cart::count() > 0)
                                 @foreach(Cart::content() as $item)
                                     <div class="check-img wow fadeIn">
-                                        <div class="img-1"><img  src="assets/images/products/check-out-img.jpg" alt="" title="" class="img-fluid"></div>
+                                        <div class="img-1">
+                                            <img  src="assets/images/products/check-out-img.jpg" alt="" title="" class="img-fluid">
+                                            <span class="badge badge-warning">{{ $item->qty }}x</span>
+                                        </div>
                                         <div class="title2">
                                             <div class="row m-0">
                                                 <div class="col-md-7 col-sm-7 col-xs-12">
                                                     <div class="product-name">Diamond ring - {{ $item->model->name }}</div>
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12">
-                                                    <h2 class="rate-css2">€{{ $item->model->presentPrice() }}</h2>
+                                                    <h2 class="rate-css2">€{{ number_format($item->subtotal,2) }}</h2>
                                                 </div>
                                             </div>
                                             <div class="clearfix"></div>
