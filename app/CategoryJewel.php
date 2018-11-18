@@ -15,4 +15,36 @@ class CategoryJewel extends Model
 //    public function children() {
 //        return $this->hasMany('App\CategoryJewel', 'parent_id'); //get all subs. NOT RECURSIVE
 //    }
+    public function getCategories(){
+
+        $categories=CategoryJewel::where('parent_id',NULL)->get();//united
+
+        $categories=$this->addRelation($categories);
+
+        return $categories;
+
+    }
+
+    protected function selectChild($id)
+    {
+        $categories=CategoryJewel::where('parent_id',$id)->get(); //rooney
+
+        $categories=$this->addRelation($categories);
+
+        return $categories;
+
+    }
+
+    protected function addRelation($categories){
+
+        $categories->map(function ($item, $key) {
+
+            $sub=$this->selectChild($item->id);
+
+            return $item=array_add($item,'subCategory',$sub);
+
+        });
+
+        return $categories;
+    }
 }
