@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    public function categoriesJewels() {
+        return $this->belongsToMany('App\CategoryJewel');
+    }
     public function presentPrice() {
         return number_format($this->price, 2);
     }
@@ -15,6 +18,5 @@ class Product extends Model
         } else {
             return number_format($this->secondprice, 2);
         }
-
     }
 }
