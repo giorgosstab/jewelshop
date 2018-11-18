@@ -15,6 +15,8 @@
 //     return view('welcome');
 // });
 
+use App\CategoryJewel;
+
 Route::get('/','HomePageController@index')->name('shop.home.index');
 
 Route::get('/shop','ShopController@index')->name('shop.products.index');
@@ -41,4 +43,15 @@ Route::get('empty', function(){
 
 Route::get('emptySaves', function(){
     Cart::instance('saveForLater')->destroy();
+});
+
+View::composer(['*'], function($view){
+    $subcategories=new CategoryJewel;
+
+    try {
+        $allSubCategories=$subcategories->getCategories();
+    } catch (Exception $e) {
+        //no parent category found
+    }
+    $view->with('allSubCategories',$allSubCategories);
 });
