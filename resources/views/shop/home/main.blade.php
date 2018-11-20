@@ -208,7 +208,7 @@
                 <div class="best-of-our-store">
                     <h2 class="wow fadeInUp"><span>Best</span> of our store</h2>
                     <div class="owl-carousel owl-theme wow fadeIn">
-                        @foreach($bestproducts as $bestof)
+                        @foreach($bestProducts as $bestof)
                             <div class="item img-title">
                                 <div class="owl-item-boder">
                                     <div class="hover-div">
@@ -236,95 +236,31 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <ul>
-                                <li>
-                                    <div class="grid">
-                                        <figure class="effect-moses">
-                                            <div class="zoom-hover"> <a href="product.html"><span class="glyphicon glyphicon-search"></span></a> </div>
-                                            <img src="assets/images/thum-1.jpg" alt="" title="" class="img-fluid"> </figure>
-                                    </div>
-                                    <h2>earrings</h2>
-                                </li>
-                                <li>
-                                    <div class="grid">
-                                        <figure class="effect-moses">
-                                            <div class="zoom-hover"> <a href="product.html"><span class="glyphicon glyphicon-search"></span></a> </div>
-                                            <img src="assets/images/thum-2.jpg" alt="" title="" class="img-fluid"> </figure>
-                                    </div>
-                                    <h2>ring</h2>
-                                </li>
-                                <li class="div-n">
-                                    <div class="grid">
-                                        <figure class="effect-moses">
-                                            <div class="zoom-hover"> <a href="product.html"><span class="glyphicon glyphicon-search"></span></a> </div>
-                                            <img src="assets/images/thum-3.jpg" alt="" title="" class="img-fluid"> </figure>
-                                    </div>
-                                    <h2>necklace</h2>
-                                </li>
-                                <li class="div-n">
-                                    <div class="grid">
-                                        <figure class="effect-moses">
-                                            <div class="zoom-hover"> <a href="product.html"><span class="glyphicon glyphicon-search"></span></a> </div>
-                                            <img src="assets/images/thum-4.jpg" alt="" title="" class="img-fluid">
-                                            <figcaption> <a href="product.html">View more</a> </figcaption>
-                                        </figure>
-                                    </div>
-                                    <h2>bangles</h2>
-                                </li>
-                                <li class="div-n">
-                                    <div class="grid">
-                                        <figure class="effect-moses">
-                                            <div class="zoom-hover"> <a href="product.html"><span class="glyphicon glyphicon-search"></span></a> </div>
-                                            <img src="assets/images/thum-5.jpg" alt="" title="" class="img-fluid"> </figure>
-                                    </div>
-                                    <h2>necklace</h2>
-                                </li>
+                                @foreach($categories->slice(0, 5) as $category)
+                                    <li>
+                                        <div class="grid">
+                                            <figure class="effect-moses">
+                                                <div class="zoom-hover"> <a href="product.html"><span class="glyphicon glyphicon-search"></span></a> </div>
+                                                <img src="{{ asset('assets/images/categoriesJewels/thums/'.$category->slug.'.jpg') }}" alt="" title="" class="img-fluid"> </figure>
+                                        </div>
+                                        <h2>{{ $category->name }}</h2>
+                                    </li>
+                                @endforeach
                             </ul>
-                            <!--/row-->
-                            <!--/row-->
                         </div>
-                        <!--/item-->
+                        <!--/Carousel item-->
                         <div class="carousel-item">
                             <ul>
-                                <li>
-                                    <div class="grid">
-                                        <figure class="effect-moses">
-                                            <div class="zoom-hover"> <a href="product-detail.html"><span class="glyphicon glyphicon-search"></span></a> </div>
-                                            <img src="assets/images/thum-1.jpg" alt="" title=""  class="img-fluid"> </figure>
-                                    </div>
-                                    <h2>earrings</h2>
-                                </li>
-                                <li>
-                                    <div class="grid">
-                                        <figure class="effect-moses">
-                                            <div class="zoom-hover"> <a href="product.html"><span class="glyphicon glyphicon-search"></span></a> </div>
-                                            <img src="assets/images/thum-2.jpg"  alt="" title=""  class="img-fluid"> </figure>
-                                    </div>
-                                    <h2>ring</h2>
-                                </li>
-                                <li class="div-n">
-                                    <div class="grid">
-                                        <figure class="effect-moses">
-                                            <div class="zoom-hover"> <a href="product.html"><span class="glyphicon glyphicon-search"></span></a> </div>
-                                            <img src="assets/images/thum-3.jpg" alt="" title="" class="img-fluid"> </figure>
-                                    </div>
-                                    <h2>necklace</h2>
-                                </li>
-                                <li class="div-n">
-                                    <div class="grid">
-                                        <figure class="effect-moses">
-                                            <div class="zoom-hover"> <a href="product.html"><span class="glyphicon glyphicon-search"></span></a> </div>
-                                            <img src="assets/images/thum-4.jpg"  alt="" title="" class="img-fluid"> </figure>
-                                    </div>
-                                    <h2>bangles</h2>
-                                </li>
-                                <li class="div-n">
-                                    <div class="grid">
-                                        <figure class="effect-moses">
-                                            <div class="zoom-hover"> <a href="product.html"><span class="glyphicon glyphicon-search"></span></a> </div>
-                                            <img src="assets/images/thum-5.jpg"  alt="" title=""  class="img-fluid"> </figure>
-                                    </div>
-                                    <h2>necklace</h2>
-                                </li>
+                                @foreach($categories->slice(5, 10) as $category)
+                                    <li>
+                                        <div class="grid">
+                                            <figure class="effect-moses">
+                                                <div class="zoom-hover"> <a href="product.html"><span class="glyphicon glyphicon-search"></span></a> </div>
+                                                <img src="{{ asset('assets/images/categoriesJewels/thums/'.$category->slug.'.jpg') }}" alt="" title="" class="img-fluid"> </figure>
+                                        </div>
+                                        <h2>{{ $category->name }}</h2>
+                                    </li>
+                                @endforeach
                             </ul>
                             <!--/row-->
                         </div>
