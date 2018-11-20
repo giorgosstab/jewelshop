@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\CategoryJewel;
 use App\Product;
 
 class HomePageController extends Controller
