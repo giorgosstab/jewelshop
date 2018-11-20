@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CategoryJewel;
 use App\Product;
 
 class HomePageController extends Controller
@@ -13,13 +14,14 @@ class HomePageController extends Controller
      */
     public function index()
     {
-
+        $categories = CategoryJewel::where('parent_id',NULL)->take(10)->inRandomOrder()->get();
         $products = Product::take(8)->inRandomOrder()->get();
-        $bestproducts = Product::where('bestof',true)->take(5)->inRandomOrder()->get();
+        $bestProducts = Product::where('bestof',true)->take(5)->inRandomOrder()->get();
 
         return view('shop.home.main')->with([
             'products' => $products,
-            'bestproducts' => $bestproducts,
+            'bestProducts' => $bestProducts,
+            'categories' => $categories
         ]);
     }
 }
