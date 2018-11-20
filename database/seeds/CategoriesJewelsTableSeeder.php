@@ -19,6 +19,13 @@ class CategoriesJewelsTableSeeder extends Seeder
             ['name' => 'Necklaces', 'slug' => 'necklaces', 'created_at' => $now, 'updated_at' => $now],
             ['name' => 'Watches', 'slug' => 'watches', 'created_at' => $now, 'updated_at' => $now],
             ['name' => 'Earrings', 'slug' => 'earrings', 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Bracelets', 'slug' => 'bracelets', 'created_at' => $now, 'updated_at' => $now],
+
+            ['name' => 'Hairpins', 'slug' => 'hairpins', 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Chatelaine', 'slug' => 'chatelaine', 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Anklet', 'slug' => 'anklet', 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Cuff Links', 'slug' => 'cuff-links', 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Crosses', 'slug' => 'crosses', 'created_at' => $now, 'updated_at' => $now],
         ]);
 
         //rings
@@ -35,7 +42,8 @@ class CategoriesJewelsTableSeeder extends Seeder
             ['name' => 'Wedding Necklaces', 'parent_id' => 2, 'slug' => 'wedding-necklaces', 'created_at' => $now, 'updated_at' => $now],
             ['name' => 'Minerals Necklaces', 'parent_id' => 2, 'slug' => 'minerals-necklaces', 'created_at' => $now, 'updated_at' => $now],
             ['name' => 'Monograms', 'parent_id' => 2, 'slug' => 'monograms', 'created_at' => $now, 'updated_at' => $now],
-            ['name' => 'Pendants Rings', 'parent_id' => 2, 'slug' => 'pendant-necklaces', 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Pendants Necklaces', 'parent_id' => 2, 'slug' => 'pendant-necklaces', 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Choker Necklaces', 'parent_id' => 2, 'slug' => 'choker-necklaces', 'created_at' => $now, 'updated_at' => $now],
         ]);
 
         //watches
@@ -51,6 +59,7 @@ class CategoriesJewelsTableSeeder extends Seeder
             ['name' => 'Nose piercings', 'parent_id' => 4, 'slug' => 'nose-piercings', 'created_at' => $now, 'updated_at' => $now],
             ['name' => 'Zircon Earrings', 'parent_id' => 4, 'slug' => 'zircon-earrings', 'created_at' => $now, 'updated_at' => $now],
             ['name' => 'Precious Earrings', 'parent_id' => 4, 'slug' => 'stones-earrings', 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Hoops Earrings', 'parent_id' => 4, 'slug' => 'hoops-earrings', 'created_at' => $now, 'updated_at' => $now],
         ]);
     }
 }
