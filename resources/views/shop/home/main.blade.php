@@ -174,7 +174,9 @@
                     @endforeach
                 </div>
                 <div class="clearfix"></div>
-                <div class="View-all  wow fadeInDown"><a href="#">View all Collections <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
+                <div class="View-all  wow fadeInDown">
+                    <a href="{{ route('shop.products.index') }}">View all Collections <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                </div>
                 <div class="clearfix"></div>
             </div>
             <div class="clearfix"></div>
