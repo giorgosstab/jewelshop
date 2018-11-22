@@ -266,7 +266,7 @@
                                                 <a href="cart.html"> <img  src="{{ asset('assets/images/add-to-cart.svg') }}"  width="25" height="25" alt="" title=""></a>
                                             </div>
                                         </div>
-                                        <div><img  src="{{ asset('assets/images/products/product'. $product->id .'.jpg') }}" alt="" title="" class="img-fluid img-boder-css"></div>
+                                        <div><img  src="{{ asset('assets/images/products/'. $product->slug .'.jpg') }}" alt="" title="" class="img-fluid img-boder-css"></div>
                                         <div class="clearfix"></div>
                                     </div>
                                     <div class="clearfix"></div>
