@@ -9,7 +9,7 @@
                         <a href="{{ route('shop.products.show', $product->slug) }}">
                         <div class="product-scroll">
                             <div class="row AlsoLike-border">
-                                <div class="col-md-6 col-sm-2 col-4"><img  src="{{ asset('assets/images/scroll-2.jpg') }}" alt="" title="" class="img-fluid"></div>
+                                <div class="col-md-6 col-sm-2 col-4"><img  src="{{ asset('assets/images/products/thums/small-'. $product->slug .'.jpg') }}" alt="" title="" class="img-fluid"></div>
                                 <div class="col-md-6 col-sm-9 col-8">
                                     <h3>{{ $product->name }}</h3>
                                     <div>
@@ -33,7 +33,7 @@
                         <a href="{{ route('shop.products.show', $product->slug) }}">
                             <div class="product-scroll">
                                 <div class="row AlsoLike-border">
-                                    <div class="col-md-6 col-sm-2 col-4"><img  src="{{ asset('assets/images/scroll-2.jpg') }}" alt="" title="" class="img-fluid"></div>
+                                    <div class="col-md-6 col-sm-2 col-4"><img  src="{{ asset('assets/images/products/thums/small-'. $product->slug .'.jpg') }}" alt="" title="" class="img-fluid"></div>
                                     <div class="col-md-6 col-sm-9 col-8">
                                         <h3>{{ $product->name }}</h3>
                                         <div>

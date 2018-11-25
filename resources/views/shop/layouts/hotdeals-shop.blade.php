@@ -8,7 +8,7 @@
                     @foreach($hotDeals->slice(0, 1) as $product)
                         <a href="{{ route('shop.products.show', $product->slug) }}">
                             <div class="row AlsoLike-border">
-                                <div class="col-md-12 col-sm-5"><img alt="" title=""  src="{{ asset('assets/images/left-product.jpg') }}" class="img-fluid"></div>
+                                <div class="col-md-12 col-sm-5"><img alt="" title=""  src="{{ asset('assets/images/products/'. $product->slug .'.jpg') }}" class="img-fluid"></div>
                                 <div class="col-md-12 col-sm-7">
                                     <div class="no-div">
                                         <ul>
@@ -31,10 +31,10 @@
                                         <h3>{{ $product->name }}</h3>
                                     </div>
                                     <div class="rate-css">
-                                        <span>€{{ $product->presentPrice() }}</span>&nbsp;&nbsp;
                                         @if($product->presentPriceDeals() != null)
-                                            <samp class="text-de">€{{ $product->presentPriceDeals() }}</samp>
+                                            <span>€{{ $product->presentPriceDeals() }}</span>&nbsp;&nbsp;
                                         @endif
+                                        <samp class="text-de">€{{ $product->presentPrice() }}</samp>
                                     </div>
                                     <div>
                                         <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
@@ -53,7 +53,7 @@
                     @foreach($hotDeals->slice(1, 2) as $product)
                         <a href="{{ route('shop.products.show', $product->slug) }}">
                             <div class="row AlsoLike-border">
-                                <div class="col-md-12 col-sm-5"><img alt="" title=""  src="{{ asset('assets/images/left-product.jpg') }}" class="img-fluid"></div>
+                                <div class="col-md-12 col-sm-5"><img alt="" title=""  src="{{ asset('assets/images/products/'. $product->slug .'.jpg') }}" class="img-fluid"></div>
                                 <div class="col-md-12 col-sm-7">
                                     <div class="no-div">
                                         <ul>
