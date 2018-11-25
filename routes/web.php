@@ -45,13 +45,13 @@ Route::get('emptySaves', function(){
     Cart::instance('saveForLater')->destroy();
 });
 
-View::composer(['*'], function($view){
-    $subcategories=new CategoryJewel;
+View::composer(['*'], function($view) {
+    $subcategories = new CategoryJewel;
 
     try {
-        $allSubCategories=$subcategories->getCategories();
+        $allSubCategories = $subcategories->getCategories();
     } catch (Exception $e) {
         //no parent category found
     }
-    $view->with('allSubCategories',$allSubCategories);
+    $view->with('allSubCategories', $allSubCategories);
 });
