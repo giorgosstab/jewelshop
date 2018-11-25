@@ -125,10 +125,10 @@
                                 <div class="row">
                                     @foreach($allSubCategories as $subCate)
                                         <div class="col-sm-4 col-md-4 col-lg-3 col-xl-2 sub-menu my-xl-5 mt-md-5 mt-1 mb-1">
-                                            <a class="menu-item" href="#"><h6 class="sub-title text-uppercase font-weight-bold white-text">{{ $subCate->name }}</h6></a>
+                                            <a class="menu-item" href="{{ route('shop.products.index', ['cat' => $subCate->slug]) }}"><h6 class="sub-title text-uppercase font-weight-bold white-text">{{ $subCate->name }}</h6></a>
                                             <ul class="caret-style pl-0">
                                                 @foreach($subCate->subCategory as $firstNestedSub)
-                                                    <li class=""><a class="menu-item" href="#">{{ $firstNestedSub->name }}</a></li>
+                                                    <li class=""><a class="menu-item" href="{{ route('shop.products.index', ['sub' => $firstNestedSub->slug]) }}">{{ $firstNestedSub->name }}</a></li>
                                                     @foreach($firstNestedSub->subCategory as $secondNestedSub)
                                                         SecondNested : {{ $secondNestedSub->name }}<br>
                                                         @foreach($secondNestedSub->subCategory as $thirdNestedSub)
