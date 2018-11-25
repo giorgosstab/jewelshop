@@ -19,6 +19,8 @@ class CreateCategoryJewelProductTable extends Migration
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->integer('category_jewel_id')->unsigned()->nullable();
             $table->foreign('category_jewel_id')->references('id')->on('category_jewels')->onDelete('cascade');
+//            $table->integer('category_parent_id')->unsigned()->nullable();
+//            $table->foreign('category_parent_id')->references('id')->on('category_jewels')->onDelete('cascade');
             $table->timestamps();
         });
     }

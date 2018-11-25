@@ -19,8 +19,9 @@ class ProductsTableSeeder extends Seeder
                 'sku' => rand(00000001, 99999999).$i,
                 'price' => rand(300, 1099),
                 'description' => 'Lorem ipsum ' . $i . 'dolor sit amet, consectetur adipiscing elit. Cras ac nisi eu tortor sodales ornare vitae non dolor. Praesent elit velit, blandit vitae nibh eget, feugiat tincidunt diam. Nam tincidunt auctor tellus, nec dictum risus ullamcorper quis.'
-            ])->categoriesJewels()->attach(11);
+            ])->categoriesJewels()->attach(11); //->categoriesJewels()->attach(11,['category_parent_id' => 1]);
         }
+
 
         for($i = 1; $i <= 15; $i++){
             Product::create([

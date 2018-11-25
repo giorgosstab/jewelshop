@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class CategoryJewel extends Model
 {
     public function products(){
+//        return $this->belongsToMany('App\Product', 'category_jewel_product')->withPivot('category_parent_id');
         return $this->belongsToMany('App\Product');
     }
 //    public function parent() {
