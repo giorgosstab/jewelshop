@@ -205,3 +205,7 @@ input.error, select.error ~ strong{
 .ship2>label.error {
     display: none!important;
 }
+
+/*________________ shop pagination counter  _______________ */
+.pagination span{ color: #d1a845; }
+.pagination h5{ font-size: 14px; }
