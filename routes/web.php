@@ -53,5 +53,9 @@ View::composer(['*'], function($view) {
     } catch (Exception $e) {
         //no parent category found
     }
-    $view->with('allSubCategories', $allSubCategories);
+    $mainCategoryName = optional($subcategories->where('slug', request()->sub)->first())->name;
+    $view->with([
+        'allSubCategories' => $allSubCategories,
+        'mainCategoryName' => $mainCategoryName,
+    ]);
 });
