@@ -245,8 +245,8 @@
                                     <option {{ request()->sort == "new" ? 'selected' : '' }} value="newest">Date Added: Latest First</option>
                                     <option {{ request()->sort == "low_high" ? 'selected' : '' }} value="lower_price">Price: Lower to Higher</option>
                                     <option {{ request()->sort == "high_low" ? 'selected' : '' }} value="higher_price">Price: Higher to Lower</option>
-                                    <option>Product Name: A to Z</option>
-                                    <option>Product Name: Z to A</option>
+                                    <option {{ request()->sort == "a_z" ? 'selected' : '' }} value="AtoZ">Product Name: A to Z</option>
+                                    <option {{ request()->sort == "z_a" ? 'selected' : '' }} value="ZtoA">Product Name: Z to A</option>
                                 </select>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-6 bread">
@@ -344,6 +344,12 @@
                 }
                 if (value == "newest"){
                     window.location.href = "{!! route('shop.products.index', ['sub' => request()->sub,'sort' => 'new']) !!}";
+                }
+                if (value == "AtoZ"){
+                    window.location.href = "{!! route('shop.products.index', ['sub' => request()->sub,'sort' => 'a_z']) !!}";
+                }
+                if (value == "ZtoA"){
+                    window.location.href = "{!! route('shop.products.index', ['sub' => request()->sub,'sort' => 'z_a']) !!}";
                 }
             });
         });
