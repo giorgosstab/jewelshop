@@ -19,9 +19,15 @@
                 <div class="col-md-12">
                     <div class="bread2">
                         <ul>
-                            <li><a href="{{ route('shop.home.index') }}">HOME</a>
+                            <li><a href="{{ route('shop.home.index') }}">HOME</a></li>
                             <li>/</li>
-                            <li>SHOP</li>
+                            @if($mainCategoryName)
+                                <li><a href="{{ route('shop.products.index') }}">SHOP</a></li>
+                                <li>/</li>
+                                <li>{{ $mainCategoryName }}</li>
+                            @else
+                                <li>SHOP</li>
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -235,27 +241,23 @@
                     <div class="col-lg-9 col-md-12 col-sm-12">
                         <div class="row">
                             <div class="col-md-6 col-sm-6 col-xs-6 select-p">
-                                <select class="selectpicker select-1" data-style="btn-primary">
-                                    <option>Newest first</option>
-                                    <option>Newest first</option>
-                                    <option>Newest first</option>
+                                <select id="sorting" class="selectpicker select-1" data-style="btn-primary">
+                                    <option {{ request()->sort == "new" ? 'selected' : '' }} value="newest">Date Added: Latest First</option>
+                                    <option {{ request()->sort == "low_high" ? 'selected' : '' }} value="lower_price">Price: Lower to Higher</option>
+                                    <option {{ request()->sort == "high_low" ? 'selected' : '' }} value="higher_price">Price: Higher to Lower</option>
+                                    <option>Product Name: A to Z</option>
+                                    <option>Product Name: Z to A</option>
                                 </select>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-6 bread">
                                 <div class="breadcrumbs">
-                                    <ul>
-                                        <li><a href="#" class="active">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">></a></li>
-                                    </ul>
+                                    {{ $products->appends(request()->input())->links() }}
                                 </div>
                             </div>
                         </div>
                         <div class="clearfix"></div>
                         <div class="row">
-                            @foreach($products as $product)
+                            @forelse($products as $product)
                                 <div class="col-lg-3 col-md-4 col-sm-6 col-12 thum-mrg wow fadeIn">
                                     <div class="col-lg-12 padd0">
                                         <div class="product-hover">
@@ -283,19 +285,39 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
+                            @empty
+                                <div class="col-lg-3 col-md-4 col-sm-6 col-12 thum-mrg wow fadeIn">
+                                    <div class="clearfix"></div>
+                                    <h4>&nbsp <strong>No items in that category!!</strong></h4>
+                                    <div class="clearfix"></div>
+                                </div>
+                            @endforelse
                             <div class="clearfix"></div>
                         </div>
                         <div class="clearfix"></div>
                         <hr>
-                        <div class="breadcrumbs">
-                            <ul>
-                                <li><a href="#" class="active">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">></a></li>
-                            </ul>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-6 select-p">
+                                <div class="pagination">
+                                    <h5>Showing <span>{{ $products->firstItem() }}</span> - <span>{{ $products->lastItem() }}</span> of <span>{{ $products->total() }}</span> items for
+                                        @if($products->currentPage() == 1)
+                                            <span>{{ $products->currentPage() }}st</span>
+                                        @elseif($products->currentPage() == 2)
+                                            <span>{{ $products->currentPage() }}nd</span>
+                                        @elseif($products->currentPage() == 3)
+                                            <span>{{ $products->currentPage() }}rd</span>
+                                        @else
+                                            <span>{{ $products->currentPage() }}th</span>
+                                        @endif
+                                        page.
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6 bread">
+                                <div class="breadcrumbs">
+                                    {{ $products->appends(request()->input())->links() }}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -310,4 +332,20 @@
     {{ Html::style('assets/css/jquery-ui.css') }}
     {{ Html::script('assets/js/jquery-ui.js') }}
     {{ Html::script('assets/js/slider-range.js') }}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#sorting').bind('change', function () {
+                var value = this.value;
+                if (value == "lower_price"){
+                    window.location.href = "{!! route('shop.products.index', ['sub' => request()->sub,'sort' => 'low_high']) !!}";
+                }
+                if (value == "higher_price"){
+                    window.location.href = "{!! route('shop.products.index', ['sub' => request()->sub,'sort' => 'high_low']) !!}";
+                }
+                if (value == "newest"){
+                    window.location.href = "{!! route('shop.products.index', ['sub' => request()->sub,'sort' => 'new']) !!}";
+                }
+            });
+        });
+    </script>
 @endsection
