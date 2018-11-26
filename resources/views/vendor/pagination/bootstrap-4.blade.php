@@ -5,6 +5,9 @@
 
         @else
             <li>
+                <a href="{{ $paginator->toArray()['first_page_url'] }}">
+                    <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                </a>
                 <a href="{{ $paginator->previousPageUrl() }}">
                     <i class="fa fa-chevron-left" aria-hidden="true"></i>
                 </a>
@@ -35,6 +38,11 @@
             <li>
                 <a href="{{ $paginator->nextPageUrl() }}" aria-label="@lang('pagination.next')">
                     <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li>
+                <a href="{{ $paginator->toArray()['last_page_url'] }}" aria-label="@lang('pagination.next')">
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                 </a>
             </li>
         @else
