@@ -139,58 +139,6 @@
                                             </ul>
                                         </div>
                                     @endforeach()
-
-                                    {{--<div class="col-md-6 col-xl-3 sub-menu my-xl-5 mt-md-5 mt-1 mb-1">--}}
-                                        {{--<a class="menu-item" href="#"><h6 class="sub-title text-uppercase font-weight-bold white-text">GOLD JEWELLERY</h6></a>--}}
-                                        {{--<ul class="caret-style pl-0">--}}
-                                            {{--<li class=""><a class="menu-item" href="#">Rings</a></li>--}}
-                                            {{--<li class=""><a class="menu-item" href="#">Earrings</a></li>--}}
-                                            {{--<li class=""><a class="menu-item" href="#">Pendants</a></li>--}}
-                                            {{--<li class=""><a class="menu-item" href="#">Bangles</a></li>--}}
-                                            {{--<li class=""><a class="menu-item" href="#">Bracelets</a></li>--}}
-                                        {{--</ul>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="col-md-6 col-xl-3 sub-menu my-xl-5 mt-md-5 mt-1 mb-1">--}}
-                                        {{--<h6 class="sub-title text-uppercase font-weight-bold white-text">Latest Jewellery</h6>--}}
-                                        {{--<ul class="caret-style pl-0">--}}
-                                            {{--<li class=""><a class="menu-item" href="product.html">Product</a></li>--}}
-                                            {{--<li class=""><a class="menu-item" href="product-2.html">product 2</a></li>--}}
-                                            {{--<li class=""><a class="menu-item" href="product.html">Product 3</a></li>--}}
-                                            {{--<li class=""><a class="menu-item" href="product.html">Product 4</a></li>--}}
-                                            {{--<li class=""><a class="menu-item" href="product.html">Product 5</a></li>--}}
-                                        {{--</ul>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="col-md-6 col-xl-3 sub-menu my-xl-5 mt-md-5 mt-1 mb-1">--}}
-                                        {{--<h6 class="sub-title text-uppercase font-weight-bold white-text">NECKLACES</h6>--}}
-                                        {{--<ul class="caret-style pl-0">--}}
-                                            {{--<li class=""><a class="menu-item" href="#">Necklaces</a></li>--}}
-                                            {{--<li class=""><a class="menu-item" href="#">Mangalsutras</a></li>--}}
-                                            {{--<li class=""><a class="menu-item" href="#">Nose Pins</a></li>--}}
-                                            {{--<li class=""><a class="menu-item" href="#">Necklaces</a></li>--}}
-                                            {{--<li class=""><a class="menu-item" href="#">Mangalsutras</a></li>--}}
-                                            {{--<li class=""><a class="menu-item" href="#">Nose Pins</a></li>--}}
-                                        {{--</ul>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="col-md-6 col-xl-3 sub-menu my-xl-5 mt-md-5 mt-1 mb-1">--}}
-                                        {{--<h6 class="sub-title text-uppercase font-weight-bold white-text">Latest Jewellery</h6>--}}
-                                        {{--<ul class="caret-style pl-0">--}}
-                                            {{--<li class=""><a class="menu-item" href="product.html">Product</a></li>--}}
-                                            {{--<li class=""><a class="menu-item" href="product-2.html">product 2</a></li>--}}
-                                            {{--<li class=""><a class="menu-item" href="product.html">Product 3</a></li>--}}
-                                            {{--<li class=""><a class="menu-item" href="product.html">Product 4</a></li>--}}
-                                            {{--<li class=""><a class="menu-item" href="product.html">Product 5</a></li>--}}
-                                        {{--</ul>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="col-md-6 col-xl-3 sub-menu my-xl-5 mt-md-5 mt-1 mb-1">--}}
-                                        {{--<h6 class="sub-title text-uppercase font-weight-bold white-text">GOLD JEWELLERY</h6>--}}
-                                        {{--<ul class="caret-style pl-0">--}}
-                                            {{--<li class=""><a class="menu-item" href="#">Rings</a></li>--}}
-                                            {{--<li class=""><a class="menu-item" href="#">Earrings</a></li>--}}
-                                            {{--<li class=""><a class="menu-item" href="#">Pendants</a></li>--}}
-                                            {{--<li class=""><a class="menu-item" href="#">Bangles</a></li>--}}
-                                            {{--<li class=""><a class="menu-item" href="#">Bracelets</a></li>--}}
-                                        {{--</ul>--}}
-                                    {{--</div>--}}
                                 </div>
                             </div>
                         </div>
