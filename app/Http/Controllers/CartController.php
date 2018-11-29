@@ -16,20 +16,8 @@ class CartController extends Controller
      */
     public function index()
     {
-        $tax = config('cart.tax') / 100;
-        $discount = session()->get('coupon')['discount'] ?? 0;
-        $newSubtotal = (Cart::subtotal() - $discount);
-        $newTax = $newSubtotal * $tax;
-        $newTotal = $newSubtotal * (1 + $tax);
-
         $mightAlsoLike = Product::inRandomOrder()->take(4)->get();
-        return view('shop.shopping-cart.main')->with([
-            'mightAlsoLike' => $mightAlsoLike,
-            'discount' => $discount,
-            'newSubtotal' => $newSubtotal,
-            'newTax' => $newTax,
-            'newTotal' => $newTotal,
-        ]);
+        return view('shop.shopping-cart.main')->with('mightAlsoLike', $mightAlsoLike);
     }
 
     /**
