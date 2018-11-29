@@ -34,6 +34,9 @@ Route::post('/saveForLater/switchToCart/{product}','SaveForLaterController@switc
 Route::get('/checkout','CheckoutController@index')->name('shop.checkout.index');
 Route::post('/checkout','CheckoutController@store')->name('shop.checkout.store');
 
+Route::post('/coupon','CouponsController@store')->name('shop.coupons.store');
+Route::delete('/coupon','CouponsController@destroy')->name('shop.coupons.destroy');
+
 Route::get('/thankyou','ConfirmationController@index')->name('shop.checkout.confirm');
 Route::get('/terms','TermsController@index')->name('shop.privacy.index');
 
