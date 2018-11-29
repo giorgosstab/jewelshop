@@ -203,7 +203,7 @@
                                     <div class="col-md-12 product-info">
                                         <h2 class="mt-2">Product Information</h2>
                                         <h6><span style="color:#dfb859">SKU - {{ $product->sku }}</span></h6>
-                                        <p>{{ $product->description }}</p>
+                                        <p>{!! $product->description !!}</p>
                                         <p><img  src="{{ asset('') }}assets/images/products/line.jpg"  alt="" title=""></p>
                                         <h2>Notes</h2>
                                         <p>Please Note: This item is HAND MADE TO ORDER and will be
