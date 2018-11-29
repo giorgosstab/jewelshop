@@ -65,7 +65,7 @@
                         <div class="col-md-12 wow fadeIn">
                             <hr>
                             <div class="pull-left text-color">SUBTOTAL</div>
-                            <div class="pull-right"><strong>€{{ Cart::subtotal() }}</strong></div>
+                            <div class="pull-right"><strong>€{{ number_format(Cart::subtotal(), 2) }}</strong></div>
                             <div class="clearfix"> </div>
                             <hr>
                             @if(session()->has('coupon'))
@@ -82,7 +82,7 @@
                                 <hr>
                                 <div class="clearfix"> </div>
                                 <div class="pull-left text-color"> New Discount Subtotal </div>
-                                <div class="pull-right"><strong> €{{ $newSubTotal }} </strong></div>
+                                <div class="pull-right"><strong> €{{ number_format($newSubTotal, 2) }} </strong></div>
                                 <div class="clearfix"> </div>
                                 <hr>
                             @endif
