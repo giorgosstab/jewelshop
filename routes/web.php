@@ -62,3 +62,8 @@ View::composer(['*'], function($view) {
         'mainCategoryName' => $mainCategoryName,
     ]);
 });
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
