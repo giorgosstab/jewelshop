@@ -60,7 +60,10 @@ return [
 
         'decimal_point' => '.',
 
-        'thousand_seperator' => ','
+        //'thousand_seperator' => ','
+
+        //fix conflicts with number_format
+        'thousand_seperator' => ''
 
     ],
 
