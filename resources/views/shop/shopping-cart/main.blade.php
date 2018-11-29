@@ -74,7 +74,7 @@
                                         <tr>
                                             <td class="text-center">
                                                 <a href="{{ route('shop.products.show', $item->model->slug) }}">
-                                                    <img  src="assets/images/products/checkout.jpg" alt="" title="" class="img-fluid">
+                                                    <img  src="{{ asset('assets/images/products/thums/small-'.$item->model->slug.'.jpg') }}" alt="" title="" class="img-fluid">
                                                 </a>
                                             </td>
                                             <td class="product-name">
@@ -185,7 +185,7 @@
                                             <tr>
                                                 <td colspan="2" class="text-center">
                                                     <a href="{{ route('shop.products.show', $item->model->slug) }}">
-                                                        <img  src="assets/images/products/checkout.jpg" alt="" title="" class="img-fluid">
+                                                        <img  src="{{ asset('assets/images/products/'.$item->model->slug.'.jpg') }}" alt="" title="" class="img-fluid">
                                                     </a>
                                                 </td>
                                             </tr>
@@ -277,29 +277,6 @@
             <!--Order Summary/coupon/Instructions-->
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">
-                    @if(! session()->has('coupon'))
-                        <div class="cat-div  wow fadeIn">
-                            <h2>Coupon Code</h2>
-                            <div class="clearfix"></div><br>
-                            <div class="row">
-                                <div class="col-md-10 shipping col-sm-10 col-xs-12">
-                                    <h4>If you have a coupon code, please enter it in the box below</h4>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div><br>
-                            <div class="row">
-                                <form class="discount-div" action="{{ route('shop.coupons.store') }}" method="POST">
-                                    {{ csrf_field() }}
-                                    <span> &nbsp Discount Code?</span>
-                                    <input type="text" class="discount" name="coupon_code" id="coupon_code">
-                                    <input type="submit" value="APPLY" class="apply">
-                                    <div class="clearfix"></div>
-                                    <br>
-                                </form>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    @endif
                     <div class="cat-div  wow fadeIn">
                         <h2>instructions for seller</h2>
                         <div class="clearfix"></div><br>
@@ -312,7 +289,7 @@
                         <div class="row">
                             <div class="discount-div">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <textarea name="instructions" rows="3" cols=55" placeholder="Write something here..."></textarea>
+                                    <textarea name="instructions" rows="5" cols=55" placeholder="Write something here..."></textarea>
                                 </div>
                             </div>
                         </div>
@@ -337,51 +314,26 @@
                             <div class="clearfix"></div><br>
                         </h2>
                         <div class="clearfix"></div><br><br>
-                        @if(session()->has('coupon'))
-                            <h2>
-                                <div class="order-summary">
-                                    <span class="name">Discount ({{ session()->get('coupon')['name'] }})</span>
-                                    {!! Form::open(['method' => 'POST','route' => 'shop.coupons.destroy', 'id' => 'deleteDiscount']) !!}
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-                                    <a href="#" onclick="document.getElementById('deleteDiscount').submit()"><i class="fa fa-times" aria-hidden="true"></i></a>
-                                    {!! Form::close() !!}
-                                    <span class="order-price">- €{{ number_format($discount, 2) }}</span>
-                                </div>
-                                <div class="clearfix"></div><br>
-                            </h2>
-                            <div class="clearfix"></div><br><br>
-                            <h2>
-                                <div class="order-summary">
-                                    <span class="name">New Discount Subtotal</span>
-                                    <span class="order-price">€{{ number_format($newSubtotal, 2) }}</span>
-                                </div>
-                                <div class="clearfix"></div><br>
-                            </h2>
-                            <div class="clearfix"></div><br><br>
-                        @endif
                         <h2>
                             <div class="order-summary">
                                 <span class="name">Tax (24%)</span>
-                                <span class="order-price">€{{ number_format($newTax, 2) }}</span>
+                                <span class="order-price">€{{ Cart::tax() }}</span>
                             </div>
                             <div class="clearfix"></div><br>
                         </h2>
                         <div class="clearfix"></div><br><br>
-                        @if(!session()->has('coupon'))
-                            <h2>
-                                <div class="order-summary">
-                                    <span class="name">Shipping and handling</span>
-                                    <span class="order-price">€0.00</span>
-                                </div>
-                                <div class="clearfix"></div><br>
-                            </h2>
-                            <div class="clearfix"></div><br><br>
-                        @endif
+                        <h2>
+                            <div class="order-summary">
+                                <span class="name">Shipping and handling</span>
+                                <span class="order-price">€0.00</span>
+                            </div>
+                            <div class="clearfix"></div><br>
+                        </h2>
+                        <div class="clearfix"></div><br><br>
                         <h2>
                             <div class="order-summary">
                                 <span class="name">Total</span>
-                                <span class="order-price price">€{{ number_format($newTotal, 2) }}</span>
+                                <span class="order-price price">€{{ Cart::total() }}</span>
                             </div>
                             <div class="clearfix"></div><br>
                         </h2>
