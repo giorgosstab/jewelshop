@@ -20,14 +20,14 @@ class CouponsController extends Controller
         $coupon = Coupon::where('code', $request->coupon_code)->first();
 
         if(!$coupon) {
-            return redirect()->route('shop.shopping-cart.index')->withErrors('Invalid coupon code. Please try again!');
+            return redirect()->route('shop.checkout.index')->withErrors('Invalid coupon code. Please try again!');
         }
 
         session()->put('coupon', [
             'name' => $coupon->code,
             'discount' => $coupon->discount(Cart::subtotal()),
         ]);
-        return redirect()->route('shop.shopping-cart.index')->with('success_message', 'Coupon has been applied!');
+        return redirect()->route('shop.checkout.index')->with('success_message', 'Coupon has been applied!');
     }
 
     /**
@@ -38,6 +38,6 @@ class CouponsController extends Controller
     public function destroy()
     {
         session()->forget('coupon');
-        return redirect()->route('shop.shopping-cart.index')->with('success_message', 'Coupon has been removed!');
+        return redirect()->route('shop.checkout.index')->with('success_message', 'Coupon has been removed!');
     }
 }
