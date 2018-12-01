@@ -11,15 +11,7 @@
                     </ul>
                 </div>
                 <div class="col">
-                    <div class="social-media"><a href="#" class="fb-ic mr-3"><i class="fa fa-lg fa-facebook"> </i></a>
-                        <!--Twitter-->
-                        <a  href="#" class="mr-3"><i class="fa fa-lg fa-twitter"> </i></a>
-                        <!--Google +-->
-                        <a href="#" class="mr-3"><i class="fa fa-lg fa-google-plus"> </i></a>
-                        <!--Linkedin-->
-                        <a href="#" class="mr-3"><i class="fa fa-lg fa-linkedin"> </i></a>
-                        <!--Instagram-->
-                        <a href="#" class="mr-3"><i class="fa fa-lg fa-instagram"> </i></a></div>
+                    {{ menu('social_media', 'shop.partials.menus.social') }}
                 </div>
                 <div class="clearfix"></div>
             </div>

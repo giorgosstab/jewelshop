@@ -35,12 +35,7 @@
                         </div>
                     </div>
                     <div class="clearfix"></div>
-                    <ul class="social2">
-                        <li> Follow us on : </li>
-                        <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
-                    </ul>
+                    {{ menu('social_media', 'shop.partials.menus.social_footer') }}
                     <div class="clearfix"></div>
                     <br>
                 </div>
