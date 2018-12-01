@@ -6,8 +6,8 @@
             <div class="row">
                 <div class="col">
                     <ul class="list">
-                        <li><i class="fa fa-phone"></i>&nbsp; (564) 123 4567</li>
-                        <li><a href="mailto:mail@example.com"><i class="fa fa-envelope"></i> mail@example.com</a></li>
+                        <li><a href="tel:{{ setting('site.phone') }}"><i class="fa fa-phone"></i>&nbsp; {{ setting('site.phone_view') }}</a></li>
+                        <li><a href="mailto:{{ setting('site.email') }}"><i class="fa fa-envelope"></i> {{ setting('site.email') }}</a></li>
                     </ul>
                 </div>
                 <div class="col">

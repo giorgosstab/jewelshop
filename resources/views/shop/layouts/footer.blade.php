@@ -60,10 +60,9 @@
                 <div class="col-md-3 col-sm-3 footer-address  wow fadeIn" data-wow-delay=".4s">
                     <h2>Get In Touch</h2>
                     <ul>
-                        <li><i class="fa fa-map-marker" aria-hidden="true"></i> 385 "SHUBHAM" NEW ADARSH COLONY Near
-                            MR4 Road, I/F Gajannan Park </li>
-                        <li><i class="fa fa-phone" aria-hidden="true"></i> 0761-4031437</li>
-                        <li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:jewellery@gmail.com">jewellery@gmail.com</a></li>
+                        <li><i class="fa fa-map-marker" aria-hidden="true"></i>{{ setting('site.address') }}</li>
+                        <li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:{{ setting('site.phone') }}">{{ setting('site.phone_view') }}</a></li>
+                        <li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:{{ setting('site.email') }}">{{ setting('site.email') }}</a></li>
                         <li><i class="fa fa-clock-o" aria-hidden="true"></i> 9:00pm - 5:00pm<br>
                             Sunday Closed </li>
                     </ul>
