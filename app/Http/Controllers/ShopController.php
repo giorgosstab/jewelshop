@@ -13,7 +13,7 @@ class ShopController extends Controller
      */
     public function index()
     {
-        $pagination = 12;
+        $pagination = 20;
 
         $specialOffers = Product::where('offer', true)->inRandomOrder()->take(4)->get();
         $hotDeals = Product::where('hotdeals', true)->inRandomOrder()->take(2)->get();
