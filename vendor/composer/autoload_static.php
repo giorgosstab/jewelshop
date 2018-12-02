@@ -21,6 +21,7 @@ class ComposerStaticInit6dd3a9b3c5e8a54d46023c9ed512cbd0
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '0d8253363903f0ac7b0978dcde4e28a0' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/helpers.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
+        '57641e9bb69d36257a2159e135db0a67' => __DIR__ . '/../..' . '/app/Helpers/help.php',
     );
 
     public static $prefixLengthsPsr4 = array (
