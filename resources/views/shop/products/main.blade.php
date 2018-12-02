@@ -275,8 +275,11 @@
                                             </div>
                                         </div>
                                         <div>
-                                            {{--<img  src="{{ asset('assets/images/products/'. $product->slug .'.jpg') }}" alt="" title="" class="img-fluid img-boder-css">--}}
-                                            <img  src="{{ asset('storage/'.$product->image) }}" alt="" title="" class="img-fluid img-boder-css">
+                                            @if($product->image)
+                                                <img  src="{{ asset('storage/'.$product->image) }}" alt="" title="" class="img-fluid img-boder-css">
+                                            @else
+                                                <img  src="{{ asset('storage/products/no_image.jpg') }}" alt="" title="" class="img-fluid img-boder-css">
+                                            @endif
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
