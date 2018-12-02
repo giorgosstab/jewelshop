@@ -85,12 +85,7 @@
                             <div class="col-lg-7 col-md-6 col-sm-12 text-center">
                                 <div class="large-5 column">
                                     <div class="xzoom-container">
-                                        @if($product->image)
-                                            <img class="xzoom" id="xzoom-default" src="{{ secure_asset('storage/'.$product->image) }}" xoriginal="{{ asset('storage/'.$product->image) }}"  />
-                                        @else
-                                            <img class="xzoom" id="xzoom-default" src="{{ secure_asset('storage/products/no_image.jpg') }}" xoriginal="{{ asset('storage/products/no_image.jpg') }}" />
-                                        @endif
-
+                                        <img class="xzoom" id="xzoom-default" src="{{ productImage($product->image) }}" xoriginal="{{ productImage($product->image) }}"  />
                                         <div class="xzoom-thumbs">
                                             <a href="{{ asset('assets/images/zoom-img/big-1.jpg') }}">
                                                 <img class="xzoom-gallery" width="80" src="{{ secure_asset('assets/images/zoom-img/img-1.jpg') }}"  xpreview="{{ asset('assets/images/zoom-img/img-1.jpg') }}" title="">
