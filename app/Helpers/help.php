@@ -11,5 +11,5 @@ function presentPrice($price) {
 
 function productImage($path)
 {
-    return file_exists('storage/'.$path) ? secure_asset('storage/'.$path) : secure_asset('storage/products/no_image.jpg');
+    return $path && file_exists('storage/'.$path) ? secure_asset('storage/'.$path) : secure_asset('storage/products/no_image.jpg');
 }
