@@ -74,8 +74,8 @@
     <div class="clearfix"></div>
     <div class="copyright">
         <div class="footer-in">
-            <div class="pull-left"> ©  2018. <a href="index-2.html">Jewellery Shoppe</a> </div>
-            <div class="pull-right"> Lovingly Crafted By <a href="http://srgit.com/" target="_blank">SRGIT</a> </div>
+            <div class="pull-left"><a href="{{ route('shop.home.index') }}">{{ setting('site.title') }} © 2017 - {{ date('Y') }}. All Rights Resrved.</a> </div>
+            <div class="pull-right"> Powered by <a href="http://83.212.101.232" target="_blank">Giorgos Tsaxrelias</a> </div>
             <div class="clearfix"></div>
         </div>
     </div>
