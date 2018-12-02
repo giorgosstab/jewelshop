@@ -251,10 +251,16 @@
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-6 bread">
                                 <div class="breadcrumbs">
-                                    {{ $products->appends(request()->input())->links() }}
+                                    <!-- fix position if dont have pagination links -->
+                                    @if($productsPagination <= 20)
+                                        <br><br><br>
+                                    @else
+                                        {{ $products->appends(request()->input())->links() }}
+                                    @endif
                                 </div>
                             </div>
                         </div>
+
                         <div class="clearfix"></div>
                         <div class="row">
                             @forelse($products as $product)
@@ -268,7 +274,10 @@
                                                 <a href="cart.html"> <img  src="{{ asset('assets/images/add-to-cart.svg') }}"  width="25" height="25" alt="" title=""></a>
                                             </div>
                                         </div>
-                                        <div><img  src="{{ asset('assets/images/products/'. $product->slug .'.jpg') }}" alt="" title="" class="img-fluid img-boder-css"></div>
+                                        <div>
+                                            {{--<img  src="{{ asset('assets/images/products/'. $product->slug .'.jpg') }}" alt="" title="" class="img-fluid img-boder-css">--}}
+                                            <img  src="{{ asset('storage/'.$product->image) }}" alt="" title="" class="img-fluid img-boder-css">
+                                        </div>
                                         <div class="clearfix"></div>
                                     </div>
                                     <div class="clearfix"></div>

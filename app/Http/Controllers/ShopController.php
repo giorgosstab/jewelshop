@@ -20,14 +20,17 @@ class ShopController extends Controller
 
         if (request()->cat) {
             $products = Product::inRandomOrder()->take(20)->get();
+            $productsPagination = $products->count();
 
         } elseif(request()->sub) {
             $products = Product::with('categoriesJewels')->whereHas('categoriesJewels', function ($query) {
                 $query->where('slug', request()->sub);
             });
+            $productsPagination = $products->count();
             //$categoryName = optional($allSubCategories->where('slug', request()->category)->first())->name;
         }else {
             $products = Product::take(20);
+            $productsPagination = $products->count();
         }
 
         if(request()->sort == "low_high"){
@@ -47,6 +50,7 @@ class ShopController extends Controller
 //        dd($products);
         return view('shop.products.main')->with([
             'products' => $products,
+            'productsPagination' => $productsPagination,
             'specialOffers' => $specialOffers,
             'hotDeals' => $hotDeals,
         ]);
