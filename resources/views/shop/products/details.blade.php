@@ -45,21 +45,21 @@
                     <div class="col-lg-3 col-md-12 col-sm-12 div-none2 wow fadeInLeft">
                         <div class="cat-div">
                             <div class="row">
-                                <div class="col-md-4 col-sm-4 col-xs-4"><img  src="{{ asset('assets/images/delivery-truck.svg') }}" width="46" alt="" title=""></div>
+                                <div class="col-md-4 col-sm-4 col-xs-4"><img  src="{{ secure_asset('assets/images/delivery-truck.svg') }}" width="46" alt="" title=""></div>
                                 <div class="col-md-8 col-sm-8 col-xs-4 icon-div">
                                     <h4>Free Delivery</h4>
                                     <p>from $50 </p>
                                 </div>
                                 <div class="clearfix"></div>
                                 <hr>
-                                <div class="col-md-4 col-sm-4 col-xs-4"><img  src="{{ asset('assets/images/supermarket.svg') }}" width="46"  alt="" title=""></div>
+                                <div class="col-md-4 col-sm-4 col-xs-4"><img  src="{{ secure_asset('assets/images/supermarket.svg') }}" width="46"  alt="" title=""></div>
                                 <div class="col-md-8 col-sm-8 col-xs-8 icon-div">
                                     <h4>99 % Customer</h4>
                                     <p>from $50 </p>
                                 </div>
                                 <div class="clearfix"></div>
                                 <hr>
-                                <div class="col-md-4 col-sm-4 col-xs-4"><img  src="{{ asset('assets/images/reuse.svg') }}" width="46"  alt=""  title=""></div>
+                                <div class="col-md-4 col-sm-4 col-xs-4"><img  src="{{ secure_asset('assets/images/reuse.svg') }}" width="46"  alt=""  title=""></div>
                                 <div class="col-md-8 col-sm-8 col-xs-8 icon-div">
                                     <h4>6 Days</h4>
                                     <p>from $50 </p>
@@ -67,7 +67,7 @@
                                 <div class="clearfix"></div>
                                 <hr>
                                 <div class="clearfix"></div>
-                                <div class="col-md-4 col-sm-4 col-xs-4"><img  src="{{ asset('assets/images/checked.svg') }}" width="46"  alt="" title=""></div>
+                                <div class="col-md-4 col-sm-4 col-xs-4"><img  src="{{ secure_asset('assets/images/checked.svg') }}" width="46"  alt="" title=""></div>
                                 <div class="col-md-8 col-sm-8 col-xs-8 icon-div">
                                     <h4>Payment</h4>
                                     <p>from $50 </p>
@@ -86,26 +86,26 @@
                                 <div class="large-5 column">
                                     <div class="xzoom-container">
                                         @if($product->image)
-                                            <img class="xzoom" id="xzoom-default" src="{{ asset('storage/'.$product->image) }}" xoriginal="{{ asset('storage/'.$product->image) }}"  />
+                                            <img class="xzoom" id="xzoom-default" src="{{ secure_asset('storage/'.$product->image) }}" xoriginal="{{ asset('storage/'.$product->image) }}"  />
                                         @else
-                                            <img class="xzoom" id="xzoom-default" src="{{ asset('storage/products/no_image.jpg') }}" xoriginal="{{ asset('storage/products/no_image.jpg') }}" />
+                                            <img class="xzoom" id="xzoom-default" src="{{ secure_asset('storage/products/no_image.jpg') }}" xoriginal="{{ asset('storage/products/no_image.jpg') }}" />
                                         @endif
 
                                         <div class="xzoom-thumbs">
                                             <a href="{{ asset('assets/images/zoom-img/big-1.jpg') }}">
-                                                <img class="xzoom-gallery" width="80" src="{{ asset('assets/images/zoom-img/img-1.jpg') }}"  xpreview="{{ asset('assets/images/zoom-img/img-1.jpg') }}" title="">
+                                                <img class="xzoom-gallery" width="80" src="{{ secure_asset('assets/images/zoom-img/img-1.jpg') }}"  xpreview="{{ asset('assets/images/zoom-img/img-1.jpg') }}" title="">
                                             </a>
                                             <a href="{{ asset('assets/images/zoom-img/big-2.jpg') }}">
-                                                <img class="xzoom-gallery" width="80" src="{{ asset('assets/images/zoom-img/img-2.jpg') }}"  xpreview="{{ asset('assets/images/zoom-img/img-2.jpg') }}" title="">
+                                                <img class="xzoom-gallery" width="80" src="{{ secure_asset('assets/images/zoom-img/img-2.jpg') }}"  xpreview="{{ asset('assets/images/zoom-img/img-2.jpg') }}" title="">
                                             </a>
                                             <a href="{{ asset('assets/images/zoom-img/big-4.jpg') }}">
-                                                <img class="xzoom-gallery" width="80" src="{{ asset('assets/images/zoom-img/img-4.jpg') }}"  xpreview="{{ asset('assets/images/zoom-img/img-4.jpg') }}" title="">
+                                                <img class="xzoom-gallery" width="80" src="{{ secure_asset('assets/images/zoom-img/img-4.jpg') }}"  xpreview="{{ asset('assets/images/zoom-img/img-4.jpg') }}" title="">
                                             </a>
                                             <a href="{{ asset('assets/images/zoom-img/big-5.jpg') }}">
-                                                <img class="xzoom-gallery" width="80" src="{{ asset('assets/images/zoom-img/img-5.jpg') }}"  xpreview="{{ asset('assets/images/zoom-img/img-5.jpg') }}" title="">
+                                                <img class="xzoom-gallery" width="80" src="{{ secure_asset('assets/images/zoom-img/img-5.jpg') }}"  xpreview="{{ asset('assets/images/zoom-img/img-5.jpg') }}" title="">
                                             </a>
                                             <a href="{{ asset('assets/images/zoom-img/big-6.jpg') }}">
-                                                <img class="xzoom-gallery" width="80" src="{{ asset('assets/images/zoom-img/img-6.jpg') }}"  xpreview="{{ asset('assets/images/zoom-img/img-6.jpg') }}" title="">
+                                                <img class="xzoom-gallery" width="80" src="{{ secure_asset('assets/images/zoom-img/img-6.jpg') }}"  xpreview="{{ asset('assets/images/zoom-img/img-6.jpg') }}" title="">
                                             </a>
                                         </div>
                                     </div>
@@ -118,49 +118,49 @@
                                     <ul>
                                         <li>
                                             <div class="row 0">
-                                                <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ asset('assets/images/products/icon1.jpg') }}" alt="" title=""> </div>
+                                                <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ secure_asset('assets/images/products/icon1.jpg') }}" alt="" title=""> </div>
                                                 <div class="col-md-10 col-sm-10 col-10"> Neque porro quisquam est qui dolorem ipsum quia
                                                     dolor sit amet, consectetur, adipisci velit.</div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="row 0">
-                                                <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ asset('assets/images/products/icon2.jpg') }}" alt="" title=""> </div>
+                                                <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ secure_asset('assets/images/products/icon2.jpg') }}" alt="" title=""> </div>
                                                 <div class="col-md-10 col-sm-10 col-10"> Neque porro quisquam est qui dolorem ipsum quia
                                                     dolor sit amet, consectetur, adipisci velit.</div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="row 0">
-                                                <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ asset('assets/images/products/icon3.jpg') }}" alt="" title=""> </div>
+                                                <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ secure_asset('assets/images/products/icon3.jpg') }}" alt="" title=""> </div>
                                                 <div class="col-md-10 col-sm-10 col-10"> Neque porro quisquam est qui dolorem ipsum quia
                                                     dolor sit amet, consectetur, adipisci velit.</div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="row 0">
-                                                <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ asset('assets/images/products/icon4.jpg') }}" alt="" title=""> </div>
+                                                <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ secure_asset('assets/images/products/icon4.jpg') }}" alt="" title=""> </div>
                                                 <div class="col-md-10 col-sm-10 col-10"> Neque porro quisquam est qui dolorem ipsum quia
                                                     dolor sit amet, consectetur, adipisci velit.</div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="row 0">
-                                                <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ asset('assets/images/products/icon-5.jpg') }}" alt="" title=""> </div>
+                                                <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ secure_asset('assets/images/products/icon-5.jpg') }}" alt="" title=""> </div>
                                                 <div class="col-md-10 col-sm-10 col-10"> Neque porro quisquam est qui dolorem ipsum quia
                                                     dolor sit amet, consectetur, adipisci velit.</div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="row 0">
-                                                <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ asset('assets/images/products/icon-6.jpg') }}" alt="" title=""> </div>
+                                                <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ secure_asset('assets/images/products/icon-6.jpg') }}" alt="" title=""> </div>
                                                 <div class="col-md-10 col-sm-10 col-10"> Neque porro quisquam est qui dolorem ipsum quia
                                                     dolor sit amet, consectetur, adipisci velit.</div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="row 0">
-                                                <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ asset('assets/images/products/icon-7.jpg') }}" alt="" title=""> </div>
+                                                <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ secure_asset('assets/images/products/icon-7.jpg') }}" alt="" title=""> </div>
                                                 <div class="col-md-10 col-sm-10 col-10" style="margin-top:1em;">
                                                     <span style="color:#dfb859;"><b>{{ $product->sku }}</b></span>
                                                 </div>
@@ -198,7 +198,7 @@
                         <div class="read-full">
                             <ul>
                                 <li><a data-toggle="collapse" data-target="#demo"> <span>Read full specs</span> </a></li>
-                                <li><a data-toggle="collapse" data-target="#demo"><img  src="{{ asset('assets/images/products/arrow.jpg') }}" alt="" title=""></a> </li>
+                                <li><a data-toggle="collapse" data-target="#demo"><img  src="{{ secure_asset('assets/images/products/arrow.jpg') }}" alt="" title=""></a> </li>
                             </ul>
                         </div>
                         <div class="clearfix"></div>
@@ -209,11 +209,11 @@
                                         <h2 class="mt-2">Product Information</h2>
                                         <h6><span style="color:#dfb859">SKU - {{ $product->sku }}</span></h6>
                                         <p>{!! $product->description !!}</p>
-                                        <p><img  src="{{ asset('') }}assets/images/products/line.jpg"  alt="" title=""></p>
+                                        <p><img  src="{{ secure_asset('assets/images/products/line.jpg') }}"  alt="" title=""></p>
                                         <h2>Notes</h2>
                                         <p>Please Note: This item is HAND MADE TO ORDER and will be
                                             dispatched in 2-3 weeks.</p>
-                                        <p><img  src="{{ asset('assets/images/products/line.jpg') }}"  alt="" title=""></p>
+                                        <p><img  src="{{ secure_asset('assets/images/products/line.jpg') }}"  alt="" title=""></p>
                                     </div>
                                 </div>
                                 <div class="clearfix"></div>
@@ -228,7 +228,7 @@
                             <div class="col col-lg-6 wow fadeIn">
                                 <div class="cat-div">
                                     <div class="row m-0">
-                                        <div class="col-md-4 col-sm-2 col-xs-2"><img  src="{{ asset('assets/images/delivery-truck.svg') }}" width="46" alt="" title=""></div>
+                                        <div class="col-md-4 col-sm-2 col-xs-2"><img  src="{{ secure_asset('assets/images/delivery-truck.svg') }}" width="46" alt="" title=""></div>
                                         <div class="col-md-8 col-sm-10 col-xs-10 icon-div p-0">
                                             <h4>Free Delivery</h4>
                                             <p>from $50 </p>
@@ -237,7 +237,7 @@
                                     <div class="clearfix"></div>
                                     <hr>
                                     <div class="row m-0">
-                                        <div class="col-md-4 col-sm-2 col-xs-2"><img  src="{{ asset('assets/images/supermarket.svg') }}" width="46"  alt="" title=""></div>
+                                        <div class="col-md-4 col-sm-2 col-xs-2"><img  src="{{ secure_asset('assets/images/supermarket.svg') }}" width="46"  alt="" title=""></div>
                                         <div class="col-md-8 col-sm-10 col-xs-10 icon-div p-0">
                                             <h4>99 % Customer</h4>
                                             <p>from $50 </p>
@@ -246,7 +246,7 @@
                                     <div class="clearfix"></div>
                                     <hr>
                                     <div class="row m-0">
-                                        <div class="col-md-4 col-sm-2 col-xs-2"><img  src="{{ asset('assets/images/checked.svg') }}" width="46"  alt="" title=""></div>
+                                        <div class="col-md-4 col-sm-2 col-xs-2"><img  src="{{ secure_asset('assets/images/checked.svg') }}" width="46"  alt="" title=""></div>
                                         <div class="col-md-8 col-sm-10 col-xs-10 icon-div p-0">
                                             <h4>6 Days</h4>
                                             <p>from $50 </p>
@@ -256,7 +256,7 @@
                                     <hr>
                                     <div class="clearfix"></div>
                                     <div class="row m-0">
-                                        <div class="col-md-4 col-sm-2 col-xs-2"><img  src="{{ asset('assets/images/reuse.svg') }}" width="46"  alt=""  title=""></div>
+                                        <div class="col-md-4 col-sm-2 col-xs-2"><img  src="{{ secure_asset('assets/images/reuse.svg') }}" width="46"  alt=""  title=""></div>
                                         <div class="col-md-8 col-sm-10 col-xs-10 icon-div p-0">
                                             <h4>Payment</h4>
                                             <p>from $50 </p>
