@@ -11,7 +11,7 @@
                             <div class="row">
                                 <div class="col-md-12 col-sm-5">
                                     <a href="{{ route('shop.products.show', $product->slug) }}">
-                                        <img alt="" title=""  src="{{ Voyager::image($product->thumbnail('small')) }}" class="img-fluid">
+                                        <img alt="" title=""  src="{{ secure_asset(Voyager::image($product->thumbnail('small'))) }}" class="img-fluid">
                                     </a>
                                 </div>
                                 <div class="col-md-12 col-sm-7">
@@ -63,7 +63,7 @@
                             <div class="row">
                                 <div class="col-md-12 col-sm-5">
                                     <a href="{{ route('shop.products.show', $product->slug) }}">
-                                        <img alt="" title=""  src="{{ Voyager::image($product->thumbnail('small')) }}" class="img-fluid">
+                                        <img alt="" title=""  src="{{ secure_asset(Voyager::image($product->thumbnail('small'))) }}" class="img-fluid">
                                     </a>
                                 </div>
                                 <div class="col-md-12 col-sm-7">
@@ -128,7 +128,7 @@
                             <div class="row">
                                 <div class="col-md-12 col-sm-5">
                                     <a href="{{ route('shop.products.show', $product->slug) }}">
-                                        <img alt="" title=""  src="{{ Voyager::image($product->thumbnail('small')) }}" class="img-fluid">
+                                        <img alt="" title=""  src="{{ secure_asset(Voyager::image($product->thumbnail('small'))) }}" class="img-fluid">
                                     </a>
                                 </div>
                                 <div class="col-md-12 col-sm-7">
