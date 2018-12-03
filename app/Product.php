@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use TCG\Voyager\Traits\Resizable;
 
 class Product extends Model
 {
+    use Resizable;
     public function categoriesJewels() {
         //return $this->belongsToMany('App\CategoryJewel', 'category_jewel_product')->withPivot('category_parent_id');
         return $this->belongsToMany('App\CategoryJewel');
