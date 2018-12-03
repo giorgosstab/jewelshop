@@ -16,7 +16,7 @@ class ShopController extends Controller
         $pagination = 20;
 
         $specialOffers = Product::where('offer', true)->inRandomOrder()->take(4)->get();
-        $hotDeals = Product::where('hotdeals', true)->inRandomOrder()->get(); //->take(2)
+        $hotDeals = Product::where('hotdeals', true)->inRandomOrder()->take(2)->get();
 
         if (request()->cat) {
             $products = Product::inRandomOrder()->take(20)->get();
