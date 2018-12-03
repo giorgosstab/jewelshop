@@ -13,3 +13,9 @@ function productImage($path)
 {
     return $path && file_exists('storage/'.$path) ? secure_asset('storage/'.$path) : secure_asset('storage/products/no_image.jpg');
 }
+
+
+function jsonDecode($json_string) {
+    $data = json_decode($json_string);
+    return $data[0]->download_link;
+}
