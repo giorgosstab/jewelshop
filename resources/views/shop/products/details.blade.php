@@ -87,21 +87,16 @@
                                     <div class="xzoom-container">
                                         <img class="xzoom" id="xzoom-default" src="{{ productImage($product->image) }}" xoriginal="{{ productImage($product->image) }}"  />
                                         <div class="xzoom-thumbs">
-                                            <a href="{{ asset('assets/images/zoom-img/big-1.jpg') }}">
-                                                <img class="xzoom-gallery" width="80" src="{{ secure_asset('assets/images/zoom-img/img-1.jpg') }}"  xpreview="{{ asset('assets/images/zoom-img/img-1.jpg') }}" title="">
-                                            </a>
-                                            <a href="{{ asset('assets/images/zoom-img/big-2.jpg') }}">
-                                                <img class="xzoom-gallery" width="80" src="{{ secure_asset('assets/images/zoom-img/img-2.jpg') }}"  xpreview="{{ asset('assets/images/zoom-img/img-2.jpg') }}" title="">
-                                            </a>
-                                            <a href="{{ asset('assets/images/zoom-img/big-4.jpg') }}">
-                                                <img class="xzoom-gallery" width="80" src="{{ secure_asset('assets/images/zoom-img/img-4.jpg') }}"  xpreview="{{ asset('assets/images/zoom-img/img-4.jpg') }}" title="">
-                                            </a>
-                                            <a href="{{ asset('assets/images/zoom-img/big-5.jpg') }}">
-                                                <img class="xzoom-gallery" width="80" src="{{ secure_asset('assets/images/zoom-img/img-5.jpg') }}"  xpreview="{{ asset('assets/images/zoom-img/img-5.jpg') }}" title="">
-                                            </a>
-                                            <a href="{{ asset('assets/images/zoom-img/big-6.jpg') }}">
-                                                <img class="xzoom-gallery" width="80" src="{{ secure_asset('assets/images/zoom-img/img-6.jpg') }}"  xpreview="{{ asset('assets/images/zoom-img/img-6.jpg') }}" title="">
-                                            </a>
+                                            @if($product->images && $product->images!=="[]")
+                                                <a href="{{ productImage($product->image) }}">
+                                                    <img class="xzoom-gallery" width="80" src="{{ productImage($product->image) }}"  xpreview="{{ productImage($product->image) }}" title="">
+                                                </a>
+                                                @foreach(json_decode($product->images, true) as $images)
+                                                    <a href="{{ productImage($images) }}">
+                                                        <img class="xzoom-gallery" width="80" src="{{ productImage($images) }}"  xpreview="{{ productImage($images) }}" title="">
+                                                    </a>
+                                                @endforeach
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
