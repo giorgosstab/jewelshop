@@ -217,13 +217,21 @@
                             <div class="item img-title">
                                 <div class="owl-item-boder">
                                     <div class="hover-div">
-                                        <div class="our-store"> <a href="product-detail.html"><img src="assets/images/search.svg" width="35" alt="" title="" ></a> </div>
-                                        <img src="assets/images/thum{{ $bestof->id }}.jpg" alt="" title="" class="img-fluid">
+                                        <div class="our-store">
+                                            <a href="{{ route('shop.products.show', $bestof->slug) }}"><img src="assets/images/search.svg" width="35" alt="" title="" ></a>
+                                        </div>
+                                        <img src="{{ Voyager::image($bestof->thumbnail('medium')) }}" alt="" title="" class="img-fluid">
                                         <div class="round-circles">Sale</div>
                                     </div>
                                 </div>
                                 <h4>{{ $bestof->name }}</h4>
-                                <p class="price"><span>€{{ $bestof->presentPrice() }}</span>&nbsp;&nbsp;<samp>$56.00</samp></p>
+                                <p class="price">
+                                    @if($bestof->presentPriceDeals() != null)
+                                        <span>€{{ $bestof->presentPriceDeals() }}</span>&nbsp;&nbsp <samp>€{{ $bestof->presentPrice() }}</samp>
+                                    @else
+                                        <span>€{{ $bestof->presentPrice() }}</span>
+                                    @endif
+                                </p>
                             </div>
                         @endforeach
                     </div>
@@ -287,96 +295,21 @@
                 <div id="masonry-7" class="masonry one_column full-width">
                     <div class="content img-div">
                         <ul>
-                            <li class="wow fadeIn">
-                                <div class="grid">
-                                    <figure class="effect-apollo"> <img alt="" title="" src="assets/images/img1.jpg"   />
-                                        <figcaption>
-                                            <h2>Jewelry <span>Store</span></h2>
-                                            <p>Lorem Ipsum is simply dummy text of the printing </p>
-                                            <a href="product.html">View more</a> </figcaption>
-                                    </figure>
-                                </div>
-                            </li>
-                            <li class="wow fadeIn">
-                                <div class="grid">
-                                    <figure class="effect-apollo"> <img alt="" title="" src="assets/images/img-8.jpg"   />
-                                        <figcaption>
-                                            <h2>Jewelry <span>Store</span></h2>
-                                            <p>Lorem Ipsum is simply dummy text of the printing </p>
-                                            <a href="product.html">View more</a> </figcaption>
-                                    </figure>
-                                </div>
-                            </li>
-                            <li class="wow fadeIn">
-                                <div class="grid">
-                                    <figure class="effect-apollo"> <img alt="" title="" src="assets/images/img-3.jpg"   />
-                                        <figcaption>
-                                            <h2>Jewelry <span>Store</span></h2>
-                                            <p>Lorem Ipsum is simply dummy text of the printing </p>
-                                            <a href="product.html">View more</a> </figcaption>
-                                    </figure>
-                                </div>
-                            </li>
-                            <li class="wow fadeIn">
-                                <div class="grid">
-                                    <figure class="effect-apollo"> <img alt="" title="" src="assets/images/img-4.jpg"   />
-                                        <figcaption>
-                                            <h2>Jewelry <span>Store</span></h2>
-                                            <p>Lorem Ipsum is simply dummy text of the printing </p>
-                                            <a href="product.html">View more</a> </figcaption>
-                                    </figure>
-                                </div>
-                            </li>
-                            <li class="wow fadeIn">
-                                <div class="grid">
-                                    <figure class="effect-apollo"> <img alt="" title="" src="assets/images/img-5.jpg"   />
-                                        <figcaption>
-                                            <h2>Jewelry <span>Store</span></h2>
-                                            <p>Lorem Ipsum is simply dummy text of the printing </p>
-                                            <a href="product.html">View more</a> </figcaption>
-                                    </figure>
-                                </div>
-                            </li>
-                            <li class="wow fadeIn">
-                                <div class="grid">
-                                    <figure class="effect-apollo"> <img alt="" title="" src="assets/images/img-6.jpg" />
-                                        <figcaption>
-                                            <h2>Jewelry <span>Store</span></h2>
-                                            <p>Lorem Ipsum is simply dummy text of the printing </p>
-                                            <a href="product.html">View more</a> </figcaption>
-                                    </figure>
-                                </div>
-                            </li>
-                            <li class="wow fadeIn">
-                                <div class="grid">
-                                    <figure class="effect-apollo"> <img alt="" title="" src="assets/images/img-7.jpg" />
-                                        <figcaption>
-                                            <h2>Jewelry <span>Store</span></h2>
-                                            <p>Lorem Ipsum is simply dummy text of the printing </p>
-                                            <a href="product.html">View more</a> </figcaption>
-                                    </figure>
-                                </div>
-                            </li>
-                            <li class="wow fadeIn">
-                                <div class="grid">
-                                    <figure class="effect-apollo"> <img alt="" title="" src="assets/images/img-9.jpg"  />
-                                        <figcaption>
-                                            <h2>Jewelry <span>Store</span></h2>
-                                            <p>Lorem Ipsum is simply dummy text of the printing </p>
-                                            <a href="product.html">View more</a> </figcaption>
-                                    </figure>
-                                </div>
-                            </li>
-                            <li class="wow fadeIn img-10">
-                                <div class="grid">
-                                    <figure class="effect-apollo"> <img alt="" title="" src="assets/images/img-10.jpg"  />
-                                        <figcaption>
-                                            <h2>Jewelry <span>Store</span></h2>
-                                            <p>Lorem Ipsum is simply dummy text of the printing </p>
-                                            <a href="product.html">View more</a> </figcaption>
-                                    </figure>
-                                </div>
-                            </li>
+                            @foreach($latestProducts as $product)
+                                <li class="wow fadeIn">
+                                    <div class="grid">
+                                        <figure class="effect-apollo"> <img alt="" title="" src="{{ Voyager::image($product->thumbnail('medium')) }}" />
+                                            <figcaption>
+                                                <h2>Jewelry <span>Store</span></h2>
+                                                <p>
+                                                    NAME: {{ $product->name }}! <br>
+                                                    SKU: {{ $product->sku }}
+                                                </p>
+                                                <a href="{{ route('shop.products.show', $product->slug) }}">View more</a> </figcaption>
+                                        </figure>
+                                    </div>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
