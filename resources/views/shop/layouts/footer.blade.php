@@ -42,10 +42,10 @@
                 <div class="col-md-3 col-sm-3 link-footer  wow fadeIn" data-wow-delay=".2s">
                     <h2>Quick Links</h2>
                     <ul class="pull-left">
-                        <li><a href="about-us.html"> <i class="fa fa-stop" aria-hidden="true"></i> About</a></li>
-                        <li><a href="product.html"><i class="fa fa-stop" aria-hidden="true"></i> Shop Now</a></li>
-                        <li><a href="blog.html"><i class="fa fa-stop" aria-hidden="true"></i> Blog</a></li>
-                        <li><a href="terms-and-conditions.html"><i class="fa fa-stop" aria-hidden="true"></i> Terms & Condition</a></li>
+                        <li><a href="{{ route('shop.about.index') }}"> <i class="fa fa-stop" aria-hidden="true"></i> About</a></li>
+                        <li><a href="{{ route('shop.products.index') }}"><i class="fa fa-stop" aria-hidden="true"></i> Shop Now</a></li>
+                        <li><a href="{{ route('shop.blog.index') }}"><i class="fa fa-stop" aria-hidden="true"></i> Blog</a></li>
+                        <li><a href="{{ route('shop.privacy.index') }}"><i class="fa fa-stop" aria-hidden="true"></i> Terms & Condition</a></li>
                         <li><a href="privacy.html"><i class="fa fa-stop" aria-hidden="true"></i> Privacy</a></li>
                         <li><a href="faq.html"><i class="fa fa-stop" aria-hidden="true"></i> FAQ</a></li>
                         <li><a href="contact-us.html"><i class="fa fa-stop" aria-hidden="true"></i> Contact Us</a></li>
