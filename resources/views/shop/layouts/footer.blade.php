@@ -48,7 +48,7 @@
                         <li><a href="{{ route('shop.privacy.index') }}"><i class="fa fa-stop" aria-hidden="true"></i> Terms & Condition</a></li>
                         <li><a href="privacy.html"><i class="fa fa-stop" aria-hidden="true"></i> Privacy</a></li>
                         <li><a href="faq.html"><i class="fa fa-stop" aria-hidden="true"></i> FAQ</a></li>
-                        <li><a href="contact-us.html"><i class="fa fa-stop" aria-hidden="true"></i> Contact Us</a></li>
+                        <li><a href="{{ route('shop.contact.index') }}"><i class="fa fa-stop" aria-hidden="true"></i> Contact Us</a></li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
