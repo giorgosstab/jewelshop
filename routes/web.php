@@ -42,6 +42,7 @@ Route::get('/blog','BlogController@index')->name('shop.blog.index');
 Route::get('/blog/in','BlogController@show')->name('shop.blog.show');
 Route::get('/thankyou','ConfirmationController@index')->name('shop.checkout.confirm');
 Route::get('/terms','TermsController@index')->name('shop.privacy.index');
+Route::get('/contact','ContactController@index')->name('shop.contact.index');
 
 Route::get('empty', function(){
     Cart::destroy();
