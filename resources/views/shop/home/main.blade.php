@@ -163,13 +163,16 @@
                 <div class="row">
                     @foreach($products as $product)
                         <div class="col-md-3 col-sm-3 col-xs-6 text-center wow fadeIn">
-                            <div class="box-css"> <a href="product-detail.html"> <img src="assets/images/products/{{ $product->slug }}.jpg" class="img-fluid" alt="" title="" >
+                            <div class="box-css">
+                                <a href="{{ route('shop.products.show', $product->slug) }}">
+                                    <img src="{{ Voyager::image($product->thumbnail('medium')) }}" class="img-fluid" alt="" title="" >
                                     <div class="opacitybox white">
                                         <div class="boxcontent">
                                             <h4 class="white">{{ $product->name }}</h4>
                                             <img src="assets/images/search.svg" width="35" alt="" title="" ></div>
                                     </div>
-                                </a> </div>
+                                </a>
+                            </div>
                         </div>
                     @endforeach
                 </div>
