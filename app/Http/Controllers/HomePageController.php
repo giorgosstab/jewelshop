@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Brand;
 use App\CategoryJewel;
 use App\Product;
 
@@ -18,12 +19,14 @@ class HomePageController extends Controller
         $products = Product::take(8)->inRandomOrder()->get();
         $bestProducts = Product::where('bestof',true)->take(5)->inRandomOrder()->get();
         $latestProducts = Product::orderBy('id', 'desc')->take(8)->get();
+        $brands = Brand::take(8)->inRandomOrder()->get();
 
         return view('shop.home.main')->with([
             'products' => $products,
             'bestProducts' => $bestProducts,
             'categories' => $categories,
-            'latestProducts' => $latestProducts
+            'latestProducts' => $latestProducts,
+            'brands' => $brands
         ]);
     }
 }

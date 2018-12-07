@@ -320,14 +320,9 @@
             <div class="popular-brands footer-logos content-section">
                 <h2 class="wow fadeInDown"><span>Popular</span> Brands</h2>
                 <div id="owl-demo" class="owl-carousel owl-carousel-2 wow fadeInDown">
-                    <div class="item"><a href="#"><img src="assets/images/products/brand.jpg" alt="" title=""/></a></div>
-                    <div class="item"><a href="#"><img src="assets/images/products/brand2.jpg" alt="" title=""/></a></div>
-                    <div class="item"><a href="#"><img src="assets/images/products/brand3.jpg" alt="" title="" /></a></div>
-                    <div class="item"><a href="#"><img src="assets/images/products/brand4.jpg" alt="" title=""/></a></div>
-                    <div class="item"><a href="#"><img src="assets/images/products/brand.jpg" alt="" title=""/></a></div>
-                    <div class="item"><a href="#"><img src="assets/images/products/brand2.jpg" alt="" title=""/></a></div>
-                    <div class="item"><a href="#"><img src="assets/images/products/brand3.jpg" alt="" title="" /></a></div>
-                    <div class="item"><a href="#"><img src="assets/images/products/brand4.jpg" alt="" title=""/></a></div>
+                    @foreach($brands as $brand)
+                        <div class="item"><a href="#"><img src="{{ secure_asset('storage/'.$brand->image) }}" alt="" title="{{ $brand->name }}"/></a></div>
+                    @endforeach
                 </div>
             </div>
         </section>
