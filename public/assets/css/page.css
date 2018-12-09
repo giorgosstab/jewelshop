@@ -823,18 +823,18 @@ font-size:40px; font-family: 'Playfair Display', serif;
 	background-size: cover;
 	padding:150px 0
 }
-.inner-bg3 {
-	background: url(../images/bg3.jpg) no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	padding:150px 0
-}
-.blog {
-	background: url(../images/blog-top.jpg) no-repeat center top fixed;
-	padding:150px 0
-}
+/*.inner-bg3 {*/
+	/*background: url(../images/bg3.jpg) no-repeat center center fixed;*/
+	/*-webkit-background-size: cover;*/
+	/*-moz-background-size: cover;*/
+	/*-o-background-size: cover;*/
+	/*background-size: cover;*/
+	/*padding:150px 0*/
+/*}*/
+/*.blog {*/
+	/*background: url(../images/blog-top.jpg) no-repeat center top fixed;*/
+	/*padding:150px 0*/
+/*}*/
 .tetpbg {
 	background:#f5f5f5;
 	min-height:456px;
