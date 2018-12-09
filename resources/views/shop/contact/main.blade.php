@@ -3,7 +3,16 @@
 @section('title', '| Contact Us')
 
 @section('extra-css')
-
+    <style>
+        .inner-bg3 {
+            background: url("{{ settingsAdminImageExist(setting('site.contact_parallax'),"contact") }}") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            padding:150px 0
+        }
+    </style>
 @endsection
 
 @section('content')
