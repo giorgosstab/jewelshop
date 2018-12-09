@@ -3,7 +3,12 @@
 @section('title', '| Blog Name')
 
 @section('extra-css')
-
+    <style>
+        .blog {
+            background: url("{{ settingsAdminImageExist(setting('site.blog_parallax'),"blog") }}") no-repeat center top fixed;
+            padding:150px 0
+        }
+    </style>
 @endsection
 
 @section('content')
