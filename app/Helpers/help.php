@@ -20,6 +20,15 @@ function settingsAdminImageExist($path, $page) {
     if($page === "aboutUs"){
         return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/bg1.jpg');
     }
+    if($page === "shop"){
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/bg1.jpg');
+    }
+    if($page === "blog"){
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/blog-top.jpg');
+    }
+    if($page === "contact"){
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/bg3.jpg');
+    }
 }
 
 function jsonDecode($json_string) {
