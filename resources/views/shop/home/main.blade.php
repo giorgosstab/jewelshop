@@ -253,8 +253,13 @@
                                     <li>
                                         <div class="grid">
                                             <figure class="effect-moses">
-                                                <div class="zoom-hover"> <a href="product.html"><span class="glyphicon glyphicon-search"></span></a> </div>
-                                                <img src="{{ asset('assets/images/categoriesJewels/thums/'.$category->slug.'.jpg') }}" alt="" title="" class="img-fluid"> </figure>
+                                                <div class="zoom-hover">
+                                                    <a href="product.html">
+                                                        <span class="glyphicon glyphicon-search"></span>
+                                                    </a>
+                                                </div>
+                                                <img src="{{ productImage($category->image) }}" alt="{{ $category->name }}" title="{{ $category->name }}" class="img-fluid">
+                                            </figure>
                                         </div>
                                         <h2>{{ $category->name }}</h2>
                                     </li>
@@ -268,8 +273,13 @@
                                     <li>
                                         <div class="grid">
                                             <figure class="effect-moses">
-                                                <div class="zoom-hover"> <a href="product.html"><span class="glyphicon glyphicon-search"></span></a> </div>
-                                                <img src="{{ asset('assets/images/categoriesJewels/thums/'.$category->slug.'.jpg') }}" alt="" title="" class="img-fluid"> </figure>
+                                                <div class="zoom-hover">
+                                                    <a href="product.html">
+                                                        <span class="glyphicon glyphicon-search"></span>
+                                                    </a>
+                                                </div>
+                                                <img src="{{ productImage($category->image) }}" alt="{{ $category->name }}" title="{{ $category->name }}" class="img-fluid">
+                                            </figure>
                                         </div>
                                         <h2>{{ $category->name }}</h2>
                                     </li>
