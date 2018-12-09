@@ -8,6 +8,16 @@
 
     <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
     {{ Html::style('assets/slider/css/settings.css') }}
+    <style>
+        .product-bg {
+            padding:73px 15px 60px 15px;
+            background: url("{{ settingsAdminImageExist(setting('site.home_parallax'),"homepage") }}") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+    </style>
 @endsection
 
 @section('content')
