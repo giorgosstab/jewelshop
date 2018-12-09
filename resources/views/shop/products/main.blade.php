@@ -2,11 +2,24 @@
 
 @section('title', '| Shop')
 
+@section('extra-css')
+    <style>
+        .inner-bg1 {
+            background: url("{{ settingsAdminImageExist(setting('site.shop_parallax'),"shop") }}") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            padding:150px 0
+        }
+</style>
+@endsection
+
 @section('content')
     <div id="wrapper">
         <!--page heading-->
         <section>
-            <div class="inner-bg">
+            <div class="inner-bg1">
                 <div class="inner-head wow fadeInDown">
                     <h3>Shop</h3>
                 </div>
