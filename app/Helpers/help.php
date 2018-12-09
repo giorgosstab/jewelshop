@@ -9,11 +9,9 @@ function presentPrice($price) {
     return number_format($price, 2);
 }
 
-function productImage($path)
-{
+function productImage($path) {
     return $path && file_exists('storage/'.$path) ? secure_asset('storage/'.$path) : secure_asset('storage/products/no_image.jpg');
 }
-
 
 function jsonDecode($json_string) {
     $data = json_decode($json_string);
