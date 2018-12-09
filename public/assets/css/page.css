@@ -307,14 +307,14 @@ transition:all .5s ease
 .box-div > div a {
 	color:#fff;
 }
-.product-bg {
-	padding:73px 15px 60px 15px;
-	background: url(../images/products/bg-img.jpg) no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-}
+/*.product-bg {*/
+	/*padding:73px 15px 60px 15px;*/
+	/*background: url(../images/products/bg-img.jpg) no-repeat center center fixed;*/
+	/*-webkit-background-size: cover;*/
+	/*-moz-background-size: cover;*/
+	/*-o-background-size: cover;*/
+	/*background-size: cover;*/
+/*}*/
 .title-heading {
 	border:2px solid #dfb859;
 	height: 90px;
@@ -807,14 +807,14 @@ font-size:40px; font-family: 'Playfair Display', serif;
 	background-size: cover;
 	padding:150px 0
 }
-.inner-bg1 {
-	background: url(../images/bg1.jpg) no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	padding:150px 0
-}
+/*.inner-bg1 {*/
+	/*background: url(../images/bg1.jpg) no-repeat center center fixed;*/
+	/*-webkit-background-size: cover;*/
+	/*-moz-background-size: cover;*/
+	/*-o-background-size: cover;*/
+	/*background-size: cover;*/
+	/*padding:150px 0*/
+/*}*/
 .inner-bg2 {
 	background: url(../images/bg2.jpg) no-repeat center center fixed;
 	-webkit-background-size: cover;
