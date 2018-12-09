@@ -10,7 +10,16 @@ function presentPrice($price) {
 }
 
 function productImage($path) {
-    return $path && file_exists('storage/'.$path) ? secure_asset('storage/'.$path) : secure_asset('storage/products/no_image.jpg');
+    return $path && file_exists('storage/' . $path) ? secure_asset('storage/'.$path) : secure_asset('storage/products/no_image.jpg');
+}
+
+function settingsAdminImageExist($path, $page) {
+    if($page === "homepage"){
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/bg-img.jpg');
+    }
+    if($page === "aboutUs"){
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/bg1.jpg');
+    }
 }
 
 function jsonDecode($json_string) {
