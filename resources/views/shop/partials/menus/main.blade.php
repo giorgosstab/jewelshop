@@ -65,3 +65,22 @@
         @endif
     @endforeach
 </ul>
+<ul class="navbar-nav float-lg-right">
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+            <img src="https://jewelshop.io/storage/users/profile_default.jpg" class="rounded-circle" width="18" height="18"> Username
+        </a>
+        <div class="dropdown-menu dropdown-menu2">
+            <h2 class="text-center"><span class="shopping-cart count">email@email.com</span></h2>
+            <div class="dropdown-menu2-in">
+                <div>
+                    <img class="img-responsive" style="padding:2%;" src="https://jewelshop.io/storage/users/profile_default.jpg" width="200" height="200" />
+                    <a class="change" href="#">Change Picture</a>
+                    <input class="upload-field" type="file"/>
+                </div>
+                <a href="#" class="view-ct"><span class="fa fa-user-o"></span> Profile</a>
+                <a href="#" class="check-ct"><span class="fa fa-sign-out"></span> Logout</a>
+            </div>
+        </div>
+    </li>
+</ul>
