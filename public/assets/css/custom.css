@@ -219,6 +219,7 @@ input.error, select.error ~ strong{
     padding:39px;
     margin-left:5px;
     text-decoration:none;
+
 }
 .change:hover,
 .bottom {
@@ -234,6 +235,15 @@ input.error, select.error ~ strong{
     background-color:black;
     color:white;
     opacity: 0.6;
+}
+.img-responsive {
+    padding:2%;
+    height: 200px;
+    width: 200px;
+}
+.img-responsive-small {
+    height: 18px;
+    width: 18px;
 }
 .img-responsive:hover + .change {
     background-color:black;
