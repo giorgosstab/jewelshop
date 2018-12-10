@@ -209,3 +209,39 @@ input.error, select.error ~ strong{
 /*________________ shop pagination counter  _______________ */
 .pagination span{ color: #d1a845; }
 .pagination h5{ font-size: 14px; }
+
+/*________________ navigation bar logged user  _______________ */
+.change
+{
+    position:relative;
+    color:white;
+    bottom:62px;
+    padding:39px;
+    margin-left:5px;
+    text-decoration:none;
+}
+.change:hover,
+.bottom {
+    height: 90px;
+    width: 180px;
+}
+.change:hover {
+    border-top-left-radius: 180px;
+    border-top-right-radius: 180px;
+}
+.change:hover
+{
+    background-color:black;
+    color:white;
+    opacity: 0.6;
+}
+.img-responsive:hover + .change {
+    background-color:black;
+    color:white;
+    border-top-left-radius: 180px;
+    border-top-right-radius: 180px;
+    opacity: 0.2;
+}
+.upload-field {
+    display:none
+}
