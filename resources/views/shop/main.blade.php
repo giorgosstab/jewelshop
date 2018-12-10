@@ -87,6 +87,15 @@
         {{ Html::script('assets/js/wow.min.js') }}
         {{ Html::script('assets/js/animate1.js') }}
 
+        <!--hidden input file-->
+        <script>
+            $(document).ready(function() {
+                $(".change").on('click', function(e){
+                    e.preventDefault();
+                    $(".upload-field:hidden").trigger('click');
+                });
+            });
+        </script>
         <!--animate fade messages-->
         <script>
             $("#message").fadeTo(4000, 1000).slideUp(500, function(){
