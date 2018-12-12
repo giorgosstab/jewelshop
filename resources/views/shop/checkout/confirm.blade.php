@@ -1,6 +1,6 @@
 @extends('shop.main')
 
-@section('title', '| Shopping Cart')
+@section('title', '| Thank You')
 
 @section('extra-css')
 
