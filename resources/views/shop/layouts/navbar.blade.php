@@ -23,8 +23,18 @@
             <div class="col-md-12">
                 <div class="list2">
                     <ul>
-                        <li><a href="#" data-toggle="modal" data-target="#myModalHorizontal"><img src="{{ asset('assets/images/padlock.png') }}" alt="" title=""></a></li>
-                        <li><a href="#"  data-toggle="modal" data-target="#myModalHorizontal2"><img src="{{ asset('assets/images/user2.png') }}" alt="" title=""></a></li>
+                        @guest
+                            <li><a href="{{ route('login') }}"><img src="{{ secure_asset('assets/images/padlock.png') }}" alt="" title="Login"></a></li>
+                            <li><a href="{{ route('register') }}"><img src="{{ secure_asset('assets/images/user2.png') }}" alt="" title="Register"></a></li>
+                        @else
+                            <li><a href="#"><img src="{{ secure_asset('assets/images/profile.png') }}" alt="" title=""></a></li>
+                            <li>
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" ><img src="{{ secure_asset('assets/images/logout.png') }}" alt="" title=""></a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </li>
+                        @endguest
                     </ul>
                 </div>
             </div>
