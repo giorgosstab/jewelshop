@@ -8,20 +8,21 @@
             </div>
             <!-- Modal Body -->
             <div class="modal-body">
-                <form class="form-horizontal">
+                {!! Form::open(array('route'=>'login','method' => 'POST')) !!}
+                    {{ csrf_field() }}
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <input type="email" class="form-control"  placeholder="Email"/>
+                            {{ Form::email('email', old('email'), array('class' => 'form-control', 'placeholder' => 'Email')) }}
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <input type="password" class="form-control"  placeholder="Password"/>
+                            {{ Form::password('password', null, array('class' => 'form-control', 'placeholder' => 'Password')) }}
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <button type="submit" class="btn btn-default button-1">Sign in</button>
+                            {!! Form::button('Sign in',array('class'=>'btn btn-default button-1', 'type' => 'submit')) !!}
                         </div>
                     </div>
                     <div class="form-group">
@@ -31,7 +32,7 @@
                             <div class="boder3"></div>
                         </div>
                     </div>
-                </form>
+                {!! Form::close() !!}
             </div>
             <!-- Modal Footer -->
         </div>
