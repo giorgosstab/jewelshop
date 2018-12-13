@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -11,7 +11,7 @@
         <meta name="author" content="{{ setting('site.title') }}">
         <link rel="shortcut icon" type="image/x-icon" href="{{ secure_asset('storage/'.jsonDecode(setting('site.favicon'))) }}">
 
-        <title>Jewelery E-shop @yield('title' , '')</title>
+        <title>{{ config('app.name', 'JewelShop') }} @yield('title' , '')</title>
         <!--all-->
         {{ Html::style('assets/css/mega-menu.css') }}
         {{ Html::style('assets/css/default.css') }}
