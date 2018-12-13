@@ -1,3 +1,4 @@
+@if(!request()->is('checkout'))
 <ul class="navbar-nav">
     @foreach($items as $item)
         @if($item->children->count())
@@ -65,9 +66,10 @@
         @endif
     @endforeach
 </ul>
+@endif
 @auth
     <ul class="navbar-nav float-lg-right">
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown d-none d-lg-block d-xl-block">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
                 <img class="img-responsive-small rounded-circle" src="{{ Voyager::image(Auth::user()->avatar) }}" /> {{ Auth::user()->name }}
             </a>
