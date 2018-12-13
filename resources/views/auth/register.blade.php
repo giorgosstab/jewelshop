@@ -72,7 +72,7 @@
             <div class="clearfix"> </div><br>
             <p class="mt-5 mb-3 text-muted text-center">© 2017 - {{ date('Y') }}</p>
             Email us if you have login problems :<a href="mailto:{{ setting('site.email') }}"> {{ setting('site.email') }} </a>
-            </form>
+            {{ Form::close() }}
             <div class="clearfix"> </div>
         </div>
         <div class="clearfix"></div>
