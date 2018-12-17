@@ -57,6 +57,9 @@
                 </div>
                 {!! Form::button('Sign in',array('class'=>'btn btn-default btn-lg button-1 btn-block', 'type' => 'submit')) !!}
                 <div class="clearfix"> </div><br>
+                <div style="font-size: 12px;">
+                    <b>If you did not receive email verification please renew <a href="{{ route('auth.activate.showResendForm') }}"><span style="color: #dfb859">here</span></a></b>
+                </div>
                 <div class="form-group">
                     <div class="boder3"></div>
                     <p>
