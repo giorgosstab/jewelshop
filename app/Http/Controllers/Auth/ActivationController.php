@@ -31,6 +31,11 @@ class ActivationController extends Controller
         $this->validateResendRequest($request);
 
         $user = User::where('email', $request->email)->first();
+
+        if($user->activation_token == null && $user->email_verified == true) {
+            return redirect()->route('login')->with('success_message','That account is activated!');
+        }
+
         event(new UserActivationEmail($user));
 
         return redirect()->route('login')->with('success_message','Email activation has been resend!');
