@@ -72,5 +72,7 @@ Route::group(['prefix' => 'admin'], function () {
 Auth::routes();
 
 Route::get('auth/activate', 'Auth\ActivationController@activate')->name('auth.activate');
+Route::get('auth/activate/resend', 'Auth\ActivationController@showResendForm')->name('auth.activate.showResendForm');
+Route::post('auth/activate/resend', 'Auth\ActivationController@resend')->name('auth.activate.resend');
 
 //Route::get('/home', 'HomeController@index')->name('home');
