@@ -11,7 +11,7 @@
     <section>
         <div class="inner-bg">
             <div class="inner-head wow fadeInDown">
-                <h3>Sign In</h3>
+                <h3>Reset Password</h3>
             </div>
         </div>
     </section>
