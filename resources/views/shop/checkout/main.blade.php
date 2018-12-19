@@ -150,8 +150,11 @@
                                                             <input id="address" type="text" name="address" placeholder="ADDRESS" value="{{ old('address') }}">
                                                         </div>
                                                         <div class="form-group">
-                                                            {{--<input type="text" name="email" placeholder="EMAIL ADDRESS" value="{{ old('email') }}">--}}
-                                                            <input type="text" name="email" placeholder="EMAIL ADDRESS" value="{{ auth()->user()->email }}">
+                                                            @if(auth()->user())
+                                                                <input type="text" name="email" placeholder="EMAIL ADDRESS" value="{{ auth()->user()->email }}">
+                                                            @else
+                                                                <input type="text" name="email" placeholder="EMAIL ADDRESS" value="{{ old('email') }}">
+                                                            @endif
                                                         </div>
                                                         <div class="form-group">
                                                             <input type="text" name="phone" placeholder="PHONE NUMBER" class="customphone" value="{{ old('phone') }}">
