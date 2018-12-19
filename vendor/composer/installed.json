@@ -6136,6 +6136,73 @@
         "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles"
     },
     {
+        "name": "timehunter/laravel-google-recaptcha-v3",
+        "version": "1.1.2",
+        "version_normalized": "1.1.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/RyanDaDeng/laravel-google-recaptcha-v3.git",
+            "reference": "b841f079954d38e6f0734672633fc69e377c224e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/RyanDaDeng/laravel-google-recaptcha-v3/zipball/b841f079954d38e6f0734672633fc69e377c224e",
+            "reference": "b841f079954d38e6f0734672633fc69e377c224e",
+            "shasum": ""
+        },
+        "require": {
+            "guzzlehttp/guzzle": "^6.2",
+            "php": ">=5.5"
+        },
+        "require-dev": {
+            "mockery/mockery": "^1.1",
+            "orchestra/testbench": "~3.0",
+            "phpunit/phpunit": "~7.0",
+            "sempro/phpunit-pretty-print": "^1.0"
+        },
+        "time": "2018-11-25T02:02:34+00:00",
+        "type": "library",
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "TimeHunter\\LaravelGoogleCaptchaV3\\Providers\\GoogleReCaptchaV3ServiceProvider"
+                ],
+                "aliases": {
+                    "GoogleReCaptchaV3": "TimeHunter\\LaravelGoogleCaptchaV3\\Facades\\GoogleReCaptchaV3"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "TimeHunter\\LaravelGoogleCaptchaV3\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ryan Deng",
+                "email": "ryandadeng@gmail.com",
+                "homepage": "https://ryandeng.com"
+            }
+        ],
+        "description": "Laravel 5.x library for reCAPTCHA v3",
+        "homepage": "https://github.com/RyanDaDeng/laravel-google-recaptcha-v3",
+        "keywords": [
+            "Google ReCaptcha",
+            "GoogleReCaptcha",
+            "Laravel reCAPTCHA",
+            "google recaptcha v3",
+            "laravel google recaptcha",
+            "laravel google recaptcha v3",
+            "recaptcha",
+            "recaptcha v3"
+        ]
+    },
+    {
         "name": "vlucas/phpdotenv",
         "version": "v2.5.1",
         "version_normalized": "2.5.1.0",

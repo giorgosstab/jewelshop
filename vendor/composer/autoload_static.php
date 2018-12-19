@@ -40,6 +40,7 @@ class ComposerStaticInit6dd3a9b3c5e8a54d46023c9ed512cbd0
         ),
         'T' => 
         array (
+            'TimeHunter\\LaravelGoogleCaptchaV3\\' => 34,
             'TijsVerkoyen\\CssToInlineStyles\\' => 31,
             'Tests\\' => 6,
             'TCG\\Voyager\\' => 12,
@@ -172,6 +173,10 @@ class ComposerStaticInit6dd3a9b3c5e8a54d46023c9ed512cbd0
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'TimeHunter\\LaravelGoogleCaptchaV3\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/timehunter/laravel-google-recaptcha-v3/src',
         ),
         'TijsVerkoyen\\CssToInlineStyles\\' => 
         array (
@@ -491,8 +496,10 @@ class ComposerStaticInit6dd3a9b3c5e8a54d46023c9ed512cbd0
         'App\\CategoryJewelProduct' => __DIR__ . '/../..' . '/app/CategoryJewelProduct.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Coupon' => __DIR__ . '/../..' . '/app/Coupon.php',
+        'App\\Events\\Auth\\UserActivationEmail' => __DIR__ . '/../..' . '/app/Events/Auth/UserActivationEmail.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AboutController' => __DIR__ . '/../..' . '/app/Http/Controllers/AboutController.php',
+        'App\\Http\\Controllers\\Auth\\ActivationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ActivationController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
@@ -518,6 +525,8 @@ class ComposerStaticInit6dd3a9b3c5e8a54d46023c9ed512cbd0
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\CheckoutRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CheckoutRequest.php',
+        'App\\Listeners\\Auth\\SendActivationEmail' => __DIR__ . '/../..' . '/app/Listeners/Auth/SendActivationEmail.php',
+        'App\\Mail\\Auth\\ActivationEmail' => __DIR__ . '/../..' . '/app/Mail/Auth/ActivationEmail.php',
         'App\\Product' => __DIR__ . '/../..' . '/app/Product.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -5044,6 +5053,16 @@ class ComposerStaticInit6dd3a9b3c5e8a54d46023c9ed512cbd0
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Property\\Property' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Property/Property.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
+        'TimeHunter\\LaravelGoogleCaptchaV3\\Configurations\\ReCaptchaConfigV3' => __DIR__ . '/..' . '/timehunter/laravel-google-recaptcha-v3/src/Configurations/ReCaptchaConfigV3.php',
+        'TimeHunter\\LaravelGoogleCaptchaV3\\Core\\CurlRequestClient' => __DIR__ . '/..' . '/timehunter/laravel-google-recaptcha-v3/src/Core/CurlRequestClient.php',
+        'TimeHunter\\LaravelGoogleCaptchaV3\\Core\\GoogleReCaptchaV3Response' => __DIR__ . '/..' . '/timehunter/laravel-google-recaptcha-v3/src/Core/GoogleReCaptchaV3Response.php',
+        'TimeHunter\\LaravelGoogleCaptchaV3\\Core\\GuzzleRequestClient' => __DIR__ . '/..' . '/timehunter/laravel-google-recaptcha-v3/src/Core/GuzzleRequestClient.php',
+        'TimeHunter\\LaravelGoogleCaptchaV3\\Facades\\GoogleReCaptchaV3' => __DIR__ . '/..' . '/timehunter/laravel-google-recaptcha-v3/src/Facades/GoogleReCaptchaV3.php',
+        'TimeHunter\\LaravelGoogleCaptchaV3\\GoogleReCaptchaV3' => __DIR__ . '/..' . '/timehunter/laravel-google-recaptcha-v3/src/GoogleReCaptchaV3.php',
+        'TimeHunter\\LaravelGoogleCaptchaV3\\Interfaces\\ReCaptchaConfigV3Interface' => __DIR__ . '/..' . '/timehunter/laravel-google-recaptcha-v3/src/Interfaces/ReCaptchaConfigV3Interface.php',
+        'TimeHunter\\LaravelGoogleCaptchaV3\\Interfaces\\RequestClientInterface' => __DIR__ . '/..' . '/timehunter/laravel-google-recaptcha-v3/src/Interfaces/RequestClientInterface.php',
+        'TimeHunter\\LaravelGoogleCaptchaV3\\Providers\\GoogleReCaptchaV3ServiceProvider' => __DIR__ . '/..' . '/timehunter/laravel-google-recaptcha-v3/src/Providers/GoogleReCaptchaV3ServiceProvider.php',
+        'TimeHunter\\LaravelGoogleCaptchaV3\\Validations\\GoogleReCaptchaValidationRule' => __DIR__ . '/..' . '/timehunter/laravel-google-recaptcha-v3/src/Validations/GoogleReCaptchaValidationRule.php',
         'TranslationsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/TranslationsTableSeeder.php',
         'UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UsersTableSeeder.php',
         'VoyagerDatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/VoyagerDatabaseSeeder.php',
