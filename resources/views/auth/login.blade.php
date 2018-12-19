@@ -89,22 +89,24 @@
                     <!--login-right-side-->
                     <div class="col-md-4 col-12">
                         <div class="blog-in">
-                            <div class="mb-4">
-                                <h3 class="h2 mb-3 font-weight-normal">As Guest</h3>
-                            </div>
-                            <div class="clearfix"> </div>
-                            <div class="mb-4">
-                                <h3 class="h5 mb-3 font-weight-normal"><b>Save time for now.</b></h3>
-                                <h3 class="h5 mb-3 font-weight-normal">You dont need account to check out.Buy us guest!</h3>
-                            </div>
-                            <div class="clearfix"> </div>
-                            <div class="mb-4 secure">
-                                <a href="{{ route('shop.checkout.guest') }}">
-                                    Continue as Guest <i class="fa fa-long-arrow-right"></i>
-                                </a>
-                            </div>
-                            <div class="clearfix"> </div><br>
-                            <div class="clearfix"> </div><br>
+                            @if(Cart::instance('default')->count() > 0)
+                                <div class="mb-4">
+                                    <h3 class="h2 mb-3 font-weight-normal">As Guest</h3>
+                                </div>
+                                <div class="clearfix"> </div>
+                                <div class="mb-4">
+                                    <h3 class="h5 mb-3 font-weight-normal"><b>Save time for now.</b></h3>
+                                    <h3 class="h5 mb-3 font-weight-normal">You dont need account to check out.Buy us guest!</h3>
+                                </div>
+                                <div class="clearfix"> </div>
+                                <div class="mb-4 secure">
+                                    <a href="{{ route('shop.checkout.guest') }}">
+                                        Continue as Guest <i class="fa fa-long-arrow-right"></i>
+                                    </a>
+                                </div>
+                                <div class="clearfix"> </div><br>
+                                <div class="clearfix"> </div><br>
+                            @endif
                             <div class="mb-4">
                                 <h3 class="h2 mb-3 font-weight-normal">New Customer</h3>
                             </div>
