@@ -99,7 +99,7 @@
                             </div>
                             <div class="clearfix"> </div>
                             <div class="mb-4 secure">
-                                <a href="{{ route('shop.checkout.index') }}">
+                                <a href="{{ route('shop.checkout.guest') }}">
                                     Continue as Guest <i class="fa fa-long-arrow-right"></i>
                                 </a>
                             </div>
