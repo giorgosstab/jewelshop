@@ -3,7 +3,7 @@
 @section('title', '| Sign Up')
 
 @section('extra-css')
-
+    {!!  GoogleReCaptchaV3::requireJs() !!}
 @endsection
 
 @section('content')
@@ -33,6 +33,7 @@
             <div class="clearfix"> </div>
             {!! Form::open(array('route'=>'register','method' => 'POST','class' => 'form-signup')) !!}
             {{ csrf_field() }}
+            {!!  GoogleReCaptchaV3::render('register') !!}
             <div class="text-center mb-4">
                 <h3 class="h3 mb-3 font-weight-normal">{{ __('Sign Un New Profile') }}</h3>
             </div>

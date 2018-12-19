@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Events\Auth\UserActivationEmail;
+use TimeHunter\LaravelGoogleCaptchaV3\Facades\GoogleReCaptchaV3;
 
 class RegisterController extends Controller
 {
@@ -75,6 +77,31 @@ class RegisterController extends Controller
     }
 
     /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        $captcha = GoogleReCaptchaV3::verifyResponse($request->input('g-recaptcha-response'));
+
+        if($captcha->isSuccess()) {
+            if($captcha->getScore() >= 0.5) {
+                event(new Registered($user = $this->create($request->all())));
+                return $this->registered($request, $user) ?: redirect($this->redirectPath());
+            } else {
+                return redirect()->route('register')->withErrors('Robot verification detect! Try later!');
+            }
+
+        } else {
+            return redirect()->route('register')->withErrors('Robot verification failed, please try again!');
+        }
+//        $this->guard()->login($user);
+    }
+
+    /**
      * The user has been registered.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -86,7 +113,7 @@ class RegisterController extends Controller
         //send email
         event(new UserActivationEmail($user));
 
-        $this->guard()->logout();
+//        $this->guard()->logout();
         return redirect()->route('login')->with('success_message','Registered successfully. Please check your email to activate your account!');
     }
 }
