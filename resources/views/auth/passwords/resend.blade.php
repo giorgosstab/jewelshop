@@ -3,7 +3,16 @@
 @section('title', '| Resend Activation')
 
 @section('extra-css')
-
+    <style>
+        .inner-bg {
+            background: url("{{ settingsAdminImageExist(setting('site.resend-code_parallax'),"resend_activation") }}") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            padding:150px 0
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -11,7 +20,7 @@
     <section>
         <div class="inner-bg">
             <div class="inner-head wow fadeInDown">
-                <h3>Sign In</h3>
+                <h3>Resend Activation</h3>
             </div>
         </div>
     </section>

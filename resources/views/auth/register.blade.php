@@ -4,6 +4,16 @@
 
 @section('extra-css')
     {!!  GoogleReCaptchaV3::requireJs() !!}
+    <style>
+        .inner-bg {
+            background: url("{{ settingsAdminImageExist(setting('site.register_parallax'),"register") }}") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            padding:150px 0
+        }
+    </style>
 @endsection
 
 @section('content')

@@ -3,7 +3,16 @@
 @section('title', '| Reset Password')
 
 @section('extra-css')
-
+    <style>
+        .inner-bg {
+            background: url("{{ settingsAdminImageExist(setting('site.reset-new_parallax'),"reset_password") }}") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            padding:150px 0
+        }
+    </style>
 @endsection
 
 @section('content')

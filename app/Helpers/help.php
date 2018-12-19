@@ -29,6 +29,18 @@ function settingsAdminImageExist($path, $page) {
     if($page === "contact"){
         return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/bg3.jpg');
     }
+    if($page === "register"){
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/bg3.jpg');
+    }
+    if($page === "login"){
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/bg1.jpg');
+    }
+    if($page === "reset_password"){
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/blog-top.jpg');
+    }
+    if($page === "resend_activation"){
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/blog-top.jpg');
+    }
 }
 
 function jsonDecode($json_string) {
