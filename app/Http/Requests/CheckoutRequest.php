@@ -24,11 +24,11 @@ class CheckoutRequest extends FormRequest
     public function rules()
     {
 
-//        $emailValidation = auth()->user() ? 'required|email' : 'required|email|unique:users';
+        $emailValidation = auth()->user() ? 'required|email|min:10|max:50' : 'required|email|min:10|max:50|unique:users';
         return [
             'fname' => 'required|regex:/^[a-zA-Z]+$/u|min:3|max:15',
             'lname' => 'required|regex:/^[a-zA-Z]+$/u|min:5|max:20',
-            'email' => 'required|email',
+            'email' => $emailValidation,
             'address' => 'required|regex:/^[A-Za-z0-9 ]+$/u|min:5|max:45',
             'city' => 'required|regex:/^[a-zA-Z]+$/u|min:5|max:20',
             'zip_code' => 'required|numeric|min:10000|max:99999',
@@ -74,6 +74,9 @@ class CheckoutRequest extends FormRequest
 
             'email.required' => 'The e-mail field is required.',
             'email.email' => 'E-mail format must be like this email@example.com',
+            'email.min' => 'Email must be at least 10 characters.',
+            'email.max' => 'Email must be at most 50 characters.',
+            'email.unique' => 'You already have an account with this email address.Please <strong style="color:#FEAF20">'. link_to(url('login'), '<login here>') .' </strong>to continue',
 
             'address.required' => 'The address field is required.',
             'address.regex' => 'Address must be only characters and numbers.',
