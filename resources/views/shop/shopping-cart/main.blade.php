@@ -74,7 +74,7 @@
                                         <tr>
                                             <td class="text-center">
                                                 <a href="{{ route('shop.products.show', $item->model->slug) }}">
-                                                    <img  src="{{ asset('assets/images/products/thums/small-'.$item->model->slug.'.jpg') }}" alt="" title="" class="img-fluid">
+                                                    <img  src="{{ Voyager::image($item->model->thumbnail('small')) }}" width="110" alt="" title="" class="img-fluid">
                                                 </a>
                                             </td>
                                             <td class="product-name">
@@ -185,7 +185,7 @@
                                             <tr>
                                                 <td colspan="2" class="text-center">
                                                     <a href="{{ route('shop.products.show', $item->model->slug) }}">
-                                                        <img  src="{{ asset('assets/images/products/'.$item->model->slug.'.jpg') }}" alt="" title="" class="img-fluid">
+                                                        <img  src="{{ Voyager::image($item->model->thumbnail('medium')) }}" alt="" title="" class="img-fluid">
                                                     </a>
                                                 </td>
                                             </tr>
@@ -373,7 +373,7 @@
                                     <tr>
                                         <td class="text-center">
                                             <a href="{{ route('shop.products.show', $item->model->slug) }}">
-                                                <img  src="assets/images/products/checkout.jpg" alt="" title="" class="img-fluid">
+                                                <img  src="{{ Voyager::image($item->model->thumbnail('small')) }}" width="150" alt="" title="" class="img-fluid">
                                             </a>
                                         </td>
                                         <td class="product-name">
@@ -412,7 +412,7 @@
                                     <tr>
                                         <td colspan="2" class="text-center">
                                             <a href="{{ route('shop.products.show', $item->model->slug) }}">
-                                                <img  src="assets/images/products/checkout.jpg" alt="" title="" class="img-fluid">
+                                                <img  src="{{ Voyager::image($item->model->thumbnail('medium')) }}" alt="" title="" class="img-fluid">
                                             </a>
                                         </td>
                                     </tr>
