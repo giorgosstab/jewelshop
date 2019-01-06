@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Voyager;
 
 use App\CategoryJewel;
 use App\CategoryJewelProduct;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use TCG\Voyager\Database\Schema\SchemaManager;
@@ -210,7 +211,10 @@ class ProductsController extends VoyagerBaseController
             //no parent category found
         }
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories'));
+        $product = Product::find($id);
+        $categoriesForProduct = $product->categoriesJewels()->get();
+
+        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories', 'categoriesForProduct'));
     }
 
     // POST BR(E)AD
@@ -242,14 +246,8 @@ class ProductsController extends VoyagerBaseController
 
             CategoryJewelProduct::where('product_id', $id)->delete();
 
-            if($request->categoryJewel) {
-                foreach ($request->categoryJewel as $category) {
-                    CategoryJewelProduct::create([
-                        'product_id' => $id,
-                        'category_jewel_id' => $category,
-                    ]);
-                }
-            }
+            //re-insert if there's at least one category checked
+            $this->updateProductCategories($request, $id);
 
             return redirect()
                 ->route("voyager.{$dataType->slug}.index")
@@ -304,9 +302,10 @@ class ProductsController extends VoyagerBaseController
 
         $subcategories = new CategoryJewel;
         $allCategories = $subcategories->getCategories();
+        $categoriesForProduct = collect([]);
 
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories'));
+        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories', 'categoriesForProduct'));
     }
 
 
@@ -331,14 +330,7 @@ class ProductsController extends VoyagerBaseController
 
             event(new BreadDataAdded($dataType, $data));
 
-            if($request->categoryJewel) {
-                foreach ($request->categoryJewel as $category) {
-                    CategoryJewelProduct::create([
-                        'product_id' => $data->id,
-                        'category_jewel_id' => $category,
-                    ]);
-                }
-            }
+            $this->updateProductCategories($request, $data->id);
 
             if ($request->ajax()) {
                 return response()->json(['success' => true, 'data' => $data]);
@@ -524,6 +516,17 @@ class ProductsController extends VoyagerBaseController
             $i = $model->findOrFail($item->id);
             $i->$column = ($key + 1);
             $i->save();
+        }
+    }
+
+    protected function updateProductCategories(Request $request, $id){
+        if($request->categoryJewel) {
+            foreach ($request->categoryJewel as $category) {
+                CategoryJewelProduct::create([
+                    'product_id' => $id,
+                    'category_jewel_id' => $category,
+                ]);
+            }
         }
     }
 }
