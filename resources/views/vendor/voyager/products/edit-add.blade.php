@@ -161,7 +161,7 @@
                                                     <li>
                                                         <div class="form-check">
                                                             <label>
-                                                                <input value="{{ $subCate->id }}" type="checkbox" name="categoryJewel[]"> <span class="label-text">{{ $subCate->name }}</span>
+                                                                <input value="{{ $subCate->id }}" type="checkbox" name="categoryJewel[]" {{ $categoriesForProduct->contains($subCate) ? 'checked' : '' }}> <span class="label-text">{{ $subCate->name }}</span>
                                                             </label>
                                                         </div>
                                                     </li>
@@ -170,7 +170,7 @@
                                                             @foreach($subCate->subCategory as $firstNestedSub)
                                                                 <div class="form-check">
                                                                     <label>
-                                                                        <input value="{{ $firstNestedSub->id }}" type="checkbox" name="categoryJewel[]"> <span class="label-text">{{ $firstNestedSub->name }}</span>
+                                                                        <input value="{{ $firstNestedSub->id }}" type="checkbox" name="categoryJewel[]" {{ $categoriesForProduct->contains($firstNestedSub) ? 'checked' : '' }}> <span class="label-text">{{ $firstNestedSub->name }}</span>
                                                                     </label>
                                                                 </div>
                                                             @endforeach
