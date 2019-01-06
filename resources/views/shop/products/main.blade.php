@@ -288,11 +288,7 @@
                                             </div>
                                         </div>
                                         <div>
-                                            @if($product->image)
-                                                <img  src="{{ asset('storage/'.$product->image) }}" alt="" title="" class="img-fluid img-boder-css">
-                                            @else
-                                                <img  src="{{ asset('storage/products/no_image.jpg') }}" alt="" title="" class="img-fluid img-boder-css">
-                                            @endif
+                                            <img  src="{{ productImage($product->image) }}" alt="" title="" class="img-fluid img-boder-css">
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
