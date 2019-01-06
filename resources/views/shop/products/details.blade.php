@@ -175,8 +175,10 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="share-icon"> <i class="fa fa-share-alt" aria-hidden="true"></i><br>
-                            SHARE </div>
+                        <div class="share-icon">
+                            <i class="fa fa-share-alt" aria-hidden="true"></i><br>
+                            SHARE
+                        </div>
                         <div class="socialmedia">
                             <ul>
                                 <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
