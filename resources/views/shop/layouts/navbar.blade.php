@@ -56,7 +56,7 @@
                             </div>
                             <div class=" dropdown">
                                 <div class="cart-btn ">
-                                    <a href="#" class="button adc"   id="MenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">€{{ Cart::total() }}
+                                    <a href="#" class="button adc"   id="MenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">€{{ presentPrice(Cart::total()) }}
                                         @if(Cart::instance('default')->count() > 0)
                                             <span class="badge badge-warning">{{ Cart::instance('default')->count() }}</span>
                                         @endif
@@ -75,10 +75,10 @@
                                             @foreach(Cart::content() as $item)
                                                 <li>
                                                     <div class="row">
-                                                        <div class="col-3">
-                                                            <img src="{{ asset('assets/images/small-1.jpg') }}" alt="" title="">
+                                                        <div class="col-4">
+                                                            <img  src="{{ Voyager::image($item->model->thumbnail('small')) }}" width="75" alt="" title="">
                                                         </div>
-                                                        <div class="col-9">
+                                                        <div class="col-8">
                                                             <p>{{ $item->model->name }}</p>
                                                             <span>€{{ $item->model->presentPrice() }}</span><br>
                                                             <span>Quantity: {{ $item->qty }}</span>
