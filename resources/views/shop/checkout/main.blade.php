@@ -42,8 +42,8 @@
                                 @foreach(Cart::content() as $item)
                                     <div class="check-img wow fadeIn">
                                         <div class="img-1">
-                                            <img  src="assets/images/products/check-out-img.jpg" alt="" title="" class="img-fluid">
-                                            <span class="badge badge-warning">{{ $item->qty }}x</span>
+                                            <span class="badge badge-warning badge-count">{{ $item->qty }}x</span>
+                                            <img src="{{ Voyager::image($item->model->thumbnail('small')) }}" alt="" title="" class="img-fluid">
                                         </div>
                                         <div class="title2">
                                             <div class="row m-0">
