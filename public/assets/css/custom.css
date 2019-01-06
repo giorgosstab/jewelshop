@@ -446,3 +446,19 @@ input.error, select.error ~ strong{
     font-size: 12px;
     color: #777;
 }
+
+/*________________ badge counter for checkout  _______________ */
+.badge-count{
+    position: absolute;
+    background: #dfb859;
+    height:2rem;
+    top:1rem;
+    right:1.5rem;
+    width:2rem;
+    text-align: center;
+    line-height: 2rem;;
+    font-size: 1rem;
+    border-radius: 100%;
+    color:black;
+    border:1px solid #dfb859;
+}
