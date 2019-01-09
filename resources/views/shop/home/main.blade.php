@@ -204,14 +204,21 @@
             <div class="clearfix"></div>
             <div class="img-div3">
                 <div class="row">
-                    <div class="col-md-6 col-sm-6 wow fadeInLeft"> <a href="product.html" class="right-img">
-                            <div><img src="assets/images/products/2.jpg" class="img-fluid grayscale" alt="" title=""></div>
+                    <div class="col-md-6 col-sm-6 wow fadeInLeft">
+                        <a href="{{ route('shop.products.index') }}" class="right-img">
+                            <div>
+                                <img src="{{ secure_asset('assets/images/products/1.jpg') }}" class="img-fluid grayscale" alt="" title="">
+                            </div>
                         </a>
                         <div class="clearfix"></div>
                     </div>
-                    <div class="col-md-6 col-sm-6 wow fadeInRight"> <a href="product.html" class="right-img">
-                            <div><img src="assets/images/products/1.jpg" class="img-fluid grayscale" alt="" title=""></div>
-                        </a> </div>
+                    <div class="col-md-6 col-sm-6 wow fadeInRight">
+                        <a href="{{ route('shop.products.index') }}" class="right-img">
+                            <div>
+                                <img src="{{ secure_asset('assets/images/products/2.jpg') }}" class="img-fluid grayscale" alt="" title="">
+                            </div>
+                        </a>
+                    </div>
                 </div>
                 <div class="clearfix"></div>
             </div>
