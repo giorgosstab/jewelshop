@@ -51,7 +51,7 @@
                                                     <div class="product-name">Diamond ring - {{ $item->model->name }}</div>
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12">
-                                                    <h2 class="rate-css2">€{{ number_format($item->subtotal,2) }}</h2>
+                                                    <h2 class="rate-css2">€{{ $item->model->presentPrice() }}</h2>
                                                 </div>
                                             </div>
                                             <div class="clearfix"></div>
@@ -65,7 +65,7 @@
                         <div class="col-md-12 wow fadeIn">
                             <hr>
                             <div class="pull-left text-color">SUBTOTAL</div>
-                            <div class="pull-right"><strong>€{{ number_format(Cart::subtotal(), 2) }}</strong></div>
+                            <div class="pull-right"><strong>€{{ presentPrice($item->subtotal) }}</strong></div>
                             <div class="clearfix"> </div>
                             <hr>
                             @if(session()->has('coupon'))
@@ -77,24 +77,24 @@
                                         <a href="#" onclick="document.getElementById('deleteDiscount').submit()"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                     {!! Form::close() !!}
 
-                                <div class="pull-right"><strong> - €{{ number_format($discount, 2) }} </strong></div>
+                                <div class="pull-right"><strong> - €{{ presentPrice($discount) }} </strong></div>
                                 <div class="clearfix"> </div>
                                 <hr>
                                 <div class="clearfix"> </div>
                                 <div class="pull-left text-color"> New Discount Subtotal </div>
-                                <div class="pull-right"><strong> €{{ number_format($newSubTotal, 2) }} </strong></div>
+                                <div class="pull-right"><strong> €{{ presentPrice($newSubTotal) }} </strong></div>
                                 <div class="clearfix"> </div>
                                 <hr>
                             @endif
 
                             <div class="clearfix"> </div>
                             <div class="pull-left text-color"> TAX</div>
-                            <div class="pull-right"><strong> €{{ number_format($newTax, 2) }} </strong></div>
+                            <div class="pull-right"><strong> €{{ presentPrice($newTax) }} </strong></div>
                             <div class="clearfix"> </div>
                             <hr>
                             <div class="clearfix"> </div>
                             <div class="pull-left text-color"> <strong>Total</strong> </div>
-                            <div class="pull-right"><strong> €{{ number_format($newTotal, 2) }} </strong></div>
+                            <div class="pull-right"><strong> €{{ presentPrice($newTotal) }} </strong></div>
                             <div class="clearfix"> </div>
                             <hr>
                             <br>

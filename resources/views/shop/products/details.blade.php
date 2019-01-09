@@ -163,7 +163,7 @@
                         <div class="clearfix">&nbsp;</div>
                         <div class="price-2">
                             <ul>
-                                <li class="tab1">PRICE: <span>€{{ $product->presentPrice() }}</span></li>
+                                <li class="tab1">PRICE: <span>€{{ presentPrice($product->price) }}</span></li>
                                 <li>
                                     {!! Form::open(array('route'=>'shop.shopping-cart.store','method' => 'POST','id' => 'addToCart')) !!}
                                     {{ csrf_field() }}

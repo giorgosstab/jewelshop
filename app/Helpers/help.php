@@ -6,7 +6,8 @@
  * Time: 6:03 AM
  */
 function presentPrice($price) {
-    return number_format($price, 2);
+    return number_format($price / 100,2,'.',',');
+
 }
 
 function productImage($path) {

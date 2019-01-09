@@ -13,7 +13,7 @@ class Product extends Model
         return $this->belongsToMany('App\CategoryJewel');
     }
     public function presentPrice() {
-        return number_format($this->price, 2);
+        return number_format($this->price / 100,2,'.',',');
     }
     public function presentPriceDeals() {
         if($this->secondprice == null) {

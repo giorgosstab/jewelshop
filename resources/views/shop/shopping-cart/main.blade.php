@@ -110,7 +110,7 @@
                                                     {!! Form::close() !!}
                                                 </p>
                                             </td>
-                                            <td><div class="cost">€{{ number_format($item->subtotal,2) }}</div></td>
+                                            <td><div class="cost">€{{ presentPrice($item->subtotal) }}</div></td>
                                         </tr>
                                     @endforeach
                                 @else
@@ -228,7 +228,7 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td colspan="2"><div class="cost">€{{ number_format($item->subtotal,2) }}</div></td>
+                                                <td colspan="2"><div class="cost">€{{ presentPrice($item->subtotal) }}</div></td>
                                             </tr>
                                         </table>
                                     @endforeach
@@ -398,7 +398,7 @@
                                                 {!! Form::close() !!}
                                             </p>
                                         </td>
-                                        <td><div class="cost">€{{ number_format($item->subtotal,2) }}</div></td>
+                                        <td><div class="cost">€{{ presentPrice($item->subtotal) }}</div></td>
                                     </tr>
                                 @endforeach
                             @endif
@@ -445,7 +445,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2"><div class="cost">€{{ number_format($item->subtotal,2) }}</div></td>
+                                        <td colspan="2"><div class="cost">€{{ presentPrice($item->subtotal) }}</div></td>
                                     </tr>
                                 </table>
                             @endforeach
