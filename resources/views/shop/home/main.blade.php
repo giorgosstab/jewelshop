@@ -325,7 +325,8 @@
                             @foreach($latestProducts as $product)
                                 <li class="wow fadeIn">
                                     <div class="grid">
-                                        <figure class="effect-apollo"> <img alt="" title="" src="{{ Voyager::image($product->thumbnail('medium')) }}" />
+                                        <figure class="effect-apollo">
+                                            <img alt="" title="" src="@if(Voyager::image($product->thumbnail('medium'))){{ Voyager::image($product->thumbnail('medium')) }}@else{{ secure_asset('storage/products/no_image.jpg') }}@endif" />
                                             <figcaption>
                                                 <h2>Jewelry <span>Store</span></h2>
                                                 <p>
