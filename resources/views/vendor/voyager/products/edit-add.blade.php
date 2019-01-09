@@ -120,7 +120,7 @@
                             <legend class="text-{{isset($row->details->legend->align) ? $row->details->legend->align : 'center'}}" style="background-color: {{isset($row->details->legend->bgcolor) ? $row->details->legend->bgcolor : '#f0f0f0'}};padding: 5px;">{{$row->details->legend->text}}</legend>
                         @endif
 
-                        @if($row->display_name == 'Name')
+                        @if($row->display_name == 'Name' || $row->display_name == 'name')
                             <div class="panel">
                                 @if (count($errors) > 0)
                                     <div class="alert alert-danger">
@@ -162,7 +162,7 @@
                             </div>
                         @endif
 
-                        @if($row->display_name == 'Description')
+                        @if($row->display_name == 'Description' || $row->display_name == 'description')
                             <div class="panel">
                                 @if (isset($row->details->formfields_custom))
                                     @include('voyager::formfields.custom.' . $row->details->formfields_custom)
@@ -251,7 +251,7 @@
                                 <legend class="text-{{isset($row->details->legend->align) ? $row->details->legend->align : 'center'}}" style="background-color: {{isset($row->details->legend->bgcolor) ? $row->details->legend->bgcolor : '#f0f0f0'}};padding: 5px;">{{$row->details->legend->text}}</legend>
                             @endif
 
-                            @if($row->display_name == 'Slug')
+                            @if($row->display_name == 'Slug' || $row->display_name == 'slug')
                                 @if (isset($row->details->formfields_custom))
                                     @include('voyager::formfields.custom.' . $row->details->formfields_custom)
                                 @else
@@ -273,7 +273,7 @@
                                     </div>
                                 @endif
                             @endif
-                            @if($row->display_name == 'Sku')
+                            @if($row->display_name == 'Sku' || $row->display_name == 'sku')
                                 @if (isset($row->details->formfields_custom))
                                     @include('voyager::formfields.custom.' . $row->details->formfields_custom)
                                 @else
@@ -295,7 +295,7 @@
                                     </div>
                                 @endif
                             @endif
-                            @if($row->display_name == 'Price')
+                            @if($row->display_name == 'Price' || $row->display_name == 'price')
                                 @if (isset($row->details->formfields_custom))
                                     @include('voyager::formfields.custom.' . $row->details->formfields_custom)
                                 @else
@@ -317,7 +317,7 @@
                                     </div>
                                 @endif
                             @endif
-                            @if($row->display_name == 'Secondprice')
+                            @if($row->display_name == 'Secondprice' || $row->display_name == 'secondprice')
                                 @if (isset($row->details->formfields_custom))
                                     @include('voyager::formfields.custom.' . $row->details->formfields_custom)
                                 @else
@@ -358,7 +358,7 @@
                                 <legend class="text-{{isset($row->details->legend->align) ? $row->details->legend->align : 'center'}}" style="background-color: {{isset($row->details->legend->bgcolor) ? $row->details->legend->bgcolor : '#f0f0f0'}};padding: 5px;">{{$row->details->legend->text}}</legend>
                             @endif
 
-                            @if($row->display_name == 'Bestof')
+                            @if($row->display_name == 'Bestof' || $row->display_name == 'bestof')
                                 @if (isset($row->details->formfields_custom))
                                     @include('voyager::formfields.custom.' . $row->details->formfields_custom)
                                 @else
@@ -380,7 +380,7 @@
                                     </div>
                                 @endif
                             @endif
-                            @if($row->display_name == 'Offer')
+                            @if($row->display_name == 'Offer' || $row->display_name == 'offer')
                                 @if (isset($row->details->formfields_custom))
                                     @include('voyager::formfields.custom.' . $row->details->formfields_custom)
                                 @else
@@ -402,7 +402,7 @@
                                     </div>
                                 @endif
                             @endif
-                            @if($row->display_name == 'Hotdeals')
+                            @if($row->display_name == 'Hotdeals' || $row->display_name == 'hotdeals')
                                 @if (isset($row->details->formfields_custom))
                                     @include('voyager::formfields.custom.' . $row->details->formfields_custom)
                                 @else
@@ -443,7 +443,7 @@
                                 <legend class="text-{{isset($row->details->legend->align) ? $row->details->legend->align : 'center'}}" style="background-color: {{isset($row->details->legend->bgcolor) ? $row->details->legend->bgcolor : '#f0f0f0'}};padding: 5px;">{{$row->details->legend->text}}</legend>
                             @endif
 
-                            @if($row->display_name == 'image')
+                            @if($row->display_name == 'Image' || $row->display_name == 'image')
                                 @if (isset($row->details->formfields_custom))
                                     @include('voyager::formfields.custom.' . $row->details->formfields_custom)
                                 @else
@@ -465,7 +465,7 @@
                                     </div>
                                 @endif
                             @endif
-                            @if($row->display_name == 'Images')
+                            @if($row->display_name == 'Images' || $row->display_name == 'images')
                                 @if (isset($row->details->formfields_custom))
                                     @include('voyager::formfields.custom.' . $row->details->formfields_custom)
                                 @else
@@ -634,6 +634,9 @@
                 $('#confirm_delete_modal').modal('hide');
             });
             $('[data-toggle="tooltip"]').tooltip();
+
+            var price = $('input[name="price"]').val();
+            $('input[name="price"]').val(price / 100);
         });
     </script>
 @stop
