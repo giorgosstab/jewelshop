@@ -268,7 +268,7 @@
                                     @if($productsPagination <= 20)
                                         <br><br><br>
                                     @else
-                                        {{ $products->appends(request()->input())->links() }}
+                                        {{ $products->appends(request()->input())->render('pagination::shopPagination') }}
                                     @endif
                                 </div>
                             </div>
@@ -336,7 +336,7 @@
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-6 bread">
                                 <div class="breadcrumbs">
-                                    {{ $products->appends(request()->input())->links() }}
+                                    {{ $products->appends(request()->input())->render('pagination::shopPagination') }}
                                 </div>
                             </div>
                         </div>
