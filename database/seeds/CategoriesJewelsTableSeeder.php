@@ -15,17 +15,17 @@ class CategoriesJewelsTableSeeder extends Seeder
     {
         $now = Carbon::now()->toDateTimeString();
         CategoryJewel::insert([
-            ['name' => 'Rings', 'slug' => 'rings', 'created_at' => $now, 'updated_at' => $now],
-            ['name' => 'Necklaces', 'slug' => 'necklaces', 'created_at' => $now, 'updated_at' => $now],
-            ['name' => 'Watches', 'slug' => 'watches', 'created_at' => $now, 'updated_at' => $now],
-            ['name' => 'Earrings', 'slug' => 'earrings', 'created_at' => $now, 'updated_at' => $now],
-            ['name' => 'Bracelets', 'slug' => 'bracelets', 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Rings', 'slug' => 'rings', 'image' => 'category-jewels/dummy/ring.jpg', 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Necklaces', 'slug' => 'necklaces', 'image' => 'category-jewels/dummy/necklace.jpg', 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Watches', 'slug' => 'watches', 'image' => 'category-jewels/dummy/watch.jpg', 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Earrings', 'slug' => 'earrings', 'image' => 'category-jewels/dummy/earring.jpg', 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Bracelets', 'slug' => 'bracelets', 'image' => 'category-jewels/dummy/bracelet.jpg', 'created_at' => $now, 'updated_at' => $now],
 
-            ['name' => 'Hairpins', 'slug' => 'hairpins', 'created_at' => $now, 'updated_at' => $now],
-            ['name' => 'Chatelaine', 'slug' => 'chatelaine', 'created_at' => $now, 'updated_at' => $now],
-            ['name' => 'Anklet', 'slug' => 'anklet', 'created_at' => $now, 'updated_at' => $now],
-            ['name' => 'Cuff Links', 'slug' => 'cuff-links', 'created_at' => $now, 'updated_at' => $now],
-            ['name' => 'Crosses', 'slug' => 'crosses', 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Hairpins', 'slug' => 'hairpins', 'image' => 'category-jewels/dummy/hairpin.jpg', 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Chatelaine', 'slug' => 'chatelaine', 'image' => 'category-jewels/dummy/chatelaine.jpg', 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Anklet', 'slug' => 'anklet', 'image' => 'category-jewels/dummy/anklet.jpg', 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Cuff Links', 'slug' => 'cuff-links', 'image' => 'category-jewels/dummy/cuff-link.jpg', 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Crosses', 'slug' => 'crosses', 'image' => 'category-jewels/dummy/cross.jpg', 'created_at' => $now, 'updated_at' => $now],
         ]);
 
         //rings
