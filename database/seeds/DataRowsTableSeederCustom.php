@@ -406,7 +406,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'edit'         => 0,
                 'add'          => 0,
                 'delete'       => 0,
-                'details'      => [],
+                'details'      => null,
                 'order'        => 6,
             ])->save();
         }
@@ -503,8 +503,8 @@ class DataRowsTableSeederCustom extends Seeder
                 'delete'       => 1,
                 'details'      => [
                     "slugify" => [
-                        "origin"=> [ "name"],
-                        "forceUpdate"=> [ false]
+                        "origin" => "name",
+                        "forceUpdate" => false
                     ],
                     "validation" => [
                         "rule" => [
@@ -694,8 +694,8 @@ class DataRowsTableSeederCustom extends Seeder
                 'delete'       => 1,
                 'details'      => [
                     "slugify" => [
-                        "origin"=> [ "name"],
-                        "forceUpdate"=> [ false]
+                        "origin" => "name",
+                        "forceUpdate" => false
                     ],
                     "validation" => [
                         "rule" => [
