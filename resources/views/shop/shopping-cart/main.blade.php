@@ -74,7 +74,11 @@
                                         <tr>
                                             <td class="text-center">
                                                 <a href="{{ route('shop.products.show', $item->model->slug) }}">
-                                                    <img  src="{{ Voyager::image($item->model->thumbnail('small')) }}" width="110" alt="" title="" class="img-fluid">
+                                                    @if(Voyager::image($item->model->thumbnail('small')) && file_exists(Voyager::image($item->model->thumbnail('small'))))
+                                                        <img src="{{ Voyager::image($item->model->thumbnail('small')) }}" class="img-fluid" alt="{{ $item->model->name }}" title="{{ $item->model->name }}" width="110">
+                                                    @else
+                                                        <img src="{{ productImage($item->model->image) }}" class="img-fluid"alt="{{ $item->model->name }}" title="{{ $item->model->name }}" width="110">
+                                                    @endif
                                                 </a>
                                             </td>
                                             <td class="product-name">
@@ -99,13 +103,13 @@
                                             <td class="remove-css text-center">
                                                 <p>
                                                     {!! Form::open(['method' => 'POST','route' => ['shop.shopping-cart.destroy',$item->rowId], 'id' => 'deleteCart'.$item->model->id]) !!}
-                                                        {{ csrf_field() }}
-                                                        {{ method_field('DELETE') }}
-                                                        <a href="#" onclick="document.getElementById('deleteCart{{ $item->model->id }}').submit()"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('DELETE') }}
+                                                    <a href="#" onclick="document.getElementById('deleteCart{{ $item->model->id }}').submit()"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                     {!! Form::close() !!}
                                                     &nbsp &nbsp
                                                     {!! Form::open(['method' => 'POST','route' => ['shop.shopping-cart.saveForLater',$item->rowId], 'id' => 'saveForLater'.$item->model->id]) !!}
-                                                        {{ csrf_field() }}
+                                                    {{ csrf_field() }}
                                                     <a href="#" onclick="document.getElementById('saveForLater{{ $item->model->id }}').submit()"><i class="fa fa-save" aria-hidden="true"></i></a>
                                                     {!! Form::close() !!}
                                                 </p>
@@ -162,8 +166,8 @@
                                 </div>
                             </div>
                             <div class="clearfix"></div><br>
-                        @endif
-                        <!--Table products Shopping Cart small devices-->
+                    @endif
+                    <!--Table products Shopping Cart small devices-->
                         <div class="table-responsive table-none2 wow fadeIn">
                             <div class="cat-div  wow fadeIn">
                                 <h2>
@@ -185,7 +189,11 @@
                                             <tr>
                                                 <td colspan="2" class="text-center">
                                                     <a href="{{ route('shop.products.show', $item->model->slug) }}">
-                                                        <img  src="{{ Voyager::image($item->model->thumbnail('medium')) }}" alt="" title="" class="img-fluid">
+                                                        @if(Voyager::image($item->model->thumbnail('medium')) && file_exists(Voyager::image($item->model->thumbnail('medium'))))
+                                                            <img src="{{ Voyager::image($item->model->thumbnail('medium')) }}" class="img-fluid" alt="{{ $item->model->name }}" title="{{ $item->model->name }}" >
+                                                        @else
+                                                            <img src="{{ productImage($item->model->image) }}" class="img-fluid"alt="{{ $item->model->name }}" title="{{ $item->model->name }}" >
+                                                        @endif
                                                     </a>
                                                 </td>
                                             </tr>
@@ -215,14 +223,14 @@
                                                 <td class="text-center">
                                                     <p>
                                                         {!! Form::open(['method' => 'POST','route' => ['shop.shopping-cart.destroy',$item->rowId], 'id' => 'deleteCartMin'.$item->model->id]) !!}
-                                                            {{ csrf_field() }}
-                                                            {{ method_field('DELETE') }}
-                                                            <a href="#" onclick="document.getElementById('deleteCartMin{{ $item->model->id }}').submit()"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
+                                                        <a href="#" onclick="document.getElementById('deleteCartMin{{ $item->model->id }}').submit()"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                         {!! Form::close() !!}
                                                         &nbsp &nbsp
                                                         {!! Form::open(['method' => 'POST','route' => ['shop.shopping-cart.saveForLater',$item->rowId], 'id' => 'saveForLaterMin'.$item->model->id]) !!}
-                                                            {{ csrf_field() }}
-                                                            <a href="#" onclick="document.getElementById('saveForLaterMin{{ $item->model->id }}').submit()"><i class="fa fa-save" aria-hidden="true"></i></a>
+                                                        {{ csrf_field() }}
+                                                        <a href="#" onclick="document.getElementById('saveForLaterMin{{ $item->model->id }}').submit()"><i class="fa fa-save" aria-hidden="true"></i></a>
                                                         {!! Form::close() !!}
                                                     </p>
                                                 </td>
@@ -275,73 +283,73 @@
             @endif
             @if(Cart::count() > 0)
             <!--Order Summary/coupon/Instructions-->
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="cat-div  wow fadeIn">
-                        <h2>instructions for seller</h2>
-                        <div class="clearfix"></div><br>
-                        <div class="row">
-                            <div class="col-md-10 shipping col-sm-10 col-xs-12">
-                                <h4>If you have some information for the seller you can leave them in the box below</h4>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div><br>
-                        <div class="row">
-                            <div class="discount-div">
-                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <textarea name="instructions" rows="5" cols=55" placeholder="Write something here..."></textarea>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="cat-div  wow fadeIn">
+                            <h2>instructions for seller</h2>
+                            <div class="clearfix"></div><br>
+                            <div class="row">
+                                <div class="col-md-10 shipping col-sm-10 col-xs-12">
+                                    <h4>If you have some information for the seller you can leave them in the box below</h4>
                                 </div>
                             </div>
+                            <div class="clearfix"></div><br>
+                            <div class="row">
+                                <div class="discount-div">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <textarea name="instructions" rows="5" cols=55" placeholder="Write something here..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
                         </div>
-                        <div class="clearfix"></div>
                     </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="cat-div  wow fadeIn">
-                        <h2>Order summary</h2>
-                        <div class="clearfix"></div><br>
-                        <div class="row">
-                            <div class="col-md-10 shipping col-sm-10 col-xs-12">
-                                <h4>Shipping and additional costs are calculated based on values you have entered.</h4>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="cat-div  wow fadeIn">
+                            <h2>Order summary</h2>
+                            <div class="clearfix"></div><br>
+                            <div class="row">
+                                <div class="col-md-10 shipping col-sm-10 col-xs-12">
+                                    <h4>Shipping and additional costs are calculated based on values you have entered.</h4>
+                                </div>
                             </div>
+                            <div class="clearfix"></div><br><br>
+                            <h2>
+                                <div class="order-summary">
+                                    <span class="name">Order Subtotal</span>
+                                    <span class="order-price">€{{ presentPrice(Cart::subtotal()) }}</span>
+                                </div>
+                                <div class="clearfix"></div><br>
+                            </h2>
+                            <div class="clearfix"></div><br><br>
+                            <h2>
+                                <div class="order-summary">
+                                    <span class="name">Tax (24%)</span>
+                                    <span class="order-price">€{{ presentPrice(Cart::tax()) }}</span>
+                                </div>
+                                <div class="clearfix"></div><br>
+                            </h2>
+                            <div class="clearfix"></div><br><br>
+                            <h2>
+                                <div class="order-summary">
+                                    <span class="name">Shipping and handling</span>
+                                    <span class="order-price">€0.00</span>
+                                </div>
+                                <div class="clearfix"></div><br>
+                            </h2>
+                            <div class="clearfix"></div><br><br>
+                            <h2>
+                                <div class="order-summary">
+                                    <span class="name">Total</span>
+                                    <span class="order-price price">€{{ presentPrice(Cart::total()) }}</span>
+                                </div>
+                                <div class="clearfix"></div><br>
+                            </h2>
+                            <div class="clearfix"></div><br><br>
                         </div>
-                        <div class="clearfix"></div><br><br>
-                        <h2>
-                            <div class="order-summary">
-                                <span class="name">Order Subtotal</span>
-                                <span class="order-price">€{{ presentPrice(Cart::subtotal()) }}</span>
-                            </div>
-                            <div class="clearfix"></div><br>
-                        </h2>
-                        <div class="clearfix"></div><br><br>
-                        <h2>
-                            <div class="order-summary">
-                                <span class="name">Tax (24%)</span>
-                                <span class="order-price">€{{ presentPrice(Cart::tax()) }}</span>
-                            </div>
-                            <div class="clearfix"></div><br>
-                        </h2>
-                        <div class="clearfix"></div><br><br>
-                        <h2>
-                            <div class="order-summary">
-                                <span class="name">Shipping and handling</span>
-                                <span class="order-price">€0.00</span>
-                            </div>
-                            <div class="clearfix"></div><br>
-                        </h2>
-                        <div class="clearfix"></div><br><br>
-                        <h2>
-                            <div class="order-summary">
-                                <span class="name">Total</span>
-                                <span class="order-price price">€{{ presentPrice(Cart::total()) }}</span>
-                            </div>
-                            <div class="clearfix"></div><br>
-                        </h2>
-                        <div class="clearfix"></div><br><br>
                     </div>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="clearfix"></div>
-            </div>
             @endif
             <div class="cat-div  wow fadeIn">
                 <h2>
@@ -373,7 +381,11 @@
                                     <tr>
                                         <td class="text-center">
                                             <a href="{{ route('shop.products.show', $item->model->slug) }}">
-                                                <img  src="{{ Voyager::image($item->model->thumbnail('small')) }}" width="150" alt="" title="" class="img-fluid">
+                                                @if(Voyager::image($item->model->thumbnail('small')) && file_exists(Voyager::image($item->model->thumbnail('small'))))
+                                                    <img src="{{ Voyager::image($item->model->thumbnail('small')) }}" class="img-fluid" alt="{{ $item->model->name }}" title="{{ $item->model->name }}" width="150">
+                                                @else
+                                                    <img src="{{ productImage($item->model->image) }}" class="img-fluid"alt="{{ $item->model->name }}" title="{{ $item->model->name }}" width="150">
+                                                @endif
                                             </a>
                                         </td>
                                         <td class="product-name">
@@ -412,7 +424,11 @@
                                     <tr>
                                         <td colspan="2" class="text-center">
                                             <a href="{{ route('shop.products.show', $item->model->slug) }}">
-                                                <img  src="{{ Voyager::image($item->model->thumbnail('medium')) }}" alt="" title="" class="img-fluid">
+                                                @if(Voyager::image($item->model->thumbnail('medium')) && file_exists(Voyager::image($item->model->thumbnail('medium'))))
+                                                    <img src="{{ Voyager::image($item->model->thumbnail('medium')) }}" class="img-fluid" alt="{{ $item->model->name }}" title="{{ $item->model->name }}" >
+                                                @else
+                                                    <img src="{{ productImage($item->model->image) }}" class="img-fluid"alt="{{ $item->model->name }}" title="{{ $item->model->name }}" >
+                                                @endif
                                             </a>
                                         </td>
                                     </tr>

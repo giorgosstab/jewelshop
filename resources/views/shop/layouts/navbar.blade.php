@@ -76,7 +76,11 @@
                                                 <li>
                                                     <div class="row">
                                                         <div class="col-4">
-                                                            <img  src="{{ Voyager::image($item->model->thumbnail('small')) }}" width="75" alt="" title="">
+                                                            @if(Voyager::image($item->model->thumbnail('small')) && file_exists(Voyager::image($item->model->thumbnail('small'))))
+                                                                <img src="{{ Voyager::image($item->model->thumbnail('small')) }}" class="img-fluid" alt="{{ $item->model->name }}" title="{{ $item->model->name }}" width="75">
+                                                            @else
+                                                                <img src="{{ productImage($item->model->image) }}" class="img-fluid"alt="{{ $item->model->name }}" title="{{ $item->model->name }}" width="75">
+                                                            @endif
                                                         </div>
                                                         <div class="col-8">
                                                             <p>{{ $item->model->name }}</p>

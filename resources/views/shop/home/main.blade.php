@@ -175,7 +175,11 @@
                         <div class="col-md-3 col-sm-3 col-xs-6 text-center wow fadeIn">
                             <div class="box-css">
                                 <a href="{{ route('shop.products.show', $product->slug) }}">
-                                    <img src="{{ Voyager::image($product->thumbnail('medium')) }}" class="img-fluid" alt="" title="" >
+                                    @if(Voyager::image($product->thumbnail('medium')) && file_exists(Voyager::image($product->thumbnail('medium'))))
+                                        <img src="{{ Voyager::image($product->thumbnail('medium')) }}" class="img-fluid" alt="{{ $product->name }}" title="{{ $product->name }}" >
+                                    @else
+                                        <img src="{{ productImage($product->image) }}" class="img-fluid" alt="{{ $product->name }}" title="{{ $product->name }}" >
+                                    @endif
                                     <div class="opacitybox white">
                                         <div class="boxcontent">
                                             <h4 class="white">{{ $product->name }}</h4>
@@ -237,7 +241,11 @@
                                         <div class="our-store">
                                             <a href="{{ route('shop.products.show', $bestof->slug) }}"><img src="assets/images/search.svg" width="35" alt="" title="" ></a>
                                         </div>
-                                        <img src="{{ Voyager::image($bestof->thumbnail('medium')) }}" alt="" title="" class="img-fluid">
+                                        @if(Voyager::image($bestof->thumbnail('medium')) && file_exists(Voyager::image($bestof->thumbnail('medium'))))
+                                            <img src="{{ Voyager::image($bestof->thumbnail('medium')) }}" class="img-fluid" alt="{{ $product->name }}" title="{{ $product->name }}" >
+                                        @else
+                                            <img src="{{ productImage($bestof->image) }}" class="img-fluid" alt="{{ $bestof->name }}" title="{{ $bestof->name }}" >
+                                        @endif
                                         <div class="round-circles">Sale</div>
                                     </div>
                                 </div>
@@ -275,7 +283,7 @@
                                                         <span class="glyphicon glyphicon-search"></span>
                                                     </a>
                                                 </div>
-                                                <img src="{{ productImage($category->image) }}" alt="{{ $category->name }}" title="{{ $category->name }}" class="img-fluid">
+                                                <img src="{{ categoryImage($category->image) }}" alt="{{ $category->name }}" title="{{ $category->name }}" class="img-fluid">
                                             </figure>
                                         </div>
                                         <h2>{{ $category->name }}</h2>
@@ -295,7 +303,7 @@
                                                         <span class="glyphicon glyphicon-search"></span>
                                                     </a>
                                                 </div>
-                                                <img src="{{ productImage($category->image) }}" alt="{{ $category->name }}" title="{{ $category->name }}" class="img-fluid">
+                                                <img src="{{ categoryImage($category->image) }}" alt="{{ $category->name }}" title="{{ $category->name }}" class="img-fluid">
                                             </figure>
                                         </div>
                                         <h2>{{ $category->name }}</h2>
@@ -326,13 +334,14 @@
                                 <li class="wow fadeIn">
                                     <div class="grid">
                                         <figure class="effect-apollo">
-                                            <img alt="" title="" src="@if(Voyager::image($product->thumbnail('medium'))){{ Voyager::image($product->thumbnail('medium')) }}@else{{ secure_asset('storage/products/no_image.jpg') }}@endif" />
+                                            @if(Voyager::image($product->thumbnail('medium')) && file_exists(Voyager::image($product->thumbnail('medium'))))
+                                                <img src="{{ Voyager::image($product->thumbnail('medium')) }}" class="img-fluid" alt="{{ $product->name }}" title="{{ $product->name }}" >
+                                            @else
+                                                <img src="{{ productImage($product->image) }}" class="img-fluid"alt="{{ $product->name }}" title="{{ $product->name }}" >
+                                            @endif
                                             <figcaption>
-                                                <h2>Jewelry <span>Store</span></h2>
-                                                <p>
-                                                    NAME: {{ $product->name }}! <br>
-                                                    SKU: {{ $product->sku }}
-                                                </p>
+                                                <h2><span style="word-spacing: 3px;">{{ $product->name }}</span></h2>
+                                                <p>SKU: {{ $product->sku }}</p>
                                                 <a href="{{ route('shop.products.show', $product->slug) }}">View more</a> </figcaption>
                                         </figure>
                                     </div>
@@ -349,7 +358,11 @@
                 <h2 class="wow fadeInDown"><span>Popular</span> Brands</h2>
                 <div id="owl-demo" class="owl-carousel owl-carousel-2 wow fadeInDown">
                     @foreach($brands as $brand)
-                        <div class="item"><a href="#"><img src="{{ secure_asset('storage/'.$brand->image) }}" alt="" title="{{ $brand->name }}"/></a></div>
+                        <div class="item">
+                            <a href="#">
+                                <img src="{{ brandImage($brand->image) }}" alt="{{ $brand->name }}" title="{{ $brand->name }}"/>
+                            </a>
+                        </div>
                     @endforeach
                 </div>
             </div>

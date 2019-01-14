@@ -11,7 +11,15 @@ function presentPrice($price) {
 }
 
 function productImage($path) {
-    return $path && file_exists('storage/' . $path) ? secure_asset('storage/'.$path) : secure_asset('storage/products/no_image.jpg');
+    return $path && file_exists('storage/' . $path) ? secure_asset('storage/'.$path) : secure_asset('storage/products/dummy/no_image.jpg');
+}
+
+function categoryImage($path) {
+    return $path && file_exists('storage/' . $path) ? secure_asset('storage/'.$path) : secure_asset('storage/category-jewels/dummy/no_image.jpg');
+}
+
+function brandImage($path) {
+    return $path && file_exists('storage/' . $path) ? secure_asset('storage/'.$path) : secure_asset('storage/brands/dummy/no_image.jpg');
 }
 
 function settingsAdminImageExist($path, $page) {
