@@ -44,6 +44,8 @@ return array(
     'App\\Http\\Requests\\CheckoutRequest' => $baseDir . '/app/Http/Requests/CheckoutRequest.php',
     'App\\Listeners\\Auth\\SendActivationEmail' => $baseDir . '/app/Listeners/Auth/SendActivationEmail.php',
     'App\\Mail\\Auth\\ActivationEmail' => $baseDir . '/app/Mail/Auth/ActivationEmail.php',
+    'App\\Order' => $baseDir . '/app/Order.php',
+    'App\\OrderProduct' => $baseDir . '/app/OrderProduct.php',
     'App\\Product' => $baseDir . '/app/Product.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
