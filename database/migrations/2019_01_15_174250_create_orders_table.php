@@ -31,16 +31,16 @@ class CreateOrdersTable extends Migration
 
             $table->boolean('different_shipping_address')->default(false);
 
-            $table->string('second_billing_fname');
-            $table->string('second_billing_lname');
-            $table->string('second_billing_address');
-            $table->string('second_billing_housenumber');
-            $table->string('second_billing_locality');
-            $table->string('second_billing_email');
-            $table->string('second_billing_city');
-            $table->string('second_billing_phone');
-            $table->string('second_billing_country');
-            $table->string('second_billing_postalcode');
+            $table->string('second_billing_fname')->nullable();
+            $table->string('second_billing_lname')->nullable();
+            $table->string('second_billing_address')->nullable();
+            $table->string('second_billing_housenumber')->nullable();
+            $table->string('second_billing_locality')->nullable();
+            $table->string('second_billing_email')->nullable();
+            $table->string('second_billing_city')->nullable();
+            $table->string('second_billing_phone')->nullable();
+            $table->string('second_billing_country')->nullable();
+            $table->string('second_billing_postalcode')->nullable();
 
             $table->integer('billing_discount')->default(0);
             $table->string('billing_discount_code')->nullable();
@@ -51,6 +51,7 @@ class CreateOrdersTable extends Migration
 
             $table->string('delivery_gateway');
             $table->string('payment_gateway');
+            $table->string('name_on_card')->nullable();
             $table->boolean('shipped')->default(false);
             $table->string('error')->nullable();
             $table->timestamps();

@@ -191,8 +191,8 @@
                                                     <div class="form-group">
                                                         <select id="checkout-country" class="js-countries" name="country">
                                                             <option value="" disabled="" selected="selected">Please select your country</option>
-                                                            <option value="38" {{ old('country') == 38 ? 'selected' : '' }}>CANADA </option>
-                                                            <option value="232" {{ old('country') == 232 ? 'selected' : '' }}>UNITED STATES </option>
+                                                            <option value="GREECE" {{ old('country') == 'GREECE' ? 'selected' : '' }}>GREECE </option>
+                                                            <option value="CYPRUS" {{ old('country') == 'CYPRUS' ? 'selected' : '' }}>CYPRUS </option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -251,8 +251,8 @@
                                                         <div class="form-group">
                                                             <select class="js-countries" name="country_sec">
                                                                 <option disabled="" selected="selected">Please select your country</option>
-                                                                <option value="1" {{ old('country_sec') == 1 ? 'selected' : '' }}>CANADA </option>
-                                                                <option value="2" {{ old('country_sec') == 2 ? 'selected' : '' }}>UNITED STATES </option>
+                                                                <option value="GREECE" {{ old('country_sec') == 'GREECE' ? 'selected' : '' }}>GREECE </option>
+                                                                <option value="CYPRUS" {{ old('country_sec') == 'CYPRUS' ? 'selected' : '' }}>CYPRUS </option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -274,11 +274,11 @@
                                         <div class="panel-body">
                                             <div class="credit-card" id="credit-cardExample">
                                                 <div class="cc-selector-2">
-                                                    <input id="acs" type="radio" name="delivery" />
+                                                    <input id="acs" type="radio" name="delivery" value="acs" />
                                                     <label class="drinkcard-cc acs" for="acs"></label>
-                                                    <input id="geniki" type="radio" name="delivery" />
+                                                    <input id="geniki" type="radio" name="delivery" value="geniki" />
                                                     <label class="drinkcard-cc geniki" for="geniki"></label>
-                                                    <input id="metaforikh" type="radio" name="delivery" />
+                                                    <input id="metaforikh" type="radio" name="delivery" value="metaforikh" />
                                                     <label class="drinkcard-cc metaforikh" for="metaforikh"></label>
                                                 </div>
                                                 <div class="errorDelivery"></div>
@@ -300,17 +300,17 @@
                                             <div class="col-md-12 col-sm-12 col-xs-12">
                                                 <div class="credit-card" id="credit-card">
                                                     <div class="cc-selector-2">
-                                                        <input id="stripe" type="checkbox" name="card" value="" data-toggle="collapse" data-target="#show-stripe" aria-expanded="true" aria-controls="show-stripe" />
+                                                        <input id="stripe" type="checkbox" name="card" value="stripe" data-toggle="collapse" data-target="#show-stripe" aria-expanded="true" aria-controls="show-stripe" />
                                                         <label class="drinkcard-cc stripe" for="stripe"></label>
-                                                        <input id="paypal" type="checkbox" name="card" value="" data-toggle="collapse" data-target="#show-paypal" aria-expanded="false" aria-controls="show-paypal" />
+                                                        <input id="paypal" type="checkbox" name="card" value="paypal" data-toggle="collapse" data-target="#show-paypal" aria-expanded="false" aria-controls="show-paypal" />
                                                         <label class="drinkcard-cc paypal" for="paypal"></label>
-                                                        <input id="cash" type="checkbox" name="card" value="" data-toggle="collapse" data-target="#show-cash" aria-expanded="true" aria-controls="show-cash" />
+                                                        <input id="cash" type="checkbox" name="card" value="cash" data-toggle="collapse" data-target="#show-cash" aria-expanded="true" aria-controls="show-cash" />
                                                         <label class="drinkcard-cc cash" for="cash"></label>
                                                     </div>
                                                     <div class="errorCard"></div>
                                                     <div id="show-stripe" class="collapse" data-parent="#credit-card">
                                                         <div class="form-group">
-                                                            <input id="holder-name" type="text" placeholder="Holder Name">
+                                                            <input id="holder-name" name="holder_name" type="text" placeholder="Holder Name" value="{{ old('holder_name') }}" >
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="card-element">
