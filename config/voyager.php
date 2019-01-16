@@ -206,10 +206,13 @@ return [
     // Here you can specify additional assets you would like to be included in the master.blade
     'additional_css' => [
         //'css/custom.css',
+        'fonts/fontawesome/5.6/css/all.min.css',
+        'fonts/fontawesome/4.7/css/font-awesome.min.css'
     ],
 
     'additional_js' => [
         //'js/custom.js',
+        'fonts/fontawesome/5.6/js/all.min.js'
     ],
 
     'googlemaps' => [
