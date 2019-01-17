@@ -141,6 +141,15 @@ a:hover, a:visited, a:link, a:active {
     margin: 0.2em;
 }
 
+/*________________ delivery options_______________ */
+.check {
+    opacity:0.5;
+    color:#996;
+}
+.box {
+    margin-bottom:5px;
+}
+
 /*________________payment options_______________ */
 .cc-selector input{
     margin:0;padding:0;

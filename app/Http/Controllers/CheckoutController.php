@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Delivery;
 use App\Http\Requests\CheckoutRequest;
 use App\Order;
 use App\OrderProduct;
@@ -19,6 +20,7 @@ class CheckoutController extends Controller
      */
     public function index()
     {
+        $deliveries = Delivery::all();
         if(Cart::instance('default')->count() == 0) {
             return redirect()->route('shop.products.index');
         }
@@ -32,6 +34,7 @@ class CheckoutController extends Controller
             'newSubTotal' => $this->getNumbers()->get('newSubTotal'),
             'newTax' => $this->getNumbers()->get('newTax'),
             'newTotal' => $this->getNumbers()->get('newTotal'),
+            'deliveries' => $deliveries,
         ]);
     }
 

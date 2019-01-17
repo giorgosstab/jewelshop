@@ -1,6 +1,8 @@
-$(document).ready(function () {
-    $('input[type="checkbox"]').on('change', function() {
-        $(this).siblings('input[type="checkbox"]').collapse('hide');
-        $(this).siblings('input[type="checkbox"]').prop('checked', false);
+$(document).ready(function(e){
+    $('.img-check').click(function(e) {
+        $('.img-check').not(this).removeClass('check')
+            .siblings('input').prop('checked',false);
+        $(this).addClass('check')
+            .siblings('input').prop('checked',true);
     });
 });
