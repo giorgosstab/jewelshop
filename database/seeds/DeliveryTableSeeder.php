@@ -15,10 +15,9 @@ class DeliveryTableSeeder extends Seeder
     {
         $now = Carbon::now()->toDateTimeString();
         Delivery::insert([
-            ['name' => 'Tiffany & Co', 'slug' => 'acs', 'created_at' => $now, 'updated_at' => $now],
-            ['name' => 'Harry Winston', 'slug' => 'harry-winston', 'created_at' => $now, 'updated_at' => $now],
-            ['name' => 'Cartier', 'slug' => 'cartier', 'image' => 'brands/dummy/brand3.jpg', 'created_at' => $now, 'updated_at' => $now],
-//            ['name' => 'Cartier', 'slug' => 'cartier', 'image' => 'brands/dummy/brand3.jpg', 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'ACS Courier', 'slug' => 'acs-courier', 'image' => 'deliveries/dummy/acs.png', 'description' => 'Μεταφορικά: 3.00€', 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Genikh Taxydromikh', 'slug' => 'genikh-taxydromikh', 'image' => 'deliveries/dummy/geniki.png', 'description' => 'Μεταφορικά: 4.00€', 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Transport Company', 'slug' => 'transport-company', 'image' => 'deliveries/dummy/metaforikh.png', 'description' => 'Ελάχιστα Μεταφορικά: 5.00€', 'created_at' => $now, 'updated_at' => $now],
         ]);
     }
 }
