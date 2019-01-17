@@ -274,9 +274,9 @@
                                         <div id="collapseDelivery" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingDelivery">
                                             <div class="panel-body">
                                                 <div class="credit-card" id="credit-cardExample">
-                                                    <div class="form-group form-check-inline">
+                                                    <div class="row">
                                                         @foreach($deliveries as $delivery)
-                                                            <div class="col-4 box">
+                                                            <div class="form-group col-6 col-sm-4 col-md-4 box">
                                                                 <img src="{{ secure_asset('storage/'.$delivery->image) }}" alt="..." class="img-thumbnail img-check">
                                                                 <input hidden type="radio" name="delivery" id="{{ $delivery->slug }}" value="{{ $delivery->name }}" class="form-check-input">
                                                                 <label class="form-check-label" for="{{ $delivery->slug }}">{{ $delivery->description }}</label>
