@@ -281,10 +281,18 @@
                                     <div class="col-lg-12 padd0">
                                         <div class="product-hover">
                                             <div>
-                                                <a href="{{ route('shop.products.show', $product->slug) }}">
-                                                    <img  src="{{ asset('assets/images/magnifier.svg') }}"  width="20" height="20" alt="" title="">
-                                                </a> &nbsp;&nbsp;
-                                                <a href="cart.html"> <img  src="{{ asset('assets/images/add-to-cart.svg') }}"  width="25" height="25" alt="" title=""></a>
+                                                {!! Form::open(array('route'=>'shop.shopping-cart.store','method' => 'POST','id' => 'addToCart'.$product->id)) !!}
+                                                    {{ csrf_field() }}
+                                                    {{ Form::hidden('id', $product->id) }}
+                                                    {{ Form::hidden('name', $product->name) }}
+                                                    {{ Form::hidden('price', $product->price) }}
+                                                    <a href="{{ route('shop.products.show', $product->slug) }}">
+                                                        <img  src="{{ asset('assets/images/magnifier.svg') }}"  width="20" height="20" alt="" title="">
+                                                    </a> &nbsp;&nbsp;
+                                                    <a href="#" onclick="document.getElementById('addToCart{{ $product->id }}').submit()">
+                                                        <img  src="{{ asset('assets/images/add-to-cart.svg') }}"  width="25" height="25" alt="" title="">
+                                                    </a>
+                                                {!! Form::close() !!}
                                             </div>
                                         </div>
                                         <div>
