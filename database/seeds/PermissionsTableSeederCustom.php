@@ -17,5 +17,7 @@ class PermissionsTableSeederCustom extends Seeder
         Permission::generateFor('category_jewels');
 //        Permission::generateFor('category_jewel_product');
         Permission::generateFor('brands');
+        Permission::generateFor('deliveries');
+        Permission::generateFor('payments');
     }
 }
