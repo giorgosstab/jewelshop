@@ -3,7 +3,9 @@
 @section('title', '| Checkout')
 
 @section('extra-css')
-    <script type="application/javascript" src="https://js.stripe.com/v3"></script>
+    @foreach($payments as $payment)
+        {!! $payment->extra_css_top !!}
+    @endforeach
 @endsection
 
 @section('content')
@@ -277,7 +279,7 @@
                                                     <div class="row">
                                                         @foreach($deliveries as $delivery)
                                                             <div class="form-group col-6 col-sm-4 col-md-4 box">
-                                                                <img src="{{ secure_asset('storage/'.$delivery->image) }}" alt="..." class="img-thumbnail img-check">
+                                                                <img src="{{ secure_asset('storage/'.$delivery->image) }}" alt="..." class="img-thumbnail img-check pick">
                                                                 <input hidden type="radio" name="delivery" id="{{ $delivery->slug }}" value="{{ $delivery->name }}" class="form-check-input">
                                                                 <label class="form-check-label" for="{{ $delivery->slug }}">{{ $delivery->description }}</label>
                                                             </div>
@@ -302,39 +304,31 @@
                                             <div class="panel-body">
                                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                                     <div class="credit-card" id="credit-card">
-                                                        <div class="cc-selector-2">
-                                                            <input id="stripe" type="checkbox" name="card" value="stripe" data-toggle="collapse" data-target="#show-stripe" aria-expanded="true" aria-controls="show-stripe" />
-                                                            <label class="drinkcard-cc stripe" for="stripe"></label>
-                                                            <input id="paypal" type="checkbox" name="card" value="paypal" data-toggle="collapse" data-target="#show-paypal" aria-expanded="false" aria-controls="show-paypal" />
-                                                            <label class="drinkcard-cc paypal" for="paypal"></label>
-                                                            <input id="cash" type="checkbox" name="card" value="cash" data-toggle="collapse" data-target="#show-cash" aria-expanded="true" aria-controls="show-cash" />
-                                                            <label class="drinkcard-cc cash" for="cash"></label>
+                                                        {{--<div class="cc-selector-2">--}}
+                                                            {{--<input id="stripe" type="checkbox" name="card" value="stripe" data-toggle="collapse" data-target="#show-stripe" aria-expanded="true" aria-controls="show-stripe" />--}}
+                                                            {{--<label class="drinkcard-cc stripe" for="stripe"></label>--}}
+                                                            {{--<input id="paypal" type="checkbox" name="card" value="paypal" data-toggle="collapse" data-target="#show-paypal" aria-expanded="false" aria-controls="show-paypal" />--}}
+                                                            {{--<label class="drinkcard-cc paypal" for="paypal"></label>--}}
+                                                            {{--<input id="cash" type="checkbox" name="card" value="cash" data-toggle="collapse" data-target="#show-cash" aria-expanded="true" aria-controls="show-cash" />--}}
+                                                            {{--<label class="drinkcard-cc cash" for="cash"></label>--}}
+                                                        {{--</div>--}}
+                                                        <div class="row">
+                                                            @foreach($payments as $payment)
+                                                                <div class="form-group col-6 col-sm-4 col-md-4 box">
+                                                                    <img src="{{ secure_asset('storage/'.$payment->image) }}" alt="{{ $payment->name }}" class="img-thumbnail"><br>
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input type="checkbox" name="card" id="{{ $payment->slug }}" value="{{ $payment->name }}" class="checkbox form-check-input checkPayment" data-toggle="collapse" data-target="#show-{{ $payment->slug }}" aria-expanded="true" aria-controls="show-{{ $payment->slug }}">
+                                                                        <label class="form-check-label pick" for="{{ $payment->slug }}">{{ $payment->name }}</label>
+                                                                    </div>
+                                                                </div>
+                                                            @endforeach
                                                         </div>
                                                         <div class="errorCard"></div>
-                                                        <div id="show-stripe" class="collapse" data-parent="#credit-card">
-                                                            <div class="form-group">
-                                                                <input id="holder-name" name="holder_name" type="text" placeholder="Holder Name" value="{{ old('holder_name') }}" >
+                                                        @foreach($payments as $payment)
+                                                            <div id="show-{{ $payment->slug }}" class="collapse" data-parent="#credit-card">
+                                                                {!! $payment->extra_code !!}
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label for="card-element">
-                                                                    Credit or debit card
-                                                                </label>
-                                                                <div id="card-element">
-                                                                    <!-- A Stripe Element will be inserted here. -->
-                                                                </div>
-                                                                <!-- Used to display form errors. -->
-                                                                <div id="card-errors" role="alert"></div>
-                                                            </div>
-                                                        </div>
-                                                        <div id="show-paypal" class="collapse" data-parent="#credit-card">
-                                                            <div class="form-group">
-                                                                <input type="text" placeholder="Holder Name">
-                                                            </div>
-                                                            <div class="form-group">
-
-                                                            </div>
-                                                        </div>
-                                                        <div id="show-cash" class="collapse" data-parent="#credit-card"></div>
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                             </div>
@@ -370,6 +364,7 @@
 @section('extra-script')
     {{ Html::script('assets/js/validator/jquery.validate.min.js') }}
     {{ Html::script('assets/js/validator/additional-methods.min.js') }}
+    {{ Html::script('assets/js/radiobuttonDelivery.js') }}
     {{ Html::script('assets/js/checkboxPayment.js') }}
     {{ Html::script('assets/js/validator/checkout/validationCheckout.js') }}
     {{ Html::script('assets/js/credit-cart/stripe/stripe.js') }}

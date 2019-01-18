@@ -6,6 +6,7 @@ use App\Delivery;
 use App\Http\Requests\CheckoutRequest;
 use App\Order;
 use App\OrderProduct;
+use App\Payment;
 use Cartalyst\Stripe\Exception\CardErrorException;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -21,6 +22,8 @@ class CheckoutController extends Controller
     public function index()
     {
         $deliveries = Delivery::all();
+        $payments = Payment::all();
+
         if(Cart::instance('default')->count() == 0) {
             return redirect()->route('shop.products.index');
         }
@@ -35,6 +38,7 @@ class CheckoutController extends Controller
             'newTax' => $this->getNumbers()->get('newTax'),
             'newTotal' => $this->getNumbers()->get('newTotal'),
             'deliveries' => $deliveries,
+            'payments' => $payments,
         ]);
     }
 

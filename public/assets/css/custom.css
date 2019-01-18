@@ -149,18 +149,10 @@ a:hover, a:visited, a:link, a:active {
 .box {
     margin-bottom:5px;
 }
+.pick {
+    cursor: pointer;
+}
 
-/*________________erros options validation_______________ */
-.checkbox.valid ~ strong {
-    color:#000!important;
-}
-input.error, select.error ~ strong{
-    border: 2px solid red!important;
-    color:red!important;
-}
-.ship2>label.error {
-    display: none!important;
-}
 
 /*________________ shop pagination counter  _______________ */
 .pagination span{ color: #d1a845; }
