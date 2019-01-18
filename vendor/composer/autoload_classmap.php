@@ -3103,6 +3103,7 @@ return array(
     'PHP_Token_YIELD_FROM' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PagesTableSeeder' => $baseDir . '/database/seeds/PagesTableSeeder.php',
     'Parsedown' => $vendorDir . '/erusev/parsedown/Parsedown.php',
+    'PaymentTableSeeder' => $baseDir . '/database/seeds/PaymentTableSeeder.php',
     'PermissionRoleTableSeeder' => $baseDir . '/database/seeds/PermissionRoleTableSeeder.php',
     'PermissionsTableSeeder' => $baseDir . '/database/seeds/PermissionsTableSeeder.php',
     'PermissionsTableSeederCustom' => $baseDir . '/database/seeds/PermissionsTableSeederCustom.php',

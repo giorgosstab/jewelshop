@@ -3588,6 +3588,7 @@ class ComposerStaticInit6dd3a9b3c5e8a54d46023c9ed512cbd0
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PagesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/PagesTableSeeder.php',
         'Parsedown' => __DIR__ . '/..' . '/erusev/parsedown/Parsedown.php',
+        'PaymentTableSeeder' => __DIR__ . '/../..' . '/database/seeds/PaymentTableSeeder.php',
         'PermissionRoleTableSeeder' => __DIR__ . '/../..' . '/database/seeds/PermissionRoleTableSeeder.php',
         'PermissionsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/PermissionsTableSeeder.php',
         'PermissionsTableSeederCustom' => __DIR__ . '/../..' . '/database/seeds/PermissionsTableSeederCustom.php',
