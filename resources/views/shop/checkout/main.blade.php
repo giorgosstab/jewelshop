@@ -368,4 +368,7 @@
     {{ Html::script('assets/js/checkboxPayment.js') }}
     {{ Html::script('assets/js/validator/checkout/validationCheckout.js') }}
     {{ Html::script('assets/js/credit-cart/stripe/stripe.js') }}
+    @foreach($payments as $payment)
+        {!! $payment->extra_js_bottom !!}
+    @endforeach
 @endsection
