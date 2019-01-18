@@ -77,35 +77,6 @@ h4 .shopping-cart .count { font-size: 20px; }
     height: 180px;
 }
 
-/**
- * The CSS shown here will not be introduced in the Quickstart guide, but shows
- * how you can use CSS to style your Element's container.
- */
-.StripeElement {
-    border-color: currentcolor currentcolor #cdcdcd;
-     border-image: none;
-     border-style: none none solid;
-     border-width: medium medium 1px;
-     display: block;
-     font-size: 13px;
-letter-spacing: 1px;
-    padding: 10px 10px 10px 5px;
-}
-.StripeElement--focus {
-    box-shadow: 0 1px 3px 0 #cfd7df;
-}
-.StripeElement--invalid {
-    border-color: #fa755a;
-}
-.StripeElement--webkit-autofill {
-    background-color: #fefde5 !important;
-}
-#card-errors {
-    color: #fa755a;
-    font-weight: bold;
-}
-
-
 /*--collapse checkout view--*/
 a:hover, a:visited, a:link, a:active {
     text-decoration: none;
@@ -153,6 +124,17 @@ a:hover, a:visited, a:link, a:active {
     cursor: pointer;
 }
 
+/*________________erros options validation_______________ */
+.checkbox.valid ~ strong {
+    color:#000!important;
+}
+input.error, select.error ~ strong{
+    border: 2px solid red!important;
+    color:red!important;
+}
+.ship2>label.error {
+    display: none!important;
+}
 
 /*________________ shop pagination counter  _______________ */
 .pagination span{ color: #d1a845; }
