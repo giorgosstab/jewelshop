@@ -112,6 +112,36 @@ class MenuItemsTableSeederCustom extends Seeder
                     'order'      => 4,
                 ])->save();
             }
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'Deliveries',
+                'url'     => '/admin/deliveries',
+                'route'   => null,
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => 'voyager-truck',
+                    'color'      => null,
+                    'parent_id'  => $shopMenuItem->id,
+                    'order'      => 5,
+                ])->save();
+            }
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'Payments',
+                'url'     => '/admin/payments',
+                'route'   => null,
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => 'voyager-wallet',
+                    'color'      => null,
+                    'parent_id'  => $shopMenuItem->id,
+                    'order'      => 6,
+                ])->save();
+            }
 //            $menuItem = MenuItem::firstOrNew([
 //                'menu_id' => $menu->id,
 //                'title'   => 'Category Products',
@@ -124,7 +154,7 @@ class MenuItemsTableSeederCustom extends Seeder
 //                    'icon_class' => 'voyager-tag',
 //                    'color'      => null,
 //                    'parent_id'  => $shopMenuItem->id,
-//                    'order'      => 5,
+//                    'order'      => 7,
 //                ])->save();
 //            }
 

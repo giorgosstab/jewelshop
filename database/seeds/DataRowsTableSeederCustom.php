@@ -758,6 +758,300 @@ class DataRowsTableSeederCustom extends Seeder
                 'order'        => 5,
             ])->save();
         }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Deliveries
+        |--------------------------------------------------------------------------
+        */
+        $deliveryDataType = DataType::where('slug', 'deliveries')->firstOrFail();
+        $dataRow = $this->dataRow($deliveryDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'hidden',
+                'display_name' => 'Id',
+                'required' => 1,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 1,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($deliveryDataType, 'name');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Name',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "validation" => [
+                        "rule" => 'required|regex:/^[a-zA-Z0-9& ]+$/u|min:3|max:30'
+                    ]
+                ],
+                'order'        => 2,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($deliveryDataType, 'slug');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Slug',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "slugify" => [
+                        "origin" => "name",
+                        "forceUpdate" => false
+                    ],
+                    "validation" => [
+                        "rule" => [
+                            "required|regex:/^[a-zA-Z0-9-]+$/u"
+                        ]
+                    ]
+                ],
+                'order'        => 3,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($deliveryDataType, 'image');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'image',
+                'display_name' => 'Image',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "resize" => [
+                        "width" => "400"
+                    ],
+                    "quality" => "100%",
+                    "upsize" => true
+                ],
+                'order'        => 4,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($deliveryDataType, 'description');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text_area',
+                'display_name' => 'Description',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => null,
+                'order'        => 5,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($deliveryDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'Created At',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => null,
+                'order'        => 6,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($deliveryDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'Updated At',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => null,
+                'order'        => 7,
+            ])->save();
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Payments
+        |--------------------------------------------------------------------------
+        */
+        $paymentDataType = DataType::where('slug', 'payments')->firstOrFail();
+        $dataRow = $this->dataRow($paymentDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'hidden',
+                'display_name' => 'Id',
+                'required' => 1,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 1,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'name');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Name',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "validation" => [
+                        "rule" => 'required|regex:/^[a-zA-Z0-9& ]+$/u|min:3|max:30'
+                    ]
+                ],
+                'order'        => 2,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'slug');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Slug',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "slugify" => [
+                        "origin" => "name",
+                        "forceUpdate" => false
+                    ],
+                    "validation" => [
+                        "rule" => [
+                            "required|regex:/^[a-zA-Z0-9-]+$/u"
+                        ]
+                    ]
+                ],
+                'order'        => 3,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'image');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'image',
+                'display_name' => 'Image',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "resize" => [
+                        "width" => "526"
+                    ],
+                    "quality" => "100%",
+                    "upsize" => true
+                ],
+                'order'        => 4,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'extra_code');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'code_editor',
+                'display_name' => 'Extra Code',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => null,
+                'order'        => 5,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'extra_css_top');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'code_editor',
+                'display_name' => 'Extra Css Top',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => null,
+                'order'        => 6,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'extra_js_bottom');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'code_editor',
+                'display_name' => 'Extra Js Bottom',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => null,
+                'order'        => 7,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'Created At',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => null,
+                'order'        => 8,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'Updated At',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => null,
+                'order'        => 9,
+            ])->save();
+        }
     }
     /**
      * [dataRow description].

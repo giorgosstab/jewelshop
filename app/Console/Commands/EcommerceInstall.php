@@ -53,6 +53,8 @@ class EcommerceInstall extends Command
         File::deleteDirectory(public_path('storage/category-jewels/dummy'));
         File::deleteDirectory(public_path('storage/products/dummy'));
         File::deleteDirectory(public_path('storage/brands/dummy'));
+        File::deleteDirectory(public_path('storage/deliveries/dummy'));
+        File::deleteDirectory(public_path('storage/payments/dummy'));
 //            File::deleteDirectory(public_path('storage/products'));
 //            File::deleteDirectory(public_path('storage/settings'));
 //            File::deleteDirectory(public_path('storage/pages'));
@@ -75,6 +77,14 @@ class EcommerceInstall extends Command
         $copySuccess = File::copyDirectory(public_path('assets/images/dummyBrands'), public_path('storage/brands/dummy'));
         if($copySuccess){
             $this->info('Image Brands copied successfully on storage folder.');
+        }
+        $copySuccess = File::copyDirectory(public_path('assets/images/dummyDelivery'), public_path('storage/deliveries/dummy'));
+        if($copySuccess){
+            $this->info('Image Deliveries copied successfully on storage folder.');
+        }
+        $copySuccess = File::copyDirectory(public_path('assets/images/dummyPayment'), public_path('storage/payments/dummy'));
+        if($copySuccess){
+            $this->info('Image Payments copied successfully on storage folder.');
         }
 
         $this->call('migrate:fresh', [

@@ -70,14 +70,43 @@ class DataTypesTableSeederCustom extends Seeder
         $dataType = $this->dataType('slug', 'brands');
         if (!$dataType->exists) {
             $dataType->fill([
-                'name' => 'brands',
+                'name'                  => 'brands',
                 'display_name_singular' => 'Brand',
-                'display_name_plural' => 'Brands',
-                'icon' => 'voyager-archive',
-                'model_name' => 'App\Brand',
-                'controller' => '',
-                'generate_permissions' => 1,
-                'description' => '',
+                'display_name_plural'   => 'Brands',
+                'icon'                  => 'voyager-archive',
+                'model_name'            => 'App\Brand',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 1,
+            ])->save();
+        }
+        $dataType = $this->dataType('slug', 'deliveries');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'deliveries',
+                'display_name_singular' => 'Delivery',
+                'display_name_plural'   => 'Deliveries',
+                'icon'                  => 'voyager-truck',
+                'model_name'            => 'App\Delivery',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 1,
+            ])->save();
+        }
+        $dataType = $this->dataType('slug', 'payments');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'payments',
+                'display_name_singular' => 'Payment',
+                'display_name_plural'   => 'Payments',
+                'icon'                  => 'voyager-wallet',
+                'model_name'            => 'App\Payment',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 1,
             ])->save();
         }
     }
