@@ -47,6 +47,7 @@ return array(
     'App\\Mail\\Auth\\ActivationEmail' => $baseDir . '/app/Mail/Auth/ActivationEmail.php',
     'App\\Order' => $baseDir . '/app/Order.php',
     'App\\OrderProduct' => $baseDir . '/app/OrderProduct.php',
+    'App\\Payment' => $baseDir . '/app/Payment.php',
     'App\\Product' => $baseDir . '/app/Product.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',

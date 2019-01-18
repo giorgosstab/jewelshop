@@ -1,8 +1,9 @@
-$(document).ready(function(e){
-    $('.img-check').click(function(e) {
-        $('.img-check').not(this).removeClass('check')
-            .siblings('input').prop('checked',false);
-        $(this).addClass('check')
-            .siblings('input').prop('checked',true);
+$(document).ready(function () {
+    $(".checkPayment").on('change', function() {
+        var checked = $(this).is(':checked');
+        $(".checkPayment").prop('checked',false);
+        if(checked) {
+            $(this).prop('checked',true);
+        }
     });
 });

@@ -532,6 +532,7 @@ class ComposerStaticInit6dd3a9b3c5e8a54d46023c9ed512cbd0
         'App\\Mail\\Auth\\ActivationEmail' => __DIR__ . '/../..' . '/app/Mail/Auth/ActivationEmail.php',
         'App\\Order' => __DIR__ . '/../..' . '/app/Order.php',
         'App\\OrderProduct' => __DIR__ . '/../..' . '/app/OrderProduct.php',
+        'App\\Payment' => __DIR__ . '/../..' . '/app/Payment.php',
         'App\\Product' => __DIR__ . '/../..' . '/app/Product.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
