@@ -18,9 +18,9 @@ class CreatePaymentsTable extends Migration
             $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->string('image')->nullable();
-            $table->string('extra_code')->nullable();;
-            $table->string('extra_css')->nullable();
-            $table->string('extra_js')->nullable();
+            $table->text('extra_code')->nullable();;
+            $table->text('extra_css_top')->nullable();
+            $table->text('extra_js_bottom')->nullable();
             $table->timestamps();
         });
     }
