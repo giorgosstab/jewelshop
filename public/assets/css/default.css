@@ -46,25 +46,25 @@ Input, textarea:14px Open sans,sans-serif;
 
 /*[page CSS]*/
 @import url("page.css");
-@import url("style.css"); 
-@import url("style2.css"); 
+@import url("style.css");
+@import url("style2.css");
 
 /*[component CSS]*/
-@import url("component.css"); 
+@import url("component.css");
 
 /*[custom-style CSS]*/
 @import url("custom-style.css");
 
-/*[searchbar CSS]*/ 
+/*[searchbar CSS]*/
 @import url("../js/searchbar/css/component.css");
 
-/*[amazingslider CSS]*/ 
+/*[amazingslider CSS]*/
 @import url("../js/sliderengine/amazingslider-1.css");
 
-/*[responsive CSS]*/ 
+/*[responsive CSS]*/
 @import url("responsive.css");
 
-/*[hover2 CSS]*/ 
+/*[hover2 CSS]*/
 @import url("hover2.css");
 
 

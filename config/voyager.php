@@ -207,7 +207,8 @@ return [
     'additional_css' => [
         //'css/custom.css',
         'fonts/fontawesome/4.7/css/font-awesome.min.css',
-        'css/voyager/switcher.edit-add.css'
+        'css/voyager/switcher.edit-add.css',
+        'css/voyager/order.read.css'
     ],
 
     'additional_js' => [
