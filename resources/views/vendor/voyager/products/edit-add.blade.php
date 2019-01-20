@@ -637,6 +637,8 @@
 
             var price = $('input[name="price"]').val();
             $('input[name="price"]').val(price / 100);
+            var secondprice = $('input[name="secondprice"]').val();
+            $('input[name="secondprice"]').val(secondprice / 100);
         });
     </script>
 @stop

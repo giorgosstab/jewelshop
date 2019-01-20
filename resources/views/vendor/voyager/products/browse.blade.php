@@ -183,7 +183,7 @@
                                                     @endif
                                                 @else
                                                     @include('voyager::multilingual.input-hidden-bread-browse')
-                                                    @if($row->display_name == 'Price')
+                                                    @if(($row->display_name == 'Price' || $row->display_name == 'Secondprice') && $data->{$row->field} > 0 )
                                                         <span>€{{ $data->{$row->field} / 100 }}</span>
                                                     @else
                                                         <span>{{ $data->{$row->field} }}</span>

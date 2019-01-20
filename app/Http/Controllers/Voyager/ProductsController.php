@@ -194,6 +194,7 @@ class ProductsController extends VoyagerBaseController
             //make price from demical to float
             $requestNew = $request;
             $requestNew['price'] = $request->price * 100;
+            $requestNew['secondprice'] = $request->secondprice * 100;
 
             $this->insertUpdateData($requestNew, $slug, $dataType->editRows, $data);
 
@@ -296,6 +297,7 @@ class ProductsController extends VoyagerBaseController
             //make price from demical to float
             $requestNew = $request;
             $requestNew['price'] = $request->price * 100;
+            $requestNew['secondprice'] = $request->secondprice * 100;
 
             $data = $this->insertUpdateData($requestNew, $slug, $dataType->addRows, new $dataType->model_name());
 
