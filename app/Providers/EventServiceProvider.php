@@ -23,6 +23,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\Auth\UserActivationEmail' => [
             'App\Listeners\Auth\SendActivationEmail',
         ],
+        'App\Events\Order\UserOrderPlace' => [
+            'App\Listeners\Order\SendOrderPlace',
+        ],
     ];
 
     /**

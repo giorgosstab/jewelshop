@@ -13,6 +13,7 @@
 
 
 use App\CategoryJewel;
+use App\Order;
 
 Route::get('/','HomePageController@index')->name('shop.home.index');
 
@@ -75,4 +76,11 @@ Auth::routes();
 Route::get('auth/activate', 'Auth\ActivationController@activate')->name('auth.activate');
 Route::get('auth/activate/resend', 'Auth\ActivationController@showResendForm')->name('auth.activate.showResendForm');
 Route::post('auth/activate/resend', 'Auth\ActivationController@resend')->name('auth.activate.resend');
+
+Route::get('/mail', function(){
+    $order = Order::find(12);
+
+    return new App\Mail\Order\OrderPlaced($order);
+
+});
 

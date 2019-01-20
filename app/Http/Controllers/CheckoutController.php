@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Delivery;
+use App\Events\Order\UserOrderPlace;
 use App\Http\Requests\CheckoutRequest;
 use App\Order;
 use App\OrderProduct;
@@ -135,6 +136,8 @@ class CheckoutController extends Controller
                 'quantity' => $item->qty
             ]);
         }
+
+        event(new UserOrderPlace($order));
 
     }
 
