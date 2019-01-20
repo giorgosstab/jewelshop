@@ -182,12 +182,12 @@
             });
             $('[data-toggle="tooltip"]').tooltip();
 
-            var price = $('input[name="billing_subtotal"]').val();
-            $('input[name="billing_subtotal"]').val(price / 100);
-            var price = $('input[name="billing_tax"]').val();
-            $('input[name="billing_tax"]').val(price / 100);
-            var price = $('input[name="billing_total"]').val();
-            $('input[name="billing_total"]').val(price / 100);
+            var subtotal = $('input[name="billing_subtotal"]').val();
+            $('input[name="billing_subtotal"]').val(subtotal / 100);
+            var tax = $('input[name="billing_tax"]').val();
+            $('input[name="billing_tax"]').val(tax / 100);
+            var totalprice = $('input[name="billing_total"]').val();
+            $('input[name="billing_total"]').val(totalprice / 100);
         });
     </script>
 @stop
