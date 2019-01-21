@@ -72,7 +72,7 @@
                             <div class="col-md-12 wow fadeIn">
                                 <hr>
                                 <div class="pull-left text-color">SUBTOTAL</div>
-                                <div class="pull-right"><strong>€{{ presentPrice($item->subtotal) }}</strong></div>
+                                <div class="pull-right"><strong>€{{ presentPrice(Cart::subtotal()) }}</strong></div>
                                 <div class="clearfix"> </div>
                                 <hr>
                                 @if(session()->has('coupon'))
