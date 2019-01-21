@@ -11,6 +11,8 @@ use App\Payment;
 use Cartalyst\Stripe\Exception\CardErrorException;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Str;
+use function sha1;
 
 
 class CheckoutController extends Controller
@@ -86,9 +88,14 @@ class CheckoutController extends Controller
     }
 
     protected function addToOrdersTables($request, $error){
+        $random_id = str::random(60);
+        $random_id .= microtime();
+        $hash_id = sha1($random_id);
+
         //INSERT INTO ORDERS TABLE
         $order = Order::create([
             'user_id' => auth()->user() ? auth()->user()->id : null,
+            'unique_id' => $hash_id,
 
             'billing_fname' => $request->fname,
             'billing_lname' => $request->lname,

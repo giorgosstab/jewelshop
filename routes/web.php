@@ -36,6 +36,8 @@ Route::post('/checkout','CheckoutController@store')->name('shop.checkout.store')
 Route::post('/coupon','CouponsController@store')->name('shop.coupons.store');
 Route::delete('/coupon','CouponsController@destroy')->name('shop.coupons.destroy');
 
+Route::get('/order/{order}','OrderController@show');
+
 Route::get('/about','AboutController@index')->name('shop.about.index');
 Route::get('/blog','BlogController@index')->name('shop.blog.index');
 Route::get('/blog/in','BlogController@show')->name('shop.blog.show');
@@ -76,11 +78,4 @@ Auth::routes();
 Route::get('auth/activate', 'Auth\ActivationController@activate')->name('auth.activate');
 Route::get('auth/activate/resend', 'Auth\ActivationController@showResendForm')->name('auth.activate.showResendForm');
 Route::post('auth/activate/resend', 'Auth\ActivationController@resend')->name('auth.activate.resend');
-
-Route::get('/mail', function(){
-    $order = Order::find(12);
-
-    return new App\Mail\Order\OrderPlaced($order);
-
-});
 
