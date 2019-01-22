@@ -36,7 +36,7 @@ Route::post('/checkout','CheckoutController@store')->name('shop.checkout.store')
 Route::post('/coupon','CouponsController@store')->name('shop.coupons.store');
 Route::delete('/coupon','CouponsController@destroy')->name('shop.coupons.destroy');
 
-Route::get('/order/{order}','OrderController@show');
+Route::get('/order/{order}','OrderController@show')->name('shop.order.show');;
 
 Route::get('/about','AboutController@index')->name('shop.about.index');
 Route::get('/blog','BlogController@index')->name('shop.blog.index');
