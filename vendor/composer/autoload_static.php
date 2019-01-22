@@ -90,6 +90,7 @@ class ComposerStaticInit6dd3a9b3c5e8a54d46023c9ed512cbd0
         array (
             'League\\Flysystem\\' => 17,
             'Laravel\\Tinker\\' => 15,
+            'Laravel\\Scout\\' => 14,
             'Larapack\\VoyagerHooks\\' => 22,
             'Larapack\\Hooks\\' => 15,
             'Larapack\\DoctrineSupport\\' => 25,
@@ -302,6 +303,10 @@ class ComposerStaticInit6dd3a9b3c5e8a54d46023c9ed512cbd0
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
         ),
+        'Laravel\\Scout\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravel/scout/src',
+        ),
         'Larapack\\VoyagerHooks\\' => 
         array (
             0 => __DIR__ . '/..' . '/larapack/voyager-hooks/src',
@@ -488,9 +493,33 @@ class ComposerStaticInit6dd3a9b3c5e8a54d46023c9ed512cbd0
                 0 => __DIR__ . '/..' . '/doctrine/collections/lib',
             ),
         ),
+        'A' => 
+        array (
+            'AlgoliaSearch' => 
+            array (
+                0 => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src',
+            ),
+        ),
     );
 
     public static $classMap = array (
+        'AlgoliaSearch\\AlgoliaConnectionException' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/AlgoliaConnectionException.php',
+        'AlgoliaSearch\\AlgoliaException' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/AlgoliaException.php',
+        'AlgoliaSearch\\Analytics' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/Analytics.php',
+        'AlgoliaSearch\\Client' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/Client.php',
+        'AlgoliaSearch\\ClientContext' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/ClientContext.php',
+        'AlgoliaSearch\\FailingHostsCache' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/FailingHostsCache.php',
+        'AlgoliaSearch\\FileFailingHostsCache' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/FileFailingHostsCache.php',
+        'AlgoliaSearch\\InMemoryFailingHostsCache' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/InMemoryFailingHostsCache.php',
+        'AlgoliaSearch\\Index' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/Index.php',
+        'AlgoliaSearch\\IndexBrowser' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/IndexBrowser.php',
+        'AlgoliaSearch\\Iterators\\AlgoliaIterator' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/Iterators/AlgoliaIterator.php',
+        'AlgoliaSearch\\Iterators\\RuleIterator' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/Iterators/RuleIterator.php',
+        'AlgoliaSearch\\Iterators\\SynonymIterator' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/Iterators/SynonymIterator.php',
+        'AlgoliaSearch\\Json' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/Json.php',
+        'AlgoliaSearch\\PlacesIndex' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/PlacesIndex.php',
+        'AlgoliaSearch\\SynonymType' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/SynonymType.php',
+        'AlgoliaSearch\\Version' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/Version.php',
         'App\\Brand' => __DIR__ . '/../..' . '/app/Brand.php',
         'App\\CategoryJewel' => __DIR__ . '/../..' . '/app/CategoryJewel.php',
         'App\\CategoryJewelProduct' => __DIR__ . '/../..' . '/app/CategoryJewelProduct.php',
@@ -499,6 +528,7 @@ class ComposerStaticInit6dd3a9b3c5e8a54d46023c9ed512cbd0
         'App\\Coupon' => __DIR__ . '/../..' . '/app/Coupon.php',
         'App\\Delivery' => __DIR__ . '/../..' . '/app/Delivery.php',
         'App\\Events\\Auth\\UserActivationEmail' => __DIR__ . '/../..' . '/app/Events/Auth/UserActivationEmail.php',
+        'App\\Events\\Order\\UserOrderPlace' => __DIR__ . '/../..' . '/app/Events/Order/UserOrderPlace.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AboutController' => __DIR__ . '/../..' . '/app/Http/Controllers/AboutController.php',
         'App\\Http\\Controllers\\Auth\\ActivationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ActivationController.php',
@@ -515,9 +545,11 @@ class ComposerStaticInit6dd3a9b3c5e8a54d46023c9ed512cbd0
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\CouponsController' => __DIR__ . '/../..' . '/app/Http/Controllers/CouponsController.php',
         'App\\Http\\Controllers\\HomePageController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomePageController.php',
+        'App\\Http\\Controllers\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/OrderController.php',
         'App\\Http\\Controllers\\SaveForLaterController' => __DIR__ . '/../..' . '/app/Http/Controllers/SaveForLaterController.php',
         'App\\Http\\Controllers\\ShopController' => __DIR__ . '/../..' . '/app/Http/Controllers/ShopController.php',
         'App\\Http\\Controllers\\TermsController' => __DIR__ . '/../..' . '/app/Http/Controllers/TermsController.php',
+        'App\\Http\\Controllers\\Voyager\\OrdersController' => __DIR__ . '/../..' . '/app/Http/Controllers/Voyager/OrdersController.php',
         'App\\Http\\Controllers\\Voyager\\ProductsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Voyager/ProductsController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -529,7 +561,9 @@ class ComposerStaticInit6dd3a9b3c5e8a54d46023c9ed512cbd0
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\CheckoutRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CheckoutRequest.php',
         'App\\Listeners\\Auth\\SendActivationEmail' => __DIR__ . '/../..' . '/app/Listeners/Auth/SendActivationEmail.php',
+        'App\\Listeners\\Order\\SendOrderPlace' => __DIR__ . '/../..' . '/app/Listeners/Order/SendOrderPlace.php',
         'App\\Mail\\Auth\\ActivationEmail' => __DIR__ . '/../..' . '/app/Mail/Auth/ActivationEmail.php',
+        'App\\Mail\\Order\\OrderPlaced' => __DIR__ . '/../..' . '/app/Mail/Order/OrderPlaced.php',
         'App\\Order' => __DIR__ . '/../..' . '/app/Order.php',
         'App\\OrderProduct' => __DIR__ . '/../..' . '/app/OrderProduct.php',
         'App\\Payment' => __DIR__ . '/../..' . '/app/Payment.php',
@@ -2973,6 +3007,20 @@ class ComposerStaticInit6dd3a9b3c5e8a54d46023c9ed512cbd0
         'Larapack\\Hooks\\RawOutput' => __DIR__ . '/..' . '/larapack/hooks/src/Hooks.php',
         'Larapack\\VoyagerHooks\\Controllers\\HooksController' => __DIR__ . '/..' . '/larapack/voyager-hooks/src/Controllers/HooksController.php',
         'Larapack\\VoyagerHooks\\VoyagerHooksServiceProvider' => __DIR__ . '/..' . '/larapack/voyager-hooks/src/VoyagerHooksServiceProvider.php',
+        'Laravel\\Scout\\Builder' => __DIR__ . '/..' . '/laravel/scout/src/Builder.php',
+        'Laravel\\Scout\\Console\\FlushCommand' => __DIR__ . '/..' . '/laravel/scout/src/Console/FlushCommand.php',
+        'Laravel\\Scout\\Console\\ImportCommand' => __DIR__ . '/..' . '/laravel/scout/src/Console/ImportCommand.php',
+        'Laravel\\Scout\\EngineManager' => __DIR__ . '/..' . '/laravel/scout/src/EngineManager.php',
+        'Laravel\\Scout\\Engines\\AlgoliaEngine' => __DIR__ . '/..' . '/laravel/scout/src/Engines/AlgoliaEngine.php',
+        'Laravel\\Scout\\Engines\\Engine' => __DIR__ . '/..' . '/laravel/scout/src/Engines/Engine.php',
+        'Laravel\\Scout\\Engines\\NullEngine' => __DIR__ . '/..' . '/laravel/scout/src/Engines/NullEngine.php',
+        'Laravel\\Scout\\Events\\ModelsFlushed' => __DIR__ . '/..' . '/laravel/scout/src/Events/ModelsFlushed.php',
+        'Laravel\\Scout\\Events\\ModelsImported' => __DIR__ . '/..' . '/laravel/scout/src/Events/ModelsImported.php',
+        'Laravel\\Scout\\Jobs\\MakeSearchable' => __DIR__ . '/..' . '/laravel/scout/src/Jobs/MakeSearchable.php',
+        'Laravel\\Scout\\ModelObserver' => __DIR__ . '/..' . '/laravel/scout/src/ModelObserver.php',
+        'Laravel\\Scout\\ScoutServiceProvider' => __DIR__ . '/..' . '/laravel/scout/src/ScoutServiceProvider.php',
+        'Laravel\\Scout\\Searchable' => __DIR__ . '/..' . '/laravel/scout/src/Searchable.php',
+        'Laravel\\Scout\\SearchableScope' => __DIR__ . '/..' . '/laravel/scout/src/SearchableScope.php',
         'Laravel\\Tinker\\ClassAliasAutoloader' => __DIR__ . '/..' . '/laravel/tinker/src/ClassAliasAutoloader.php',
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',

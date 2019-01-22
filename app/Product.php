@@ -4,10 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use TCG\Voyager\Traits\Resizable;
+use Laravel\Scout\Searchable;
 
 class Product extends Model
 {
     use Resizable;
+    use Searchable;
     public function categoriesJewels() {
         //return $this->belongsToMany('App\CategoryJewel', 'category_jewel_product')->withPivot('category_parent_id');
         return $this->belongsToMany('App\CategoryJewel');
