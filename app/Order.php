@@ -21,4 +21,17 @@ class Order extends Model
     public function products(){
         return $this->belongsToMany('App\Product')->withPivot('quantity');
     }
+
+    public function presentSubTotal() {
+        return number_format($this->billing_subtotal / 100,2,'.',',');
+    }
+    public function presentTax() {
+        return number_format($this->billing_tax / 100,2,'.',',');
+    }
+    public function presentTotal() {
+        return number_format($this->billing_total / 100,2,'.',',');
+    }
+    public function presentDiscount() {
+        return number_format($this->billing_discount / 100,2,'.',',');
+    }
 }
