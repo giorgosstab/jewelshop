@@ -38,6 +38,8 @@ Route::delete('/coupon','CouponsController@destroy')->name('shop.coupons.destroy
 
 Route::get('/order/{order}','OrderController@show')->name('shop.order.show');;
 
+Route::get('/search','SearchController@show')->name('shop.search.show');
+
 Route::get('/about','AboutController@index')->name('shop.about.index');
 Route::get('/blog','BlogController@index')->name('shop.blog.index');
 Route::get('/blog/in','BlogController@show')->name('shop.blog.show');

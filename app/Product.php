@@ -2,6 +2,7 @@
 
 namespace App;
 
+use function array_merge;
 use Illuminate\Database\Eloquent\Model;
 use TCG\Voyager\Traits\Resizable;
 use Laravel\Scout\Searchable;
@@ -23,5 +24,22 @@ class Product extends Model
         } else {
             return number_format($this->secondprice, 2);
         }
+    }
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+
+        // Customize array...
+        $extraFields = [
+            'categories' => $this->categoriesJewels()->pluck('name')->toArray(),
+        ];
+
+        return array_merge($array,$extraFields);
     }
 }

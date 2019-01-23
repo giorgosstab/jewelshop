@@ -87,26 +87,31 @@
         {{ Html::script('assets/js/wow.min.js') }}
         {{ Html::script('assets/js/animate1.js') }}
 
-        <!--hidden input file-->
-        <script>
-            $(document).ready(function() {
-                $(".change").on('click', function(e){
-                    e.preventDefault();
-                    $(".upload-field:hidden").trigger('click');
-                });
-            });
-        </script>
-        <!--animate fade messages-->
-        <script>
-            $("#message").fadeTo(4000, 1000).slideUp(500, function(){
-                $("#message").slideUp(5000);
-            });
-            $('.navbar-nav .dropdown > a').click(function() {
-                location.href = this.href;
-            });
-        </script>
-        
-        <!--extra script-->
-        @yield('extra-script')
-    </body>
+        <!-- Include AlgoliaSearch JS Client and autocomplete.js library -->
+        {{ Html::script('https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js') }}
+        {{ Html::script('https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js') }}
+        {{ Html::script('js/algolia.js') }}
+
+<!--hidden input file-->
+<script>
+    $(document).ready(function() {
+        $(".change").on('click', function(e){
+            e.preventDefault();
+            $(".upload-field:hidden").trigger('click');
+        });
+    });
+</script>
+<!--animate fade messages-->
+<script>
+    $("#message").fadeTo(4000, 1000).slideUp(500, function(){
+        $("#message").slideUp(5000);
+    });
+    $('.navbar-nav .dropdown > a').click(function() {
+        location.href = this.href;
+    });
+</script>
+
+<!--extra script-->
+@yield('extra-script')
+</body>
 </html>
