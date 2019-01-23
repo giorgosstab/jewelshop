@@ -27,7 +27,11 @@ class CouponsController extends Controller
             'name' => $coupon->code,
             'discount' => $coupon->discount(Cart::subtotal()),
         ]);
-        return redirect()->route('shop.checkout.index')->with('success_message', 'Coupon has been applied!');
+        if(auth()->user()) {
+            return redirect()->route('shop.checkout.index')->with('success_message', 'Coupon has been applied!');
+        } else {
+            return redirect()->route('shop.checkout.guest')->with('success_message', 'Coupon has been applied!');
+        }
     }
 
     /**
@@ -38,6 +42,11 @@ class CouponsController extends Controller
     public function destroy()
     {
         session()->forget('coupon');
-        return redirect()->route('shop.checkout.index')->with('success_message', 'Coupon has been removed!');
+        if(auth()->user()) {
+            return redirect()->route('shop.checkout.index')->with('success_message', 'Coupon has been removed!');
+        } else {
+            return redirect()->route('shop.checkout.guest')->with('success_message', 'Coupon has been removed!');
+        }
+
     }
 }

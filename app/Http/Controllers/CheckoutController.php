@@ -46,6 +46,30 @@ class CheckoutController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function guest()
+    {
+        $deliveries = Delivery::all();
+        $payments = Payment::all();
+
+        if(Cart::instance('default')->count() == 0) {
+            return redirect()->route('shop.products.index');
+        }
+
+        return view('shop.checkout.main')->with([
+            'discount' => $this->getNumbers()->get('discount'),
+            'newSubTotal' => $this->getNumbers()->get('newSubTotal'),
+            'newTax' => $this->getNumbers()->get('newTax'),
+            'newTotal' => $this->getNumbers()->get('newTotal'),
+            'deliveries' => $deliveries,
+            'payments' => $payments,
+        ]);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Requests\CheckoutRequest $request
