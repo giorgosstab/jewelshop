@@ -177,6 +177,9 @@ class CheckoutController extends Controller
         $discount = session()->get('coupon')['discount'] ?? 0;
         $code = session()->get('coupon')['name'] ?? null;
         $newSubTotal = (Cart::subtotal() - $discount);
+        if($newSubTotal < 0){
+            $newSubTotal = 0;
+        }
         $newTax = $newSubTotal * $tax;
         $newTotal = $newSubTotal * (1 + $tax);
 
