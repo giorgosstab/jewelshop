@@ -272,7 +272,24 @@
                                     @endif
                                 </div>
                             </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6 select-p">
+                                <div class="pagination">
+                                    <h5>Showing <span>{{ $products->firstItem() }}</span> - <span>{{ $products->lastItem() }}</span> of <span>{{ $products->total() }}</span> items for
+                                        @if($products->currentPage() == 1)
+                                            <span>{{ $products->currentPage() }}st</span>
+                                        @elseif($products->currentPage() == 2)
+                                            <span>{{ $products->currentPage() }}nd</span>
+                                        @elseif($products->currentPage() == 3)
+                                            <span>{{ $products->currentPage() }}rd</span>
+                                        @else
+                                            <span>{{ $products->currentPage() }}th</span>
+                                        @endif
+                                        page.
+                                    </h5>
+                                </div>
+                            </div><hr>
                         </div>
+                        <hr>
 
                         <div class="clearfix"></div>
                         <div class="row">
