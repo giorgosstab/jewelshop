@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Coupon;
-use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Jobs\Coupon\UpdateCouponJob;
 use Illuminate\Http\Request;
 use function session;
 
@@ -23,10 +23,8 @@ class CouponsController extends Controller
             return redirect()->route('shop.checkout.index')->withErrors('Invalid coupon code. Please try again!');
         }
 
-        session()->put('coupon', [
-            'name' => $coupon->code,
-            'discount' => $coupon->discount(Cart::subtotal()),
-        ]);
+        dispatch_now(new UpdateCouponJob($coupon));
+
         if(auth()->user()) {
             return redirect()->route('shop.checkout.index')->with('success_message', 'Coupon has been applied!');
         } else {
