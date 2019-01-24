@@ -78,12 +78,6 @@
                                 @if(session()->has('coupon'))
                                     <div class="clearfix"> </div>
                                     <div class="pull-left text-color">Discount ({{ session()->get('coupon')['name'] }}) &nbsp </div>
-                                    {!! Form::open(['method' => 'POST','route' => 'shop.coupons.destroy', 'id' => 'deleteDiscount']) !!}
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-                                    <a href="#" onclick="document.getElementById('deleteDiscount').submit()"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                    {!! Form::close() !!}
-
                                     <div class="pull-right"><strong> - €{{ presentPrice($discount) }} </strong></div>
                                     <div class="clearfix"> </div>
                                     <hr>
@@ -106,29 +100,6 @@
                                 <hr>
                                 <br>
                             </div>
-                            @if(! session()->has('coupon'))
-                                <div class="col-md-12 cat-div  wow fadeIn">
-                                    <h2>Coupon Code</h2>
-                                    <div class="clearfix"></div><br>
-                                    <div class="row">
-                                        <div class="col-md-10 shipping col-sm-10 col-xs-12">
-                                            <h4>If you have a coupon code, please enter it in the box below</h4>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div><br>
-                                    <div class="row">
-                                        <form class="discount-div" action="{{ route('shop.coupons.store') }}" method="POST">
-                                            {{ csrf_field() }}
-                                            <span> &nbsp Discount Code?</span>
-                                            <input type="text" class="discount" name="coupon_code" id="coupon_code">
-                                            <input type="submit" value="APPLY" class="apply">
-                                            <div class="clearfix"></div>
-                                            <br>
-                                        </form>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            @endif
                         </div>
                         <!--right-side-->
                         <div class="col-md-6 col-sm-12  wow fadeIn">

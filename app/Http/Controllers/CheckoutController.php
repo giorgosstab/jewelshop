@@ -32,10 +32,10 @@ class CheckoutController extends Controller
         }
 
         return view('shop.checkout.main')->with([
-            'discount' => $this->getNumbers()->get('discount'),
-            'newSubTotal' => $this->getNumbers()->get('newSubTotal'),
-            'newTax' => $this->getNumbers()->get('newTax'),
-            'newTotal' => $this->getNumbers()->get('newTotal'),
+            'discount' => getNumbers()->get('discount'),
+            'newSubTotal' => getNumbers()->get('newSubTotal'),
+            'newTax' => getNumbers()->get('newTax'),
+            'newTotal' => getNumbers()->get('newTotal'),
             'deliveries' => $deliveries,
             'payments' => $payments,
         ]);
@@ -60,10 +60,10 @@ class CheckoutController extends Controller
         }
 
         return view('shop.checkout.main')->with([
-            'discount' => $this->getNumbers()->get('discount'),
-            'newSubTotal' => $this->getNumbers()->get('newSubTotal'),
-            'newTax' => $this->getNumbers()->get('newTax'),
-            'newTotal' => $this->getNumbers()->get('newTotal'),
+            'discount' => getNumbers()->get('discount'),
+            'newSubTotal' => getNumbers()->get('newSubTotal'),
+            'newTax' => getNumbers()->get('newTax'),
+            'newTotal' => getNumbers()->get('newTotal'),
             'deliveries' => $deliveries,
             'payments' => $payments,
         ]);
@@ -86,7 +86,7 @@ class CheckoutController extends Controller
         ];
         try {
             $charge = Stripe::charges()->create([
-                'amount' => $this->getNumbers()->get('newTotal') / 100,
+                'amount' => getNumbers()->get('newTotal') / 100,
                 'currency' => 'EUR',
                 'source' => $request->stripeToken,
                 'description' => 'Order',
@@ -145,12 +145,12 @@ class CheckoutController extends Controller
             'second_billing_country' => !empty($request->country_sec) ? $request->country_sec : null,
             'second_billing_postalcode' => !empty($request->zipcode_sec) ? $request->zipcode_sec : null,
 
-            'billing_discount' => $this->getNumbers()->get('discount'),
-            'billing_discount_code' => $this->getNumbers()->get('code'),
+            'billing_discount' => getNumbers()->get('discount'),
+            'billing_discount_code' => getNumbers()->get('code'),
 
-            'billing_subtotal' => $this->getNumbers()->get('newSubTotal'),
-            'billing_tax' => $this->getNumbers()->get('newTax'),
-            'billing_total' => $this->getNumbers()->get('newTotal'),
+            'billing_subtotal' => getNumbers()->get('newSubTotal'),
+            'billing_tax' => getNumbers()->get('newTax'),
+            'billing_total' => getNumbers()->get('newTotal'),
 
             'delivery_gateway' => $request->delivery,
             'payment_gateway' => $request->card,
@@ -170,26 +170,5 @@ class CheckoutController extends Controller
 
         event(new UserOrderPlace($order));
 
-    }
-
-    private function getNumbers() {
-        $tax = config('cart.tax') / 100;
-        $discount = session()->get('coupon')['discount'] ?? 0;
-        $code = session()->get('coupon')['name'] ?? null;
-        $newSubTotal = (Cart::subtotal() - $discount);
-        if($newSubTotal < 0){
-            $newSubTotal = 0;
-        }
-        $newTax = $newSubTotal * $tax;
-        $newTotal = $newSubTotal * (1 + $tax);
-
-        return collect([
-            'tax' => $tax,
-            'discount' => $discount,
-            'code' => $code,
-            'newSubTotal' => $newSubTotal,
-            'newTax' => $newTax,
-            'newTotal' => $newTotal,
-        ]);
     }
 }

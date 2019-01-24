@@ -20,16 +20,12 @@ class CouponsController extends Controller
         $coupon = Coupon::where('code', $request->coupon_code)->first();
 
         if(!$coupon) {
-            return redirect()->route('shop.checkout.index')->withErrors('Invalid coupon code. Please try again!');
+            return redirect()->route('shop.shopping-cart.index')->with('warning_message','Invalid coupon code. Please try again!');
         }
 
         dispatch_now(new UpdateCouponJob($coupon));
 
-        if(auth()->user()) {
-            return redirect()->route('shop.checkout.index')->with('success_message', 'Coupon has been applied!');
-        } else {
-            return redirect()->route('shop.checkout.guest')->with('success_message', 'Coupon has been applied!');
-        }
+        return redirect()->route('shop.shopping-cart.index')->with('success_message', 'Coupon has been applied!');
     }
 
     /**
@@ -38,6 +34,18 @@ class CouponsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy()
+    {
+        session()->forget('coupon');
+
+        return redirect()->route('shop.shopping-cart.index')->with('success_message', 'Coupon has been removed!');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyCheckoutPage()
     {
         session()->forget('coupon');
         if(auth()->user()) {

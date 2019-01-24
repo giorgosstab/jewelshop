@@ -1,4 +1,7 @@
 <?php
+
+use Gloudemans\Shoppingcart\Facades\Cart;
+
 /**
  * Created by PhpStorm.
  * User: Anonymous
@@ -55,4 +58,25 @@ function settingsAdminImageExist($path, $page) {
 function jsonDecode($json_string) {
     $data = json_decode($json_string);
     return $data[0]->download_link;
+}
+
+function getNumbers() {
+    $tax = config('cart.tax') / 100;
+    $discount = session()->get('coupon')['discount'] ?? 0;
+    $code = session()->get('coupon')['name'] ?? null;
+    $newSubTotal = (Cart::subtotal() - $discount);
+    if($newSubTotal < 0){
+        $newSubTotal = 0;
+    }
+    $newTax = $newSubTotal * $tax;
+    $newTotal = $newSubTotal * (1 + $tax);
+
+    return collect([
+        'tax' => $tax,
+        'discount' => $discount,
+        'code' => $code,
+        'newSubTotal' => $newSubTotal,
+        'newTax' => $newTax,
+        'newTotal' => $newTotal,
+    ]);
 }
