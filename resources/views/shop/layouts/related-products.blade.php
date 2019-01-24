@@ -8,7 +8,13 @@
                     <a href="{{ route('shop.products.show', $product->slug) }}">
                         <div class="product-scroll">
                             <div class="row AlsoLike-border">
-                                <div class="col-md-6 col-sm-2 col-xs-6"><img  src="{{ Voyager::image($product->thumbnail('small')) }}" alt="" title="" class="img-fluid"></div>
+                                <div class="col-md-6 col-sm-2 col-xs-6">
+                                    @if(Voyager::image($product->thumbnail('small')) && file_exists(Voyager::image($product->thumbnail('small'))))
+                                        <img src="{{ Voyager::image($product->thumbnail('small')) }}" class="img-fluid" alt="{{ $product->name }}" title="{{ $product->name }}">
+                                    @else
+                                        <img src="{{ productImage($product->image) }}" class="img-fluid"alt="{{ $product->name }}" title="{{ $product->name }}" >
+                                    @endif
+                                </div>
                                 <div class="col-md-6 col-sm-9 col-xs-6">
                                     <h3>{{ $product->name }}</h3>
                                     <div>
@@ -32,7 +38,13 @@
                     <a href="{{ route('shop.products.show', $product->slug) }}">
                         <div class="product-scroll">
                             <div class="row AlsoLike-border">
-                                <div class="col-md-6 col-sm-2 col-xs-6"><img  src="{{ Voyager::image($product->thumbnail('small')) }}" alt="" title="" class="img-fluid"></div>
+                                <div class="col-md-6 col-sm-2 col-xs-6">
+                                    @if(Voyager::image($product->thumbnail('small')) && file_exists(Voyager::image($product->thumbnail('small'))))
+                                        <img src="{{ Voyager::image($product->thumbnail('small')) }}" class="img-fluid" alt="{{ $product->name }}" title="{{ $product->name }}">
+                                    @else
+                                        <img src="{{ productImage($product->image) }}" class="img-fluid"alt="{{ $product->name }}" title="{{ $product->name }}" >
+                                    @endif
+                                </div>
                                 <div class="col-md-6 col-sm-9 col-xs-6">
                                     <h3>{{ $product->name }}</h3>
                                     <div>
