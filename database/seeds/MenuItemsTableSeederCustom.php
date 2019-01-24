@@ -142,6 +142,21 @@ class MenuItemsTableSeederCustom extends Seeder
                     'order'      => 6,
                 ])->save();
             }
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'Orders',
+                'url'     => '/admin/orders',
+                'route'   => null,
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => 'fa fa-shopping-bag',
+                    'color'      => null,
+                    'parent_id'  => $shopMenuItem->id,
+                    'order'      => 7,
+                ])->save();
+            }
 //            $menuItem = MenuItem::firstOrNew([
 //                'menu_id' => $menu->id,
 //                'title'   => 'Category Products',

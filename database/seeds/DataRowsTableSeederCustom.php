@@ -1052,6 +1052,561 @@ class DataRowsTableSeederCustom extends Seeder
                 'order'        => 9,
             ])->save();
         }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Orders
+        |--------------------------------------------------------------------------
+        */
+        $paymentDataType = DataType::where('slug', 'orders')->firstOrFail();
+        $dataRow = $this->dataRow($paymentDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'hidden',
+                'display_name' => 'Id',
+                'required' => 1,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 0,
+                'add' => 0,
+                'delete' => 0,
+                'details' => null,
+                'order' => 1,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'unique_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'text',
+                'display_name' => 'Unique Id',
+                'required' => 1,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 1,
+                'details' => null,
+                'order' => 2,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'user_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'number',
+                'display_name' => 'User Id',
+                'required' => 1,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 0,
+                'add' => 0,
+                'delete' => 0,
+                'details' => null,
+                'order' => 3,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'billing_fname');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'text',
+                'display_name' => 'Billing Fname',
+                'required' => 1,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 4,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'billing_lname');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'text',
+                'display_name' => 'Billing Lname',
+                'required' => 1,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 5,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'billing_email');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'text',
+                'display_name' => 'Billing Email',
+                'required' => 1,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 6,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'billing_address');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'text',
+                'display_name' => 'Billing Address',
+                'required' => 1,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 7,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'billing_housenumber');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'number',
+                'display_name' => 'Billing Housenumber',
+                'required' => 1,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 8,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'billing_locality');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'text',
+                'display_name' => 'Billing Locality',
+                'required' => 1,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 9,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'billing_city');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'text',
+                'display_name' => 'Billing City',
+                'required' => 1,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 10,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'billing_phone');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'text',
+                'display_name' => 'Billing Phone',
+                'required' => 1,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 11,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'billing_country');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'text',
+                'display_name' => 'Billing Country',
+                'required' => 1,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 12,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'billing_postalcode');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'number',
+                'display_name' => 'Billing Postalcode',
+                'required' => 1,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 13,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'different_shipping_address');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'checkbox',
+                'display_name' => 'Different Shipping Address',
+                'required' => 1,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details'      => [
+                    "on" => "Yse",
+                    "off" => "No",
+                    "checked" => "false"
+                ],
+                'order' => 14,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'second_billing_fname');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'text',
+                'display_name' => 'Second Billing Fname',
+                'required' => 0,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 15,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'second_billing_lname');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'text',
+                'display_name' => 'Second Billing Lname',
+                'required' => 0,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 16,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'second_billing_address');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'text',
+                'display_name' => 'Second Billing Address',
+                'required' => 0,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 17,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'second_billing_housenumber');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'number',
+                'display_name' => 'Second Billing Housenumber',
+                'required' => 0,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 18,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'second_billing_locality');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'text',
+                'display_name' => 'Second Billing Locality',
+                'required' => 0,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 19,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'second_billing_email');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'text',
+                'display_name' => 'Second Billing Email',
+                'required' => 0,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 20,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'second_billing_city');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'text',
+                'display_name' => 'Second Billing City',
+                'required' => 0,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 21,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'second_billing_phone');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'text',
+                'display_name' => 'Second Billing Phone',
+                'required' => 0,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 22,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'second_billing_country');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'text',
+                'display_name' => 'Second Billing Country',
+                'required' => 0,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 23,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'second_billing_postalcode');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'text',
+                'display_name' => 'Second Billing Postalcode',
+                'required' => 0,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 24,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'billing_discount');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'number',
+                'display_name' => 'Billing Discount',
+                'required' => 1,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 25,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'billing_discount_code');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'text',
+                'display_name' => 'Billing Discount Code',
+                'required' => 0,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 26,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'billing_subtotal');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'number',
+                'display_name' => 'Billing Subtotal',
+                'required' => 1,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 27,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'billing_tax');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'number',
+                'display_name' => 'Billing Tax',
+                'required' => 1,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 28,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'billing_total');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'number',
+                'display_name' => 'Billing Total',
+                'required' => 1,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 29,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'delivery_gateway');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'text',
+                'display_name' => 'Delivery Gateway',
+                'required' => 1,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 30,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'payment_gateway');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'text',
+                'display_name' => 'Payment Gateway',
+                'required' => 1,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 31,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'name_on_card');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'text',
+                'display_name' => 'Name On Card',
+                'required' => 0,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 32,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'shipped');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'checkbox',
+                'display_name' => 'Shipped',
+                'required' => 1,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details'      => [
+                    "on" => "Yse",
+                    "off" => "No",
+                    "checked" => "false"
+                ],
+                'order' => 33,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'error');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'text',
+                'display_name' => 'Error',
+                'required' => 0,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 34,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'Created At',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => null,
+                'order'        => 35,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'Updated At',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => null,
+                'order'        => 36,
+            ])->save();
+        }
     }
     /**
      * [dataRow description].

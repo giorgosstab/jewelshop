@@ -38,6 +38,7 @@ class DataTypesTableSeederCustom extends Seeder
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',
+                'server_side'           => 1,
             ])->save();
         }
         $dataType = $this->dataType('slug', 'category-jewels');
@@ -65,6 +66,7 @@ class DataTypesTableSeederCustom extends Seeder
 //                'controller'            => '',
 //                'generate_permissions'  => 1,
 //                'description'           => '',
+//                'server_side'           => 1,
 //            ])->save();
 //        }
         $dataType = $this->dataType('slug', 'brands');
@@ -103,6 +105,20 @@ class DataTypesTableSeederCustom extends Seeder
                 'display_name_plural'   => 'Payments',
                 'icon'                  => 'voyager-wallet',
                 'model_name'            => 'App\Payment',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 1,
+            ])->save();
+        }
+        $dataType = $this->dataType('slug', 'orders');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'orders',
+                'display_name_singular' => 'Order',
+                'display_name_plural'   => 'Orders',
+                'icon'                  => 'fa fa-shopping-bag',
+                'model_name'            => 'App\Order',
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',
