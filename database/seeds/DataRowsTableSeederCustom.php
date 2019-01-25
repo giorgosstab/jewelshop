@@ -551,6 +551,27 @@ class DataRowsTableSeederCustom extends Seeder
                 'order'        => 5,
             ])->save();
         }
+        $dataRow = $this->dataRow($categoryDataType, 'status');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Status',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "default" => 'PUBLISHED',
+                    "options" => [
+                        'UNPUBLISHED' => 'UNPUBLISHED',
+                        'PUBLISHED' => 'PUBLISHED',
+                    ]
+                ],
+                'order'        => 6,
+            ])->save();
+        }
         $dataRow = $this->dataRow($categoryDataType, 'created_at');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -563,7 +584,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'details'      => null,
-                'order'        => 6,
+                'order'        => 7,
             ])->save();
         }
         $dataRow = $this->dataRow($categoryDataType, 'updated_at');
@@ -578,7 +599,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'details'      => null,
-                'order'        => 7,
+                'order'        => 8,
             ])->save();
         }
         /*

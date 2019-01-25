@@ -19,6 +19,7 @@ class CreateCategoryJewelsTable extends Migration
             $table->foreign('parent_id')->references('id')->on('category_jewels')->onUpdate('cascade')->onDelete('set null');
             $table->string('name')->unique();
             $table->string('slug')->unique();
+            $table->enum('status', ['PUBLISHED', 'UNPUBLISHED']);
             $table->timestamps();
         });
     }

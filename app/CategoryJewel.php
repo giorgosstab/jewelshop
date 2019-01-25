@@ -22,13 +22,13 @@ class CategoryJewel extends Model
 //        return $this->hasMany('App\CategoryJewel', 'parent_id'); //get all subs. NOT RECURSIVE
 //    }
     public function getCategories() {
-        $categories=CategoryJewel::where('parent_id',NULL)->get();//united
+        $categories=CategoryJewel::where('status', 'like', 'PUBLISHED')->where('parent_id',NULL)->get();//united
         $categories=$this->addRelation($categories);
         return $categories;
     }
 
     protected function selectChild($id) {
-        $categories=CategoryJewel::where('parent_id',$id)->get(); //rooney
+        $categories=CategoryJewel::where('status', 'like', 'PUBLISHED')->where('parent_id',$id)->get(); //rooney
         $categories=$this->addRelation($categories);
         return $categories;
     }
