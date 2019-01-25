@@ -19,10 +19,10 @@ class Product extends Model
         return number_format($this->price / 100,2,'.',',');
     }
     public function presentPriceDeals() {
-        if($this->secondprice == null) {
+        if($this->secondprice == null || $this->secondprice == 0) {
             return null;
         } else {
-            return number_format($this->secondprice, 2);
+            return number_format($this->secondprice / 100,2,'.',',');
         }
     }
 
