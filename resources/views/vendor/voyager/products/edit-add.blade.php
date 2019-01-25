@@ -339,6 +339,28 @@
                                     </div>
                                 @endif
                             @endif
+                                @if($row->display_name == 'Status' || $row->display_name == 'status')
+                                    @if (isset($row->details->formfields_custom))
+                                        @include('voyager::formfields.custom.' . $row->details->formfields_custom)
+                                    @else
+                                        <div class="panel-body">
+                                            <div class="form-group @if($row->type == 'hidden') hidden @endif col-md-{{ isset($display_options->width) ? $display_options->width : 12 }}" @if(isset($display_options->id)){{ "id=$display_options->id" }}@endif>
+                                                {{ $row->slugify }}
+                                                <label for="name">{{ $row->display_name }}</label>
+                                                @include('voyager::multilingual.input-hidden-bread-edit-add')
+                                                @if($row->type == 'relationship')
+                                                    @include('voyager::formfields.relationship', ['options' => $row->details])
+                                                @else
+                                                    {!! app('voyager')->formField($row, $dataType, $dataTypeContent) !!}
+                                                @endif
+
+                                                @foreach (app('voyager')->afterFormFields($row, $dataType, $dataTypeContent) as $after)
+                                                    {!! $after->handle($row, $dataType, $dataTypeContent) !!}
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endif
                         @endforeach
                     </div>
                     <div class="panel panel panel-bordered panel-primary">

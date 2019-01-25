@@ -207,6 +207,27 @@ class DataRowsTableSeederCustom extends Seeder
                 'order'        => 10,
             ])->save();
         }
+        $dataRow = $this->dataRow($productDataType, 'status');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Status',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "default" => 'PUBLISHED',
+                    "options" => [
+                        'UNPUBLISHED' => 'UNPUBLISHED',
+                        'PUBLISHED' => 'PUBLISHED',
+                    ]
+                ],
+                'order'        => 11,
+            ])->save();
+        }
         $dataRow = $this->dataRow($productDataType, 'image');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -242,7 +263,7 @@ class DataRowsTableSeederCustom extends Seeder
                         ],
                     ],
                 ],
-                'order'        => 11,
+                'order'        => 12,
             ])->save();
         }
         $dataRow = $this->dataRow($productDataType, 'images');
@@ -264,7 +285,7 @@ class DataRowsTableSeederCustom extends Seeder
                     "quality" => "100%",
                     "upsize" => true
                 ],
-                'order'        => 12,
+                'order'        => 13,
             ])->save();
         }
         $dataRow = $this->dataRow($productDataType, 'created_at');
@@ -279,7 +300,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'details'      => null,
-                'order'        => 13,
+                'order'        => 14,
             ])->save();
         }
         $dataRow = $this->dataRow($productDataType, 'updated_at');
@@ -294,7 +315,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'details'      => null,
-                'order'        => 14,
+                'order'        => 15,
             ])->save();
         }
         /*

@@ -16,9 +16,9 @@ class HomePageController extends Controller
     public function index()
     {
         $categories = CategoryJewel::where('parent_id',NULL)->take(10)->inRandomOrder()->get();
-        $products = Product::take(8)->inRandomOrder()->get();
-        $bestProducts = Product::where('bestof',true)->take(5)->inRandomOrder()->get();
-        $latestProducts = Product::orderBy('id', 'desc')->take(8)->get();
+        $products = Product::where('status', 'like', 'PUBLISHED')->take(8)->inRandomOrder()->get();
+        $bestProducts = Product::where('status', 'like', 'PUBLISHED')->where('bestof',true)->take(5)->inRandomOrder()->get();
+        $latestProducts = Product::where('status', 'like', 'PUBLISHED')->orderBy('id', 'desc')->take(8)->get();
         $brands = Brand::take(8)->inRandomOrder()->get();
 
         return view('shop.home.main')->with([

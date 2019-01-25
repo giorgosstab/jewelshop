@@ -15,21 +15,21 @@ class ShopController extends Controller
     {
         $pagination = 20;
 
-        $specialOffers = Product::where('offer', true)->inRandomOrder()->take(4)->get();
-        $hotDeals = Product::where('hotdeals', true)->inRandomOrder()->take(2)->get();
+        $specialOffers = Product::where('status', 'like', 'PUBLISHED')->where('offer', true)->inRandomOrder()->take(4)->get();
+        $hotDeals = Product::where('status', 'like', 'PUBLISHED')->where('hotdeals', true)->inRandomOrder()->take(2)->get();
 
         if (request()->cat) {
-            $products = Product::inRandomOrder()->take(20)->get();
+            $products = Product::where('status', 'like', 'PUBLISHED')->inRandomOrder()->take(20)->get();
             $productsPagination = $products->count();
 
         } elseif(request()->sub) {
             $products = Product::with('categoriesJewels')->whereHas('categoriesJewels', function ($query) {
-                $query->where('slug', request()->sub);
+                $query->where('status', 'like', 'PUBLISHED')->where('slug', request()->sub);
             });
             $productsPagination = $products->count();
             //$categoryName = optional($allSubCategories->where('slug', request()->category)->first())->name;
         }else {
-            $products = Product::take(20);
+            $products = Product::where('status', 'like', 'PUBLISHED')->take(20);
             $productsPagination = $products->count();
         }
 
@@ -64,8 +64,8 @@ class ShopController extends Controller
      */
     public function show($slug)
     {
-        $product = Product::where('slug',$slug)->firstOrFail();
-        $mightAlsoLike = Product::where('slug','!=',$slug)->inRandomOrder()->take(4)->get();
+        $product = Product::where('status', 'like', 'PUBLISHED')->where('slug',$slug)->firstOrFail();
+        $mightAlsoLike = Product::where('status', 'like', 'PUBLISHED')->where('slug','!=',$slug)->inRandomOrder()->take(4)->get();
         return view('shop.products.details')->with([
             'product' => $product,
             'mightAlsoLike' => $mightAlsoLike,

@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->boolean('offer')->default(false);
             $table->boolean('hotdeals')->default(false);
             $table->integer('secondprice')->nullable();
+            $table->enum('status', ['PUBLISHED', 'UNPUBLISHED']);
             $table->timestamps();
         });
     }

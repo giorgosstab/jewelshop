@@ -16,7 +16,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        $mightAlsoLike = Product::inRandomOrder()->take(4)->get();
+        $mightAlsoLike = Product::where('status', 'like', 'PUBLISHED')->inRandomOrder()->take(4)->get();
         return view('shop.shopping-cart.main')->with([
             'mightAlsoLike' => $mightAlsoLike,
              'discount' => getNumbers()->get('discount'),
