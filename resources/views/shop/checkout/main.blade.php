@@ -105,10 +105,10 @@
                         <div class="col-md-6 col-sm-12  wow fadeIn">
                             <div class="clearfix"> </div>
                             <div class="right-form">
-                                {!! Form::open(['method' => 'POST','route' => 'shop.checkout.store', 'id' => 'payment-form']) !!}
-                                {{ csrf_field() }}
-                                <div class="clearfix"> </div><br>
-                                <div class="collapse-group">
+                                <form action="{{ route('shop.checkout.store') }}" method="POST" id="payment-form">
+                                    {{ csrf_field() }}
+                                    <div class="clearfix"> </div><br>
+                                    <div class="collapse-group">
                                     <div class="panel panel-default">
                                         <div class="panel-heading" role="tab" id="headingInfos">
                                             <h3 class="panel-title panel-border-circle">
@@ -318,7 +318,7 @@
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
-                                {!! Form::open() !!}
+                                </form>
                             </div>
                             <div class="clearfix"></div>
                         </div>
