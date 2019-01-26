@@ -31,7 +31,7 @@
             <!--breadcrumbs -->
             <div class="bread2">
                 <ul>
-                    <li><a href="index-2.html">HOME</a>
+                    <li><a href="{{ route('shop.home.index') }}">HOME</a>
                     <li>/</li>
                     <li>CONTACT US</li>
                 </ul>
@@ -41,14 +41,18 @@
             <!--contact-form-->
             <div class="contact-us">
                 <div class="contact-in">
-                    <h1 class="wow fadeIn">&nbsp; <img  src="assets/images/products/contact-logo.png" alt="" title="" class="img-fluid">&nbsp;</h1>
+                    <h1 class="wow fadeIn">&nbsp;
+                        <img  src="{{ secure_asset('assets/images/products/contact-logo.png') }}" alt="Contact JewelShop" title="Contact JewelShop" class="img-fluid">&nbsp;
+                    </h1>
                     <h2 class="wow fadeIn">Customer Service</h2>
                     <h4 class="wow fadeIn">We are happy to hear from you and are ready to assist you </h4>
                     <div class="clearfix"> </div>
-                    <div class="row m-0">        <div class="col-md-6 wow fadeIn">
-                            <div class="overlay" onClick="style.pointerEvents='none'"></div>
+                    <div class="row m-0">
+                        <div class="col-md-6 wow fadeIn">
                             <div class="map-div wow fadeIn text-center">
-                                <div id='mapkit-1507'></div>
+                                <div id='mapkit-1507'>
+                                    {!! Mapper::render() !!}
+                                </div>
                             </div>
                             <div class="clearfix"> </div>
                         </div>
@@ -57,31 +61,31 @@
                             <h3>Send us your message</h3>
                             <div class="clearfix"> </div>
                             <div class="form-2">
-                                <form action="http://www.creativethemes.co.in/" method="post" id="contactForm">
+                                <form action="#" method="post" id="">
                                     <div class="form-group">
-                                        <input placeholder="FIRST NAME" name="fname" id="fname" type="text">
+                                        <input placeholder="FIRST NAME" name="fname" type="text">
                                     </div>
                                     <div class="form-group">
-                                        <input placeholder="LAST NAME" name="lname" id="lname" type="text">
+                                        <input placeholder="LAST NAME" name="lname" type="text">
                                     </div>
                                     <div class="form-group">
-                                        <input placeholder="Phone Number" name="phone" id="phone" type="text">
+                                        <input placeholder="Phone Number" name="phone" type="text">
                                     </div>
                                     <div class="form-group">
-                                        <input placeholder="Email Address" name="email" id="email" type="text">
+                                        <input placeholder="Email Address" name="email" type="text">
                                     </div>
                                     <div class="form-group">
-                                        <select class="selectpicker" name="country" id="country" data-style="btn-primary">
+                                        <select class="selectpicker" name="country" data-style="btn-primary">
                                             <option value="">SELECT YOUR COUNTRY</option>
                                             <option value="India">India</option>
                                             <option value="US">US</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <input placeholder="MESSAGE" name="message" id="message" type="text">
+                                        <input placeholder="MESSAGE" name="message" type="text">
                                     </div>
                                     <div class="sub-bt">
-                                        <button   class="submit-css" type="button" onClick="return ajaxmailcontact();">SEND MESSAGE <i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+                                        <button class="submit-css" type="button">SEND MESSAGE <i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
                                     </div>
                                 </form>
                             </div>
@@ -97,4 +101,8 @@
     </div>
     <!-- container-->
     <div class="clearfix"></div>
+@endsection
+
+@section('extra-script')
+    {{ Mapper::renderJavascript() }}
 @endsection

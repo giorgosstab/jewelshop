@@ -681,6 +681,68 @@
         ]
     },
     {
+        "name": "cornford/googlmapper",
+        "version": "v2.33.0",
+        "version_normalized": "2.33.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/bradcornford/Googlmapper.git",
+            "reference": "06428532c50d86cc3807c4c6e9fa042f2cd278b8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/bradcornford/Googlmapper/zipball/06428532c50d86cc3807c4c6e9fa042f2cd278b8",
+            "reference": "06428532c50d86cc3807c4c6e9fa042f2cd278b8",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "5.*",
+            "illuminate/view": "5.*",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "0.9.1",
+            "phpspec/phpspec": "2.0.*@dev"
+        },
+        "time": "2018-09-06T08:49:31+00:00",
+        "type": "library",
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "Cornford\\Googlmapper\\MapperServiceProvider"
+                ],
+                "aliases": {
+                    "Mapper": "Cornford\\Googlmapper\\Facades\\MapperFacade"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Cornford\\Googlmapper": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Bradley Cornford",
+                "email": "me@bradleycornford.co.uk"
+            }
+        ],
+        "description": "An easy way to integrate Google Maps with Laravel.",
+        "keywords": [
+            "google",
+            "laravel",
+            "map",
+            "mapping",
+            "maps",
+            "streetview"
+        ]
+    },
+    {
         "name": "dnoegel/php-xdg-base-dir",
         "version": "0.1",
         "version_normalized": "0.1.0.0",
