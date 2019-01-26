@@ -71,10 +71,6 @@
         <!--scrolltop-->
         {{ Html::script('assets/js/scrolltopcontrol.js') }}
 
-        <!--themes js-->
-        {{ Html::script('assets/js/ajax.js') }}
-        {{ Html::script('assets/js/formValidation.js') }}
-
         <!--searchbar-->
         {{ Html::script('assets/js/popper.min.js') }}
         {{ Html::script('assets/js/bootstrap.min.js') }}
