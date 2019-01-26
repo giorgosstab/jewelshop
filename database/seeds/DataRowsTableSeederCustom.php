@@ -858,12 +858,31 @@ class DataRowsTableSeederCustom extends Seeder
                         "forceUpdate" => false
                     ],
                     "validation" => [
-                        "rule" => [
-                            "required|regex:/^[a-zA-Z0-9-]+$/u"
-                        ]
+                        "rule" => "required|regex:/^[a-zA-Z0-9-]+$/u"
                     ]
                 ],
                 'order'        => 3,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($deliveryDataType, 'status');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Status',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "default" => 'PUBLISHED',
+                    "options" => [
+                        'UNPUBLISHED' => 'UNPUBLISHED',
+                        'PUBLISHED' => 'PUBLISHED',
+                    ]
+                ],
+                'order'        => 4,
             ])->save();
         }
         $dataRow = $this->dataRow($deliveryDataType, 'image');
@@ -884,7 +903,7 @@ class DataRowsTableSeederCustom extends Seeder
                     "quality" => "100%",
                     "upsize" => true
                 ],
-                'order'        => 4,
+                'order'        => 5,
             ])->save();
         }
         $dataRow = $this->dataRow($deliveryDataType, 'description');
@@ -899,7 +918,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'details'      => null,
-                'order'        => 5,
+                'order'        => 6,
             ])->save();
         }
         $dataRow = $this->dataRow($deliveryDataType, 'created_at');
@@ -914,7 +933,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'details'      => null,
-                'order'        => 6,
+                'order'        => 7,
             ])->save();
         }
         $dataRow = $this->dataRow($deliveryDataType, 'updated_at');
@@ -929,7 +948,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'details'      => null,
-                'order'        => 7,
+                'order'        => 8,
             ])->save();
         }
 
@@ -990,12 +1009,31 @@ class DataRowsTableSeederCustom extends Seeder
                         "forceUpdate" => false
                     ],
                     "validation" => [
-                        "rule" => [
-                            "required|regex:/^[a-zA-Z0-9-]+$/u"
-                        ]
+                        "rule" => "required|regex:/^[a-zA-Z0-9-]+$/u"
                     ]
                 ],
                 'order'        => 3,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'status');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Status',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "default" => 'PUBLISHED',
+                    "options" => [
+                        'UNPUBLISHED' => 'UNPUBLISHED',
+                        'PUBLISHED' => 'PUBLISHED',
+                    ]
+                ],
+                'order'        => 4,
             ])->save();
         }
         $dataRow = $this->dataRow($paymentDataType, 'image');
@@ -1016,7 +1054,7 @@ class DataRowsTableSeederCustom extends Seeder
                     "quality" => "100%",
                     "upsize" => true
                 ],
-                'order'        => 4,
+                'order'        => 5,
             ])->save();
         }
         $dataRow = $this->dataRow($paymentDataType, 'extra_code');
@@ -1031,7 +1069,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'details'      => null,
-                'order'        => 5,
+                'order'        => 6,
             ])->save();
         }
         $dataRow = $this->dataRow($paymentDataType, 'extra_css_top');
@@ -1046,7 +1084,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'details'      => null,
-                'order'        => 6,
+                'order'        => 7,
             ])->save();
         }
         $dataRow = $this->dataRow($paymentDataType, 'extra_js_bottom');
@@ -1061,7 +1099,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'details'      => null,
-                'order'        => 7,
+                'order'        => 8,
             ])->save();
         }
         $dataRow = $this->dataRow($paymentDataType, 'created_at');
@@ -1076,7 +1114,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'details'      => null,
-                'order'        => 8,
+                'order'        => 9,
             ])->save();
         }
         $dataRow = $this->dataRow($paymentDataType, 'updated_at');
@@ -1091,7 +1129,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'details'      => null,
-                'order'        => 9,
+                'order'        => 10,
             ])->save();
         }
 

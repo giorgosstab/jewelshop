@@ -19,6 +19,7 @@ class CreateDeliveriesTable extends Migration
             $table->string('slug')->unique();
             $table->string('image')->nullable();
             $table->string('description');
+            $table->enum('status', ['PUBLISHED', 'UNPUBLISHED']);
             $table->timestamps();
         });
     }

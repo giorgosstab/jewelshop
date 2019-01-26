@@ -24,8 +24,8 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        $deliveries = Delivery::all();
-        $payments = Payment::all();
+        $deliveries = Delivery::where('status', 'like', 'PUBLISHED')->get();
+        $payments = Payment::where('status', 'like', 'PUBLISHED')->get();
 
         if(Cart::instance('default')->count() == 0) {
             return redirect()->route('shop.products.index');
@@ -48,8 +48,8 @@ class CheckoutController extends Controller
      */
     public function guest()
     {
-        $deliveries = Delivery::all();
-        $payments = Payment::all();
+        $deliveries = Delivery::where('status', 'like', 'PUBLISHED')->get();
+        $payments = Payment::where('status', 'like', 'PUBLISHED')->get();
 
         if(Cart::instance('default')->count() == 0) {
             return redirect()->route('shop.products.index');

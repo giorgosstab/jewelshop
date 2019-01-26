@@ -21,6 +21,7 @@ class CreatePaymentsTable extends Migration
             $table->text('extra_code')->nullable();;
             $table->text('extra_css_top')->nullable();
             $table->text('extra_js_bottom')->nullable();
+            $table->enum('status', ['PUBLISHED', 'UNPUBLISHED']);
             $table->timestamps();
         });
     }
