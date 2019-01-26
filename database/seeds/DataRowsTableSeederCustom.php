@@ -740,12 +740,31 @@ class DataRowsTableSeederCustom extends Seeder
                         "forceUpdate" => false
                     ],
                     "validation" => [
-                        "rule" => [
-                            "required|regex:/^[a-zA-Z0-9-]+$/u"
-                        ]
+                        "rule" => "required|regex:/^[a-zA-Z0-9-]+$/u"
                     ]
                 ],
                 'order'        => 3,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($brandsDataType, 'status');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Status',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "default" => 'PUBLISHED',
+                    "options" => [
+                        'UNPUBLISHED' => 'UNPUBLISHED',
+                        'PUBLISHED' => 'PUBLISHED',
+                    ]
+                ],
+                'order'        => 4,
             ])->save();
         }
         $dataRow = $this->dataRow($brandsDataType, 'image');
@@ -767,7 +786,7 @@ class DataRowsTableSeederCustom extends Seeder
                     "quality" => "100%",
                     "upsize" => true
                 ],
-                'order'        => 4,
+                'order'        => 5,
             ])->save();
         }
         $dataRow = $this->dataRow($brandsDataType, 'created_at');
@@ -782,7 +801,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'details'      => null,
-                'order'        => 4,
+                'order'        => 6,
             ])->save();
         }
         $dataRow = $this->dataRow($brandsDataType, 'updated_at');
@@ -797,7 +816,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'details'      => null,
-                'order'        => 5,
+                'order'        => 7,
             ])->save();
         }
 
