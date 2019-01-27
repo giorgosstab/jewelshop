@@ -11,10 +11,6 @@
 |
 */
 
-
-use App\CategoryJewel;
-use App\Order;
-
 Route::get('/','HomePageController@index')->name('shop.home.index');
 
 Route::get('/shop','ShopController@index')->name('shop.products.index');
@@ -58,7 +54,7 @@ Route::get('emptySaves', function(){
 });
 
 View::composer(['*'], function($view) {
-    $subcategories = new CategoryJewel;
+    $subcategories = new App\CategoryJewel;
 
     try {
         $allSubCategories = $subcategories->getCategories();
@@ -82,4 +78,3 @@ Auth::routes();
 Route::get('auth/activate', 'Auth\ActivationController@activate')->name('auth.activate');
 Route::get('auth/activate/resend', 'Auth\ActivationController@showResendForm')->name('auth.activate.showResendForm');
 Route::post('auth/activate/resend', 'Auth\ActivationController@resend')->name('auth.activate.resend');
-
