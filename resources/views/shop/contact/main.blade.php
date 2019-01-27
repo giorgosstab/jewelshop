@@ -65,7 +65,7 @@
                             <div class="form-2">
                                 <form action="{{ route('shop.contact.store') }}" method="post" id="contact-form">
                                     {{ csrf_field() }}
-                                    {!!  GoogleReCaptchaV3::render('contact') !!}
+                                    {!!  GoogleReCaptchaV3::render('contact_us') !!}
                                     <div class="form-group">
                                         <input type="text" name="fname" placeholder="FIRST NAME" value="{{ old('fname') }}">
                                     </div>

@@ -32,7 +32,7 @@ return [
     | Google reCAPTCHA credentials, https://www.google.com/recaptcha/admin
     |
     */
-    'secret_key' => '6Lf49IIUAAAAAMhGmj6Y1mF7s5bABrEqE92VQZdX',
+    'secret_key' => env('RECAPTCHA_SECRET_KEY', ''),
     /*
     |--------------------------------------------------------------------------
     | Site Key
@@ -41,7 +41,7 @@ return [
     | Google reCAPTCHA credentials, https://www.google.com/recaptcha/admin
     |
     */
-    'site_key' => '6Lf49IIUAAAAAKsGDk6NtxY8B2Eu0Goi9fFfw9Fq',
+    'site_key' => env('RECAPTCHA_SITE_KEY', ''),
     /*
     |--------------------------------------------------------------------------
     | Template
@@ -74,6 +74,11 @@ return [
     'setting' => [
         [
             'action' => 'contact_us',
+            'threshold' => 0.5,
+            'score_comparision' => true
+        ],
+        [
+            'action' => 'register',
             'threshold' => 0.5,
             'score_comparision' => true
         ]
