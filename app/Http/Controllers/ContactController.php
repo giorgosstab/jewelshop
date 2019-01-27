@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ContactUs;
+use App\Events\Contact\ContactEvent;
 use App\Http\Requests\ContactRequest;
 use Mapper;
 
@@ -35,6 +36,8 @@ class ContactController extends Controller
             'country' => $request->country,
             'message' => $request->message,
         ]);
+
+        event(new ContactEvent($contact));
 
         return redirect()->route('shop.contact.index')->with('success_message','Thank you! Your message has been send successfully! <br>We will contact as soon as possible!');
     }

@@ -26,6 +26,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\Order\UserOrderPlace' => [
             'App\Listeners\Order\SendOrderPlace',
         ],
+        'App\Events\Contact\ContactEvent' => [
+            'App\Listeners\Contact\ContactListener',
+        ],
         'cart.added' => [
             'App\Listeners\Cart\CartUpdated',
         ],
