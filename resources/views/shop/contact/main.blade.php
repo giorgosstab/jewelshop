@@ -38,6 +38,7 @@
             </div>
             <!--breadcrumbs -->
             <div class="clearfix"> </div>
+            @include('shop.messages.error')
             <!--contact-form-->
             <div class="contact-us">
                 <div class="contact-in">
@@ -61,36 +62,38 @@
                             <h3>Send us your message</h3>
                             <div class="clearfix"> </div>
                             <div class="form-2">
-                                <form action="#" method="post" id="">
+                                <form action="{{ route('shop.contact.store') }}" method="post" id="contact-form">
+                                    {{ csrf_field() }}
                                     <div class="form-group">
-                                        <input placeholder="FIRST NAME" name="fname" type="text">
+                                        <input type="text" name="fname" placeholder="FIRST NAME" value="{{ old('fname') }}">
                                     </div>
                                     <div class="form-group">
-                                        <input placeholder="LAST NAME" name="lname" type="text">
+                                        <input type="text" name="lname" placeholder="LAST NAME" value="{{ old('lname') }}">
                                     </div>
                                     <div class="form-group">
-                                        <input placeholder="Phone Number" name="phone" type="text">
+                                        <input type="text" name="phone" placeholder="PHONE NUMBER" value="{{ old('phone') }}">
                                     </div>
                                     <div class="form-group">
-                                        <input placeholder="Email Address" name="email" type="text">
+                                        <input type="text" name="email" placeholder="EMAIL ADDRESS" value="{{ old('email') }}">
                                     </div>
                                     <div class="form-group">
                                         <select class="selectpicker" name="country" data-style="btn-primary">
-                                            <option value="">SELECT YOUR COUNTRY</option>
-                                            <option value="India">India</option>
-                                            <option value="US">US</option>
+                                            <option value="" disabled="" selected="selected">SELECT YOUR COUNTRY</option>
+                                            <option value="GREECE" {{ old('country') == 'GREECE' ? 'selected' : '' }}>GREECE</option>
+                                            <option value="CYPRUS" {{ old('country') == 'CYPRUS' ? 'selected' : '' }}>CYPRUS</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <input placeholder="MESSAGE" name="message" type="text">
+                                        <textarea style="height: 100px;" type="text" name="message" placeholder="TYPE YOUR MESSAGE" value="{{ old('message') }}"></textarea>
                                     </div>
                                     <div class="sub-bt">
-                                        <button class="submit-css" type="button">SEND MESSAGE <i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+                                        <button class="submit-css" type="submit">SEND MESSAGE <i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
                                     </div>
                                 </form>
                             </div>
                             <div class="clearfix"> </div>
-                        </div></div>
+                        </div>
+                    </div>
                     <div class="clearfix"> </div>
                 </div>
             </div>
@@ -105,4 +108,7 @@
 
 @section('extra-script')
     {{ Mapper::renderJavascript() }}
+    {{ Html::script('assets/js/validator/jquery.validate.min.js') }}
+    {{ Html::script('assets/js/validator/additional-methods.min.js') }}
+    {{ Html::script('assets/js/validator/contact/validationContact.js') }}
 @endsection

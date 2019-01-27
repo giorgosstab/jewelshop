@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ContactUs;
 use App\Http\Requests\ContactRequest;
 use Mapper;
 
@@ -26,6 +27,15 @@ class ContactController extends Controller
      */
     public function store(ContactRequest $request)
     {
+        $contact = ContactUs::create([
+            'fname' => $request->fname,
+            'lname' => $request->lname,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'country' => $request->country,
+            'message' => $request->message,
+        ]);
 
+        return redirect()->route('shop.contact.index')->with('success_message','Thank you! Your message has been send successfully! <br>We will contact as soon as possible!');
     }
 }

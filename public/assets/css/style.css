@@ -2865,7 +2865,7 @@ textarea {
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	width: 100%;
-	max-width: 450px;
+	/*max-width: 450px;*/
 	padding: 5px;
 }
 /* -------------------------------------------- *
