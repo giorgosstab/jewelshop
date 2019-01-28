@@ -34,8 +34,6 @@
     </head>
     <body class="top-body">
         <div id="preloader"></div>
-        <!--modal popup-->
-        @include('shop.layouts.modals')
         <!--nav-->
         @include('shop.layouts.navbar')
 
@@ -88,26 +86,33 @@
         {{ Html::script('https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js') }}
         {{ Html::script('js/algolia.js') }}
 
-<!--hidden input file-->
-<script>
-    $(document).ready(function() {
-        $(".change").on('click', function(e){
-            e.preventDefault();
-            $(".upload-field:hidden").trigger('click');
-        });
-    });
-</script>
-<!--animate fade messages-->
-<script>
-    $("#message").fadeTo(4000, 1000).slideUp(500, function(){
-        $("#message").slideUp(5000);
-    });
-    $('.navbar-nav .dropdown > a').click(function() {
-        location.href = this.href;
-    });
-</script>
+        <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script>
+        <script type="text/javascript">
+            window.dojoRequire(["mojo/signup-forms/Loader"], function(L) {
+                L.start({"baseUrl":"mc.us20.list-manage.com","uuid":"75ae64ec7c9d1dd64ea2fc91e","lid":"d7ce10dc96","uniqueMethods":true})
+            })
+        </script>
 
-<!--extra script-->
-@yield('extra-script')
-</body>
+        <!--hidden input file-->
+        <script>
+            $(document).ready(function() {
+                $(".change").on('click', function(e){
+                    e.preventDefault();
+                    $(".upload-field:hidden").trigger('click');
+                });
+            });
+        </script>
+        <!--animate fade messages-->
+        <script>
+            $("#message").fadeTo(4000, 1000).slideUp(500, function(){
+                $("#message").slideUp(5000);
+            });
+            $('.navbar-nav .dropdown > a').click(function() {
+                location.href = this.href;
+            });
+        </script>
+
+        <!--extra script-->
+        @yield('extra-script')
+    </body>
 </html>

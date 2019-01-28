@@ -45,6 +45,8 @@ Route::get('/terms','TermsController@index')->name('shop.privacy.index');
 Route::get('/contact','ContactController@index')->name('shop.contact.index');
 Route::post('/contact','ContactController@store')->name('shop.contact.store');
 
+Route::post('/newsletter','NewsletterController@mailChimp')->name('shop.newsletter.mailChimp');
+
 Route::get('empty', function(){
     Cart::destroy();
 });

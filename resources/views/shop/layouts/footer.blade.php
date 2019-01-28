@@ -9,11 +9,12 @@
                 </div>
                 <!-- /.text -->
                 <div class="float-right">
-                    <form method="post" id="subsForm" onSubmit="return ajaxmailsubscribe();">
-                        <input placeholder="Your Email Address" type="email" name="subsemail" id="subsemail">
-                        <button class="theme-button"  type="button" value="SUBSCRIBE" onClick="return ajaxmailsubscribe();"> <i class="fa fa-angle-right" aria-hidden="true"></i></button>
-                        <!--<input class="theme-button"/><i class="fa fa-angle-right" aria-hidden="true"></i>-->
-                        <!--<button class="theme-button"><i class="fa fa-angle-right" aria-hidden="true"></i></button>-->
+                    <form action="{{ route('shop.newsletter.mailChimp') }}" method="POST" id="subsForm">
+                        {{ csrf_field() }}
+                        <input placeholder="Your Email Address" type="email" name="email">
+                        <button class="theme-button"  type="submit">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </button>
                     </form>
                 </div>
                 <!-- /.float-right -->
