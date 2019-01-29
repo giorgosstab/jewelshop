@@ -31,6 +31,11 @@ class Product extends Model
      *
      * @return array
      */
+    public function shouldBeSearchable()
+    {
+        return $this->status !== "UNPUBLISHED";
+    }
+
     public function toSearchableArray()
     {
         $array = $this->toArray();

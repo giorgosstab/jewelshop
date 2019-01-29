@@ -91,6 +91,14 @@ class EcommerceInstall extends Command
         $this->call('migrate:fresh', [
             '--seed' => true,
         ]);
+
+        $this->call('scout:flush', [
+            'model' => 'App\Product'
+        ]);
+        $this->call('scout:import', [
+            'model' => 'App\Product'
+        ]);
+
         $this->call('db:seed', [
             '--class' => 'VoyagerDatabaseSeeder',
         ]);
