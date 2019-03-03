@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use Illuminate\Http\Request;
 
 class ShopController extends Controller
 {
@@ -26,11 +27,20 @@ class ShopController extends Controller
             $products = Product::with('categoriesJewels')->whereHas('categoriesJewels', function ($query) {
                 $query->where('status', 'like', 'PUBLISHED')->where('slug', request()->sub);
             });
+            $maxPrice = $products->max('price');
+            $minPrice = $products->min('price');
             $productsPagination = $products->count();
             //$categoryName = optional($allSubCategories->where('slug', request()->category)->first())->name;
         }else {
             $products = Product::where('status', 'like', 'PUBLISHED')->take(20);
+            $maxPrice = $products->max('price');
+            $minPrice = $products->min('price');
             $productsPagination = $products->count();
+        }
+
+        if(request()->filter == "range"){
+            $products = $products->where('price', '>=', request()->min * 100)
+                ->where('price', '<', request()->max * 100);
         }
 
         if(request()->sort == "low_high"){
@@ -47,12 +57,15 @@ class ShopController extends Controller
             $products = $products->orderBy('id', 'desc')->paginate($pagination); //->onEachSide($onside)
         }
 
-//        dd($products);
+
+//        dd($maxPrice);
         return view('shop.products.main')->with([
             'products' => $products,
             'productsPagination' => $productsPagination,
             'specialOffers' => $specialOffers,
             'hotDeals' => $hotDeals,
+            'maxPrice' => $maxPrice,
+            'minPrice' => $minPrice,
         ]);
     }
 
