@@ -49,18 +49,12 @@ class EcommerceInstall extends Command
 
 
     protected function proceed(){
-//        File::deleteDirectory(public_path('storage/settings/dummy'));
-//        File::deleteDirectory(public_path('storage/category-jewels/dummy'));
-//        File::deleteDirectory(public_path('storage/products/dummy'));
-//        File::deleteDirectory(public_path('storage/brands/dummy'));
-//        File::deleteDirectory(public_path('storage/deliveries/dummy'));
-//        File::deleteDirectory(public_path('storage/payments/dummy'));
-        File::deleteDirectory(public_path('storage/settings'));
-        File::deleteDirectory(public_path('storage/category-jewels'));
-        File::deleteDirectory(public_path('storage/products'));
-        File::deleteDirectory(public_path('storage/brands'));
-        File::deleteDirectory(public_path('storage/deliveries'));
-        File::deleteDirectory(public_path('storage/payments'));
+        File::deleteDirectory(public_path('storage/settings/dummy'));
+        File::deleteDirectory(public_path('storage/category-jewels/dummy'));
+        File::deleteDirectory(public_path('storage/products/dummy'));
+        File::deleteDirectory(public_path('storage/brands/dummy'));
+        File::deleteDirectory(public_path('storage/deliveries/dummy'));
+        File::deleteDirectory(public_path('storage/payments/dummy'));
         $this->callSilent('storage:link');
 
         $copySuccess = File::copyDirectory(public_path('assets/images/dummySettings'), public_path('storage/settings/dummy'));
