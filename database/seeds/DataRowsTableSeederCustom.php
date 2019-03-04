@@ -32,6 +32,31 @@ class DataRowsTableSeederCustom extends Seeder
                 'order'        => 1,
             ])->save();
         }
+        $dataRow = $this->dataRow($productDataType, 'brand_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Brand Id',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "default" => "",
+                    "null" => "",
+                    "options" => [
+                        "" => "-- None --"
+                    ],
+                    "relationship" => [
+                        "key" => "id",
+                        "label" => "name"
+                    ]
+                ],
+                'order'        => 2,
+            ])->save();
+        }
         $dataRow = $this->dataRow($productDataType, 'name');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -48,7 +73,7 @@ class DataRowsTableSeederCustom extends Seeder
                         "rule" => 'required|regex:/^[a-zA-Z0-9 ]+$/u|min:3|max:30'
                     ]
                 ],
-                'order'        => 2,
+                'order'        => 3,
             ])->save();
         }
         $dataRow = $this->dataRow($productDataType, 'slug');
@@ -71,7 +96,7 @@ class DataRowsTableSeederCustom extends Seeder
                         "rule" => "required|regex:/^[a-zA-Z0-9-]+$/u|unique:products,slug"
                     ]
                 ],
-                'order'        => 3,
+                'order'        => 4,
             ])->save();
         }
         $dataRow = $this->dataRow($productDataType, 'sku');
@@ -90,7 +115,7 @@ class DataRowsTableSeederCustom extends Seeder
                         "rule" => 'required|regex:/^[a-zA-Z0-9 ]+$/u|min:3|max:15'
                     ]
                 ],
-                'order'        => 4,
+                'order'        => 5,
             ])->save();
         }
         $dataRow = $this->dataRow($productDataType, 'price');
@@ -109,7 +134,7 @@ class DataRowsTableSeederCustom extends Seeder
                         "rule" => 'required|regex:/^\\d*(\\.\\d{1,2})?$/'
                     ]
                 ],
-                'order'        => 5,
+                'order'        => 6,
             ])->save();
         }
         $dataRow = $this->dataRow($productDataType, 'description');
@@ -128,7 +153,7 @@ class DataRowsTableSeederCustom extends Seeder
                         "rule" => 'required'
                     ]
                 ],
-                'order'        => 6,
+                'order'        => 7,
             ])->save();
         }
         $dataRow = $this->dataRow($productDataType, 'bestof');
@@ -147,7 +172,7 @@ class DataRowsTableSeederCustom extends Seeder
                     "off" => 'No',
                     "checked" => 'false'
                 ],
-                'order'        => 7,
+                'order'        => 8,
             ])->save();
         }
         $dataRow = $this->dataRow($productDataType, 'offer');
@@ -166,7 +191,7 @@ class DataRowsTableSeederCustom extends Seeder
                     "off" => 'No',
                     "checked" => 'false'
                 ],
-                'order'        => 8,
+                'order'        => 9,
             ])->save();
         }
         $dataRow = $this->dataRow($productDataType, 'hotdeals');
@@ -185,7 +210,7 @@ class DataRowsTableSeederCustom extends Seeder
                     "off" => 'No',
                     "checked" => 'false'
                 ],
-                'order'        => 9,
+                'order'        => 10,
             ])->save();
         }
         $dataRow = $this->dataRow($productDataType, 'secondprice');
@@ -204,7 +229,7 @@ class DataRowsTableSeederCustom extends Seeder
                         "rule" => 'regex:/^\\d*(\\.\\d{1,2})?$/'
                     ]
                 ],
-                'order'        => 10,
+                'order'        => 11,
             ])->save();
         }
         $dataRow = $this->dataRow($productDataType, 'status');
@@ -225,7 +250,7 @@ class DataRowsTableSeederCustom extends Seeder
                         'PUBLISHED' => 'PUBLISHED',
                     ]
                 ],
-                'order'        => 11,
+                'order'        => 12,
             ])->save();
         }
         $dataRow = $this->dataRow($productDataType, 'image');
@@ -263,7 +288,7 @@ class DataRowsTableSeederCustom extends Seeder
                         ],
                     ],
                 ],
-                'order'        => 12,
+                'order'        => 13,
             ])->save();
         }
         $dataRow = $this->dataRow($productDataType, 'images');
@@ -285,7 +310,7 @@ class DataRowsTableSeederCustom extends Seeder
                     "quality" => "100%",
                     "upsize" => true
                 ],
-                'order'        => 13,
+                'order'        => 14,
             ])->save();
         }
         $dataRow = $this->dataRow($productDataType, 'created_at');
@@ -300,7 +325,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'details'      => null,
-                'order'        => 14,
+                'order'        => 15,
             ])->save();
         }
         $dataRow = $this->dataRow($productDataType, 'updated_at');
@@ -315,7 +340,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'details'      => null,
-                'order'        => 15,
+                'order'        => 16,
             ])->save();
         }
         /*
