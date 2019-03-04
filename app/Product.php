@@ -26,6 +26,15 @@ class Product extends Model
         }
     }
 
+    public function brands()
+    {
+        return $this->belongsTo('App\Brand');
+    }
+
+    public function brandId(){
+        return $this->belongsTo('App\Brand');
+    }
+
     /**
      * Get the indexable data array for the model.
      *

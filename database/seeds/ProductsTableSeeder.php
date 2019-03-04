@@ -19,7 +19,8 @@ class ProductsTableSeeder extends Seeder
                 'sku'           => rand(00000001, 99999999).$i,
                 'price'         => rand($this->price(500), $this->price(5000)),
                 'description'   => 'Lorem ipsum ' . $i . 'dolor sit amet, consectetur adipiscing elit. Cras ac nisi eu tortor sodales ornare vitae non dolor. Praesent elit velit, blandit vitae nibh eget, feugiat tincidunt diam. Nam tincidunt auctor tellus, nec dictum risus ullamcorper quis.',
-                'image'         => 'products/dummy/wedding-ring-'.$i.'.jpg'
+                'image'         => 'products/dummy/wedding-ring-'.$i.'.jpg',
+                'brand_id'      => rand(1, 8)
             ])->categoriesJewels()->attach(11); //->categoriesJewels()->attach(11,['category_parent_id' => 1]);
         }
 
@@ -30,7 +31,8 @@ class ProductsTableSeeder extends Seeder
                 'sku'           => rand(00000001, 99999999).$i.$i,
                 'price'         => rand($this->price(500), $this->price(5000)),
                 'description'   => 'Lorem ipsum ' . $i . 'dolor sit amet, consectetur adipiscing elit. Cras ac nisi eu tortor sodales ornare vitae non dolor. Praesent elit velit, blandit vitae nibh eget, feugiat tincidunt diam. Nam tincidunt auctor tellus, nec dictum risus ullamcorper quis.',
-                'image'         => 'products/dummy/diamond-ring-'.$i.'.jpg'
+                'image'         => 'products/dummy/diamond-ring-'.$i.'.jpg',
+                'brand_id'      => rand(1, 8)
             ])->categoriesJewels()->attach(13);
         }
 
