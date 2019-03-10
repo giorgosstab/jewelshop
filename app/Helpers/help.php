@@ -80,3 +80,7 @@ function getNumbers() {
         'newTotal' => $newTotal,
     ]);
 }
+
+function appendUrlParams(array $parameter) {
+    return array_merge(\Request::query(), $parameter);
+}
