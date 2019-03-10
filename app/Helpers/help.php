@@ -84,3 +84,9 @@ function getNumbers() {
 function appendUrlParams(array $parameter) {
     return array_merge(\Request::query(), $parameter);
 }
+
+
+function numberOrdinalSuffix($number) {
+    $numberFormatter = new \NumberFormatter('en_US', \NumberFormatter::ORDINAL);
+    return $numberFormatter->format($number);
+}
