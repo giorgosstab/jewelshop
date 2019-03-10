@@ -58,97 +58,20 @@
                                             <h2>Category</h2>
                                             <div class="Category">
                                                 <div id="accordion">
-                                                    <div class="card-header"> <a class="card-link" data-toggle="collapse" href="#collapseOne"> PRODUCT TYPE </a> </div>
-                                                    <div id="collapseOne" class="collapse" data-parent="#accordion">
+                                                    <div class="card-header"> <a class="card-link" data-toggle="collapse" href="#collapseCategory"> PRODUCT TYPE <span>({{ $allCategories->count() }})</span></a> </div>
+                                                    <div id="collapseCategory" class="collapse" data-parent="#accordion">
                                                         <div class="card-body">
                                                             <ul class="m-0 p-0">
-                                                                <li>
-                                                                    <label>
-                                                                        <input type="checkbox"   name="option2" value="something">
-                                                                        Bangle <span>(14)</span> </label>
-                                                                </li>
-                                                                <li>
-                                                                    <label>
-                                                                        <input type="checkbox"   name="option2" value="something">
-                                                                        Bead <span>(28)</span></label>
-                                                                </li>
-                                                                <li>
-                                                                    <label>
-                                                                        <input type="checkbox"   name="option2" value="something">
-                                                                        Bracelet <span>(91)</span></label>
-                                                                </li>
-                                                                <li>
-                                                                    <label>
-                                                                        <input type="checkbox"   name="option2" value="something">
-                                                                        Charm <span>(122)</span></label>
-                                                                </li>
-                                                                <li>
-                                                                    <label>
-                                                                        <input type="checkbox"   name="option2" value="something">
-                                                                        Coin <span>(1)</span></label>
-                                                                </li>
-                                                                <li>
-                                                                    <label>
-                                                                        <input type="checkbox"   name="option2" value="something">
-                                                                        Cufflinks <span>(7) </span></label>
-                                                                </li>
-                                                                <li>
-                                                                    <label>
-                                                                        <input type="checkbox"   name="option2" value="something">
-                                                                        Earrings <span>(276) </span></label>
-                                                                </li>
-                                                                <li>
-                                                                    <label>
-                                                                        <input type="checkbox"   name="option2" value="something">
-                                                                        Jewellery <span>Set (4) </span></label>
-                                                                </li>
-                                                                <li>
-                                                                    <label>
-                                                                        <input type="checkbox"   name="option2" value="something">
-                                                                        Locket <span>(1)</span> </label>
-                                                                </li>
-                                                                <li>
-                                                                    <label>
-                                                                        <input type="checkbox"   name="option2" value="something">
-                                                                        Necklace <span>(62)</span></label>
-                                                                </li>
-                                                                <li>
-                                                                    <label>
-                                                                        <input type="checkbox"   name="option2" value="something">
-                                                                        Pendant <span>(234)</span></label>
-                                                                </li>
-                                                                <li>
-                                                                    <label>
-                                                                        <input type="checkbox"   name="option2" value="something">
-                                                                        Ring <span>(455)</span></label>
-                                                                </li>
-                                                                <li>
-                                                                    <label>
-                                                                        <input type="checkbox"   name="option2" value="something">
-                                                                        Ring Set <span>(1)</span></label>
-                                                                </li>
-                                                                <li>
-                                                                    <label>
-                                                                        <input type="checkbox"   name="option2" value="something">
-                                                                        Watch <span>(1)</span></label>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card-header"> <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">COLLECTIONS </a> </div>
-                                                    <div id="collapseTwo" class="collapse" data-parent="#accordion">
-                                                        <div class="card-body">
-                                                            <ul class="m-0 p-0">
-                                                                <li>
-                                                                    <label>
-                                                                        <input type="checkbox"   name="option2" value="something">
-                                                                        Amber <span>(1)</span> </label>
-                                                                </li>
-                                                                <li>
-                                                                    <label>
-                                                                        <input type="checkbox"   name="option2" value="something">
-                                                                        Garnet <span>(5)</span></label>
-                                                                </li>
+                                                                @foreach($allCategories as $category)
+                                                                    <li>
+                                                                        @if($category->products->count() > 0)
+                                                                            <label>
+                                                                                <input type="checkbox" class="categoryCheck" name="option2" value="{{ $category->slug }}">
+                                                                                {{ ucwords($category->name) }} <span>({{ $category->products->count() }})</span>
+                                                                            </label>
+                                                                        @endif
+                                                                    </li>
+                                                                @endforeach
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -166,50 +89,6 @@
                                                                         @endif
                                                                     </li>
                                                                 @endforeach
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card-header"> <a class="collapsed card-link" data-toggle="collapse" href="#collapse1">MATERIAL</a> </div>
-                                                    <div id="collapse1" class="collapse" data-parent="#accordion">
-                                                        <div class="card-body">
-                                                            <ul class="m-0 p-0">
-                                                                <li>
-                                                                    <label>
-                                                                        <input type="checkbox"   name="option2" value="something">
-                                                                        Sterling Silver <span>(1)</span></label>
-                                                                </li>
-                                                                <li>
-                                                                    <label>
-                                                                        <input type="checkbox"   name="option2" value="something">
-                                                                        14ct Yellow Gold <span>(10)</span></label>
-                                                                </li>
-                                                                <li>
-                                                                    <label>
-                                                                        <input type="checkbox"   name="option2" value="something">
-                                                                        9ct Yellow Gold <span>(12)</span></label>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card-header"> <a class="collapsed card-link" data-toggle="collapse" href="#collapse4">STONE TYPE</a> </div>
-                                                    <div id="collapse4" class="collapse" data-parent="#accordion">
-                                                        <div class="card-body">
-                                                            <ul class="m-0 p-0">
-                                                                <li>
-                                                                    <label>
-                                                                        <input type="checkbox"   name="option2" value="something">
-                                                                        Amber (1)</label>
-                                                                </li>
-                                                                <li>
-                                                                    <label>
-                                                                        <input type="checkbox"   name="option2" value="something">
-                                                                        Garnet (1)</label>
-                                                                </li>
-                                                                <li>
-                                                                    <label>
-                                                                        <input type="checkbox"   name="option2" value="something">
-                                                                        No Stone</label>
-                                                                </li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -394,6 +273,7 @@
         $(document).ready(function() {
             let url_brands = new URLSearchParams(window.location.search);
             let brands = url_brands.get("brands");
+            let categories = url_brands.get("categories");
             if (brands) {
                 let array = brands.split(" ");
                 for (let i = 0; i < array.length; i++) {
@@ -406,10 +286,50 @@
 
                 }
             }
+            if (categories) {
+                let array = categories.split(" ");
+                for (let i = 0; i < array.length; i++) {
+                    $(".categoryCheck").each(function () {
+                        if ($(this).val() === array[i]) {
+                            $(this).attr("checked", true);
+                            $("#collapseCategory").addClass("show");
+                        }
+                    });
+
+                }
+            }
         });
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
+            $(".categoryCheck").change(function () {
+                let categories;
+                let url_categories = new URLSearchParams(window.location.search);
+
+                let allCategoriesStr = url_categories.get("categories");
+                if (this.checked) {
+                    if (allCategoriesStr) {
+                        categories = url_categories.get("categories") + '+' + this.value;
+                    } else {
+                        categories = this.value;
+                    }
+
+                    let clearUrl = categories.split(' ').join('+');
+                    let url = "{!! route('shop.products.index', appendUrlParams(['categories' => 'checkedCategory'])) !!}";
+                    url = url.replace('checkedCategory', clearUrl);
+                    window.location.href = url;
+                } else {
+                    let arrayOfCategories = allCategoriesStr.split(" ");
+                    if (arrayOfCategories.includes(this.value)) {
+                        arrayOfCategories.splice(arrayOfCategories.indexOf(this.value), 1);
+                        let clearUrl = arrayOfCategories.join('+');
+                        let url = "{!! route('shop.products.index', appendUrlParams(['categories' => 'checkedCategory'])) !!}";
+                        url = url.replace('checkedCategory', clearUrl);
+                        window.location.href = url;
+                    }
+                }
+            });
+
             $(".brandCheck").change(function () {
                 let brands;
                 let url_brands = new URLSearchParams(window.location.search);
@@ -423,7 +343,7 @@
                     }
 
                     let clearUrl = brands.split(' ').join('+');
-                    let url = "{!! route('shop.products.index', appendUrlParams(['filter' => 'brand','brands' => 'checkedBrand'])) !!}";
+                    let url = "{!! route('shop.products.index', appendUrlParams(['brands' => 'checkedBrand'])) !!}";
                     url = url.replace('checkedBrand', clearUrl);
                     window.location.href = url;
                 } else {
@@ -431,7 +351,7 @@
                     if (arrayOfBrands.includes(this.value)) {
                         arrayOfBrands.splice(arrayOfBrands.indexOf(this.value), 1);
                         let clearUrl = arrayOfBrands.join('+');
-                        let url = "{!! route('shop.products.index', appendUrlParams(['filter' => 'brand','brands' => 'checkedBrand'])) !!}";
+                        let url = "{!! route('shop.products.index', appendUrlParams(['brands' => 'checkedBrand'])) !!}";
                         url = url.replace('checkedBrand', clearUrl);
                         window.location.href = url;
                     }

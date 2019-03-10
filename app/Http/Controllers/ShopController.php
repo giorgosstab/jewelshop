@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Brand;
+use App\CategoryJewel;
 use App\Product;
 
 class ShopController extends Controller
@@ -21,6 +22,11 @@ class ShopController extends Controller
         $allBrands = Brand::where('status', 'like', 'PUBLISHED')->groupBy('name')->with('products')->whereHas('products', function ($query) {
             $query->where('status', 'like', 'PUBLISHED');
         })->get();
+
+        $allCategories = CategoryJewel::where('status', 'like', 'PUBLISHED')->groupBy('name')->with('products')->whereHas('products', function ($query) {
+            $query->where('status', 'like', 'PUBLISHED');
+        })->get();
+
 
         if (request()->cat) {
             $products = Product::where('status', 'like', 'PUBLISHED')->inRandomOrder()->take(20)->get();
@@ -45,12 +51,26 @@ class ShopController extends Controller
                 ->where('price', '<', request()->max * 100);
         }
 
-        if(request()->filter == "brand"){
+        if(request()->brands && request()->brands != ""){
             $products = Product::where('status', 'like', 'PUBLISHED')->with('brand')->whereHas('brand', function ($query) {
                 $query->where('status', 'like', 'PUBLISHED')->whereIn('slug',explode(' ', request()->brands));
             });
             $maxPrice = $products->max('price');
             $minPrice = $products->min('price');
+        }
+        if(request()->categories && request()->categories != ""){
+            $products = Product::where('status', 'like', 'PUBLISHED')->with('categoriesJewels')->whereHas('categoriesJewels', function ($query) {
+                $query->where('status', 'like', 'PUBLISHED')->whereIn('slug',explode(' ', request()->categories));
+            });
+            $maxPrice = $products->max('price');
+            $minPrice = $products->min('price');
+        }
+        if(request()->brands && request()->brands != "" && request()->categories && request()->categories != ""){
+            $products = Product::where('status', 'like', 'PUBLISHED')->with('categoriesJewels')->whereHas('categoriesJewels', function ($query) {
+                $query->whereIn('slug',explode(' ', request()->categories));
+            })->with('brand')->whereHas('brand', function ($query) {
+                $query->whereIn('slug',explode(' ', request()->brands));
+            });
         }
 
 
@@ -76,6 +96,7 @@ class ShopController extends Controller
             'maxPrice' => $maxPrice,
             'minPrice' => $minPrice,
             'allBrands' => $allBrands,
+            'allCategories' => $allCategories,
         ]);
     }
 
