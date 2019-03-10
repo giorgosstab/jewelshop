@@ -152,20 +152,20 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <div class="card-header"> <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree"> BRAND <span>(3)</span> </a> </div>
-                                                    <div id="collapseThree" class="collapse" data-parent="#accordion">
+                                                    <div class="card-header"> <a class="collapsed card-link" data-toggle="collapse" href="#collapseBrand"> BRAND <span>({{ $allBrands->count() }})</span> </a> </div>
+                                                    <div id="collapseBrand" class="collapse" data-parent="#accordion">
                                                         <div class="card-body">
                                                             <ul class="m-0 p-0">
-                                                                <li>
-                                                                    <label>
-                                                                        <input type="checkbox"   name="option2" value="something">
-                                                                        Pre-Owned <span>(8)</span></label>
-                                                                </li>
-                                                                <li>
-                                                                    <label>
-                                                                        <input type="checkbox"   name="option2" value="something">
-                                                                        TJH Collection <span>(10)</span></label>
-                                                                </li>
+                                                                @foreach($allBrands as $brand)
+                                                                    <li>
+                                                                        @if($brand->products->count() > 0)
+                                                                            <label>
+                                                                                <input type="checkbox" class="brandCheck" name="option2" value="{{ $brand->slug }}">
+                                                                                {{ ucwords($brand->name) }} <span>({{ $brand->products->count() }})</span>
+                                                                            </label>
+                                                                        @endif
+                                                                    </li>
+                                                                @endforeach
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -230,7 +230,7 @@
                                                 <p class="mt-3 mb-2">
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <input type="number" id="min" min="{{ request()->filter == "range" ? request()->min / 100 : floor($minPrice / 100) }}" max="{{ request()->filter == "range" ? request()->max / 100 : floor($maxPrice / 100) }}" class="form-control pull-left">
+                                                        <input type="number" id="min" min="{{ request()->filter == "range" ? request()->min / 100 : floor($minPrice / 100) }}" max="{{ request()->filter == "range" ? request()->max / 100 : floor($maxPrice / 100) }}" step="1" class="form-control pull-left">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <input type="number" id="max" min="{{ request()->filter == "range" ? request()->min / 100 : floor($minPrice / 100) }}" max="{{ request()->filter == "range" ? request()->max / 100 : floor($maxPrice / 100) }}" class="form-control pull-right">
@@ -284,33 +284,18 @@
                                 <div class="col-md-6 col-sm-6 col-xs-6 bread">
                                     <div class="breadcrumbs">
                                         <!-- fix position if dont have pagination links -->
-                                        @if($productsPagination <= 20)
-                                            <br><br><br>
-                                        @else
-                                            {{ $products->appends(request()->input())->render('pagination::shopPagination') }}
-                                        @endif
+                                        {!! $products->count() < 20 ? '<br><br><br>' : $products->appends(request()->input())->render('pagination::shopPagination') !!}
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-xs-6 select-p">
                                     <div class="pagination">
-                                        <h5>Showing <span>{{ $products->firstItem() }}</span> - <span>{{ $products->lastItem() }}</span> of <span>{{ $products->total() }}</span> items for
-                                            @if($products->currentPage() == 1)
-                                                <span>{{ $products->currentPage() }}st</span>
-                                            @elseif($products->currentPage() == 2)
-                                                <span>{{ $products->currentPage() }}nd</span>
-                                            @elseif($products->currentPage() == 3)
-                                                <span>{{ $products->currentPage() }}rd</span>
-                                            @else
-                                                <span>{{ $products->currentPage() }}th</span>
-                                            @endif
-                                            page.
+                                        <h5>Showing <span>{{ $products->firstItem() }}</span> - <span>{{ $products->lastItem() }}</span> of <span>{{ numberOrdinalSuffix($products->total()) }}</span> Product(s) on
+                                            <span>{{ numberOrdinalSuffix($products->currentPage()) }}</span> page.
                                         </h5>
                                     </div>
                                 </div><hr>
                             @endif
-                        </div>
-                        <hr>
-
+                        </div><hr>
                         <div class="clearfix"></div>
                         <div class="row">
                             @forelse($products as $product)
@@ -360,23 +345,13 @@
                             @endforelse
                             <div class="clearfix"></div>
                         </div>
-                        <div class="clearfix"></div>
-                        <hr>
+                        <div class="clearfix"></div><hr>
                         <div class="row">
                             @if($products->count() > 0)
                                 <div class="col-md-6 col-sm-6 col-xs-6 select-p">
                                     <div class="pagination">
-                                        <h5>Showing <span>{{ $products->firstItem() }}</span> - <span>{{ $products->lastItem() }}</span> of <span>{{ $products->total() }}</span> items for
-                                            @if($products->currentPage() == 1)
-                                                <span>{{ $products->currentPage() }}st</span>
-                                            @elseif($products->currentPage() == 2)
-                                                <span>{{ $products->currentPage() }}nd</span>
-                                            @elseif($products->currentPage() == 3)
-                                                <span>{{ $products->currentPage() }}rd</span>
-                                            @else
-                                                <span>{{ $products->currentPage() }}th</span>
-                                            @endif
-                                            page.
+                                        <h5>Showing <span>{{ $products->firstItem() }}</span> - <span>{{ $products->lastItem() }}</span> of <span>{{ numberOrdinalSuffix($products->total()) }}</span> Product(s) on
+                                            <span>{{ numberOrdinalSuffix($products->currentPage()) }}</span> page.
                                         </h5>
                                     </div>
                                 </div>
@@ -407,22 +382,77 @@
                 max: Math.floor({{ $maxPrice / 100 }}),
                 values: [ Math.floor({{ request()->filter == "range" ? request()->min : $minPrice / 100 }} ), Math.floor({{ request()->filter == "range" ? request()->max : $maxPrice / 100 }}) ],
                 slide: function( event, ui ) {
-                    // $( "#amount" ).val( "€" + ui.values[0] + " - €" + ui.values[1] );
                     $( "#min" ).val(ui.values[0]);
                     $( "#max" ).val(ui.values[1]);
                 }
             });
-            // $( "#amount" ).val( "€" + $( "#slider-range" ).slider( "values", 0 ) + " - €" + $( "#slider-range" ).slider( "values", 1) );
-            $( "#min" ).val($( "#slider-range" ).slider( "values", 0 ));
-            $( "#max" ).val($( "#slider-range" ).slider( "values", 1 ));
+            $("#min").val($("#slider-range").slider("values", 0));
+            $("#max").val($("#slider-range").slider("values", 1));
         } );
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
+            let url_brands = new URLSearchParams(window.location.search);
+            let brands = url_brands.get("brands");
+            if (brands) {
+                let array = brands.split(" ");
+                for (let i = 0; i < array.length; i++) {
+                    $(".brandCheck").each(function () {
+                        if ($(this).val() === array[i]) {
+                            $(this).attr("checked", true);
+                            $("#collapseBrand").addClass("show");
+                        }
+                    });
+
+                }
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".brandCheck").change(function () {
+                let brands;
+                let url_brands = new URLSearchParams(window.location.search);
+
+                let allBrandsStr = url_brands.get("brands");
+                if (this.checked) {
+                    if (allBrandsStr) {
+                        brands = url_brands.get("brands") + '+' + this.value;
+                    } else {
+                        brands = this.value;
+                    }
+
+                    let clearUrl = brands.split(' ').join('+');
+                    let url = "{!! route('shop.products.index', appendUrlParams(['filter' => 'brand','brands' => 'checkedBrand'])) !!}";
+                    url = url.replace('checkedBrand', clearUrl);
+                    window.location.href = url;
+                } else {
+                    let arrayOfBrands = allBrandsStr.split(" ");
+                    if (arrayOfBrands.includes(this.value)) {
+                        arrayOfBrands.splice(arrayOfBrands.indexOf(this.value), 1);
+                        let clearUrl = arrayOfBrands.join('+');
+                        let url = "{!! route('shop.products.index', appendUrlParams(['filter' => 'brand','brands' => 'checkedBrand'])) !!}";
+                        url = url.replace('checkedBrand', clearUrl);
+                        window.location.href = url;
+                    }
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
             $('.filter2').bind('click', function () {
-                var min = $('#min').val();
-                var max = $('#max').val();
-                var url = "{!! route('shop.products.index', ['sub' => request()->sub,'sort' => request()->sort, 'filter' => 'range', 'min' => 'minPrice', 'max' => 'maxPrice']) !!}";
+                let min = $('#min').val();
+                let max = $('#max').val();
+                let url = "{!! route('shop.products.index', appendUrlParams(['filter' => 'range', 'min' => 'minPrice', 'max' => 'maxPrice'])) !!}";
+                url = url.replace('minPrice', min);
+                url = url.replace('maxPrice', max);
+                window.location.href = url;
+            });
+            $('#slider-range').mouseup(function() {
+                let min = $('#min').val();
+                let max = $('#max').val();
+                let url = "{!! route('shop.products.index', appendUrlParams(['filter' => 'range', 'min' => 'minPrice', 'max' => 'maxPrice'])) !!}";
                 url = url.replace('minPrice', min);
                 url = url.replace('maxPrice', max);
                 window.location.href = url;
@@ -433,37 +463,20 @@
         $(document).ready(function() {
             $('#sorting').bind('change', function () {
                 var value = this.value;
-                var min = "{{ request()->min }}";
-                var max = "{{ request()->max }}";
                 if (value == "lower_price"){
-                    var url = "{!! route('shop.products.index', ['sub' => request()->sub,'sort' => 'low_high','filter' => request()->filter, 'min' => 'minPrice', 'max' => 'maxPrice']) !!}";
-                    url = url.replace('minPrice', min);
-                    url = url.replace('maxPrice', max);
-                    window.location.href = url;
+                    window.location.href = "{!! route('shop.products.index', appendUrlParams(['sort' => 'low_high']) ) !!}";
                 }
                 if (value == "higher_price"){
-                    var url = "{!! route('shop.products.index', ['sub' => request()->sub,'sort' => 'high_low','filter' => request()->filter, 'min' => 'minPrice', 'max' => 'maxPrice']) !!}";
-                    url = url.replace('minPrice', min);
-                    url = url.replace('maxPrice', max);
-                    window.location.href = url;
+                    window.location.href = "{!! route('shop.products.index', appendUrlParams(['sort' => 'high_low']) ) !!}";
                 }
                 if (value == "newest"){
-                    var url = "{!! route('shop.products.index', ['sub' => request()->sub,'sort' => 'new','filter' => request()->filter, 'min' => 'minPrice', 'max' => 'maxPrice']) !!}";
-                    url = url.replace('minPrice', min);
-                    url = url.replace('maxPrice', max);
-                    window.location.href = url;
+                    window.location.href = "{!! route('shop.products.index', appendUrlParams(['sort' => 'new']) ) !!}";
                 }
                 if (value == "AtoZ"){
-                    var url = "{!! route('shop.products.index', ['sub' => request()->sub,'sort' => 'a_z','filter' => request()->filter, 'min' => 'minPrice', 'max' => 'maxPrice']) !!}";
-                    url = url.replace('minPrice', min);
-                    url = url.replace('maxPrice', max);
-                    window.location.href = url;
+                    window.location.href = "{!! route('shop.products.index', appendUrlParams(['sort' => 'a_z']) ) !!}";
                 }
                 if (value == "ZtoA"){
-                    var url = "{!! route('shop.products.index', ['sub' => request()->sub,'sort' => 'z_a','filter' => request()->filter, 'min' => 'minPrice', 'max' => 'maxPrice']) !!}";
-                    url = url.replace('minPrice', min);
-                    url = url.replace('maxPrice', max);
-                    window.location.href = url;
+                    window.location.href = "{!! route('shop.products.index', appendUrlParams(['sort' => 'z_a']) ) !!}";
                 }
             });
         });

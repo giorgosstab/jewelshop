@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Brand;
 use App\Product;
-use Illuminate\Http\Request;
 
 class ShopController extends Controller
 {
@@ -18,6 +18,9 @@ class ShopController extends Controller
 
         $specialOffers = Product::where('status', 'like', 'PUBLISHED')->where('offer', true)->inRandomOrder()->take(4)->get();
         $hotDeals = Product::where('status', 'like', 'PUBLISHED')->where('hotdeals', true)->inRandomOrder()->take(2)->get();
+        $allBrands = Brand::where('status', 'like', 'PUBLISHED')->groupBy('name')->with('products')->whereHas('products', function ($query) {
+            $query->where('status', 'like', 'PUBLISHED');
+        })->get();
 
         if (request()->cat) {
             $products = Product::where('status', 'like', 'PUBLISHED')->inRandomOrder()->take(20)->get();
@@ -30,7 +33,6 @@ class ShopController extends Controller
             $maxPrice = $products->max('price');
             $minPrice = $products->min('price');
             $productsPagination = $products->count();
-            //$categoryName = optional($allSubCategories->where('slug', request()->category)->first())->name;
         }else {
             $products = Product::where('status', 'like', 'PUBLISHED')->take(20);
             $maxPrice = $products->max('price');
@@ -42,6 +44,15 @@ class ShopController extends Controller
             $products = $products->where('price', '>=', request()->min * 100)
                 ->where('price', '<', request()->max * 100);
         }
+
+        if(request()->filter == "brand"){
+            $products = Product::where('status', 'like', 'PUBLISHED')->with('brand')->whereHas('brand', function ($query) {
+                $query->where('status', 'like', 'PUBLISHED')->whereIn('slug',explode(' ', request()->brands));
+            });
+            $maxPrice = $products->max('price');
+            $minPrice = $products->min('price');
+        }
+
 
         if(request()->sort == "low_high"){
             $products = $products->orderBy('price')->paginate($pagination);
@@ -57,8 +68,6 @@ class ShopController extends Controller
             $products = $products->orderBy('id', 'desc')->paginate($pagination); //->onEachSide($onside)
         }
 
-
-//        dd($maxPrice);
         return view('shop.products.main')->with([
             'products' => $products,
             'productsPagination' => $productsPagination,
@@ -66,6 +75,7 @@ class ShopController extends Controller
             'hotDeals' => $hotDeals,
             'maxPrice' => $maxPrice,
             'minPrice' => $minPrice,
+            'allBrands' => $allBrands,
         ]);
     }
 
