@@ -1731,6 +1731,257 @@ class DataRowsTableSeederCustom extends Seeder
                 'order'        => 36,
             ])->save();
         }
+        /*
+        |--------------------------------------------------------------------------
+        | Custom Pages
+        |--------------------------------------------------------------------------
+        */
+        $customPagesDataType = DataType::where('slug', 'custom_pages')->firstOrFail();
+        $dataRow = $this->dataRow($customPagesDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'hidden',
+                'display_name' => 'Id',
+                'required' => 1,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 0,
+                'add' => 0,
+                'delete' => 0,
+                'details' => null,
+                'order' => 1,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($customPagesDataType, 'user_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'User Id',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => null,
+                'order'        => 2,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($customPagesDataType, 'title');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Title',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "validation" => [
+                        "rule" => 'required|regex:/^[a-zA-Z0-9-_& ]+$/u|min:3|max:20'
+                    ]
+                ],
+                'order'        => 3,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($customPagesDataType, 'slug');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Slug',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "slugify" => [
+                        "origin" => "title",
+                        "forceUpdate" => false
+                    ],
+                    "validation" => [
+                        "rule" => "required|regex:/^[a-zA-Z0-9-]+$/u"
+                    ]
+                ],
+                'order'        => 4,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($customPagesDataType, 'body');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'rich_text_box',
+                'display_name' => 'Body',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => null,
+                'order'        => 5,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($customPagesDataType, 'extra_css_top');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'code_editor',
+                'display_name' => 'Extra Css Top',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => null,
+                'order'        => 6,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($customPagesDataType, 'extra_js_bottom');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'code_editor',
+                'display_name' => 'Extra Js Bottom',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => null,
+                'order'        => 7,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($customPagesDataType, 'status');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Status',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "default" => 'INACTIVE',
+                    "options" => [
+                        'INACTIVE' => 'INACTIVE',
+                        'ACTIVE' => 'ACTIVE',
+                    ]
+                ],
+                'order'        => 8,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($customPagesDataType, 'layout');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Layout',
+                'required'     => 1,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "default" => 'CONTAINER_DEFAULT',
+                    "options" => [
+                        'CONTAINER_FLUID' => 'CONTAINER_FLUID',
+                        'CONTAINER_DEFAULT' => 'CONTAINER_DEFAULT',
+                    ]
+                ],
+                'order'        => 9,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($customPagesDataType, 'breadcrumbs');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'checkbox',
+                'display_name' => 'Breadcrumbs',
+                'required'     => 1,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "on" => 'Yes',
+                    "off" => 'No',
+                    "checked" => 'True'
+                ],
+                'order'        => 10,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($customPagesDataType, 'column_right_left');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Column Right Left',
+                'required'     => 1,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "default" => 'COLUMN_DEFAULT',
+                    "options" => [
+                        'COLUMN_DEFAULT' => 'COLUMN_DEFAULT',
+                        'COLUMN_RIGHT' => 'COLUMN_RIGHT',
+                        'COLUMN_LEFT' => 'COLUMN_LEFT',
+                    ]
+                ],
+                'order'        => 11,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($customPagesDataType, 'image_parallax');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'image',
+                'display_name' => 'Image',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => null,
+                'order'        => 12,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'Created At',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => null,
+                'order'        => 13,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($paymentDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'Updated At',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => null,
+                'order'        => 14,
+            ])->save();
+        }
     }
     /**
      * [dataRow description].

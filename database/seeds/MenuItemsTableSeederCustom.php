@@ -157,6 +157,21 @@ class MenuItemsTableSeederCustom extends Seeder
                     'order'      => 7,
                 ])->save();
             }
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'Custom Pages',
+                'url'     => '/admin/custom_pages',
+                'route'   => null,
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => 'fa fa-plus-circle',
+                    'color'      => null,
+                    'parent_id'  => $shopMenuItem->id,
+                    'order'      => 8,
+                ])->save();
+            }
 //            $menuItem = MenuItem::firstOrNew([
 //                'menu_id' => $menu->id,
 //                'title'   => 'Category Products',
@@ -363,8 +378,8 @@ class MenuItemsTableSeederCustom extends Seeder
             $menuItem = MenuItem::firstOrNew([
                 'menu_id' => $menu->id,
                 'title'   => 'About',
-                'url'     => '',
-                'route'   => 'shop.about.index',
+                'url'     => '/about',
+                'route'   => null,
             ]);
             if (!$menuItem->exists) {
                 $menuItem->fill([
@@ -457,7 +472,7 @@ class MenuItemsTableSeederCustom extends Seeder
             $menuItem = MenuItem::firstOrNew([
                 'menu_id' => $menu->id,
                 'title'   => 'FAQ',
-                'url'     => '#',
+                'url'     => '/faq',
                 'route'   => null,
             ]);
             if (!$menuItem->exists) {

@@ -36,11 +36,11 @@ Route::get('/order/{order}','OrderController@show')->name('shop.order.show');;
 
 Route::get('/search','SearchController@show')->name('shop.search.show');
 
-Route::get('/about','AboutController@index')->name('shop.about.index');
+//Route::get('/about','AboutController@index')->name('shop.about.index');
 Route::get('/blog','BlogController@index')->name('shop.blog.index');
 Route::get('/blog/in','BlogController@show')->name('shop.blog.show');
 Route::get('/thankyou','ConfirmationController@index')->name('shop.checkout.confirm');
-Route::get('/terms','TermsController@index')->name('shop.privacy.index');
+//Route::get('/terms','TermsController@index')->name('shop.privacy.index');
 
 Route::get('/contact','ContactController@index')->name('shop.contact.index');
 Route::post('/contact','ContactController@store')->name('shop.contact.store');
@@ -83,4 +83,4 @@ Route::post('auth/activate/resend', 'Auth\ActivationController@resend')->name('a
 
 Route::get('{slug}', [
     'uses' => 'PagesController@getPage'
-])->where('slug', '([A-Za-z0-9\-\/]+)');
+])->where('slug', '([A-Za-z0-9\-\/]+)')->name('shop.pages.getPage');

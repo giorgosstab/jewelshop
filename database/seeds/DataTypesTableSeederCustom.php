@@ -125,6 +125,20 @@ class DataTypesTableSeederCustom extends Seeder
                 'server_side'           => 1,
             ])->save();
         }
+        $dataType = $this->dataType('slug', 'custom_pages');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'custom_pages',
+                'display_name_singular' => 'Custom Page',
+                'display_name_plural'   => 'Custom Pages',
+                'icon'                  => 'fa fa-plus-circle',
+                'model_name'            => 'App\CustomPage',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 1,
+            ])->save();
+        }
     }
 
     /**

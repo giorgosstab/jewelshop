@@ -20,5 +20,6 @@ class PermissionsTableSeederCustom extends Seeder
         Permission::generateFor('deliveries');
         Permission::generateFor('payments');
         Permission::generateFor('orders');
+        Permission::generateFor('custom_pages');
     }
 }
