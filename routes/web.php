@@ -28,6 +28,7 @@ Route::post('/saveForLater/switchToCart/{product}','SaveForLaterController@switc
 Route::get('/checkout-user','CheckoutController@index')->name('shop.checkout.index')->middleware('auth');
 Route::get('/checkout-guest','CheckoutController@guest')->name('shop.checkout.guest');
 Route::post('/checkout','CheckoutController@store')->name('shop.checkout.store');
+Route::get('/thankyou','ConfirmationController@index')->name('shop.checkout.confirm');
 
 Route::post('/coupon','CouponsController@store')->name('shop.coupons.store');
 Route::delete('/coupon','CouponsController@destroy')->name('shop.coupons.destroy');
@@ -36,11 +37,9 @@ Route::get('/order/{order}','OrderController@show')->name('shop.order.show');;
 
 Route::get('/search','SearchController@show')->name('shop.search.show');
 
-//Route::get('/about','AboutController@index')->name('shop.about.index');
 Route::get('/blog','BlogController@index')->name('shop.blog.index');
 Route::get('/blog/in','BlogController@show')->name('shop.blog.show');
-Route::get('/thankyou','ConfirmationController@index')->name('shop.checkout.confirm');
-//Route::get('/terms','TermsController@index')->name('shop.privacy.index');
+
 
 Route::get('/contact','ContactController@index')->name('shop.contact.index');
 Route::post('/contact','ContactController@store')->name('shop.contact.store');
