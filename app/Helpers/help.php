@@ -55,6 +55,10 @@ function settingsAdminImageExist($path, $page) {
     }
 }
 
+function customPageImageParallaxExist($path) {
+    return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/bg-img.jpg');
+}
+
 function jsonDecode($json_string) {
     $data = json_decode($json_string);
     return $data[0]->download_link;
