@@ -18,5 +18,8 @@ class MenusTableSeederCustom extends Seeder
         Menu::firstOrCreate([
             'name' => 'social_media',
         ]);
+        Menu::firstOrCreate([
+            'name' => 'quick_links',
+        ]);
     }
 }

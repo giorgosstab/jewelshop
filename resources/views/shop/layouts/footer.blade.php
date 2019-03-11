@@ -42,15 +42,7 @@
                 </div>
                 <div class="col-md-3 col-sm-3 link-footer  wow fadeIn" data-wow-delay=".2s">
                     <h2>Quick Links</h2>
-                    <ul class="pull-left">
-                        <li><a href="{{ route('shop.about.index') }}"> <i class="fa fa-stop" aria-hidden="true"></i> About</a></li>
-                        <li><a href="{{ route('shop.products.index') }}"><i class="fa fa-stop" aria-hidden="true"></i> Shop Now</a></li>
-                        <li><a href="{{ route('shop.blog.index') }}"><i class="fa fa-stop" aria-hidden="true"></i> Blog</a></li>
-                        <li><a href="{{ route('shop.privacy.index') }}"><i class="fa fa-stop" aria-hidden="true"></i> Terms & Condition</a></li>
-                        <li><a href="privacy.html"><i class="fa fa-stop" aria-hidden="true"></i> Privacy</a></li>
-                        <li><a href="faq.html"><i class="fa fa-stop" aria-hidden="true"></i> FAQ</a></li>
-                        <li><a href="{{ route('shop.contact.index') }}"><i class="fa fa-stop" aria-hidden="true"></i> Contact Us</a></li>
-                    </ul>
+                    {{ menu('quick_links', 'shop.partials.menus.quick_links') }}
                     <div class="clearfix"></div>
                 </div>
                 <div class="col-md-3 col-sm-3  wow fadeIn" data-wow-delay=".3s">
