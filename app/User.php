@@ -35,4 +35,9 @@ class User extends \TCG\Voyager\Models\User
     public function orders(){
         return $this->hasMany('App\Order');
     }
+
+    public function page()
+    {
+        return $this->hasOne('App\CustomPage');
+    }
 }
