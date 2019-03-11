@@ -80,3 +80,7 @@ Auth::routes();
 Route::get('auth/activate', 'Auth\ActivationController@activate')->name('auth.activate');
 Route::get('auth/activate/resend', 'Auth\ActivationController@showResendForm')->name('auth.activate.showResendForm');
 Route::post('auth/activate/resend', 'Auth\ActivationController@resend')->name('auth.activate.resend');
+
+Route::get('{slug}', [
+    'uses' => 'PagesController@getPage'
+])->where('slug', '([A-Za-z0-9\-\/]+)');
