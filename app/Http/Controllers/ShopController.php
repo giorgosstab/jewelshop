@@ -17,8 +17,8 @@ class ShopController extends Controller
     {
         $pagination = 20;
 
-        $specialOffers = Product::where('status', 'like', 'PUBLISHED')->where('offer', true)->inRandomOrder()->take(4)->get();
-        $hotDeals = Product::where('status', 'like', 'PUBLISHED')->where('hotdeals', true)->inRandomOrder()->take(2)->get();
+        $specialOffers = Product::where('status', 'like', 'PUBLISHED')->where('offer', true)->inRandomOrder()->get();
+        $hotDeals = Product::where('status', 'like', 'PUBLISHED')->where('hotdeals', true)->inRandomOrder()->get();
         $allBrands = Brand::where('status', 'like', 'PUBLISHED')->groupBy('name')->with('products')->whereHas('products', function ($query) {
             $query->where('status', 'like', 'PUBLISHED');
         })->get();
