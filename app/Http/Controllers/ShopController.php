@@ -15,7 +15,7 @@ class ShopController extends Controller
      */
     public function index()
     {
-        $pagination = 20;
+        $pagination = 16;
 
         $specialOffers = Product::where('status', 'like', 'PUBLISHED')->where('offer', true)->inRandomOrder()->get();
         $hotDeals = Product::where('status', 'like', 'PUBLISHED')->where('hotdeals', true)->inRandomOrder()->get();
@@ -29,7 +29,7 @@ class ShopController extends Controller
 
 
         if (request()->cat) {
-            $products = Product::where('status', 'like', 'PUBLISHED')->inRandomOrder()->take(20)->get();
+            $products = Product::where('status', 'like', 'PUBLISHED')->inRandomOrder()->take(16)->get();
             $productsPagination = $products->count();
 
         } elseif(request()->sub) {
@@ -40,7 +40,7 @@ class ShopController extends Controller
             $minPrice = $products->min('price');
             $productsPagination = $products->count();
         }else {
-            $products = Product::where('status', 'like', 'PUBLISHED')->take(20);
+            $products = Product::where('status', 'like', 'PUBLISHED')->take(16);
             $maxPrice = $products->max('price');
             $minPrice = $products->min('price');
             $productsPagination = $products->count();
