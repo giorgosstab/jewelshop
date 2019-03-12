@@ -119,7 +119,7 @@ class DataTypesTableSeederCustom extends Seeder
                 'display_name_plural'   => 'Orders',
                 'icon'                  => 'fa fa-shopping-bag',
                 'model_name'            => 'App\Order',
-                'controller'            => '',
+                'controller'            => 'App\Http\Controllers\Voyager\OrdersController',
                 'generate_permissions'  => 1,
                 'description'           => '',
                 'server_side'           => 1,
