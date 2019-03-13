@@ -308,7 +308,7 @@
                                     <div class="col-lg-12">
                                         <div class="ship2">
                                             <input type="checkbox" class="checkbox" name="agree">
-                                            <strong class="agree">I AGREE TO THE <a href="{{ route('shop.privacy.index') }}">TERMS & CONDITIONS</a></strong>
+                                            <strong class="agree">I AGREE TO THE <a href="{{ url('/privacy') }}">TERMS & CONDITIONS</a></strong>
                                         </div>
                                         <div class="clearfix"></div>
                                         <div class="buy-this">
