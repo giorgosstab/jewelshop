@@ -109,7 +109,7 @@ class ShopController extends Controller
     public function show($slug)
     {
         $product = Product::where('status', 'like', 'PUBLISHED')->where('slug',$slug)->firstOrFail();
-        $mightAlsoLike = Product::where('status', 'like', 'PUBLISHED')->where('slug','!=',$slug)->inRandomOrder()->take(4)->get();
+        $mightAlsoLike = Product::where('status', 'like', 'PUBLISHED')->where('slug','!=',$slug)->inRandomOrder()->take(20)->get();
         return view('shop.products.details')->with([
             'product' => $product,
             'mightAlsoLike' => $mightAlsoLike,

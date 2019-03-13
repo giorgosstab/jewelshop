@@ -5,33 +5,35 @@
             <div id="carousel-example-generic3" class="carousel slide" data-ride="carousel">
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
-                    @foreach($specialOffers as $key => $product)
+                    @foreach($specialOffers->chunk(2) as $chunk)
                         <div class="carousel-item {{ $loop->first ? "active" : "" }}">
-                            <a href="{{ route('shop.products.show', $product->slug) }}">
-                                <div class="product-scroll">
-                                    <div class="row AlsoLike-border">
-                                        <div class="col-md-6 col-sm-2 col-4">
-                                            @if(Voyager::image($product->thumbnail('small')) && file_exists(Voyager::image($product->thumbnail('small'))))
-                                                <img src="{{ Voyager::image($product->thumbnail('small')) }}" class="img-fluid" alt="{{ $product->name }}" title="{{ $product->name }}" >
-                                            @else
-                                                <img src="{{ productImage($product->image) }}" class="img-fluid"alt="{{ $product->name }}" title="{{ $product->name }}" >
-                                            @endif
-                                        </div>
-                                        <div class="col-md-6 col-sm-9 col-8">
-                                            <h3>{{ $product->name }}</h3>
-                                            <div>
-                                                <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
-                                                <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
-                                                <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
-                                                <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
-                                                <img  src="{{ asset('assets/images/str2.jpg') }}" alt="" title="">
+                            @foreach($chunk as $product)
+                                <a href="{{ route('shop.products.show', $product->slug) }}">
+                                    <div class="product-scroll">
+                                        <div class="row AlsoLike-border">
+                                            <div class="col-md-6 col-sm-2 col-4">
+                                                @if(Voyager::image($product->thumbnail('small')) && file_exists(Voyager::image($product->thumbnail('small'))))
+                                                    <img src="{{ Voyager::image($product->thumbnail('small')) }}" class="img-fluid" alt="{{ $product->name }}" title="{{ $product->name }}" >
+                                                @else
+                                                    <img src="{{ productImage($product->image) }}" class="img-fluid"alt="{{ $product->name }}" title="{{ $product->name }}" >
+                                                @endif
                                             </div>
-                                            <h4>€{{ $product->presentPrice() }}</h4>
+                                            <div class="col-md-6 col-sm-9 col-8">
+                                                <h3>{{ $product->name }}</h3>
+                                                <div>
+                                                    <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
+                                                    <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
+                                                    <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
+                                                    <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
+                                                    <img  src="{{ asset('assets/images/str2.jpg') }}" alt="" title="">
+                                                </div>
+                                                <h4>€{{ $product->presentPrice() }}</h4>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </a>
-                            <div class="clearfix"></div>
+                                </a>
+                                <div class="clearfix"></div>
+                            @endforeach
                         </div>
                     @endforeach
                 </div>
