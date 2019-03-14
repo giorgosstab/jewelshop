@@ -29,7 +29,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-3  wow fadeIn" data-wow-delay=".1s">
-                    <div class="logo-f"><img src="assets/images/logo-2.png" alt="" title="" ></div>
+                    <div class="logo-f"><img src="{{ secure_asset('assets/images/logo-2.png') }}" alt="" title="" ></div>
                     <div class="about-b">
                         <div class="footer-text">
                             <p>Es ist ein lang erwiesener Fakt, dass ein Leser vom Text abgelenkt wird, wenn er sich ein Layout ansieht. Der Punkt, Lorem Ipsum zu nutzen, ist, dass es mehr oder weniger.</p>
