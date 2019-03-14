@@ -31,6 +31,15 @@
         <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
         {{Html::script('assets/slider/js/jquery.themepunch.plugins.min.js')}}
         {{Html::script('assets/slider/js/jquery.themepunch.revolution.min.js')}}
+
+        <style>
+            .instaimg img{margin-bottom: 30px;}
+            .instaimg img:hover{
+                opacity:0.4;
+                --moz-opacity:0.4;
+                --webkit-opacity:0.4;
+            }
+        </style>
     </head>
     <body class="top-body">
         <div id="preloader"></div>
@@ -85,6 +94,10 @@
         {{ Html::script('https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js') }}
         {{ Html::script('https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js') }}
         {{ Html::script('js/algolia.js') }}
+
+        <!--instagram feed-->
+        {{ Html::script('assets/js/instagramfeed/instafeed.min.js') }}
+        {{ Html::script('assets/js/instagramfeed/custom.instagram.js') }}
 
         <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script>
         <script type="text/javascript">

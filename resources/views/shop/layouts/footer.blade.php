@@ -47,7 +47,10 @@
                 </div>
                 <div class="col-md-3 col-sm-3  wow fadeIn" data-wow-delay=".3s">
                     <h2>INSTAFEED</h2>
-                    <div class="text-center"><img src="assets/images/instagram.png" alt="" title="" class="img-fluid"></div>
+                    {{--<div class="text-center">--}}
+                        <div id="instafeed" class="row"></div>
+                        {{--<img src="assets/images/instagram.png" alt="" title="" class="img-fluid">--}}
+                    {{--</div>--}}
                     <div class="clearfix"></div>
                 </div>
                 <div class="col-md-3 col-sm-3 footer-address  wow fadeIn" data-wow-delay=".4s">
