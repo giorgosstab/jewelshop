@@ -47,7 +47,7 @@
         @include('shop.layouts.navbar')
 
         @yield('content')
-        
+
         <!--footer-->
         @include('shop.layouts.footer')
 

@@ -45,17 +45,17 @@
                         <div class="dropdown-menu">
                             @foreach($item->children as $subItem)
                                 {{--@if($subItem->children->count())--}}
-                                    {{--<ul>--}}
-                                        {{--<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ $subItem->title }}<i class="fa fa-angle-right"></i></a>--}}
-                                            {{--<div class="dropdown-menu">--}}
-                                                {{--@foreach($subItem->children as $subItemSub)--}}
-                                                    {{--<a class="dropdown-item" target="{{ $subItemSub->target }}" href="{{ url($subItemSub->link()) }}">{{ $subItemSub->title }}</a>--}}
-                                                {{--@endforeach--}}
-                                            {{--</div>--}}
-                                        {{--</li>--}}
-                                    {{--</ul>--}}
+                                {{--<ul>--}}
+                                {{--<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ $subItem->title }}<i class="fa fa-angle-right"></i></a>--}}
+                                {{--<div class="dropdown-menu">--}}
+                                {{--@foreach($subItem->children as $subItemSub)--}}
+                                {{--<a class="dropdown-item" target="{{ $subItemSub->target }}" href="{{ url($subItemSub->link()) }}">{{ $subItemSub->title }}</a>--}}
+                                {{--@endforeach--}}
+                                {{--</div>--}}
+                                {{--</li>--}}
+                                {{--</ul>--}}
                                 {{--@else--}}
-                                    <a class="dropdown-item {{ isActiveTab($item->route,$subItem->title) }}" target="{{ $subItem->target }}" href="{{ url($subItem->link()) }}">{{ $subItem->title }}</a>
+                                {{--<a class="dropdown-item {{ isActiveTab($item->route,$subItem->title) }}" target="{{ $subItem->target }}" href="{{ url($subItem->link()) }}">{{ $subItem->title }}</a>--}}
                                 {{--@endif--}}
                             @endforeach
                         </div>
