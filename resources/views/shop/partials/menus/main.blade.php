@@ -3,7 +3,7 @@
         @foreach($items as $item)
             @if($item->children->count())
                 @if($item->title == "Shop")
-                    <li class="nav-item dropdown  mega-dropdown"> <a class="nav-link dropdown-toggle text-uppercase no-caret" id="navbarDropdownMenuLink1" href="{{ route('shop.products.index') }}" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false"> Shop </a>
+                    <li class="nav-item dropdown mega-dropdown {{ isActiveTab($item->route, $item->title) }}"> <a class="nav-link dropdown-toggle text-uppercase no-caret" id="navbarDropdownMenuLink1" href="{{ route('shop.products.index') }}" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false"> Shop </a>
                         <div class="dropdown-menu mega-menu v-2 row m-0 z-depth-1 special-color" aria-labelledby="navbarDropdownMenuLink1">
                             <div class="row mx-md-4 mx-1">
                                 <div class="col-md-2 col-lg-4 col-xl-4 sub-menu my-xl-5 mt-md-5 mt-1 mb-1">
@@ -55,14 +55,14 @@
                                         {{--</li>--}}
                                     {{--</ul>--}}
                                 {{--@else--}}
-                                    <a class="dropdown-item" target="{{ $subItem->target }}" href="{{ url($subItem->link()) }}">{{ $subItem->title }}</a>
+                                    <a class="dropdown-item {{ isActiveTab($item->route,$subItem->title) }}" target="{{ $subItem->target }}" href="{{ url($subItem->link()) }}">{{ $subItem->title }}</a>
                                 {{--@endif--}}
                             @endforeach
                         </div>
                     </li>
                 @endif
             @else
-                <li class="nav-item"><a class="nav-link" target="{{ $item->target }}" href="{{ url($item->link()) }}">{{ $item->title }}</a></li>
+                <li class="nav-item {{ isActiveTab($item->route, $item->title) }}"><a class="nav-link" target="{{ $item->target }}" href="{{ url($item->link()) }}">{{ $item->title }}</a></li>
             @endif
         @endforeach
     </ul>

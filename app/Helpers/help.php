@@ -1,6 +1,8 @@
 <?php
 
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 /**
  * Created by PhpStorm.
@@ -93,4 +95,16 @@ function appendUrlParams(array $parameter) {
 function numberOrdinalSuffix($number) {
     $numberFormatter = new \NumberFormatter('en_US', \NumberFormatter::ORDINAL);
     return $numberFormatter->format($number);
+}
+
+function isActiveTab($route, $title, $output="active")
+{
+    if ($route === null || $route === "") {
+        $title = Str::lower($title);
+        return \Request::is(str_replace('/','',$title)) ? 'active' : "";
+    } else {
+        if (Route::currentRouteName() == $route) {
+            return $output;
+        }
+    }
 }
