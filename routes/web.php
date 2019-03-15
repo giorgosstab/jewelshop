@@ -38,7 +38,7 @@ Route::get('/order/{order}','OrderController@show')->name('shop.order.show');;
 Route::get('/search','SearchController@show')->name('shop.search.show');
 
 Route::get('/blog','BlogController@index')->name('shop.blog.index');
-Route::get('/blog/in','BlogController@show')->name('shop.blog.show');
+Route::get('/blog/{post}','BlogController@show')->name('shop.blog.show');
 
 
 Route::get('/contact','ContactController@index')->name('shop.contact.index');

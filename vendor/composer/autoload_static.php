@@ -537,6 +537,8 @@ class ComposerStaticInit6dd3a9b3c5e8a54d46023c9ed512cbd0
         'AlgoliaSearch\\PlacesIndex' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/PlacesIndex.php',
         'AlgoliaSearch\\SynonymType' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/SynonymType.php',
         'AlgoliaSearch\\Version' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/Version.php',
+        'App\\BlogCategory' => __DIR__ . '/../..' . '/app/BlogCategory.php',
+        'App\\BlogPost' => __DIR__ . '/../..' . '/app/BlogPost.php',
         'App\\Brand' => __DIR__ . '/../..' . '/app/Brand.php',
         'App\\CategoryJewel' => __DIR__ . '/../..' . '/app/CategoryJewel.php',
         'App\\CategoryJewelProduct' => __DIR__ . '/../..' . '/app/CategoryJewelProduct.php',

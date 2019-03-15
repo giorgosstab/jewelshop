@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 
+use App\BlogCategory;
+use App\BlogPost;
+
 class BlogController extends Controller
 {
     /**
@@ -12,7 +15,13 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view('shop.blog.main');
+        $posts = BlogPost::where('status', 'like', 'PUBLISHED')->paginate(2);
+        $blogCategories = BlogCategory::where('status', 'like', 'PUBLISHED')->inRandomOrder()->get();
+
+        return view('shop.blog.main')->with([
+            'posts' => $posts,
+            'blogCategories' => $blogCategories,
+        ]);
     }
 
     /**
@@ -21,8 +30,12 @@ class BlogController extends Controller
      * @param  string  $slug
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($slug)
     {
-        return view('shop.blog.details');
+        $post = BlogPost::where('status', 'like', 'PUBLISHED')->where('slug',$slug)->firstOrFail();
+
+        return view('shop.blog.details')->with([
+            'post' => $post
+        ]);
     }
 }

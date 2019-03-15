@@ -27,7 +27,7 @@
                 <!--breadcrumbs -->
                 <div class="bread2">
                     <ul>
-                        <li><a href="index-2.html">HOME</a>
+                        <li><a href="{{ route('shop.home.index') }}">HOME</a>
                         <li>/</li>
                         <li>BLOG</li>
                     </ul>
@@ -37,57 +37,52 @@
                 <div class="row">
                     <!--Blog-left-side-->
                     <div class="col-md-8">
-                        <div class="blog-in">
-                            <div class="wow fadeIn">
-                                <h1>Neque porro quisquam est qui dolorem</h1>
-                                <ul class="comm-date">
-                                    <li><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;March 31, 2018 </li>
-                                    <li>|</li>
-                                    <li> <span><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp; by Admin name</span> </li>
-                                    <li>|</li>
-                                    <li><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp; No Comments</li>
-                                </ul>
-                                <div><img  src="assets/images/blog1.jpg" alt="" title="" class="img-fluid"></div>
-                                <div class="blog-text">
-                                    <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tinc dunt ut laoreet dolore magna aliquam erat volutpat. Ut veniam, quis nostrud exerci tation ullam corper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                                </div>
-                                <div class="pull-left">
-                                    <div class="share2">
-
-                                        <a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a> <a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a> <a href="#" class="icoGoogle" title="pinterest+"><i class="fa fa-pinterest"></i></a> <a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a> </div>
-                                </div>
-                                <div class="pull-right"><a href="blog-in.html" class="link-txt">CONTINUE READING <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a> </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-6 select-p">
+                                <select id="sorting" class="selectpicker select-1" data-style="btn-primary">
+                                    <option value="newest">Date Added: Latest First</option>
+                                    <option value="newest">Date Added: Oldest First</option>
+                                </select>
                             </div>
-                            <div class="clearfix"></div>
-
-                        </div>
-                        <div class="clearfix"> </div>
-
-                        <div class="blog-in blog-spa">
-                            <div class="clearfix"></div>
-                            <div class="wow fadeIn">
-                                <h1>Neque porro quisquam est qui dolorem</h1>
-                                <ul class="comm-date">
-                                    <li><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;March 31, 2018 </li>
-                                    <li>|</li>
-                                    <li> <span><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp; by Admin name</span> </li>
-                                    <li>|</li>
-                                    <li><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp; No Comments</li>
-                                </ul>
-                                <div><img  src="assets/images/blog1.jpg" alt="" title="" class="img-fluid"></div>
-                                <div class="blog-text">
-                                    <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tinc dunt ut laoreet dolore magna aliquam erat volutpat. Ut veniam, quis nostrud exerci tation ullam corper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                            <div class="col-md-6 col-sm-6 col-xs-6 bread">
+                                <div class="breadcrumbs">
+                                    {{ $posts->appends(request()->input())->render('pagination::shopPagination') }}
                                 </div>
-                                <div class="pull-left">
-                                    <div class="share2">
-                                        <a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a> <a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a> <a href="#" class="icoGoogle" title="pinterest+"><i class="fa fa-pinterest"></i></a> <a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a> </div>
-                                </div>
-                                <div class="pull-right"><a href="blog-in.html" class="link-txt">CONTINUE READING <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a> </div>
                             </div>
-                            <div class="clearfix"></div>
                         </div>
+                        @foreach($posts as $post)
+                            <div class="blog-in {{ $loop->first ? 'blog-spa' : '' }}">
+                                <div class="clearfix"></div>
+                                <div class="wow fadeIn">
+                                    <h1>{{ $post->title }}</h1>
+                                    <ul class="comm-date">
+                                        <li><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;{{ $post->created_at->format('jS F Y') }} </li>
+                                        <li>|</li>
+                                        <li> <span><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp; by {{ $post->author->name }}</span> </li>
+                                        <li>|</li>
+                                        <li><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp; No Comments</li>
+                                    </ul>
+                                    <div><img  src="{{ secure_asset('storage/'.$post->image) }}" alt="" title="" class="img-fluid"></div>
+                                    <div class="blog-text">
+                                        <p> {{ $post->excerpt }}</p>
+                                    </div>
+                                    <div class="pull-left">
+                                        <div class="share2">
+                                            <a href="http://www.facebook.com/sharer.php?u={{ \Request::url('/'.$post->slug) }}" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a>
+                                            <a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a>
+                                            <a href="#" class="icoGoogle" title="pinterest+"><i class="fa fa-pinterest"></i></a>
+                                            <a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="{{ route('shop.blog.show', $post->slug) }}" class="link-txt">CONTINUE READING <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="clearfix"></div><br>
+                        @endforeach
 
-                        <div class="clearfix"> </div>
                         <div class="older-posts wow fadeInDown">
                             <h1>Older Posts</h1>
                             <div id="myCarousel" class="carousel slide">
@@ -191,12 +186,9 @@
                                         <div class="col-md-12">
                                             <div class="cat-list">
                                                 <ul>
-                                                    <li><a href="#"><span class="glyphicon glyphicon-menu-right"></span> Lorem ipsum </a></li>
-                                                    <li><a href="#"><span class="glyphicon glyphicon-menu-right"></span> Lorem ipsum </a></li>
-                                                    <li><a href="#"><span class="glyphicon glyphicon-menu-right"></span> Lorem ipsum </a></li>
-                                                    <li><a href="#"><span class="glyphicon glyphicon-menu-right"></span> Lorem ipsum </a></li>
-                                                    <li><a href="#"><span class="glyphicon glyphicon-menu-right"></span> Lorem ipsum </a></li>
-                                                    <li><a href="#"><span class="glyphicon glyphicon-menu-right"></span> Lorem ipsum </a></li>
+                                                    @foreach($blogCategories as $category)
+                                                        <li><a href="#"><span class="glyphicon glyphicon-menu-right"></span> {{ $category->name }} </a></li>
+                                                    @endforeach
                                                 </ul>
                                             </div>
                                         </div>

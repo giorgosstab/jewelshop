@@ -23,6 +23,8 @@ return array(
     'AlgoliaSearch\\PlacesIndex' => $vendorDir . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/PlacesIndex.php',
     'AlgoliaSearch\\SynonymType' => $vendorDir . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/SynonymType.php',
     'AlgoliaSearch\\Version' => $vendorDir . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/Version.php',
+    'App\\BlogCategory' => $baseDir . '/app/BlogCategory.php',
+    'App\\BlogPost' => $baseDir . '/app/BlogPost.php',
     'App\\Brand' => $baseDir . '/app/Brand.php',
     'App\\CategoryJewel' => $baseDir . '/app/CategoryJewel.php',
     'App\\CategoryJewelProduct' => $baseDir . '/app/CategoryJewelProduct.php',
