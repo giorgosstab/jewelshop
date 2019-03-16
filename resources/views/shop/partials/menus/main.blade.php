@@ -55,7 +55,7 @@
                                 {{--</li>--}}
                                 {{--</ul>--}}
                                 {{--@else--}}
-                                {{--<a class="dropdown-item {{ isActiveTab($item->route,$subItem->title) }}" target="{{ $subItem->target }}" href="{{ url($subItem->link()) }}">{{ $subItem->title }}</a>--}}
+                                <a class="dropdown-item {{ isActiveTab($item->route,$subItem->title) }}" target="{{ $subItem->target }}" href="{{ url($subItem->link()) }}">{{ $subItem->title }}</a>
                                 {{--@endif--}}
                             @endforeach
                         </div>
