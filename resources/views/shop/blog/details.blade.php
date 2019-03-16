@@ -49,7 +49,7 @@
                                     <li>|</li>
                                     <li><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp; No Comments</li>
                                 </ul>
-                                <div><img  src="{{ secure_asset('storage/'.$post->image) }}" alt="" title="" class="img-fluid"></div>
+
                             </div>
                             <div class="blog-text wow fadeIn">
                                 {!! $post->body !!}
