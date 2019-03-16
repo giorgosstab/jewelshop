@@ -68,10 +68,11 @@
                                     </div>
                                     <div class="pull-left">
                                         <div class="share2">
-                                            <a href="http://www.facebook.com/sharer.php?u={{ \Request::url('/'.$post->slug) }}" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a>
-                                            <a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a>
-                                            <a href="#" class="icoGoogle" title="pinterest+"><i class="fa fa-pinterest"></i></a>
-                                            <a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a>
+                                            <a href="#" onclick="window.open('//www.facebook.com/sharer/sharer.php?u={{ url("/blog/".$post->slug) }}','newwindow','width=600,height=400');return false;" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a>
+                                            <a href="#" onclick="window.open('//twitter.com/home?status={{ url("/blog/".$post->slug) }}','newwindow','width=600,height=400');return false;" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a>
+                                            <a href="#" onclick="window.open('//pinterest.com/pin/create/button/?url={{ url("/blog/".$post->slug) }}','newwindow','width=600,height=400');return false;" class="icoGoogle" title="pinterest+"><i class="fa fa-pinterest"></i></a>
+                                            <a href="#" onclick="window.open('//reddit.com/submit?url={{ url("/blog/".$post->slug) }}','newwindow','width=600,height=400');return false;" class="icoGoogle" title="Reddit"><i class="fa fa-reddit"></i></a>
+                                            <a href="#" onclick="window.open('//vkontakte.ru/share.php?url={{ url("/blog/".$post->slug) }}','newwindow','width=600,height=400');return false;" class="icoGoogle" title="VK"><i class="fa fa-vk"></i></a>
                                         </div>
                                     </div>
                                     <div class="pull-right">
