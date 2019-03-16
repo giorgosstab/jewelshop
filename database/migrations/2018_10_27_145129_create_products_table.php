@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('slug')->unique();
             $table->string('sku')->unique();
             $table->integer('price');
-            $table->text('description');
+            $table->longText('description')->nullable();
             $table->boolean('bestof')->default(false);
             $table->boolean('offer')->default(false);
             $table->boolean('hotdeals')->default(false);
