@@ -1,5 +1,5 @@
 (function() {
-    var client = algoliasearch('V761VYONMP', 'd5c74b602d27b0508aa0681cc0f5c161');
+    var client = algoliasearch('V761VYONMP', '0456bdbf35520ca92d460efabbc8e618');
     var index = client.initIndex('products');
     var enterPressed = false;
     //initialize autocomplete on search input (ID selector must match)

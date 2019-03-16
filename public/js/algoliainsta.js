@@ -4,7 +4,7 @@
 
     const search = instantsearch({
         appId: 'V761VYONMP',
-        apiKey: 'd5c74b602d27b0508aa0681cc0f5c161',
+        apiKey: '0456bdbf35520ca92d460efabbc8e618',
         indexName: 'products',
         routing: true
     });
