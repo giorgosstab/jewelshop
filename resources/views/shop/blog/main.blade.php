@@ -188,7 +188,7 @@
                                             <div class="cat-list">
                                                 <ul>
                                                     @foreach($blogCategories as $category)
-                                                        <li><a href="#"><span class="glyphicon glyphicon-menu-right"></span> {{ $category->name }} </a></li>
+                                                        <li><a href="{{ route('shop.blog.index', 'category='.$category->slug) }}"><span class="glyphicon glyphicon-menu-right"></span> {{ $category->name }} </a></li>
                                                     @endforeach
                                                 </ul>
                                             </div>
