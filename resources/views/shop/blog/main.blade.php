@@ -40,8 +40,8 @@
                         <div class="row">
                             <div class="col-md-6 col-sm-6 col-xs-6 select-p">
                                 <select id="sorting" class="selectpicker select-1" data-style="btn-primary">
-                                    <option value="newest">Date Added: Latest First</option>
-                                    <option value="newest">Date Added: Oldest First</option>
+                                    <option {{ request()->sort == "new" ? 'selected' : '' }} value="newest">Date Added: Latest First</option>
+                                    <option {{ request()->sort == "old" ? 'selected' : '' }} value="oldest">Date Added: Oldest First</option>
                                 </select>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-6 bread">
@@ -245,4 +245,21 @@
         </div>
         <div class="clearfix"></div>
     </div>
+@endsection
+
+@section('extra-script')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#sorting').bind('change', function () {
+                var value = this.value;
+
+                if (value == "newest"){
+                    window.location.href = "{!! route('shop.blog.index', appendUrlParams(['sort' => 'new']) ) !!}";
+                }
+                if (value == "oldest"){
+                    window.location.href = "{!! route('shop.blog.index', appendUrlParams(['sort' => 'old']) ) !!}";
+                }
+            });
+        });
+    </script>
 @endsection

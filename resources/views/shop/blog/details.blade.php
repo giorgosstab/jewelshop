@@ -106,12 +106,9 @@
                                         <div class="col-md-12">
                                             <div class="cat-list">
                                                 <ul>
-                                                    <li><a href="#"><span class="glyphicon glyphicon-menu-right"></span> Lorem ipsum </a></li>
-                                                    <li><a href="#"><span class="glyphicon glyphicon-menu-right"></span> Lorem ipsum </a></li>
-                                                    <li><a href="#"><span class="glyphicon glyphicon-menu-right"></span> Lorem ipsum </a></li>
-                                                    <li><a href="#"><span class="glyphicon glyphicon-menu-right"></span> Lorem ipsum </a></li>
-                                                    <li><a href="#"><span class="glyphicon glyphicon-menu-right"></span> Lorem ipsum </a></li>
-                                                    <li><a href="#"><span class="glyphicon glyphicon-menu-right"></span> Lorem ipsum </a></li>
+                                                    @foreach($blogCategories as $category)
+                                                        <li><a href="#"><span class="glyphicon glyphicon-menu-right"></span> {{ $category->name }} </a></li>
+                                                    @endforeach
                                                 </ul>
                                             </div>
                                         </div>

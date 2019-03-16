@@ -15,12 +15,21 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $posts = BlogPost::where('status', 'like', 'PUBLISHED')->paginate(2);
+        $pagination = 2;
+        $posts = BlogPost::where('status', 'like', 'PUBLISHED');
         $blogCategories = BlogCategory::where('status', 'like', 'PUBLISHED')->inRandomOrder()->get();
+
+        if(request()->sort == "new") {
+            $posts = $posts->orderBy('id', 'desc')->paginate($pagination);
+        } else if(request()->sort == "old") {
+            $posts = $posts->orderBy('id')->paginate($pagination);
+        } else {
+            $posts = $posts->paginate($pagination);
+        }
 
         return view('shop.blog.main')->with([
             'posts' => $posts,
-            'blogCategories' => $blogCategories,
+            'blogCategories' => $blogCategories
         ]);
     }
 
@@ -33,9 +42,11 @@ class BlogController extends Controller
     public function show($slug)
     {
         $post = BlogPost::where('status', 'like', 'PUBLISHED')->where('slug',$slug)->firstOrFail();
+        $blogCategories = BlogCategory::where('status', 'like', 'PUBLISHED')->inRandomOrder()->get();
 
         return view('shop.blog.details')->with([
-            'post' => $post
+            'post' => $post,
+            'blogCategories' => $blogCategories
         ]);
     }
 }
