@@ -143,16 +143,12 @@ class DataRowsTableSeederCustom extends Seeder
                 'type'         => 'rich_text_box',
                 'display_name' => 'Description',
                 'required'     => 1,
-                'browse'       => 1,
+                'browse'       => 0,
                 'read'         => 1,
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 1,
-                'details'      => [
-                    "validation" => [
-                        "rule" => 'required'
-                    ]
-                ],
+                'details'      => null,
                 'order'        => 7,
             ])->save();
         }
@@ -1952,7 +1948,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'order'        => 12,
             ])->save();
         }
-        $dataRow = $this->dataRow($paymentDataType, 'created_at');
+        $dataRow = $this->dataRow($customPagesDataType, 'created_at');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'timestamp',
@@ -1967,7 +1963,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'order'        => 13,
             ])->save();
         }
-        $dataRow = $this->dataRow($paymentDataType, 'updated_at');
+        $dataRow = $this->dataRow($customPagesDataType, 'updated_at');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'timestamp',
@@ -1980,6 +1976,368 @@ class DataRowsTableSeederCustom extends Seeder
                 'delete'       => 0,
                 'details'      => null,
                 'order'        => 14,
+            ])->save();
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Blog Categories
+        |--------------------------------------------------------------------------
+        */
+        $blogCategoriesDataType = DataType::where('slug', 'blog_categories')->firstOrFail();
+        $dataRow = $this->dataRow($blogCategoriesDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'hidden',
+                'display_name' => 'Id',
+                'required' => 1,
+                'browse' => 0,
+                'read' => 0,
+                'edit' => 0,
+                'add' => 0,
+                'delete' => 0,
+                'details' => null,
+                'order' => 1,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($blogCategoriesDataType, 'parent_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Parent Id',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "default" => "",
+                    "null" => "",
+                    "options" => [
+                        "" => "-- None --"
+                    ],
+                    "relationship" => [
+                        "key" => "id",
+                        "label" => "name"
+                    ]
+                ],
+                'order'        => 2,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($blogCategoriesDataType, 'name');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Name',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "validation" => [
+                        "rule" => 'required|regex:/^[a-zA-Z0-9& ]+$/u|min:3|max:30'
+                    ]
+                ],
+                'order'        => 3,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($blogCategoriesDataType, 'slug');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Slug',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "slugify" => [
+                        "origin" => "name",
+                        "forceUpdate" => false
+                    ],
+                    "validation" => [
+                        "rule" => "required|regex:/^[a-zA-Z0-9-]+$/u"
+                    ]
+                ],
+                'order'        => 4,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($blogCategoriesDataType, 'status');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Status',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "default" => 'UNPUBLISHED',
+                    "options" => [
+                        'UNPUBLISHED' => 'UNPUBLISHED',
+                        'PUBLISHED' => 'PUBLISHED',
+                    ]
+                ],
+                'order'        => 5,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($blogCategoriesDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'Created At',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => null,
+                'order'        => 6,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($blogCategoriesDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'Updated At',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => null,
+                'order'        => 7,
+            ])->save();
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Blog Posts
+        |--------------------------------------------------------------------------
+        */
+        $blogPostsDataType = DataType::where('slug', 'blog_posts')->firstOrFail();
+        $dataRow = $this->dataRow($blogPostsDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'hidden',
+                'display_name' => 'Id',
+                'required' => 1,
+                'browse' => 0,
+                'read' => 0,
+                'edit' => 0,
+                'add' => 0,
+                'delete' => 0,
+                'details' => null,
+                'order' => 1,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($blogPostsDataType, 'author_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Author Id',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "default" => "null",
+                    "options" => [
+                        "" => "-- None --"
+                    ],
+                    "relationship" => [
+                        "key" => "id",
+                        "label" => "name"
+                    ],
+                    "validation" => [
+                        "rule" => "required"
+                    ]
+                ],
+                'order'        => 2,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($blogPostsDataType, 'category_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Category Id',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "default" => "null",
+                    "options" => [
+                        "" => "-- None --"
+                    ],
+                    "relationship" => [
+                        "key" => "id",
+                        "label" => "name"
+                    ],
+                    "validation" => [
+                        "rule" => "required"
+                    ]
+                ],
+                'order'        => 3,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($blogPostsDataType, 'title');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Title',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "validation" => [
+                        "rule" => 'required|min:5|max:150'
+                    ]
+                ],
+                'order'        => 4,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($blogPostsDataType, 'slug');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Slug',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "slugify" => [
+                        "origin" => "title",
+                        "forceUpdate" => false
+                    ],
+                    "validation" => [
+                        "rule" => "required|regex:/^[a-zA-Z0-9-]+$/u|unique:blog_posts,slug"
+                    ]
+                ],
+                'order'        => 5,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($blogPostsDataType, 'excerpt');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text_area',
+                'display_name' => 'Excerpt',
+                'required'     => 1,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "validation" => [
+                        "rule" => 'required|min:30|max:700'
+                    ]
+                ],
+                'order'        => 6,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($blogPostsDataType, 'body');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'rich_text_box',
+                'display_name' => 'Body',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "validation" => [
+                        "rule" => 'required'
+                    ]
+                ],
+                'order'        => 7,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($blogPostsDataType, 'image');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'image',
+                'display_name' => 'Image',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => null,
+                'order'        => 8,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($blogPostsDataType, 'status');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Status',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "default" => 'UNPUBLISHED',
+                    "options" => [
+                        'UNPUBLISHED' => 'UNPUBLISHED',
+                        'PUBLISHED' => 'PUBLISHED',
+                    ]
+                ],
+                'order'        => 9,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($blogPostsDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'Created At',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => null,
+                'order'        => 10,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($blogPostsDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'Updated At',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => null,
+                'order'        => 11,
             ])->save();
         }
     }

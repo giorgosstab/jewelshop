@@ -624,6 +624,8 @@ class ComposerStaticInit6dd3a9b3c5e8a54d46023c9ed512cbd0
         'BeyondCode\\DumpServer\\DumpServerServiceProvider' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',
         'BeyondCode\\DumpServer\\Dumper' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/Dumper.php',
         'BeyondCode\\DumpServer\\RequestContextProvider' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/RequestContextProvider.php',
+        'BlogCategoriesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/BlogCategoriesTableSeeder.php',
+        'BlogPostsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/BlogPostsTableSeeder.php',
         'BrandsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/BrandsTableSeeder.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',

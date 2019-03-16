@@ -12,6 +12,11 @@ class DataTypesTableSeederCustom extends Seeder
      */
     public function run()
     {
+        /*
+          |--------------------------------------------------------------------------
+          | products
+          |--------------------------------------------------------------------------
+          */
         $dataType = $this->dataType('slug', 'products');
         if (!$dataType->exists) {
             $dataType->fill([
@@ -27,6 +32,12 @@ class DataTypesTableSeederCustom extends Seeder
                 'server_side'           => 1,
             ])->save();
         }
+
+         /*
+          |--------------------------------------------------------------------------
+          | coupons
+          |--------------------------------------------------------------------------
+          */
         $dataType = $this->dataType('slug', 'coupons');
         if (!$dataType->exists) {
             $dataType->fill([
@@ -41,6 +52,12 @@ class DataTypesTableSeederCustom extends Seeder
                 'server_side'           => 1,
             ])->save();
         }
+
+        /*
+          |--------------------------------------------------------------------------
+          | category-jewels
+          |--------------------------------------------------------------------------
+          */
         $dataType = $this->dataType('slug', 'category-jewels');
         if (!$dataType->exists) {
             $dataType->fill([
@@ -55,6 +72,12 @@ class DataTypesTableSeederCustom extends Seeder
                 'server_side'           => 1,
             ])->save();
         }
+
+        /*
+          |--------------------------------------------------------------------------
+          | category-jewel-product
+          |--------------------------------------------------------------------------
+          */
 //        $dataType = $this->dataType('slug', 'category-jewel-product');
 //        if (!$dataType->exists) {
 //            $dataType->fill([
@@ -69,6 +92,12 @@ class DataTypesTableSeederCustom extends Seeder
 //                'server_side'           => 1,
 //            ])->save();
 //        }
+
+        /*
+          |--------------------------------------------------------------------------
+          | brands
+          |--------------------------------------------------------------------------
+          */
         $dataType = $this->dataType('slug', 'brands');
         if (!$dataType->exists) {
             $dataType->fill([
@@ -83,6 +112,12 @@ class DataTypesTableSeederCustom extends Seeder
                 'server_side'           => 1,
             ])->save();
         }
+
+        /*
+          |--------------------------------------------------------------------------
+          | deliveries
+          |--------------------------------------------------------------------------
+          */
         $dataType = $this->dataType('slug', 'deliveries');
         if (!$dataType->exists) {
             $dataType->fill([
@@ -97,6 +132,12 @@ class DataTypesTableSeederCustom extends Seeder
                 'server_side'           => 1,
             ])->save();
         }
+
+        /*
+          |--------------------------------------------------------------------------
+          | payments
+          |--------------------------------------------------------------------------
+          */
         $dataType = $this->dataType('slug', 'payments');
         if (!$dataType->exists) {
             $dataType->fill([
@@ -111,6 +152,12 @@ class DataTypesTableSeederCustom extends Seeder
                 'server_side'           => 1,
             ])->save();
         }
+
+        /*
+          |--------------------------------------------------------------------------
+          | orders
+          |--------------------------------------------------------------------------
+          */
         $dataType = $this->dataType('slug', 'orders');
         if (!$dataType->exists) {
             $dataType->fill([
@@ -125,6 +172,12 @@ class DataTypesTableSeederCustom extends Seeder
                 'server_side'           => 1,
             ])->save();
         }
+
+        /*
+          |--------------------------------------------------------------------------
+          | custom_pages
+          |--------------------------------------------------------------------------
+          */
         $dataType = $this->dataType('slug', 'custom_pages');
         if (!$dataType->exists) {
             $dataType->fill([
@@ -133,6 +186,46 @@ class DataTypesTableSeederCustom extends Seeder
                 'display_name_plural'   => 'Custom Pages',
                 'icon'                  => 'fa fa-plus-circle',
                 'model_name'            => 'App\CustomPage',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 1,
+            ])->save();
+        }
+
+        /*
+          |--------------------------------------------------------------------------
+          | blog-categories
+          |--------------------------------------------------------------------------
+          */
+        $dataType = $this->dataType('slug', 'blog_categories');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'blog_categories',
+                'display_name_singular' => 'Blog Category',
+                'display_name_plural'   => 'Blog Categories',
+                'icon'                  => 'voyager-categories',
+                'model_name'            => 'App\BlogCategory',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 1,
+            ])->save();
+        }
+
+        /*
+          |--------------------------------------------------------------------------
+          | blog-posts
+          |--------------------------------------------------------------------------
+          */
+        $dataType = $this->dataType('slug', 'blog_posts');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'blog_posts',
+                'display_name_singular' => 'Blog Post',
+                'display_name_plural'   => 'Blog Posts',
+                'icon'                  => 'fa fa-sticky-note',
+                'model_name'            => 'App\BlogPost',
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',

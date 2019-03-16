@@ -21,5 +21,7 @@ class PermissionsTableSeederCustom extends Seeder
         Permission::generateFor('payments');
         Permission::generateFor('orders');
         Permission::generateFor('custom_pages');
+        Permission::generateFor('blog_categories');
+        Permission::generateFor('blog_posts');
     }
 }

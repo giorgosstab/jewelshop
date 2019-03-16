@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\BlogPost;
+use App\CustomPage;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 
@@ -55,7 +57,8 @@ class EcommerceInstall extends Command
         File::deleteDirectory(public_path('storage/brands/dummy'));
         File::deleteDirectory(public_path('storage/deliveries/dummy'));
         File::deleteDirectory(public_path('storage/payments/dummy'));
-        File::deleteDirectory(public_path('storage/custom_pages/dummy'));
+        File::deleteDirectory(public_path('storage/custom-pages/dummy'));
+        File::deleteDirectory(public_path('storage/custom-posts/dummy'));
         $this->callSilent('storage:link');
 
         $copySuccess = File::copyDirectory(public_path('assets/images/dummySettings'), public_path('storage/settings/dummy'));
@@ -82,9 +85,13 @@ class EcommerceInstall extends Command
         if($copySuccess){
             $this->info('Image Payments copied successfully on storage folder.');
         }
-        $copySuccess = File::copyDirectory(public_path('assets/images/dummyPages'), public_path('storage/custom_pages/dummy'));
+        $copySuccess = File::copyDirectory(public_path('assets/images/dummyPages'), public_path('storage/custom-pages/dummy'));
         if($copySuccess){
             $this->info('Image Custom Pages copied successfully on storage folder.');
+        }
+        $copySuccess = File::copyDirectory(public_path('assets/images/dummyBlogPosts'), public_path('storage/BLOG-posts/dummy'));
+        if($copySuccess){
+            $this->info('Image Blog Posts copied successfully on storage folder.');
         }
 
         $this->call('migrate:fresh', [
@@ -128,6 +135,14 @@ class EcommerceInstall extends Command
             '--class' => 'SettingsTableSeederCustom',
         ]);
 
+
+        // update category id and author id in table blog_posts because table user seeding run after my custom seeds
+        BlogPost::where('id', 1)->update(['author_id' => 1, 'category_id' => 2]);
+        BlogPost::where('id', 2)->update(['author_id' => 1, 'category_id' => 1]);
+        BlogPost::where('id', 3)->update(['author_id' => 1, 'category_id' => 3]);
+
+        // update user id in table custom_pages because table user seeding run after my custom seeds
+        CustomPage::whereIn('id', [1,2,3,4])->update(['user_id' => 1]);
 
 
         $this->info('Dummy data installed.');
