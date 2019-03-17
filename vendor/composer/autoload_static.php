@@ -5164,6 +5164,7 @@ class ComposerStaticInit6dd3a9b3c5e8a54d46023c9ed512cbd0
         'TCG\\Voyager\\Widgets\\PageDimmer' => __DIR__ . '/..' . '/tcg/voyager/src/Widgets/PageDimmer.php',
         'TCG\\Voyager\\Widgets\\PostDimmer' => __DIR__ . '/..' . '/tcg/voyager/src/Widgets/PostDimmer.php',
         'TCG\\Voyager\\Widgets\\UserDimmer' => __DIR__ . '/..' . '/tcg/voyager/src/Widgets/UserDimmer.php',
+        'TagTableSeeder' => __DIR__ . '/../..' . '/database/seeds/TagTableSeeder.php',
         'Tests\\CreatesApplication' => __DIR__ . '/../..' . '/tests/CreatesApplication.php',
         'Tests\\Feature\\ExampleTest' => __DIR__ . '/../..' . '/tests/Feature/ExampleTest.php',
         'Tests\\TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',

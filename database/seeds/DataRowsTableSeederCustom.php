@@ -112,7 +112,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'delete'       => 1,
                 'details'      => [
                     "validation" => [
-                        "rule" => 'required|regex:/^[a-zA-Z0-9 ]+$/u|min:3|max:15'
+                        "rule" => 'required|regex:/^[a-zA-Z0-9 ]+$/u|min:3|max:15|unique:products,sku'
                     ]
                 ],
                 'order'        => 5,
@@ -373,7 +373,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'delete'       => 1,
                 'details'      => [
                     "validation" => [
-                        "rule" => 'required|regex:/^[a-zA-Z0-9 _-]+$/u|min:5|max:15'
+                        "rule" => 'required|regex:/^[a-zA-Z0-9 _-]+$/u|min:5|max:15|unique:coupons,code'
                     ]
                 ],
                 'order'        => 2,
@@ -761,7 +761,7 @@ class DataRowsTableSeederCustom extends Seeder
                         "forceUpdate" => false
                     ],
                     "validation" => [
-                        "rule" => "required|regex:/^[a-zA-Z0-9-]+$/u"
+                        "rule" => "required|regex:/^[a-zA-Z0-9-]+$/u|unique:brands,slug"
                     ]
                 ],
                 'order'        => 3,
@@ -898,7 +898,7 @@ class DataRowsTableSeederCustom extends Seeder
                         "forceUpdate" => false
                     ],
                     "validation" => [
-                        "rule" => "required|regex:/^[a-zA-Z0-9-]+$/u"
+                        "rule" => "required|regex:/^[a-zA-Z0-9-]+$/u|unique:deliveries,slug"
                     ]
                 ],
                 'order'        => 3,
@@ -1049,7 +1049,7 @@ class DataRowsTableSeederCustom extends Seeder
                         "forceUpdate" => false
                     ],
                     "validation" => [
-                        "rule" => "required|regex:/^[a-zA-Z0-9-]+$/u"
+                        "rule" => "required|regex:/^[a-zA-Z0-9-]+$/u|unique:payments,slug"
                     ]
                 ],
                 'order'        => 3,
@@ -1799,7 +1799,7 @@ class DataRowsTableSeederCustom extends Seeder
                         "forceUpdate" => false
                     ],
                     "validation" => [
-                        "rule" => "required|regex:/^[a-zA-Z0-9-]+$/u"
+                        "rule" => "required|regex:/^[a-zA-Z0-9-]+$/u|unique:custom_pages,slug"
                     ]
                 ],
                 'order'        => 4,
@@ -2061,7 +2061,7 @@ class DataRowsTableSeederCustom extends Seeder
                         "forceUpdate" => false
                     ],
                     "validation" => [
-                        "rule" => "required|regex:/^[a-zA-Z0-9-]+$/u"
+                        "rule" => "required|regex:/^[a-zA-Z0-9-]+$/u|unique:blog_categories,slug"
                     ]
                 ],
                 'order'        => 4,
@@ -2338,6 +2338,121 @@ class DataRowsTableSeederCustom extends Seeder
                 'delete'       => 0,
                 'details'      => null,
                 'order'        => 11,
+            ])->save();
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Tags
+        |--------------------------------------------------------------------------
+        */
+        $tagsDataType = DataType::where('slug', 'tags')->firstOrFail();
+        $dataRow = $this->dataRow($tagsDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'hidden',
+                'display_name' => 'Id',
+                'required' => 1,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 1,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($tagsDataType, 'name');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Name',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "validation" => [
+                        "rule" => 'required|regex:/^[a-zA-Z0-9#]+$/u|min:3|max:20|unique:tags,name'
+                    ]
+                ],
+                'order'        => 2,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($tagsDataType, 'slug');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Slug',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "slugify" => [
+                        "origin" => "name",
+                        "forceUpdate" => false
+                    ],
+                    "validation" => [
+                        "rule" => "required|regex:/^[a-zA-Z0-9-]+$/u|unique:tags,slug"
+                    ]
+                ],
+                'order'        => 3,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($tagsDataType, 'status');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Status',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "default" => 'UNPUBLISHED',
+                    "options" => [
+                        'UNPUBLISHED' => 'UNPUBLISHED',
+                        'PUBLISHED' => 'PUBLISHED',
+                    ]
+                ],
+                'order'        => 4,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($tagsDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'Created At',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => null,
+                'order'        => 5,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($tagsDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'Updated At',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => null,
+                'order'        => 6,
             ])->save();
         }
     }

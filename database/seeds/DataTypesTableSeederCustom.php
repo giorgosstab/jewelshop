@@ -232,6 +232,26 @@ class DataTypesTableSeederCustom extends Seeder
                 'server_side'           => 1,
             ])->save();
         }
+
+        /*
+          |--------------------------------------------------------------------------
+          | blog-tags
+          |--------------------------------------------------------------------------
+          */
+        $dataType = $this->dataType('slug', 'tags');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'tags',
+                'display_name_singular' => 'Tag',
+                'display_name_plural'   => 'Tags',
+                'icon'                  => 'fa fa-tags',
+                'model_name'            => 'App\Tag',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 1,
+            ])->save();
+        }
     }
 
     /**

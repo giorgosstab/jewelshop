@@ -4650,6 +4650,7 @@ return array(
     'TCG\\Voyager\\Widgets\\PageDimmer' => $vendorDir . '/tcg/voyager/src/Widgets/PageDimmer.php',
     'TCG\\Voyager\\Widgets\\PostDimmer' => $vendorDir . '/tcg/voyager/src/Widgets/PostDimmer.php',
     'TCG\\Voyager\\Widgets\\UserDimmer' => $vendorDir . '/tcg/voyager/src/Widgets/UserDimmer.php',
+    'TagTableSeeder' => $baseDir . '/database/seeds/TagTableSeeder.php',
     'Tests\\CreatesApplication' => $baseDir . '/tests/CreatesApplication.php',
     'Tests\\Feature\\ExampleTest' => $baseDir . '/tests/Feature/ExampleTest.php',
     'Tests\\TestCase' => $baseDir . '/tests/TestCase.php',

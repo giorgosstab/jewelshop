@@ -239,6 +239,19 @@ class MenuItemsTableSeederCustom extends Seeder
                 'parent_id'  => $blogMenuItem->id,
                 'order'      => 2,
             ])->save();
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'Tags',
+                'url'     => '/admin/tags',
+                'route'   => null,
+            ]);
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'fa fa-tags',
+                'color'      => null,
+                'parent_id'  => $blogMenuItem->id,
+                'order'      => 3,
+            ])->save();
 
 
             /*

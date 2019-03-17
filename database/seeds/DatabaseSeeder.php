@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CustomPageTableSeeder::class);
         $this->call(BlogCategoriesTableSeeder::class);
         $this->call(BlogPostsTableSeeder::class);
+        $this->call(TagTableSeeder::class);
     }
 }
