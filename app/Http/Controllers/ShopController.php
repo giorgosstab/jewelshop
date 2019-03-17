@@ -57,6 +57,14 @@ class ShopController extends Controller
             });
             $maxPrice = $products->max('price');
             $minPrice = $products->min('price');
+
+            //add request brands to popular by visit slug
+            $popularBrands = Brand::where(function($query) {
+                $query->whereIn('slug',explode(' ', request()->brands));
+            })->get();
+            foreach ($popularBrands as $popularBrand) {
+                $popularBrand->visit();
+            }
         }
         if(request()->categories && request()->categories != ""){
             $products = Product::where('status', 'like', 'PUBLISHED')->with('categoriesJewels')->whereHas('categoriesJewels', function ($query) {
@@ -71,6 +79,14 @@ class ShopController extends Controller
             })->with('brand')->whereHas('brand', function ($query) {
                 $query->whereIn('slug',explode(' ', request()->brands));
             });
+
+            //add request brands to popular by visit slug
+            $popularBrands = Brand::where(function($query) {
+                $query->whereIn('slug',explode(' ', request()->brands));
+            })->get();
+            foreach ($popularBrands as $popularBrand) {
+                $popularBrand->visit();
+            }
         }
 
 

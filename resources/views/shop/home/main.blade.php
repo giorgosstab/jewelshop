@@ -357,9 +357,9 @@
             <div class="popular-brands footer-logos content-section">
                 <h2 class="wow fadeInDown"><span>Popular</span> Brands</h2>
                 <div id="owl-demo" class="owl-carousel owl-carousel-2 wow fadeInDown">
-                    @foreach($brands as $brand)
+                    @foreach($popularBrands as $brand)
                         <div class="item">
-                            <a href="#">
+                            <a href="{{ route('shop.products.index', appendUrlParams(['brands' => $brand->slug])) }}">
                                 <img src="{{ brandImage($brand->image) }}" alt="{{ $brand->name }}" title="{{ $brand->name }}"/>
                             </a>
                         </div>
