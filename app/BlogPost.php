@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use JordanMiguel\LaravelPopular\Traits\Visitable;
 
 class BlogPost extends Model
 {
+    use Visitable;
+
     /**
      * Statuses.
      */

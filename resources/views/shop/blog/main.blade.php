@@ -148,32 +148,20 @@
                                     <h1>POPULAR POSTS</h1>
                                     <div class="clearfix"></div>
                                     <div class="row">
-                                        <div class="col-lg-4 col-4"> <img  src="{{ secure_asset('assets/images/post-1.jpg') }}" alt="" title="" class="img-fluid"> </div>
-                                        <div class="col-lg-8 col-8 p-0">
-                                            <h4><a href="product.html">Neque porro quisquam est qui dolorem</a></h4>
-                                            <p>March 31, 2018</p>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <div class="col-md-12">
-                                            <hr>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <div class="col-lg-4 col-4"> <img  src="{{ secure_asset('assets/images/post-2.jpg') }}" alt="" title="" class="img-fluid"> </div>
-                                        <div class="col-lg-8 col-8 p-0">
-                                            <h4><a href="product.html">Neque porro quisquam est qui dolorem</a></h4>
-                                            <p>March 31, 2018</p>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <div class="col-md-12">
-                                            <hr>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <div class="col-lg-4 col-4"> <img  src="{{ secure_asset('assets/images/post-3.jpg') }}" alt="" title="" class="img-fluid"> </div>
-                                        <div class="col-lg-8 col-8 p-0">
-                                            <h4><a href="product.html">Neque porro quisquam est qui dolorem</a></h4>
-                                            <p>March 31, 2018</p>
-                                        </div>
-                                        <div class="clearfix"></div>
+                                        @foreach($popularPosts as $post)
+                                            <div class="col-lg-4 col-4"> <img  src="{{ secure_asset('storage/'.$post->image) }}" alt="" title="" class="img-fluid"> </div>
+                                            <div class="col-lg-8 col-8 p-0">
+                                                <h4><a href="{{ route('shop.blog.show', $post->slug) }}">{{ $post->title }}</a></h4>
+                                                <p>{{ $post->created_at->format('jS F Y') }}</p>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            @if(!$loop->last)
+                                                <div class="col-md-12">
+                                                    <hr>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            @endif
+                                        @endforeach
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>

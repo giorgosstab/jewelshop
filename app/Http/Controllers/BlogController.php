@@ -20,6 +20,9 @@ class BlogController extends Controller
         $posts = BlogPost::where('status', 'like', 'PUBLISHED');
         $blogCategories = BlogCategory::where('status', 'like', 'PUBLISHED')->inRandomOrder()->get();
         $tags = Tag::where('status', 'like', 'PUBLISHED')->inRandomOrder()->get();
+        $popularPosts = BlogPost::popularDay()->where(function($query) {
+            return $query->where('status', 'like', 'PUBLISHED')->groupBy('visits_count');
+        })->take(3)->get();
 
         if(request()->sort == "new") {
             $posts = $posts->orderBy('id', 'desc')->paginate($pagination);
@@ -58,7 +61,8 @@ class BlogController extends Controller
         return view('shop.blog.main')->with([
             'posts' => $posts,
             'blogCategories' => $blogCategories,
-            'tags' => $tags
+            'tags' => $tags,
+            'popularPosts' => $popularPosts
         ]);
     }
 
@@ -73,13 +77,28 @@ class BlogController extends Controller
         $post = BlogPost::where('status', 'like', 'PUBLISHED')->where('slug', $slug)->with('tags')->whereHas('tags', function ($query) {
             $query->where('status', 'like', 'PUBLISHED');
         })->firstOrFail();
+
+        $popularPosts = BlogPost::popularDay()->where('slug','<>',$slug)->where(function($query) {
+            return $query->where('status', 'like', 'PUBLISHED')->groupBy('visits_count');
+        })->take(3)->get();
+
+        // add in visit table for popular post
+        $post->visit();
+
+        // Retrieving the count of visitors in a timeframe
+//        $post->visitsDay();
+//        $post->visitsWeek();
+//        $post->visitsMonth();
+//        $post->visitsForever();
+
         $blogCategories = BlogCategory::where('status', 'like', 'PUBLISHED')->inRandomOrder()->get();
         $tags = Tag::where('status', 'like', 'PUBLISHED')->inRandomOrder()->get();
 
         return view('shop.blog.details')->with([
             'post' => $post,
             'blogCategories' => $blogCategories,
-            'tags' => $tags
+            'tags' => $tags,
+            'popularPosts' => $popularPosts
         ]);
     }
 }
