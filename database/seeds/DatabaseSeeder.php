@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call(PaymentTableSeeder::class);
         $this->call(DeliveryTableSeeder::class);
         $this->call(CustomPageTableSeeder::class);
+        $this->call(TagTableSeeder::class);
         $this->call(BlogCategoriesTableSeeder::class);
         $this->call(BlogPostsTableSeeder::class);
-        $this->call(TagTableSeeder::class);
     }
 }

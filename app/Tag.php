@@ -18,4 +18,8 @@ class Tag extends Model
      * @var array
      */
     public static $statuses = [self::STATUS_PUBLISHED, self::STATUS_UNPUBLISHED];
+
+    public function blogPosts() {
+        return $this->belongsToMany('App\BlogPost');
+    }
 }

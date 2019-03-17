@@ -145,6 +145,21 @@ class EcommerceInstall extends Command
         CustomPage::whereIn('id', [1,2,3,4])->update(['user_id' => 1]);
 
 
+        //import blog post tags after seeding all e-shop
+        $blogPost = BlogPost::find(1);
+        $blogPost->tags()->attach(1);
+        $blogPost->tags()->attach(2);
+        $blogPost->tags()->attach(5);
+
+        $blogPost1 = BlogPost::find(2);
+        $blogPost1->tags()->attach(3);
+
+        $blogPost = BlogPost::find(3);
+        $blogPost->tags()->attach(1);
+        $blogPost->tags()->attach(4);
+        $blogPost->tags()->attach(5);
+
+
         $this->info('Dummy data installed.');
     }
 }
