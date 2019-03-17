@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\BlogCategory;
 use App\BlogPost;
+use App\Tag;
 
 class BlogController extends Controller
 {
@@ -18,13 +19,14 @@ class BlogController extends Controller
         $pagination = 2;
         $posts = BlogPost::where('status', 'like', 'PUBLISHED');
         $blogCategories = BlogCategory::where('status', 'like', 'PUBLISHED')->inRandomOrder()->get();
+        $tags = Tag::where('status', 'like', 'PUBLISHED')->inRandomOrder()->get();
 
         if(request()->sort == "new") {
             $posts = $posts->orderBy('id', 'desc')->paginate($pagination);
         } else if(request()->sort == "old") {
             $posts = $posts->orderBy('id')->paginate($pagination);
         } else {
-            $posts = $posts->paginate($pagination);
+            $posts = $posts->orderBy('id', 'desc')->paginate($pagination);
         }
 
         if(request()->category) {
@@ -36,13 +38,27 @@ class BlogController extends Controller
             } else if(request()->sort == "old") {
                 $posts = $posts->orderBy('id')->paginate($pagination);
             } else {
-                $posts = $posts->paginate($pagination);
+                $posts = $posts->orderBy('id', 'desc')->paginate($pagination);
+            }
+        }
+
+        if(request()->tag) {
+            $posts = BlogPost::where('status', 'like', 'PUBLISHED')->with('tags')->whereHas('tags', function ($query) {
+                $query->where('status', 'like', 'PUBLISHED')->whereIn('slug',explode(' ', request()->tag));
+            });
+            if(request()->sort == "new") {
+                $posts = $posts->orderBy('id', 'desc')->paginate($pagination);
+            } else if(request()->sort == "old") {
+                $posts = $posts->orderBy('id')->paginate($pagination);
+            } else {
+                $posts = $posts->orderBy('id', 'desc')->paginate($pagination);
             }
         }
 
         return view('shop.blog.main')->with([
             'posts' => $posts,
-            'blogCategories' => $blogCategories
+            'blogCategories' => $blogCategories,
+            'tags' => $tags
         ]);
     }
 
@@ -54,12 +70,16 @@ class BlogController extends Controller
      */
     public function show($slug)
     {
-        $post = BlogPost::where('status', 'like', 'PUBLISHED')->where('slug',$slug)->firstOrFail();
+        $post = BlogPost::where('status', 'like', 'PUBLISHED')->where('slug', $slug)->with('tags')->whereHas('tags', function ($query) {
+            $query->where('status', 'like', 'PUBLISHED');
+        })->firstOrFail();
         $blogCategories = BlogCategory::where('status', 'like', 'PUBLISHED')->inRandomOrder()->get();
+        $tags = Tag::where('status', 'like', 'PUBLISHED')->inRandomOrder()->get();
 
         return view('shop.blog.details')->with([
             'post' => $post,
-            'blogCategories' => $blogCategories
+            'blogCategories' => $blogCategories,
+            'tags' => $tags
         ]);
     }
 }

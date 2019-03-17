@@ -49,7 +49,15 @@
                                     <li>|</li>
                                     <li><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp; No Comments</li>
                                 </ul>
-
+                                <div class="col-md-6 offset-md-4">
+                                    <div class="tag-list">
+                                        <ul>
+                                            @foreach($post->tags as $tag)
+                                                <li><a href="{{ route('shop.blog.index', 'tag='.$tag->slug) }}" title="{{ $tag->name }}"><i class="fa fa-tag"></i> {{ $tag->name }} </a></li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                             <div class="blog-text wow fadeIn">
                                 {!! $post->body !!}
@@ -67,7 +75,7 @@
                                     <h1>POPULAR POSTS</h1>
                                     <div class="clearfix"></div>
                                     <div class="row">
-                                        <div class="col-lg-4 col-4"> <img  src="assets/images/post-1.jpg" alt="" title="" class="img-fluid"> </div>
+                                        <div class="col-lg-4 col-4"> <img  src="{{ secure_asset('assets/images/post-1.jpg') }}" alt="" title="" class="img-fluid"> </div>
                                         <div class="col-lg-8 col-8 p-0">
                                             <h4><a href="product.html">Neque porro quisquam est qui dolorem</a></h4>
                                             <p>March 31, 2018</p>
@@ -77,7 +85,7 @@
                                             <hr>
                                         </div>
                                         <div class="clearfix"></div>
-                                        <div class="col-lg-4 col-4"> <img  src="assets/images/post-2.jpg" alt="" title="" class="img-fluid"> </div>
+                                        <div class="col-lg-4 col-4"> <img  src="{{ secure_asset('assets/images/post-2.jpg') }}" alt="" title="" class="img-fluid"> </div>
                                         <div class="col-lg-8 col-8 p-0">
                                             <h4><a href="product.html">Neque porro quisquam est qui dolorem</a></h4>
                                             <p>March 31, 2018</p>
@@ -87,7 +95,7 @@
                                             <hr>
                                         </div>
                                         <div class="clearfix"></div>
-                                        <div class="col-lg-4 col-4"> <img  src="assets/images/post-3.jpg" alt="" title="" class="img-fluid"> </div>
+                                        <div class="col-lg-4 col-4"> <img  src="{{ secure_asset('assets/images/post-3.jpg') }}" alt="" title="" class="img-fluid"> </div>
                                         <div class="col-lg-8 col-8 p-0">
                                             <h4><a href="product.html">Neque porro quisquam est qui dolorem</a></h4>
                                             <p>March 31, 2018</p>
@@ -123,7 +131,7 @@
                                     <h1>ADVERTISING SECTION</h1>
                                     <div class="clearfix"></div>
                                     <div class="row">
-                                        <div class="col-md-12 text-center"> <img  src="assets/images/add.jpg" alt="" title="" class="img-fluid">
+                                        <div class="col-md-12 text-center"> <img  src="{{ secure_asset('assets/images/add.jpg') }}" alt="" title="" class="img-fluid">
                                             <div class="clearfix"></div>
                                         </div>
                                     </div>
@@ -138,15 +146,9 @@
                                         <div class="col-md-12">
                                             <div class="tag-list">
                                                 <ul>
-                                                    <li><a href="#" class="#" title="Tags"><i class="fa fa-tag"></i> corporate </a></li>
-                                                    <li><a href="#" class="#" title="Tags"><i class="fa fa-tag"></i> theme </a></li>
-                                                    <li><a href="#" class="#" title="Tags"><i class="fa fa-tag"></i> css3 </a></li>
-                                                    <li><a href="#" class="#" title="Tags"><i class="fa fa-tag"></i> premium </a></li>
-                                                    <li><a href="#" class="#" title="Tags"><i class="fa fa-tag"></i> html5 </a></li>
-                                                    <li><a href="#" class="#" title="Tags"><i class="fa fa-tag"></i> business </a></li>
-                                                    <li><a href="#" class="#" title="Tags"><i class="fa fa-tag"></i> all purpose </a></li>
-                                                    <li><a href="#" class="#" title="Tags"><i class="fa fa-tag"></i> Js </a></li>
-                                                    <li><a href="#" class="#" title="Tags"><i class="fa fa-tag"></i> muse </a></li>
+                                                    @foreach($tags as $tag)
+                                                        <li><a href="{{ route('shop.blog.index', 'tag='.$tag->slug) }}" title="{{ $tag->name }}"><i class="fa fa-tag"></i> {{ $tag->name }} </a></li>
+                                                    @endforeach
                                                 </ul>
                                             </div>
                                             <div class="clearfix"></div>

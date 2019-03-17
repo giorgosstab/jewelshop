@@ -93,17 +93,17 @@
                                     <div class="carousel-item active">
                                         <div class="row">
                                             <div class="col col-xs-6 col-sm-6 col-lg-4 posts-title ">
-                                                <div> <a href="#"><img  src="assets/images/releted-img.jpg" alt="" title="" class="img-fluid"></a> </div>
+                                                <div> <a href="#"><img  src="{{ secure_asset('assets/images/releted-img.jpg') }}" alt="" title="" class="img-fluid"></a> </div>
                                                 <h4><a href="product.html">Neque porro quisquam</a> </h4>
                                                 <p>March 31, 2018</p>
                                             </div>
                                             <div class="col  col-xs-6 col-sm-6 col-lg-4 posts-title">
-                                                <div> <a href="#"><img  src="assets/images/releted-img2.jpg" alt="" title="" class="img-fluid"></a> </div>
+                                                <div> <a href="#"><img  src="{{ secure_asset('assets/images/releted-img2.jpg') }}" alt="" title="" class="img-fluid"></a> </div>
                                                 <h4><a href="product.html">Neque porro quisquam</a> </h4>
                                                 <p>March 31, 2018</p>
                                             </div>
                                             <div class="col  col-xs-6 col-sm-6 col-lg-4 posts-title scroll-n">
-                                                <div> <a href="#"><img  src="assets/images/releted-img3.jpg" alt="" title="" class="img-fluid"></a> </div>
+                                                <div> <a href="#"><img  src="{{ secure_asset('assets/images/releted-img3.jpg') }}" alt="" title="" class="img-fluid"></a> </div>
                                                 <h4><a href="product.html">Neque porro quisquam</a> </h4>
                                                 <p>March 31, 2018</p>
                                             </div>
@@ -114,17 +114,17 @@
                                     <div class="carousel-item">
                                         <div class="row">
                                             <div class="col col-xs-6 col-sm-6 col-lg-4 posts-title">
-                                                <div> <a href="#"><img  src="assets/images/releted-img4.jpg" alt="" title="" class="img-fluid"></a> </div>
+                                                <div> <a href="#"><img  src="{{ secure_asset('assets/images/releted-img4.jpg') }}" alt="" title="" class="img-fluid"></a> </div>
                                                 <h4><a href="product.html">Neque porro quisquam</a> </h4>
                                                 <p>March 31, 2018</p>
                                             </div>
                                             <div class="col col-xs-6 col-sm-6 col-lg-4 posts-title">
-                                                <div> <a href="#"><img  src="assets/images/releted-img5.jpg" alt="" title="" class="img-fluid"></a> </div>
+                                                <div> <a href="#"><img  src="{{ secure_asset('assets/images/releted-img5.jpg') }}" alt="" title="" class="img-fluid"></a> </div>
                                                 <h4><a href="product.html">Neque porro quisquam</a> </h4>
                                                 <p>March 31, 2018</p>
                                             </div>
                                             <div class="col col-xs-6 col-sm-6 col-lg-4 posts-title scroll-n">
-                                                <div> <a href="#"><img  src="assets/images/releted-img6.jpg" alt="" title="" class="img-fluid"></a> </div>
+                                                <div> <a href="#"><img  src="{{ secure_asset('assets/images/releted-img6.jpg') }}" alt="" title="" class="img-fluid"></a> </div>
                                                 <h4><a href="product.html">Neque porro quisquam</a> </h4>
                                                 <p>March 31, 2018</p>
                                             </div>
@@ -148,7 +148,7 @@
                                     <h1>POPULAR POSTS</h1>
                                     <div class="clearfix"></div>
                                     <div class="row">
-                                        <div class="col-lg-4 col-4"> <img  src="assets/images/post-1.jpg" alt="" title="" class="img-fluid"> </div>
+                                        <div class="col-lg-4 col-4"> <img  src="{{ secure_asset('assets/images/post-1.jpg') }}" alt="" title="" class="img-fluid"> </div>
                                         <div class="col-lg-8 col-8 p-0">
                                             <h4><a href="product.html">Neque porro quisquam est qui dolorem</a></h4>
                                             <p>March 31, 2018</p>
@@ -158,7 +158,7 @@
                                             <hr>
                                         </div>
                                         <div class="clearfix"></div>
-                                        <div class="col-lg-4 col-4"> <img  src="assets/images/post-2.jpg" alt="" title="" class="img-fluid"> </div>
+                                        <div class="col-lg-4 col-4"> <img  src="{{ secure_asset('assets/images/post-2.jpg') }}" alt="" title="" class="img-fluid"> </div>
                                         <div class="col-lg-8 col-8 p-0">
                                             <h4><a href="product.html">Neque porro quisquam est qui dolorem</a></h4>
                                             <p>March 31, 2018</p>
@@ -168,7 +168,7 @@
                                             <hr>
                                         </div>
                                         <div class="clearfix"></div>
-                                        <div class="col-lg-4 col-4"> <img  src="assets/images/post-3.jpg" alt="" title="" class="img-fluid"> </div>
+                                        <div class="col-lg-4 col-4"> <img  src="{{ secure_asset('assets/images/post-3.jpg') }}" alt="" title="" class="img-fluid"> </div>
                                         <div class="col-lg-8 col-8 p-0">
                                             <h4><a href="product.html">Neque porro quisquam est qui dolorem</a></h4>
                                             <p>March 31, 2018</p>
@@ -204,7 +204,7 @@
                                     <h1>ADVERTISING SECTION</h1>
                                     <div class="clearfix"></div>
                                     <div class="row">
-                                        <div class="col-md-12 text-center"> <img  src="assets/images/add.jpg" alt="" title="" class="img-fluid">
+                                        <div class="col-md-12 text-center"> <img  src="{{ secure_asset('assets/images/add.jpg') }}" alt="" title="" class="img-fluid">
                                             <div class="clearfix"></div>
                                         </div>
                                     </div>
@@ -219,15 +219,9 @@
                                         <div class="col-md-12">
                                             <div class="tag-list">
                                                 <ul>
-                                                    <li><a href="#" class="#" title="Tags"><i class="fa fa-tag"></i> corporate </a></li>
-                                                    <li><a href="#" class="#" title="Tags"><i class="fa fa-tag"></i> theme </a></li>
-                                                    <li><a href="#" class="#" title="Tags"><i class="fa fa-tag"></i> css3 </a></li>
-                                                    <li><a href="#" class="#" title="Tags"><i class="fa fa-tag"></i> premium </a></li>
-                                                    <li><a href="#" class="#" title="Tags"><i class="fa fa-tag"></i> html5 </a></li>
-                                                    <li><a href="#" class="#" title="Tags"><i class="fa fa-tag"></i> business </a></li>
-                                                    <li><a href="#" class="#" title="Tags"><i class="fa fa-tag"></i> all purpose </a></li>
-                                                    <li><a href="#" class="#" title="Tags"><i class="fa fa-tag"></i> Js </a></li>
-                                                    <li><a href="#" class="#" title="Tags"><i class="fa fa-tag"></i> muse </a></li>
+                                                    @foreach($tags as $tag)
+                                                        <li><a href="{{ route('shop.blog.index', 'tag='.$tag->slug) }}" title="{{ $tag->name }}"><i class="fa fa-tag"></i> {{ $tag->name }} </a></li>
+                                                    @endforeach
                                                 </ul>
                                             </div>
                                             <div class="clearfix"></div>
