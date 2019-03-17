@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7224c32ceacf0fb4f542a18d0e4c0c6b",
+    "content-hash": "0e40c13fe620c83dee1e7bab02bb2f6d",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -2060,6 +2060,66 @@
                 }
             ],
             "time": "2015-04-20T18:58:01+00:00"
+        },
+        {
+            "name": "jordanmiguel/laravel-popular",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jordanmiguel/laravel-popular.git",
+                "reference": "e15060283ece83a92a397dd5ce7b7c6891f71fd2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jordanmiguel/laravel-popular/zipball/e15060283ece83a92a397dd5ce7b7c6891f71fd2",
+                "reference": "e15060283ece83a92a397dd5ce7b7c6891f71fd2",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.1",
+                "php": "~5.6|~7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=5.4.3",
+                "squizlabs/php_codesniffer": "^2.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "JordanMiguel\\LaravelPopular\\LaravelPopularServiceProvider"
+                    ]
+                },
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "JordanMiguel\\LaravelPopular\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordan Miguel",
+                    "homepage": "https://github.com/JordanMiguel",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Laravel package to track popularity of entries(by Models) in a website at a certain time.",
+            "homepage": "https://github.com/jordanmiguel/laravel-popular",
+            "keywords": [
+                "JordanMiguel",
+                "Laravel Popular",
+                "laravel",
+                "laravel-popular",
+                "popular"
+            ],
+            "time": "2017-09-01T10:06:18+00:00"
         },
         {
             "name": "justinrainbow/json-schema",

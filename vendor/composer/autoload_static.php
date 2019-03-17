@@ -99,6 +99,7 @@ class ComposerStaticInit6dd3a9b3c5e8a54d46023c9ed512cbd0
         'J' => 
         array (
             'JsonSchema\\' => 11,
+            'JordanMiguel\\LaravelPopular\\' => 28,
             'JakubOnderka\\PhpConsoleColor\\' => 29,
         ),
         'I' => 
@@ -329,6 +330,10 @@ class ComposerStaticInit6dd3a9b3c5e8a54d46023c9ed512cbd0
         array (
             0 => __DIR__ . '/..' . '/justinrainbow/json-schema/src/JsonSchema',
         ),
+        'JordanMiguel\\LaravelPopular\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jordanmiguel/laravel-popular/src',
+        ),
         'JakubOnderka\\PhpConsoleColor\\' => 
         array (
             0 => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src',
@@ -539,6 +544,7 @@ class ComposerStaticInit6dd3a9b3c5e8a54d46023c9ed512cbd0
         'AlgoliaSearch\\Version' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/Version.php',
         'App\\BlogCategory' => __DIR__ . '/../..' . '/app/BlogCategory.php',
         'App\\BlogPost' => __DIR__ . '/../..' . '/app/BlogPost.php',
+        'App\\BlogPostTag' => __DIR__ . '/../..' . '/app/BlogPostTag.php',
         'App\\Brand' => __DIR__ . '/../..' . '/app/Brand.php',
         'App\\CategoryJewel' => __DIR__ . '/../..' . '/app/CategoryJewel.php',
         'App\\CategoryJewelProduct' => __DIR__ . '/../..' . '/app/CategoryJewelProduct.php',
@@ -2979,6 +2985,9 @@ class ComposerStaticInit6dd3a9b3c5e8a54d46023c9ed512cbd0
         'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/ConsoleColor.php',
         'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/InvalidStyleException.php',
         'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src/JakubOnderka/PhpConsoleHighlighter/Highlighter.php',
+        'JordanMiguel\\LaravelPopular\\LaravelPopularServiceProvider' => __DIR__ . '/..' . '/jordanmiguel/laravel-popular/src/LaravelPopularServiceProvider.php',
+        'JordanMiguel\\LaravelPopular\\Models\\Visit' => __DIR__ . '/..' . '/jordanmiguel/laravel-popular/src/Models/Visit.php',
+        'JordanMiguel\\LaravelPopular\\Traits\\Visitable' => __DIR__ . '/..' . '/jordanmiguel/laravel-popular/src/Traits/Visitable.php',
         'JsonSchema\\Constraints\\BaseConstraint' => __DIR__ . '/..' . '/justinrainbow/json-schema/src/JsonSchema/Constraints/BaseConstraint.php',
         'JsonSchema\\Constraints\\CollectionConstraint' => __DIR__ . '/..' . '/justinrainbow/json-schema/src/JsonSchema/Constraints/CollectionConstraint.php',
         'JsonSchema\\Constraints\\Constraint' => __DIR__ . '/..' . '/justinrainbow/json-schema/src/JsonSchema/Constraints/Constraint.php',
