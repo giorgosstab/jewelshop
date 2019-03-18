@@ -271,53 +271,33 @@
                 <h2 class="text-center wow fadeInUp"><span>Shop</span> By Category</h2>
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                     <!-- Carousel items -->
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <ul>
-                                @foreach($categories->slice(0, 5) as $category)
-                                    <li>
-                                        <div class="grid">
-                                            <figure class="effect-moses">
-                                                <div class="zoom-hover">
-                                                    <a href="product.html">
-                                                        <span class="glyphicon glyphicon-search"></span>
-                                                    </a>
+                        <div class="carousel-inner">
+                            @foreach($categories->chunk(5) as $chunk)
+                                <div class="carousel-item {{ $loop->first ? "active" : "" }}">
+                                    <ul>
+                                        @foreach($chunk as $category)
+                                            <li>
+                                                <div class="grid">
+                                                    <figure class="effect-moses">
+                                                        <div class="zoom-hover">
+                                                            <a href="product.html">
+                                                                <span class="glyphicon glyphicon-search"></span>
+                                                            </a>
+                                                        </div>
+                                                        <img src="{{ categoryImage($category->image) }}" alt="{{ $category->name }}" title="{{ $category->name }}" class="img-fluid">
+                                                    </figure>
                                                 </div>
-                                                <img src="{{ categoryImage($category->image) }}" alt="{{ $category->name }}" title="{{ $category->name }}" class="img-fluid">
-                                            </figure>
-                                        </div>
-                                        <h2>{{ $category->name }}</h2>
-                                    </li>
-                                @endforeach
-                            </ul>
+                                                <h2>{{ $category->name }}</h2>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endforeach
                         </div>
-                        <!--/Carousel item-->
-                        <div class="carousel-item">
-                            <ul>
-                                @foreach($categories->slice(5, 10) as $category)
-                                    <li>
-                                        <div class="grid">
-                                            <figure class="effect-moses">
-                                                <div class="zoom-hover">
-                                                    <a href="product.html">
-                                                        <span class="glyphicon glyphicon-search"></span>
-                                                    </a>
-                                                </div>
-                                                <img src="{{ categoryImage($category->image) }}" alt="{{ $category->name }}" title="{{ $category->name }}" class="img-fluid">
-                                            </figure>
-                                        </div>
-                                        <h2>{{ $category->name }}</h2>
-                                    </li>
-                                @endforeach
-                            </ul>
-                            <!--/row-->
-                        </div>
-                        <!--/row-->
-                        <!--/item-->
-                        <!--/item-->
-                    </div>
-                    <!--/carousel-inner-->
-                    <a  class="left carousel-control" href="#carouselExampleControls" role="button" data-slide="prev"><i class="fa fa-chevron-left fa-4"></i></a> <a class="right carousel-control" href="#carouselExampleControls" role="button" data-slide="next"><i class="fa fa-chevron-right fa-4"></i></a> </div>
+                <!--/carousel-inner-->
+                    <a  class="left carousel-control" href="#carouselExampleControls" role="button" data-slide="prev"><i class="fa fa-chevron-left fa-4"></i></a>
+                    <a class="right carousel-control" href="#carouselExampleControls" role="button" data-slide="next"><i class="fa fa-chevron-right fa-4"></i></a>
+                </div>
             </div>
             <div class="clearfix"></div>
         </section>
