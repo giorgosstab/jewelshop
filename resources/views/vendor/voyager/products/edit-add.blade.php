@@ -203,7 +203,7 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="dual-list list-left col-md-8 col-md-offset-2">
-                                        <div class="well text-left">
+                                        <div class="well">
                                             <ul style="list-style: none;padding-left: 0px;" class="scrollbar-ripe-malinka productsCategory">
                                                 @foreach($allCategories as $subCate)
                                                     <li>
@@ -214,15 +214,37 @@
                                                         </div>
                                                     </li>
                                                     <ul style="list-style: none;">
-                                                        <li>
-                                                            @foreach($subCate->subCategory as $firstNestedSub)
+                                                        @foreach($subCate->subCategory as $firstNestedSub)
+                                                            <li>
                                                                 <div class="form-check">
                                                                     <label>
                                                                         <input value="{{ $firstNestedSub->id }}" type="checkbox" name="categoryJewel[]" {{ $categoriesForProduct->contains($firstNestedSub) ? 'checked' : '' }}> <span class="label-text">{{ $firstNestedSub->name }}</span>
                                                                     </label>
                                                                 </div>
-                                                            @endforeach
-                                                        </li>
+                                                            </li>
+                                                            <ul style="list-style: none;">
+                                                                @foreach($firstNestedSub->subCategory as $secondNestedSub)
+                                                                    <li>
+                                                                        <div class="form-check">
+                                                                            <label>
+                                                                                <input value="{{ $secondNestedSub->id }}" type="checkbox" name="categoryJewel[]" {{ $categoriesForProduct->contains($secondNestedSub) ? 'checked' : '' }}> <span class="label-text">{{ $secondNestedSub->name }}</span>
+                                                                            </label>
+                                                                        </div>
+                                                                    </li>
+                                                                    <ul style="list-style: none;">
+                                                                        @foreach($secondNestedSub->subCategory as $thirdNestedSub)
+                                                                            <li>
+                                                                                <div class="form-check">
+                                                                                    <label>
+                                                                                        <input value="{{ $thirdNestedSub->id }}" type="checkbox" name="categoryJewel[]" {{ $categoriesForProduct->contains($thirdNestedSub) ? 'checked' : '' }}> <span class="label-text">{{ $thirdNestedSub->name }}</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                            </li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                @endforeach
+                                                            </ul>
+                                                        @endforeach
                                                     </ul>
                                                 @endforeach
                                             </ul>
@@ -230,6 +252,46 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">{{ __('voyager::post.additional_fields') }}</h3>
+                            <div class="panel-actions">
+                                <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            @php
+                                $dataTypeRows = $dataType->{(isset($dataTypeContent->id) ? 'editRows' : 'addRows' )};
+                                $exclude = ['brand_id', 'name', 'slug', 'sku', 'price', 'description', 'bestof', 'offer', 'hotdeals', 'secondprice', 'status', 'image', 'images'];
+                            @endphp
+
+                            @foreach($dataTypeRows as $row)
+                                @if(!in_array($row->field, $exclude))
+                                    @php
+                                        $display_options = isset($row->details->display) ? $row->details->display : NULL;
+                                    @endphp
+                                    @if (isset($row->details->formfields_custom))
+                                        @include('voyager::formfields.custom.' . $row->details->formfields_custom)
+                                    @else
+                                        <div class="form-group @if($row->type == 'hidden') hidden @endif @if(isset($display_options->width)){{ 'col-md-' . $display_options->width }}@endif" @if(isset($display_options->id)){{ "id=$display_options->id" }}@endif>
+                                            {{ $row->slugify }}
+                                            <label for="name">{{ $row->display_name }}</label>
+                                            @include('voyager::multilingual.input-hidden-bread-edit-add')
+                                            @if($row->type == 'relationship')
+                                                @include('voyager::formfields.relationship')
+                                            @else
+                                                {!! app('voyager')->formField($row, $dataType, $dataTypeContent) !!}
+                                            @endif
+
+                                            @foreach (app('voyager')->afterFormFields($row, $dataType, $dataTypeContent) as $after)
+                                                {!! $after->handle($row, $dataType, $dataTypeContent) !!}
+                                            @endforeach
+                                        </div>
+                                    @endif
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
