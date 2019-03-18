@@ -58,6 +58,9 @@ function settingsAdminImageExist($path, $page) {
     if($page === "logo"){
         return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/logo.png');
     }
+    if($page === "logo-footer"){
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/logo-right.png');
+    }
 }
 
 function customPageImageParallaxExist($path) {

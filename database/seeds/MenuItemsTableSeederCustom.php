@@ -466,6 +466,12 @@ class MenuItemsTableSeederCustom extends Seeder
             */
             $menu = Menu::where('name', 'main')->firstOrFail();
 
+
+            /*
+           |--------------------------------------------------------------------------
+           | Home
+           |--------------------------------------------------------------------------
+           */
             $menuItem = MenuItem::firstOrNew([
                 'menu_id' => $menu->id,
                 'title'   => 'Home',
@@ -482,6 +488,11 @@ class MenuItemsTableSeederCustom extends Seeder
                 ])->save();
             }
 
+            /*
+           |--------------------------------------------------------------------------
+           | About
+           |--------------------------------------------------------------------------
+           */
             $menuItem = MenuItem::firstOrNew([
                 'menu_id' => $menu->id,
                 'title'   => 'About',
@@ -498,6 +509,11 @@ class MenuItemsTableSeederCustom extends Seeder
                 ])->save();
             }
 
+            /*
+           |--------------------------------------------------------------------------
+           | Shop
+           |--------------------------------------------------------------------------
+           */
             $shopMenuItem = MenuItem::firstOrNew([
                 'menu_id' => $menu->id,
                 'title'   => 'Shop',
@@ -514,6 +530,7 @@ class MenuItemsTableSeederCustom extends Seeder
                 ])->save();
             }
 
+            // Shop mega menu
             $menuItem = MenuItem::firstOrNew([
                 'menu_id' => $menu->id,
                 'title'   => 'megaMenu',
@@ -530,6 +547,11 @@ class MenuItemsTableSeederCustom extends Seeder
                 ])->save();
             }
 
+            /*
+           |--------------------------------------------------------------------------
+           | Blog
+           |--------------------------------------------------------------------------
+           */
             $menuItem = MenuItem::firstOrNew([
                 'menu_id' => $menu->id,
                 'title'   => 'Blog',
@@ -545,9 +567,15 @@ class MenuItemsTableSeederCustom extends Seeder
                     'order'      => 4,
                 ])->save();
             }
+
+            /*
+           |--------------------------------------------------------------------------
+           | Privacy
+           |--------------------------------------------------------------------------
+           */
             $pagesMenuItem = MenuItem::firstOrNew([
                 'menu_id' => $menu->id,
-                'title'   => 'Pages',
+                'title'   => 'Privacy',
                 'url'     => '#',
                 'route'   => null,
             ]);
@@ -561,10 +589,11 @@ class MenuItemsTableSeederCustom extends Seeder
                 ])->save();
             }
 
+            // Privacy submenu
             $menuItem = MenuItem::firstOrNew([
                 'menu_id' => $menu->id,
-                'title'   => '404',
-                'url'     => '#',
+                'title'   => 'Terms & Condition',
+                'url'     => '/terms',
                 'route'   => null,
             ]);
             if (!$menuItem->exists) {
@@ -591,6 +620,27 @@ class MenuItemsTableSeederCustom extends Seeder
                     'order'      => 2,
                 ])->save();
             }
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'Privacy',
+                'url'     => '/privacy',
+                'route'   => null,
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => null,
+                    'color'      => null,
+                    'parent_id'  => $pagesMenuItem->id,
+                    'order'      => 3,
+                ])->save();
+            }
+
+            /*
+           |--------------------------------------------------------------------------
+           | Contact Us
+           |--------------------------------------------------------------------------
+           */
             $menuItem = MenuItem::firstOrNew([
                 'menu_id' => $menu->id,
                 'title'   => 'Contact Us',

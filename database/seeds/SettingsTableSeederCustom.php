@@ -28,19 +28,21 @@ class SettingsTableSeederCustom extends Seeder
         $setting = $this->findSetting('site.description');
         if ($setting->exists) {
             $setting->fill([
-                'value'        => 'Jewellery Shoppe | Κοσμήματα, Ρολόγια, Σταυροί Βάπτισης, Μονόπετρα, Βέρες, Κρεμαστά, Κολιέ, Βραχιόλια, Δώρα, Πένες, Στυλό, Είδη καπνιστού | Μοναδικά χρυσά κοσμήματα και επώνυμα ρολόγια χειρός για τον άντρα, την γυναίκα και το παιδί με δωρεάν αποστολή, σε προσεγμένη συσκευασία δώρου.',
+                'value'        => 'Jewellery Shoppe | Κοσμήματα, Ρολόγια, Σταυροί Βάπτισης, Μονόπετρα, Βέρες, Κρεμαστά, Κολιέ, Βραχιόλια | Μοναδικά χρυσά κοσμήματα και επώνυμα ρολόγια χειρός για τον άντρα, την γυναίκα και το παιδί με δωρεάν αποστολή, σε προσεγμένη συσκευασία δώρου.',
             ])->update();
         }
         $setting = $this->findSetting('site.logo');
         if ($setting->exists) {
             $setting->fill([
-                'order'        => 8,
+                'display_name' => 'Site Logo Top',
+                'value'        => 'settings\dummy\logo.png',
+                'order'        => 9,
             ])->update();
         }
         $setting = $this->findSetting('site.google_analytics_tracking_id');
         if ($setting->exists) {
             $setting->fill([
-                'order'        => 18,
+                'order'        => 19,
             ])->update();
         }
 
@@ -90,6 +92,17 @@ class SettingsTableSeederCustom extends Seeder
                 'group'        => 'Site',
             ])->save();
         }
+        $setting = $this->findSetting('site.daily_hour');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Site Open Hour',
+                'value'        => '9:00pm - 5:00pm | Sunday Closed',
+                'details'      => '',
+                'type'         => 'text',
+                'order'        => 7,
+                'group'        => 'Site',
+            ])->save();
+        }
         $setting = $this->findSetting('site.favicon');
         if (!$setting->exists) {
             $setting->fill([
@@ -97,7 +110,18 @@ class SettingsTableSeederCustom extends Seeder
                 'value'        => '[{"download_link":"settings\\/dummy\\/favicon.ico","original_name":"favicon.ico"}]',
                 'details'      => '',
                 'type'         => 'file',
-                'order'        => 7,
+                'order'        => 8,
+                'group'        => 'Site',
+            ])->save();
+        }
+        $setting = $this->findSetting('site.logo_footer');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Site Logo Footer',
+                'value'        => 'settings\dummy\logo-footer.png',
+                'details'      => '',
+                'type'         => 'image',
+                'order'        => 10,
                 'group'        => 'Site',
             ])->save();
         }
@@ -108,7 +132,7 @@ class SettingsTableSeederCustom extends Seeder
                 'value'        => 'settings\dummy\home.jpg',
                 'details'      => '',
                 'type'         => 'image',
-                'order'        => 9,
+                'order'        => 11,
                 'group'        => 'Site',
             ])->save();
         }
@@ -119,7 +143,7 @@ class SettingsTableSeederCustom extends Seeder
                 'value'        => 'settings\dummy\about.jpg',
                 'details'      => '',
                 'type'         => 'image',
-                'order'        => 10,
+                'order'        => 12,
                 'group'        => 'Site',
             ])->save();
         }
@@ -130,7 +154,7 @@ class SettingsTableSeederCustom extends Seeder
                 'value'        => 'settings\dummy\shop.jpg',
                 'details'      => '',
                 'type'         => 'image',
-                'order'        => 11,
+                'order'        => 13,
                 'group'        => 'Site',
             ])->save();
         }
@@ -141,18 +165,7 @@ class SettingsTableSeederCustom extends Seeder
                 'value'        => 'settings\dummy\blog.jpg',
                 'details'      => '',
                 'type'         => 'image',
-                'order'        => 12,
-                'group'        => 'Site',
-            ])->save();
-        }
-        $setting = $this->findSetting('site.contact_parallax');
-        if (!$setting->exists) {
-            $setting->fill([
-                'display_name' => 'Contact Us Page Parallax',
-                'value'        => 'settings\dummy\contact.jpg',
-                'details'      => '',
-                'type'         => 'image',
-                'order'        => 13,
+                'order'        => 14,
                 'group'        => 'Site',
             ])->save();
         }
@@ -163,7 +176,7 @@ class SettingsTableSeederCustom extends Seeder
                 'value'        => 'settings\dummy\register.jpg',
                 'details'      => '',
                 'type'         => 'image',
-                'order'        => 14,
+                'order'        => 15,
                 'group'        => 'Site',
             ])->save();
         }
@@ -174,7 +187,7 @@ class SettingsTableSeederCustom extends Seeder
                 'value'        => 'settings\dummy\login.jpg',
                 'details'      => '',
                 'type'         => 'image',
-                'order'        => 15,
+                'order'        => 16,
                 'group'        => 'Site',
             ])->save();
         }
@@ -185,7 +198,7 @@ class SettingsTableSeederCustom extends Seeder
                 'value'        => 'settings\dummy\reset.jpg',
                 'details'      => '',
                 'type'         => 'image',
-                'order'        => 16,
+                'order'        => 17,
                 'group'        => 'Site',
             ])->save();
         }
@@ -196,7 +209,7 @@ class SettingsTableSeederCustom extends Seeder
                 'value'        => 'settings\dummy\resend.jpg',
                 'details'      => '',
                 'type'         => 'image',
-                'order'        => 17,
+                'order'        => 18,
                 'group'        => 'Site',
             ])->save();
         }
