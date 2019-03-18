@@ -46,7 +46,7 @@
         <div class="clearfix"></div>
         <div class="container">
             <div class="row">
-                <div class="col-md-4 col-sm-4"><a href="{{ route('shop.home.index') }}"><img src="{{ asset('assets/images/logo-right.png') }}" alt="" title="" /></a></div>
+                <div class="col-md-4 col-sm-4"><a href="{{ route('shop.home.index') }}"><img src="{{ settingsAdminImageExist(setting('site.logo'), "logo-footer") }}" alt="" title="" /></a></div>
                 <div class="col-md-8 col-sm-8">
                     <div class="pull-right">
                         <div class="input-group">

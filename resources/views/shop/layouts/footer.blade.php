@@ -29,10 +29,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-3  wow fadeIn" data-wow-delay=".1s">
-                    <div class="logo-f"><img src="{{ secure_asset('assets/images/logo-2.png') }}" alt="" title="" ></div>
+                    <div class="logo-f"><img src="{{ settingsAdminImageExist(setting('site.logo_footer'), "logo") }}" alt="" title="" ></div>
                     <div class="about-b">
                         <div class="footer-text">
-                            <p>Es ist ein lang erwiesener Fakt, dass ein Leser vom Text abgelenkt wird, wenn er sich ein Layout ansieht. Der Punkt, Lorem Ipsum zu nutzen, ist, dass es mehr oder weniger.</p>
+                            <p>{{ setting('site.description') }}</p>
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -59,8 +59,7 @@
                         <li><i class="fa fa-map-marker" aria-hidden="true"></i>{{ setting('site.address') }}</li>
                         <li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:{{ setting('site.phone') }}">{{ setting('site.phone_view') }}</a></li>
                         <li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:{{ setting('site.email') }}">{{ setting('site.email') }}</a></li>
-                        <li><i class="fa fa-clock-o" aria-hidden="true"></i> 9:00pm - 5:00pm<br>
-                            Sunday Closed </li>
+                        <li><i class="fa fa-clock-o" aria-hidden="true"></i>{{ setting('site.daily_hour') }}</li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
@@ -71,7 +70,7 @@
     <div class="copyright">
         <div class="footer-in">
             <div class="pull-left"><a href="{{ route('shop.home.index') }}">{{ setting('site.title') }} © 2017 - {{ date('Y') }}. All Rights Resrved.</a> </div>
-            <div class="pull-right"> Powered by <a href="http://83.212.101.232" target="_blank">Giorgos Tsaxrelias</a> </div>
+            <div class="pull-right"> Powered by <a href="http://gtsaxrelias.tk/" target="_blank">Giorgos Tsaxrelias</a> </div>
             <div class="clearfix"></div>
         </div>
     </div>
