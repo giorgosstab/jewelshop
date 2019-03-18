@@ -665,7 +665,7 @@ class MenuItemsTableSeederCustom extends Seeder
             $menuItem = MenuItem::firstOrNew([
                 'menu_id' => $menu->id,
                 'title'   => 'fa-facebook',
-                'url'     => 'https://www.facebook.com',
+                'url'     => 'https://www.facebook.com/jeweleryshoppe/',
                 'route'   => null,
             ]);
             if (!$menuItem->exists) {
@@ -725,7 +725,7 @@ class MenuItemsTableSeederCustom extends Seeder
             $menuItem = MenuItem::firstOrNew([
                 'menu_id' => $menu->id,
                 'title'   => 'fa-instagram',
-                'url'     => 'http://instagram.com',
+                'url'     => 'https://www.instagram.com/jeweleryshoppe/',
                 'route'   => null,
             ]);
             if (!$menuItem->exists) {
