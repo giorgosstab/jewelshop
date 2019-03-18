@@ -549,9 +549,7 @@ class DataRowsTableSeederCustom extends Seeder
                         "forceUpdate" => false
                     ],
                     "validation" => [
-                        "rule" => [
-                            "required|regex:/^[a-zA-Z0-9-]+$/u|unique:category_jewels,slug"
-                        ]
+                        "rule" => 'required|regex:/^[a-zA-Z0-9-]+$/u|unique:category_jewels,slug'
                     ]
                 ],
                 'order'        => 4,
