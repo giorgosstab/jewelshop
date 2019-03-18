@@ -22,6 +22,10 @@
         <!-- CSS STYLE-->
         {{ Html::style('assets/slider/css/style.css') }}
         {{ Html::style('assets/css/custom.css') }}
+
+        <!--instagram feed-->
+        {{ Html::style('assets/css/instagramfeed/custom.instagram.css') }}
+
         <!--extra css-->
         @yield('extra-css')
 
@@ -32,14 +36,15 @@
         {{Html::script('assets/slider/js/jquery.themepunch.plugins.min.js')}}
         {{Html::script('assets/slider/js/jquery.themepunch.revolution.min.js')}}
 
-        <style>
-            .instaimg img{margin-bottom: 30px;}
-            .instaimg img:hover{
-                opacity:0.4;
-                --moz-opacity:0.4;
-                --webkit-opacity:0.4;
-            }
-        </style>
+        {{--mine instagram hover--}}
+        {{--<style>--}}
+            {{--.instaimg img{margin-bottom: 30px;}--}}
+            {{--.instaimg img:hover{--}}
+                {{--opacity:0.4;--}}
+                {{----moz-opacity:0.4;--}}
+                {{----webkit-opacity:0.4;--}}
+            {{--}--}}
+        {{--</style>--}}
     </head>
     <body class="top-body">
         <div id="preloader"></div>
@@ -98,6 +103,7 @@
         <!--instagram feed-->
         {{ Html::script('assets/js/instagramfeed/instafeed.min.js') }}
         {{ Html::script('assets/js/instagramfeed/custom.instagram.js') }}
+        {{ Html::script('assets/js/instagramfeed/lightwidget.instagram.js') }}
 
         <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script>
         <script type="text/javascript">

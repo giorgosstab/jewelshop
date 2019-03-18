@@ -47,10 +47,9 @@
                 </div>
                 <div class="col-md-3 col-sm-3  wow fadeIn" data-wow-delay=".3s">
                     <h2>INSTAFEED</h2>
-                    {{--<div class="text-center">--}}
+                    <ul class="lightwidget lightwidget--grid lightwidget--grid-3 lightwidget--hover-show-instagram-icon lightwidget--image-format-square" data-id="ffd1f5637e125542b95bdc39b7d98b91">
                         <div id="instafeed" class="row"></div>
-                        {{--<img src="assets/images/instagram.png" alt="" title="" class="img-fluid">--}}
-                    {{--</div>--}}
+                    </ul>
                     <div class="clearfix"></div>
                 </div>
                 <div class="col-md-3 col-sm-3 footer-address  wow fadeIn" data-wow-delay=".4s">
