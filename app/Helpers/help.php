@@ -55,6 +55,9 @@ function settingsAdminImageExist($path, $page) {
     if($page === "resend_activation"){
         return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/blog-top.jpg');
     }
+    if($page === "logo"){
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/logo.png');
+    }
 }
 
 function customPageImageParallaxExist($path) {
