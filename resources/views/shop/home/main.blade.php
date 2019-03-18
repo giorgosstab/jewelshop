@@ -171,7 +171,7 @@
                     <h2 class="title-h wow fadeInDown"><span>Popular</span> Collections</h2>
                 </div>
                 <div class="row">
-                    @foreach($products as $product)
+                    @foreach($popularProducts as $product)
                         <div class="col-md-3 col-sm-3 col-xs-6 text-center wow fadeIn">
                             <div class="box-css">
                                 <a href="{{ route('shop.products.show', $product->slug) }}">

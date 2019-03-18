@@ -4,6 +4,7 @@ namespace App;
 
 use function array_merge;
 use Illuminate\Database\Eloquent\Model;
+use JordanMiguel\LaravelPopular\Traits\Visitable;
 use TCG\Voyager\Traits\Resizable;
 use Laravel\Scout\Searchable;
 
@@ -11,8 +12,9 @@ class Product extends Model
 {
     use Resizable;
     use Searchable;
+    use Visitable;
+
     public function categoriesJewels() {
-        //return $this->belongsToMany('App\CategoryJewel', 'category_jewel_product')->withPivot('category_parent_id');
         return $this->belongsToMany('App\CategoryJewel');
     }
     public function presentPrice() {
