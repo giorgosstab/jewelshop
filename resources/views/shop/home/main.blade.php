@@ -280,7 +280,7 @@
                                                 <div class="grid">
                                                     <figure class="effect-moses">
                                                         <div class="zoom-hover">
-                                                            <a href="product.html">
+                                                            <a href="{{ route('shop.products.index', ['cat' => $category->slug]) }}">
                                                                 <span class="glyphicon glyphicon-search"></span>
                                                             </a>
                                                         </div>

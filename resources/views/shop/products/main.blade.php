@@ -158,12 +158,10 @@
                                         <option {{ request()->sort == "z_a" ? 'selected' : '' }} value="ZtoA">Product Name: Z to A</option>
                                     </select>
                                 </div>
-                            @endif
-                            @if($products->count() > 0)
                                 <div class="col-md-6 col-sm-6 col-xs-6 bread">
                                     <div class="breadcrumbs">
                                         <!-- fix position if dont have pagination links -->
-                                        {!! $products->count() < 20 ? '<br><br><br>' : $products->appends(request()->input())->render('pagination::shopPagination') !!}
+                                        {!! $products->count() < \App\Product::PAGINATION ? '<br><br><br>' : $products->appends(request()->input())->render('pagination::shopPagination') !!}
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-xs-6 select-p">

@@ -8,6 +8,7 @@ use App\Product;
 
 class ShopController extends Controller
 {
+    const PAGINATION = 16;
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +16,6 @@ class ShopController extends Controller
      */
     public function index()
     {
-        $pagination = 16;
-
         $specialOffers = Product::where('status', 'like', 'PUBLISHED')->where('offer', true)->inRandomOrder()->get();
         $hotDeals = Product::where('status', 'like', 'PUBLISHED')->where('hotdeals', true)->inRandomOrder()->get();
         $allBrands = Brand::where('status', 'like', 'PUBLISHED')->groupBy('name')->with('products')->whereHas('products', function ($query) {
@@ -29,7 +28,31 @@ class ShopController extends Controller
 
 
         if (request()->cat) {
-            $products = Product::where('status', 'like', 'PUBLISHED')->inRandomOrder()->take(16)->get();
+
+            /******************************
+             *
+             * reverse by category products
+             *
+             ******************************/
+            /*$categories = CategoryJewel::find(1)->children()->with('products')->whereHas('products',function ($query){
+                $query->where('status', 'like', 'PUBLISHED');
+            })->get();
+            $products = collect([]);
+            foreach ($categories as $category){
+                foreach ($category->products as $product) {
+                    $products->push($product);
+                }
+            }*/
+
+            $category = CategoryJewel::where('slug',request()->cat)->firstOrFail();
+            $id = $category->id;
+
+            $products = Product::with('categoriesJewels')->whereHas('categoriesJewels', function($query) use($id) {
+                $query->where('parent_id', $id);
+            });
+
+            $maxPrice = $products->max('price');
+            $minPrice = $products->min('price');
             $productsPagination = $products->count();
 
         } elseif(request()->sub) {
@@ -91,17 +114,17 @@ class ShopController extends Controller
 
 
         if(request()->sort == "low_high"){
-            $products = $products->orderBy('price')->paginate($pagination);
+            $products = $products->orderBy('price')->paginate(Product::PAGINATION);
         } else if(request()->sort == "high_low") {
-            $products = $products->orderBy('price', 'desc')->paginate($pagination);
+            $products = $products->orderBy('price', 'desc')->paginate(Product::PAGINATION);
         } else if(request()->sort == "new") {
-            $products = $products->orderBy('id', 'desc')->paginate($pagination);
+            $products = $products->orderBy('id', 'desc')->paginate(Product::PAGINATION);
         } else if(request()->sort == "a_z") {
-            $products = $products->orderBy('name')->paginate($pagination);
+            $products = $products->orderBy('name')->paginate(Product::PAGINATION);
         } else if(request()->sort == "z_a") {
-            $products = $products->orderBy('name', 'desc')->paginate($pagination);
+            $products = $products->orderBy('name', 'desc')->paginate(Product::PAGINATION);
         } else {
-            $products = $products->orderBy('id', 'desc')->paginate($pagination); //->onEachSide($onside)
+            $products = $products->orderBy('id', 'desc')->paginate(Product::PAGINATION); //->onEachSide($onside)
         }
 
         return view('shop.products.main')->with([

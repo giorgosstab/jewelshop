@@ -9,18 +9,18 @@ class CategoryJewel extends Model
 {
     use Resizable;
     public function products(){
-//        return $this->belongsToMany('App\Product', 'category_jewel_product')->withPivot('category_parent_id');
         return $this->belongsToMany('App\Product');
     }
     public function parentId(){
         return $this->belongsTo('App\CategoryJewel');
     }
+
 //    public function parent() {
 //        return $this->belongsTo('App\CategoryJewel', 'parent_id'); //get parent category
 //    }
-//    public function children() {
-//        return $this->hasMany('App\CategoryJewel', 'parent_id'); //get all subs. NOT RECURSIVE
-//    }
+    public function children() {
+        return $this->hasMany('App\CategoryJewel', 'parent_id'); //get all subs. NOT RECURSIVE
+    }
     public function getCategories() {
         $categories=CategoryJewel::where('status', 'like', 'PUBLISHED')->where('parent_id',NULL)->get();//united
         $categories=$this->addRelation($categories);

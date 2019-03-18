@@ -14,6 +14,8 @@ class Product extends Model
     use Searchable;
     use Visitable;
 
+    const PAGINATION = 16;
+
     public function categoriesJewels() {
         return $this->belongsToMany('App\CategoryJewel');
     }
