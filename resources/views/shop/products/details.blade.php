@@ -181,10 +181,10 @@
                         </div>
                         <div class="socialmedia">
                             <ul>
-                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
-                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
-                                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a> </li>
-                                <li><a href="#"><i class="fa fa fa-timblr" aria-hidden="true"> <strong class="tcss">t</strong> </i></a></li>
+                                <li><a href="#" onclick="window.open('//www.facebook.com/sharer/sharer.php?u={{ url("/shop/".$product->slug) }}','facebook','width=600,height=400');return false;"><i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
+                                <li><a href="#" onclick="window.open('//twitter.com/intent/tweet?url={{ url("/shop/".$product->slug) }}&text={{ $product->name }}','twitter','width=600,height=400');return false;"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
+                                <li><a href="#" onclick="window.open('//pinterest.com/pin/create/button/?url={{ url("/shop/".$product->slug) }}&media={{ file_exists(Voyager::image($product->thumbnail('small'))) ? Voyager::image($product->thumbnail('small')) : secure_asset('storage/'.$product->image) }}&description={{ $product->name }}','pinterest','width=600,height=400');return false;"><i class="fa fa-pinterest" aria-hidden="true"></i></a> </li>
+                                <li><a href="#" onclick="window.open('//www.tumblr.com/share?v=3&u={{ url("/shop/".$product->slug) }}&t={{ $product->name }}','tumblr','width=600,height=400');return false;"><i class="fa fa fa-timblr" aria-hidden="true"> <strong class="tcss">t</strong> </i></a></li>
                             </ul>
                         </div>
                         <div class="read-full">
