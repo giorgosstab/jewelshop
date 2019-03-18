@@ -114,3 +114,36 @@ function isActiveTab($route, $title, $output="active")
         }
     }
 }
+
+function getStockLevel($quantity) {
+    if($quantity > setting('site.stock_threshold')){
+        $thesholdX3 = setting('site.stock_threshold') * 3;
+        if($quantity <= $thesholdX3  && $quantity > setting('site.stock_threshold')) {
+            $stockLevel = '<div class="tag-list text-right">
+                            <ul>
+                                <li><a style="background-color: #28a745;" href="#" data-toggle="tooltip" data-placement="bottom" title="'.$quantity.' item(s) left!"><i class="fa fa-tag"></i> In Stock </a></li>
+                            </ul>
+                        </div>';
+        } else {
+            $stockLevel = '<div class="tag-list text-right">
+                            <ul>
+                                <li><a style="background-color: #28a745;" href="#"><i class="fa fa-tag"></i> In Stock </a></li>
+                            </ul>
+                        </div>';
+        }
+    } elseif ($quantity <= setting('site.stock_threshold') && $quantity > 0) {
+        $stockLevel = '<div class="tag-list text-right">
+                            <ul>
+                                <li><a style="background-color: #ffc107;" href="#" data-toggle="tooltip" data-placement="bottom" title="'.$quantity.' item(s) left!"><i class="fa fa-tag"></i> Low Stock </a></li>
+                            </ul>
+                        </div>';
+    } else {
+        $stockLevel = '<div class="tag-list text-right">
+                            <ul>
+                                <li><a style="background-color: #dc3545;" href="#" data-toggle="tooltip" data-placement="bottom" title="For more Info please contact with us!"><i class="fa fa-tag"></i> Not Available </a></li>
+                            </ul>
+                        </div>';
+    }
+
+    return $stockLevel;
+}

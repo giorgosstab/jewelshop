@@ -42,7 +42,7 @@ class SettingsTableSeederCustom extends Seeder
         $setting = $this->findSetting('site.google_analytics_tracking_id');
         if ($setting->exists) {
             $setting->fill([
-                'order'        => 19,
+                'order'        => 20,
             ])->update();
         }
 
@@ -210,6 +210,17 @@ class SettingsTableSeederCustom extends Seeder
                 'details'      => '',
                 'type'         => 'image',
                 'order'        => 18,
+                'group'        => 'Site',
+            ])->save();
+        }
+        $setting = $this->findSetting('site.stock_threshold');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Product Stock Threshold',
+                'value'        => '5',
+                'details'      => '',
+                'type'         => 'text',
+                'order'        => 19,
                 'group'        => 'Site',
             ])->save();
         }

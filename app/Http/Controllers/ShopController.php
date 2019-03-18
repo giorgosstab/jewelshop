@@ -150,12 +150,16 @@ class ShopController extends Controller
         $product = Product::where('status', 'like', 'PUBLISHED')->where('slug',$slug)->firstOrFail();
         $mightAlsoLike = Product::where('status', 'like', 'PUBLISHED')->where('slug','!=',$slug)->inRandomOrder()->take(20)->get();
 
+        //appear badge for quantity of product
+        $stockLevel = getStockLevel($product->quantity);
+
         // add in visit table for products
         $product->visit();
 
         return view('shop.products.details')->with([
             'product' => $product,
             'mightAlsoLike' => $mightAlsoLike,
+            'stockLevel' => $stockLevel,
         ]);
     }
 }

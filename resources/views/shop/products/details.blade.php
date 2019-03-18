@@ -97,6 +97,7 @@
                                                     </a>
                                                 @endforeach
                                             @endif
+                                            {!! $stockLevel !!}
                                         </div>
                                     </div>
                                 </div>
@@ -166,11 +167,11 @@
                                 <li class="tab1">PRICE: <span>€{{ presentPrice($product->price) }}</span></li>
                                 <li>
                                     {!! Form::open(array('route'=>'shop.shopping-cart.store','method' => 'POST','id' => 'addToCart')) !!}
-                                    {{ csrf_field() }}
-                                    {{ Form::hidden('id', $product->id) }}
-                                    {{ Form::hidden('name', $product->name) }}
-                                    {{ Form::hidden('price', $product->price) }}
-                                    <a href="#" onclick="document.getElementById('addToCart').submit()">ADD TO CART</a>
+                                        {{ csrf_field() }}
+                                        {{ Form::hidden('id', $product->id) }}
+                                        {{ Form::hidden('name', $product->name) }}
+                                        {{ Form::hidden('price', $product->price) }}
+                                        <a style="{{ $product->quantity > 0 ? '' : 'cursor: not-allowed;' }}" href="#" onclick="{{ $product->quantity > 0 ? 'document.getElementById("addToCart").submit()' : 'return false;' }}">ADD TO CART</a>
                                     {!! Form::close() !!}
                                 </li>
                             </ul>
@@ -270,4 +271,12 @@
         <!--container-->
         <div class="clearfix"></div>
     </div>
+@endsection
+
+@section('extra-script')
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        })
+    </script>
 @endsection
