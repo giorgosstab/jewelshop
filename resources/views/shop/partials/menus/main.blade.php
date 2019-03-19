@@ -19,17 +19,33 @@
                                 </div>
                                 <div class="col-md-10 col-lg-8 col-xl-8">
                                     <div class="row">
-                                        @foreach($categoriesWithSubs as $category)
-                                            <div class="col-sm-4 col-md-4 col-lg-3 col-xl-2 sub-menu my-xl-5 mt-md-5 mt-1 mb-1">
-                                                <a class="menu-item" href="{{ route('shop.products.index', ['cat' => $category->slug]) }}"><h6 class="sub-title text-uppercase font-weight-bold white-text">{{ $category->name }}</h6></a>
-                                                <ul class="caret-style pl-0">
-                                                    @foreach($category->children as $firstSubCategory)
-                                                        <li class=""><a class="menu-item" href="{{ route('shop.products.index', ['sub' => $firstSubCategory->slug]) }}">{{ $firstSubCategory->name }}</a></li>
+                                        {{--@foreach($categoriesWithSubs as $category)--}}
+                                            {{--<div class="col-sm-4 col-md-4 col-lg-3 col-xl-2 sub-menu my-xl-5 mt-md-5 mt-1 mb-1">--}}
+                                                {{--<a class="menu-item" href="{{ route('shop.products.index', ['cat' => $category->slug]) }}"><h6 class="sub-title text-uppercase font-weight-bold white-text">{{ $category->name }}</h6></a>--}}
+                                                {{--<ul class="caret-style pl-0">--}}
+                                                    {{--@foreach($category->children as $firstSubCategory)--}}
+                                                        {{--<li class=""><a class="menu-item" href="{{ route('shop.products.index', ['sub' => $firstSubCategory->slug]) }}">{{ $firstSubCategory->name }}</a></li>--}}
                                                         {{--@foreach($firstNestedSub->children as $secondNestedSub)--}}
                                                             {{--SecondNested : {{ $secondNestedSub->name }}<br>--}}
                                                             {{--@foreach($secondNestedSub->subCategory as $thirdNestedSub)--}}
                                                                 {{--$thirdNested: {{ $thirdNestedSub->name }}--}}
                                                             {{--@endforeach()--}}
+                                                        {{--@endforeach()--}}
+                                                    {{--@endforeach--}}
+                                                {{--</ul>--}}
+                                            {{--</div>--}}
+                                        {{--@endforeach--}}
+                                        @foreach($item->children as $category)
+                                            <div class="col-sm-4 col-md-4 col-lg-3 col-xl-2 sub-menu my-xl-5 mt-md-5 mt-1 mb-1">
+                                                <a class="menu-item" target="{{ $category->target }}" href="{{ route('shop.products.index', ['cat' => $category->link()]) }}"><h6 class="sub-title text-uppercase font-weight-bold white-text">{{ $category->title }}</h6></a>
+                                                <ul class="caret-style pl-0">
+                                                    @foreach($category->children as $subCategory)
+                                                        <li class=""><a class="menu-item" target="{{ $subCategory->target }}" href="{{ route('shop.products.index', ['sub' => $subCategory->link()]) }}">{{ $subCategory->title }}</a></li>
+                                                        {{--@foreach($firstNestedSub->children as $secondNestedSub)--}}
+                                                        {{--SecondNested : {{ $secondNestedSub->name }}<br>--}}
+                                                        {{--@foreach($secondNestedSub->subCategory as $thirdNestedSub)--}}
+                                                        {{--$thirdNested: {{ $thirdNestedSub->name }}--}}
+                                                        {{--@endforeach()--}}
                                                         {{--@endforeach()--}}
                                                     @endforeach
                                                 </ul>

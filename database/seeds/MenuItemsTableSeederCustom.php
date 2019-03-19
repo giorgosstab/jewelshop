@@ -530,22 +530,432 @@ class MenuItemsTableSeederCustom extends Seeder
                 ])->save();
             }
 
-            // Shop mega menu
-            $menuItem = MenuItem::firstOrNew([
-                'menu_id' => $menu->id,
-                'title'   => 'megaMenu',
-                'url'     => '#',
-                'route'   => null,
-            ]);
-            if (!$menuItem->exists) {
-                $menuItem->fill([
-                    'target'     => '_self',
-                    'icon_class' => null,
-                    'color'      => null,
-                    'parent_id'  => $shopMenuItem->id,
-                    'order'      => 1,
-                ])->save();
-            }
+                    // -----Shop mega menu------------ //
+                    $menuItem = MenuItem::firstOrNew([
+                        'menu_id' => $menu->id,
+                        'title'   => 'Rings',
+                        'url'     => '/shop?cat=rings',
+                        'route'   => null,
+                    ]);
+                    if (!$menuItem->exists) {
+                        $menuItem->fill([
+                            'target'     => '_self',
+                            'icon_class' => null,
+                            'color'      => null,
+                            'parent_id'  => $shopMenuItem->id,
+                            'order'      => 1,
+                        ])->save();
+                    }
+
+                            //sub sub menu
+                            $menuItemSub = MenuItem::firstOrNew([
+                                'menu_id' => $menu->id,
+                                'title'   => 'Wedding Rings',
+                                'url'     => 'wedding-rings',
+                                'route'   => null,
+                            ]);
+                            if (!$menuItemSub->exists) {
+                                $menuItemSub->fill([
+                                    'target'     => '_self',
+                                    'icon_class' => null,
+                                    'color'      => null,
+                                    'parent_id'  => $menuItem->id,
+                                    'order'      => 1,
+                                ])->save();
+                            }
+                            $menuItemSub = MenuItem::firstOrNew([
+                                'menu_id' => $menu->id,
+                                'title'   => 'Solitaires Rings',
+                                'url'     => 'solitaires-rings',
+                                'route'   => null,
+                            ]);
+                            if (!$menuItemSub->exists) {
+                                $menuItemSub->fill([
+                                    'target'     => '_self',
+                                    'icon_class' => null,
+                                    'color'      => null,
+                                    'parent_id'  => $menuItem->id,
+                                    'order'      => 2,
+                                ])->save();
+                            }
+                            $menuItemSub = MenuItem::firstOrNew([
+                                'menu_id' => $menu->id,
+                                'title'   => 'Diamonds Rings',
+                                'url'     => 'diamond-rings',
+                                'route'   => null,
+                            ]);
+                            if (!$menuItemSub->exists) {
+                                $menuItemSub->fill([
+                                    'target'     => '_self',
+                                    'icon_class' => null,
+                                    'color'      => null,
+                                    'parent_id'  => $menuItem->id,
+                                    'order'      => 3,
+                                ])->save();
+                            }
+                            $menuItemSub = MenuItem::firstOrNew([
+                                'menu_id' => $menu->id,
+                                'title'   => 'Pearls Rings',
+                                'url'     => 'pearl-rings',
+                                'route'   => null,
+                            ]);
+                            if (!$menuItemSub->exists) {
+                                $menuItemSub->fill([
+                                    'target'     => '_self',
+                                    'icon_class' => null,
+                                    'color'      => null,
+                                    'parent_id'  => $menuItem->id,
+                                    'order'      => 4,
+                                ])->save();
+                            }
+                            $menuItemSub = MenuItem::firstOrNew([
+                                'menu_id' => $menu->id,
+                                'title'   => 'Zircon Rings',
+                                'url'     => 'zircon-rings',
+                                'route'   => null,
+                            ]);
+                            if (!$menuItemSub->exists) {
+                                $menuItemSub->fill([
+                                    'target'     => '_self',
+                                    'icon_class' => null,
+                                    'color'      => null,
+                                    'parent_id'  => $menuItem->id,
+                                    'order'      => 5,
+                                ])->save();
+                            }
+                    $menuItem = MenuItem::firstOrNew([
+                        'menu_id' => $menu->id,
+                        'title'   => 'Necklaces',
+                        'url'     => 'necklaces',
+                        'route'   => null,
+                    ]);
+                    if (!$menuItem->exists) {
+                        $menuItem->fill([
+                            'target'     => '_self',
+                            'icon_class' => null,
+                            'color'      => null,
+                            'parent_id'  => $shopMenuItem->id,
+                            'order'      => 2,
+                        ])->save();
+                    }
+                            //sub sub menu
+                            $menuItemSub = MenuItem::firstOrNew([
+                                'menu_id' => $menu->id,
+                                'title'   => 'Wedding Necklaces',
+                                'url'     => 'wedding-necklaces',
+                                'route'   => null,
+                            ]);
+                            if (!$menuItemSub->exists) {
+                                $menuItemSub->fill([
+                                    'target'     => '_self',
+                                    'icon_class' => null,
+                                    'color'      => null,
+                                    'parent_id'  => $menuItem->id,
+                                    'order'      => 1,
+                                ])->save();
+                            }
+                            $menuItemSub = MenuItem::firstOrNew([
+                                'menu_id' => $menu->id,
+                                'title'   => 'Minerals Necklaces',
+                                'url'     => 'minerals-necklaces',
+                                'route'   => null,
+                            ]);
+                            if (!$menuItemSub->exists) {
+                                $menuItemSub->fill([
+                                    'target'     => '_self',
+                                    'icon_class' => null,
+                                    'color'      => null,
+                                    'parent_id'  => $menuItem->id,
+                                    'order'      => 2,
+                                ])->save();
+                            }
+                            $menuItemSub = MenuItem::firstOrNew([
+                                'menu_id' => $menu->id,
+                                'title'   => 'Monograms',
+                                'url'     => 'monograms',
+                                'route'   => null,
+                            ]);
+                            if (!$menuItemSub->exists) {
+                                $menuItemSub->fill([
+                                    'target'     => '_self',
+                                    'icon_class' => null,
+                                    'color'      => null,
+                                    'parent_id'  => $menuItem->id,
+                                    'order'      => 3,
+                                ])->save();
+                            }
+                            $menuItemSub = MenuItem::firstOrNew([
+                                'menu_id' => $menu->id,
+                                'title'   => 'Pendants Necklaces',
+                                'url'     => 'pendant-necklaces',
+                                'route'   => null,
+                            ]);
+                            if (!$menuItemSub->exists) {
+                                $menuItemSub->fill([
+                                    'target'     => '_self',
+                                    'icon_class' => null,
+                                    'color'      => null,
+                                    'parent_id'  => $menuItem->id,
+                                    'order'      => 4,
+                                ])->save();
+                            }
+                            $menuItemSub = MenuItem::firstOrNew([
+                                'menu_id' => $menu->id,
+                                'title'   => 'Choker Necklaces',
+                                'url'     => 'choker-necklaces',
+                                'route'   => null,
+                            ]);
+                            if (!$menuItemSub->exists) {
+                                $menuItemSub->fill([
+                                    'target'     => '_self',
+                                    'icon_class' => null,
+                                    'color'      => null,
+                                    'parent_id'  => $menuItem->id,
+                                    'order'      => 5,
+                                ])->save();
+                            }
+                    $menuItem = MenuItem::firstOrNew([
+                        'menu_id' => $menu->id,
+                        'title'   => 'Watches',
+                        'url'     => 'watches',
+                        'route'   => null,
+                    ]);
+                    if (!$menuItem->exists) {
+                        $menuItem->fill([
+                            'target'     => '_self',
+                            'icon_class' => null,
+                            'color'      => null,
+                            'parent_id'  => $shopMenuItem->id,
+                            'order'      => 3,
+                        ])->save();
+                    }
+                            //sub sub menu
+                            $menuItemSub = MenuItem::firstOrNew([
+                                'menu_id' => $menu->id,
+                                'title'   => 'Quartz Watches',
+                                'url'     => 'quartz-watches',
+                                'route'   => null,
+                            ]);
+                            if (!$menuItemSub->exists) {
+                                $menuItemSub->fill([
+                                    'target'     => '_self',
+                                    'icon_class' => null,
+                                    'color'      => null,
+                                    'parent_id'  => $menuItem->id,
+                                    'order'      => 1,
+                                ])->save();
+                            }
+                            $menuItemSub = MenuItem::firstOrNew([
+                                'menu_id' => $menu->id,
+                                'title'   => 'Automatic Watches',
+                                'url'     => 'automatic-watches',
+                                'route'   => null,
+                            ]);
+                            if (!$menuItemSub->exists) {
+                                $menuItemSub->fill([
+                                    'target'     => '_self',
+                                    'icon_class' => null,
+                                    'color'      => null,
+                                    'parent_id'  => $menuItem->id,
+                                    'order'      => 2,
+                                ])->save();
+                            }
+                            $menuItemSub = MenuItem::firstOrNew([
+                                'menu_id' => $menu->id,
+                                'title'   => 'Kinetic Watches',
+                                'url'     => 'kinetic-watches',
+                                'route'   => null,
+                            ]);
+                            if (!$menuItemSub->exists) {
+                                $menuItemSub->fill([
+                                    'target'     => '_self',
+                                    'icon_class' => null,
+                                    'color'      => null,
+                                    'parent_id'  => $menuItem->id,
+                                    'order'      => 3,
+                                ])->save();
+                            }
+                            $menuItemSub = MenuItem::firstOrNew([
+                                'menu_id' => $menu->id,
+                                'title'   => 'Waterproof Watches',
+                                'url'     => 'waterproof-watches',
+                                'route'   => null,
+                            ]);
+                            if (!$menuItemSub->exists) {
+                                $menuItemSub->fill([
+                                    'target'     => '_self',
+                                    'icon_class' => null,
+                                    'color'      => null,
+                                    'parent_id'  => $menuItem->id,
+                                    'order'      => 4,
+                                ])->save();
+                            }
+                    $menuItem = MenuItem::firstOrNew([
+                        'menu_id' => $menu->id,
+                        'title'   => 'Earrings',
+                        'url'     => 'earrings',
+                        'route'   => null,
+                    ]);
+                    if (!$menuItem->exists) {
+                        $menuItem->fill([
+                            'target'     => '_self',
+                            'icon_class' => null,
+                            'color'      => null,
+                            'parent_id'  => $shopMenuItem->id,
+                            'order'      => 4,
+                        ])->save();
+                    }
+                            //sub sub menu
+                            $menuItemSub = MenuItem::firstOrNew([
+                                'menu_id' => $menu->id,
+                                'title'   => 'Nose piercings',
+                                'url'     => 'nose-piercings',
+                                'route'   => null,
+                            ]);
+                            if (!$menuItemSub->exists) {
+                                $menuItemSub->fill([
+                                    'target'     => '_self',
+                                    'icon_class' => null,
+                                    'color'      => null,
+                                    'parent_id'  => $menuItem->id,
+                                    'order'      => 1,
+                                ])->save();
+                            }
+                            $menuItemSub = MenuItem::firstOrNew([
+                                'menu_id' => $menu->id,
+                                'title'   => 'Zircon Earrings',
+                                'url'     => 'zircon-earrings',
+                                'route'   => null,
+                            ]);
+                            if (!$menuItemSub->exists) {
+                                $menuItemSub->fill([
+                                    'target'     => '_self',
+                                    'icon_class' => null,
+                                    'color'      => null,
+                                    'parent_id'  => $menuItem->id,
+                                    'order'      => 2,
+                                ])->save();
+                            }
+                            $menuItemSub = MenuItem::firstOrNew([
+                                'menu_id' => $menu->id,
+                                'title'   => 'Precious Earrings',
+                                'url'     => 'stones-earrings',
+                                'route'   => null,
+                            ]);
+                            if (!$menuItemSub->exists) {
+                                $menuItemSub->fill([
+                                    'target'     => '_self',
+                                    'icon_class' => null,
+                                    'color'      => null,
+                                    'parent_id'  => $menuItem->id,
+                                    'order'      => 3,
+                                ])->save();
+                            }
+                            $menuItemSub = MenuItem::firstOrNew([
+                                'menu_id' => $menu->id,
+                                'title'   => 'Hoops Earrings',
+                                'url'     => 'hoops-earrings',
+                                'route'   => null,
+                            ]);
+                            if (!$menuItemSub->exists) {
+                                $menuItemSub->fill([
+                                    'target'     => '_self',
+                                    'icon_class' => null,
+                                    'color'      => null,
+                                    'parent_id'  => $menuItem->id,
+                                    'order'      => 4,
+                                ])->save();
+                            }
+                    $menuItem = MenuItem::firstOrNew([
+                        'menu_id' => $menu->id,
+                        'title'   => 'Bracelets',
+                        'url'     => 'bracelets',
+                        'route'   => null,
+                    ]);
+                    if (!$menuItem->exists) {
+                        $menuItem->fill([
+                            'target'     => '_self',
+                            'icon_class' => null,
+                            'color'      => null,
+                            'parent_id'  => $shopMenuItem->id,
+                            'order'      => 5,
+                        ])->save();
+                    }
+                    $menuItem = MenuItem::firstOrNew([
+                        'menu_id' => $menu->id,
+                        'title'   => 'Hairpins',
+                        'url'     => 'hairpins',
+                        'route'   => null,
+                    ]);
+                    if (!$menuItem->exists) {
+                        $menuItem->fill([
+                            'target'     => '_self',
+                            'icon_class' => null,
+                            'color'      => null,
+                            'parent_id'  => $shopMenuItem->id,
+                            'order'      => 6,
+                        ])->save();
+                    }
+                    $menuItem = MenuItem::firstOrNew([
+                        'menu_id' => $menu->id,
+                        'title'   => 'Chatelaine',
+                        'url'     => 'chatelaine',
+                        'route'   => null,
+                    ]);
+                    if (!$menuItem->exists) {
+                        $menuItem->fill([
+                            'target'     => '_self',
+                            'icon_class' => null,
+                            'color'      => null,
+                            'parent_id'  => $shopMenuItem->id,
+                            'order'      => 7,
+                        ])->save();
+                    }
+                    $menuItem = MenuItem::firstOrNew([
+                        'menu_id' => $menu->id,
+                        'title'   => 'Anklet',
+                        'url'     => 'anklet',
+                        'route'   => null,
+                    ]);
+                    if (!$menuItem->exists) {
+                        $menuItem->fill([
+                            'target'     => '_self',
+                            'icon_class' => null,
+                            'color'      => null,
+                            'parent_id'  => $shopMenuItem->id,
+                            'order'      => 8,
+                        ])->save();
+                    }
+                    $menuItem = MenuItem::firstOrNew([
+                        'menu_id' => $menu->id,
+                        'title'   => 'Cuff Links',
+                        'url'     => 'cuff-links',
+                        'route'   => null,
+                    ]);
+                    if (!$menuItem->exists) {
+                        $menuItem->fill([
+                            'target'     => '_self',
+                            'icon_class' => null,
+                            'color'      => null,
+                            'parent_id'  => $shopMenuItem->id,
+                            'order'      => 9,
+                        ])->save();
+                    }
+                    $menuItem = MenuItem::firstOrNew([
+                        'menu_id' => $menu->id,
+                        'title'   => 'Crosses',
+                        'url'     => 'crosses',
+                        'route'   => null,
+                    ]);
+                    if (!$menuItem->exists) {
+                        $menuItem->fill([
+                            'target'     => '_self',
+                            'icon_class' => null,
+                            'color'      => null,
+                            'parent_id'  => $shopMenuItem->id,
+                            'order'      => 10,
+                        ])->save();
+                    }
 
             /*
            |--------------------------------------------------------------------------
