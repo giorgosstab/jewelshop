@@ -34,10 +34,15 @@
                         <ul>
                             <li><a href="{{ route('shop.home.index') }}">HOME</a></li>
                             <li>/</li>
-                            @if($mainCategoryName)
+                            @if(request()->cat || request()->sub)
                                 <li><a href="{{ route('shop.products.index') }}">SHOP</a></li>
                                 <li>/</li>
-                                <li>{{ $mainCategoryName }}</li>
+                                @if(request()->cat)
+                                    <li>{{ request()->cat }}</li>
+                                @endif
+                                @if(request()->sub)
+                                    <li>{{ request()->sub }}</li>
+                                @endif
                             @else
                                 <li>SHOP</li>
                             @endif

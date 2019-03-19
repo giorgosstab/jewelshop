@@ -11,6 +11,9 @@
 |
 */
 
+
+use Illuminate\Support\Facades\View;
+
 Route::get('/','HomePageController@index')->name('shop.home.index');
 
 Route::get('/shop','ShopController@index')->name('shop.products.index');
@@ -55,20 +58,13 @@ Route::get('emptySaves', function(){
 });
 
 View::composer(['*'], function($view) {
-    $subcategories = new App\CategoryJewel;
-
-    try {
-        $allSubCategories = $subcategories->getCategories();
-    } catch (Exception $e) {
-        //no parent category found
-    }
-    $mainCategoryName = optional($subcategories->where('slug', request()->sub)->first())->name;
+    $categoriesWithSubs = \App\CategoryJewel::where('status', 'like', 'PUBLISHED')->with('children')->whereHas('children', function($query){
+        $query->where('status', 'like', 'PUBLISHED');
+    })->get();
     $view->with([
-        'allSubCategories' => $allSubCategories,
-        'mainCategoryName' => $mainCategoryName,
+        'categoriesWithSubs' => $categoriesWithSubs,
     ]);
 });
-
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

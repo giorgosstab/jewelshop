@@ -154,12 +154,7 @@ class ProductsController extends VoyagerBaseController
         }
 
         $subcategories = new CategoryJewel;
-
-        try {
-            $allCategories = $subcategories->getCategories();
-        } catch (Exception $e) {
-            //no parent category found
-        }
+        $allCategories = $subcategories->getCategories();
 
         $product = Product::find($id);
         $categoriesForProduct = $product->categoriesJewels()->get();

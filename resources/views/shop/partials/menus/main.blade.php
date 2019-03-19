@@ -19,22 +19,22 @@
                                 </div>
                                 <div class="col-md-10 col-lg-8 col-xl-8">
                                     <div class="row">
-                                        @foreach($allSubCategories as $subCate)
+                                        @foreach($categoriesWithSubs as $category)
                                             <div class="col-sm-4 col-md-4 col-lg-3 col-xl-2 sub-menu my-xl-5 mt-md-5 mt-1 mb-1">
-                                                <a class="menu-item" href="{{ route('shop.products.index', ['cat' => $subCate->slug]) }}"><h6 class="sub-title text-uppercase font-weight-bold white-text">{{ $subCate->name }}</h6></a>
+                                                <a class="menu-item" href="{{ route('shop.products.index', ['cat' => $category->slug]) }}"><h6 class="sub-title text-uppercase font-weight-bold white-text">{{ $category->name }}</h6></a>
                                                 <ul class="caret-style pl-0">
-                                                    @foreach($subCate->subCategory as $firstNestedSub)
-                                                        <li class=""><a class="menu-item" href="{{ route('shop.products.index', ['sub' => $firstNestedSub->slug]) }}">{{ $firstNestedSub->name }}</a></li>
-                                                        @foreach($firstNestedSub->subCategory as $secondNestedSub)
-                                                            SecondNested : {{ $secondNestedSub->name }}<br>
-                                                            @foreach($secondNestedSub->subCategory as $thirdNestedSub)
-                                                                $thirdNested: {{ $thirdNestedSub->name }}
-                                                            @endforeach()
-                                                        @endforeach()
-                                                    @endforeach()
+                                                    @foreach($category->children as $firstSubCategory)
+                                                        <li class=""><a class="menu-item" href="{{ route('shop.products.index', ['sub' => $firstSubCategory->slug]) }}">{{ $firstSubCategory->name }}</a></li>
+                                                        {{--@foreach($firstNestedSub->children as $secondNestedSub)--}}
+                                                            {{--SecondNested : {{ $secondNestedSub->name }}<br>--}}
+                                                            {{--@foreach($secondNestedSub->subCategory as $thirdNestedSub)--}}
+                                                                {{--$thirdNested: {{ $thirdNestedSub->name }}--}}
+                                                            {{--@endforeach()--}}
+                                                        {{--@endforeach()--}}
+                                                    @endforeach
                                                 </ul>
                                             </div>
-                                        @endforeach()
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
