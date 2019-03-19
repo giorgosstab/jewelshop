@@ -91,11 +91,11 @@
                                                 <div class="inc-dre">
                                                     <div class="input-group product-item">
                                                         <span class="input-group-btn">
-                                                            <button type="button" data-id="{{ $item->rowId }}" class="btn btn-default btn-number dec-btn"> <span class="glyphicon glyphicon-minus"></span> </button>
+                                                            <button type="button" data-id="{{ $item->rowId }}" data-quantity="{{ $item->model->quantity }}" class="btn btn-default btn-number dec-btn"> <span class="glyphicon glyphicon-minus"></span> </button>
                                                         </span>
                                                         <input name="quantity" class="input-number quantity-no" value="{{ $item->qty }}" type="text">
                                                         <span class="input-group-btn">
-                                                            <button type="button" data-id="{{ $item->rowId }}" class="btn btn-default btn-number inc-btn"> <span class="glyphicon glyphicon-plus"></span> </button>
+                                                            <button type="button" data-id="{{ $item->rowId }}" data-quantity="{{ $item->model->quantity }}" class="btn btn-default btn-number inc-btn"> <span class="glyphicon glyphicon-plus"></span> </button>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -211,11 +211,11 @@
                                                     <div class="inc-dre">
                                                         <div class="input-group product-item">
                                                             <span class="input-group-btn">
-                                                                <button type="button" data-id="{{ $item->rowId }}" class="btn btn-default btn-number dec-btn"> <span class="glyphicon glyphicon-minus"></span> </button>
+                                                                <button type="button" data-id="{{ $item->rowId }}" data-quantity="{{ $item->model->quantity }}" class="btn btn-default btn-number dec-btn"> <span class="glyphicon glyphicon-minus"></span> </button>
                                                             </span>
                                                             <input name="quantity" class="input-number quantity-no" value="{{ $item->qty }}" type="text">
                                                             <span class="input-group-btn">
-                                                                <button type="button" data-id="{{ $item->rowId }}" class="btn btn-default btn-number inc-btn"> <span class="glyphicon glyphicon-plus"></span> </button>
+                                                                <button type="button" data-id="{{ $item->rowId }}" data-quantity="{{ $item->model->quantity }}" class="btn btn-default btn-number inc-btn"> <span class="glyphicon glyphicon-plus"></span> </button>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -538,14 +538,16 @@
                 classnameIncButton.addEventListener('click', function () {
                     var classnameTextQty = element.querySelector('.quantity-no');
                     var id = classnameIncButton.getAttribute('data-id');
+                    var productQnt = classnameIncButton.getAttribute('data-quantity');
                     var Textqty = classnameTextQty.value;
                     axios.patch(`/cart/${id}`, {
-                        quantity: Textqty
+                        quantity: Textqty,
+                        productQuantity: productQnt
                     }).then(function (response) {
                         // console.log(response);
                         window.location.href = '{{ route('shop.shopping-cart.index') }}';
                     }).catch(function (error) {
-                        //console.log(error);
+                        // console.log(error);
                         window.location.href = '{{ route('shop.shopping-cart.index') }}';
                     });
                 });
@@ -560,7 +562,7 @@
                         // console.log(response);
                         window.location.href = '{{ route('shop.shopping-cart.index') }}';
                     }).catch(function (error) {
-                        //console.log(error);
+                        // console.log(error);
                         window.location.href = '{{ route('shop.shopping-cart.index') }}';
                     });
                 });

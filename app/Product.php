@@ -14,6 +14,7 @@ class Product extends Model
     use Searchable;
     use Visitable;
 
+    protected $fillable = ['quantity'];
     const PAGINATION = 16;
 
     public function categoriesJewels() {

@@ -8,6 +8,7 @@ use App\Http\Requests\CheckoutRequest;
 use App\Order;
 use App\OrderProduct;
 use App\Payment;
+use App\Product;
 use Cartalyst\Stripe\Exception\CardErrorException;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -77,6 +78,11 @@ class CheckoutController extends Controller
      */
     public function store(CheckoutRequest $request)
     {
+        //method to check before purchase process start if we have multi user and one of them is faster than other
+        if($this->productsAreNoLongerAvailable()){
+            return back()->withErrors('Sorry! One of the item in your cart is no longer available!');
+        }
+
         $content = Cart::content()->map(function($item){
             return 'Product Name: '.$item->model->slug.', Quantity: '.$item->qty;
         })->values()->toJson();
@@ -100,6 +106,9 @@ class CheckoutController extends Controller
 
             $this->addToOrdersTables($request, null);
 
+            //decrease quantity from all items in cart
+            $this->decreaseQuantities();
+
             //SUCCESSFUL
             Cart::instance('default')->destroy();
             session()->forget('coupon');
@@ -109,6 +118,9 @@ class CheckoutController extends Controller
             $this->addToOrdersTables($request, $e->getMessage());
             return back()->withErrors('Error! ' . $e->getMessage());
         }
+
+        event(new UserOrderPlace($order));
+
     }
 
     protected function addToOrdersTables($request, $error){
@@ -167,8 +179,22 @@ class CheckoutController extends Controller
                 'quantity' => $item->qty
             ]);
         }
+    }
 
-        event(new UserOrderPlace($order));
+    protected function decreaseQuantities() {
+        foreach (Cart::content() as $item){
+            $product = Product::find($item->model->id);
+            $product->update(['quantity' => $product->quantity - $item->qty]);
+        }
+    }
 
+    protected function productsAreNoLongerAvailable() {
+        foreach (Cart::content() as $item){
+            $product = Product::find($item->model->id);
+            if($product->qiantity < $item->qty){
+                return true;
+            }
+            return false;
+        }
     }
 }

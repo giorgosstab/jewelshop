@@ -88,8 +88,15 @@ class CartController extends Controller
             'quantity' => 'required|numeric|gt:0'
         ]);
         if($validator->fails()){
-            session()->flash('errors', collect(['Quantity must be numeric/required and greater than 0!']));
+            session()->flash('errors', collect(['This quantity must be greater than one!']));
             return response()->json(['success' => false], 400);
+        }
+
+        if($request->productQuantity){
+            if($request->quantity > $request->productQuantity){
+                session()->flash('errors', collect(['We dont have enough items to add! Please contact with us.']));
+                return response()->json(['success' => false], 400);
+            }
         }
 
         Cart::update($id, $request->quantity);
