@@ -57,14 +57,14 @@ Route::get('emptySaves', function(){
     Cart::instance('saveForLater')->destroy();
 });
 
-View::composer(['*'], function($view) {
-    $categoriesWithSubs = \App\CategoryJewel::where('status', 'like', 'PUBLISHED')->with('children')->whereHas('children', function($query){
-        $query->where('status', 'like', 'PUBLISHED');
-    })->get();
-    $view->with([
-        'categoriesWithSubs' => $categoriesWithSubs,
-    ]);
-});
+//View::composer(['*'], function($view) {
+//    $categoriesWithSubs = \App\CategoryJewel::where('status', 'like', 'PUBLISHED')->with('children')->whereHas('children', function($query){
+//        $query->where('status', 'like', 'PUBLISHED');
+//    })->get();
+//    $view->with([
+//        'categoriesWithSubs' => $categoriesWithSubs,
+//    ]);
+//});
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
