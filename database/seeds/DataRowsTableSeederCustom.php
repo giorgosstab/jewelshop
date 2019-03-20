@@ -137,78 +137,6 @@ class DataRowsTableSeederCustom extends Seeder
                 'order'        => 6,
             ])->save();
         }
-        $dataRow = $this->dataRow($productDataType, 'description');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'rich_text_box',
-                'display_name' => 'Description',
-                'required'     => 1,
-                'browse'       => 0,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'details'      => null,
-                'order'        => 7,
-            ])->save();
-        }
-        $dataRow = $this->dataRow($productDataType, 'bestof');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'checkbox',
-                'display_name' => 'Bestof',
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'details'      => [
-                    "on" => 'Yes',
-                    "off" => 'No',
-                    "checked" => 'false'
-                ],
-                'order'        => 8,
-            ])->save();
-        }
-        $dataRow = $this->dataRow($productDataType, 'offer');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'checkbox',
-                'display_name' => 'Offer',
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'details'      => [
-                    "on" => 'Yes',
-                    "off" => 'No',
-                    "checked" => 'false'
-                ],
-                'order'        => 9,
-            ])->save();
-        }
-        $dataRow = $this->dataRow($productDataType, 'hotdeals');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'checkbox',
-                'display_name' => 'Hotdeals',
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'details'      => [
-                    "on" => 'Yes',
-                    "off" => 'No',
-                    "checked" => 'false'
-                ],
-                'order'        => 10,
-            ])->save();
-        }
         $dataRow = $this->dataRow($productDataType, 'secondprice');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -225,7 +153,37 @@ class DataRowsTableSeederCustom extends Seeder
                         "rule" => 'regex:/^\\d*(\\.\\d{1,2})?$/'
                     ]
                 ],
-                'order'        => 11,
+                'order'        => 7,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($productDataType, 'quantity');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Quantity',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => null,
+                'order'        => 8,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($productDataType, 'description');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'rich_text_box',
+                'display_name' => 'Description',
+                'required'     => 1,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => null,
+                'order'        => 9,
             ])->save();
         }
         $dataRow = $this->dataRow($productDataType, 'status');
@@ -246,7 +204,64 @@ class DataRowsTableSeederCustom extends Seeder
                         'PUBLISHED' => 'PUBLISHED',
                     ]
                 ],
+                'order'        => 10,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($productDataType, 'bestof');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'checkbox',
+                'display_name' => 'Bestof',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "on" => 'Yes',
+                    "off" => 'No',
+                    "checked" => 'false'
+                ],
+                'order'        =>11,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($productDataType, 'offer');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'checkbox',
+                'display_name' => 'Offer',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "on" => 'Yes',
+                    "off" => 'No',
+                    "checked" => 'false'
+                ],
                 'order'        => 12,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($productDataType, 'hotdeals');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'checkbox',
+                'display_name' => 'Hotdeals',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "on" => 'Yes',
+                    "off" => 'No',
+                    "checked" => 'false'
+                ],
+                'order'        => 13,
             ])->save();
         }
         $dataRow = $this->dataRow($productDataType, 'image');
@@ -284,7 +299,7 @@ class DataRowsTableSeederCustom extends Seeder
                         ],
                     ],
                 ],
-                'order'        => 13,
+                'order'        => 14,
             ])->save();
         }
         $dataRow = $this->dataRow($productDataType, 'images');
@@ -306,7 +321,7 @@ class DataRowsTableSeederCustom extends Seeder
                     "quality" => "100%",
                     "upsize" => true
                 ],
-                'order'        => 14,
+                'order'        => 15,
             ])->save();
         }
         $dataRow = $this->dataRow($productDataType, 'created_at');
@@ -321,7 +336,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'details'      => null,
-                'order'        => 15,
+                'order'        => 16,
             ])->save();
         }
         $dataRow = $this->dataRow($productDataType, 'updated_at');
@@ -336,7 +351,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'details'      => null,
-                'order'        => 16,
+                'order'        => 17,
             ])->save();
         }
         /*
@@ -1198,7 +1213,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'type' => 'text',
                 'display_name' => 'Unique Id',
                 'required' => 1,
-                'browse' => 1,
+                'browse' => 0,
                 'read' => 1,
                 'edit' => 1,
                 'add' => 1,
