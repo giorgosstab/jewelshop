@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Order;
 use App\User;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
-use \App\Mail\Order\OrderPlaced;
 use Illuminate\Support\Facades\Auth;
-use function view;
 
-class OrderController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +15,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::find(Auth::user()->id);
+
+        return view('shop.profile.main')->with('user',$user);
     }
 
     /**
@@ -46,35 +44,12 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $unique_id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($unique_id)
+    public function show($id)
     {
-        try {
-            $order = Order::where('unique_id', $unique_id)->firstOrFail();
-            return new OrderPlaced($order);
-        }
-        catch(ModelNotFoundException $err){
-            return redirect()->to('/');
-        }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $unique_id
-     * @return \Illuminate\Http\Response
-     */
-    public function customerShow()
-    {
-        $user = User::find(Auth::user()->id);
-//        $order = Order::where('unique_id', $unique_id)->firstOrFail();
-
-        return view('shop.profile.order')->with([
-            'user' => $user,
-//            'order' => $order
-        ]);
+        //
     }
 
     /**
