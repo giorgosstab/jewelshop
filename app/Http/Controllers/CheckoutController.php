@@ -191,10 +191,10 @@ class CheckoutController extends Controller
     protected function productsAreNoLongerAvailable() {
         foreach (Cart::content() as $item){
             $product = Product::find($item->model->id);
-            if($product->qiantity < $item->qty){
+            if($product->quantity < $item->qty){
                 return true;
             }
-            return false;
         }
+        return false;
     }
 }
