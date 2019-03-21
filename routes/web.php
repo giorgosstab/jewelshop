@@ -12,8 +12,6 @@
 */
 
 
-use Illuminate\Support\Facades\View;
-
 Route::get('/','HomePageController@index')->name('shop.home.index');
 
 Route::get('/shop','ShopController@index')->name('shop.products.index');
@@ -49,6 +47,8 @@ Route::post('/contact','ContactController@store')->name('shop.contact.store');
 
 Route::post('/newsletter','NewsletterController@mailChimp')->name('shop.newsletter.mailChimp');
 
+Route::get('/customer-profile','ProfileController@index')->name('shop.profile.index');
+
 Route::get('empty', function(){
     Cart::destroy();
 });
@@ -65,9 +65,17 @@ Route::get('emptySaves', function(){
 //        'categoriesWithSubs' => $categoriesWithSubs,
 //    ]);
 //});
-
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+
+    // Menu Routes
+    Route::group([
+        'as'     => 'voyager.menus.',
+        'prefix' => 'menus/{menu}',
+    ], function () {
+        Route::get('builder', ['uses' => 'Voyager\MenusController@builder',    'as' => 'builder']);
+    });
+
 });
 
 Auth::routes();
@@ -79,3 +87,4 @@ Route::post('auth/activate/resend', 'Auth\ActivationController@resend')->name('a
 Route::get('{slug}', [
     'uses' => 'PagesController@getPage'
 ])->where('slug', '([A-Za-z0-9\-\/]+)')->name('shop.pages.getPage');
+
