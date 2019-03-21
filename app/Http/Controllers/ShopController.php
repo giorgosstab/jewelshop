@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Brand;
 use App\CategoryJewel;
 use App\Product;
+use function request;
 
 class ShopController extends Controller
 {
-    const PAGINATION = 16;
     /**
      * Display a listing of the resource.
      *
@@ -27,26 +27,28 @@ class ShopController extends Controller
         })->get();
 
 
-        if (request()->cat) {
+        /******************************
+         *
+         * reverse by category products
+         *
+         ******************************/
+        /*$categories = CategoryJewel::find(1)->children()->with('products')->whereHas('products',function ($query){
+            $query->where('status', 'like', 'PUBLISHED');
+        })->get();
+        $products = collect([]);
+        foreach ($categories as $category){
+            foreach ($category->products as $product) {
+                $products->push($product);
+            }
+        }*/
 
-            /******************************
-             *
-             * reverse by category products
-             *
-             ******************************/
-            /*$categories = CategoryJewel::find(1)->children()->with('products')->whereHas('products',function ($query){
-                $query->where('status', 'like', 'PUBLISHED');
-            })->get();
-            $products = collect([]);
-            foreach ($categories as $category){
-                foreach ($category->products as $product) {
-                    $products->push($product);
-                }
-            }*/
 
-            $category = CategoryJewel::where('slug',request()->cat)->firstOrFail();
+
+        if (request()->category) {
+
+            // show product by category
+            $category = CategoryJewel::where('slug',request()->category)->firstOrFail();
             $id = $category->id;
-
             $products = Product::with('categoriesJewels')->whereHas('categoriesJewels', function($query) use($id) {
                 $query->where('parent_id', $id);
             });
@@ -55,14 +57,14 @@ class ShopController extends Controller
             $minPrice = $products->min('price');
             $productsPagination = $products->count();
 
-        } elseif(request()->sub) {
-            $products = Product::with('categoriesJewels')->whereHas('categoriesJewels', function ($query) {
-                $query->where('status', 'like', 'PUBLISHED')->where('slug', request()->sub);
-            });
-            $maxPrice = $products->max('price');
-            $minPrice = $products->min('price');
-            $productsPagination = $products->count();
-        }else {
+//        } elseif(request()->sub) {
+//            $products = Product::with('categoriesJewels')->whereHas('categoriesJewels', function ($query) {
+//                $query->where('status', 'like', 'PUBLISHED')->where('slug', request()->sub);
+//            });
+//            $maxPrice = $products->max('price');
+//            $minPrice = $products->min('price');
+//            $productsPagination = $products->count();
+        } else {
             $products = Product::where('status', 'like', 'PUBLISHED')->take(16);
             $maxPrice = $products->max('price');
             $minPrice = $products->min('price');
@@ -112,7 +114,6 @@ class ShopController extends Controller
             }
         }
 
-
         if(request()->sort == "low_high"){
             $products = $products->orderBy('price')->paginate(Product::PAGINATION);
         } else if(request()->sort == "high_low") {
@@ -126,6 +127,7 @@ class ShopController extends Controller
         } else {
             $products = $products->orderBy('id', 'desc')->paginate(Product::PAGINATION); //->onEachSide($onside)
         }
+
 
         return view('shop.products.main')->with([
             'products' => $products,
