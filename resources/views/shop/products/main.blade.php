@@ -318,7 +318,7 @@
                     }
 
                     let clearUrl = categories.split(' ').join('+');
-                    let url = "{!! route('shop.products.index', appendUrlParams(['categories' => 'checkedCategory'])) !!}";
+                    let url = "{!! route('shop.products.index', removeUrlParams(['categories' => 'checkedCategory'],"category")) !!}";
                     url = url.replace('checkedCategory', clearUrl);
                     window.location.href = url;
                 } else {
@@ -346,7 +346,7 @@
                     }
 
                     let clearUrl = brands.split(' ').join('+');
-                    let url = "{!! route('shop.products.index', appendUrlParams(['brands' => 'checkedBrand'])) !!}";
+                    let url = "{!! route('shop.products.index', removeUrlParams(['brands' => 'checkedBrand'],"category")) !!}";
                     url = url.replace('checkedBrand', clearUrl);
                     window.location.href = url;
                 } else {
