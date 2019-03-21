@@ -97,7 +97,7 @@
                         <a class="change" href="#">Change Picture</a>
                         <input class="upload-field" type="file"/>
                     </div>
-                    <a href="#" class="view-ct"><span class="fa fa-user-o"></span> Profile</a>
+                    <a href="{{ route('shop.profile.index') }}" class="view-ct"><span class="fa fa-user-o"></span> Profile</a>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="check-ct"><span class="fa fa-sign-out"></span> Logout</a
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
