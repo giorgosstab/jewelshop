@@ -96,6 +96,11 @@ function getNumbers() {
 function appendUrlParams(array $parameter) {
     return array_merge(\Request::query(), $parameter);
 }
+function removeUrlParams(array $parameter, $remove) {
+    $finalArray = array_merge(\Request::query(), $parameter);
+    unset($finalArray[$remove]);
+    return $finalArray;
+}
 
 
 function numberOrdinalSuffix($number) {
