@@ -105,6 +105,9 @@
         {{ Html::script('assets/js/instagramfeed/custom.instagram.js') }}
         {{ Html::script('assets/js/instagramfeed/lightwidget.instagram.js') }}
 
+        <!--nav bar small devices-->
+        {{ Html::script('assets/js/navbar/clickable.navbar.js') }}
+
         <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script>
         <script type="text/javascript">
             window.dojoRequire(["mojo/signup-forms/Loader"], function(L) {
@@ -125,9 +128,6 @@
         <script>
             $("#message").fadeTo(4000, 1000).slideUp(500, function(){
                 $("#message").slideUp(5000);
-            });
-            $('.navbar-nav .dropdown > a').click(function() {
-                location.href = this.href;
             });
         </script>
 
