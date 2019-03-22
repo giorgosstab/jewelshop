@@ -40,4 +40,9 @@ class User extends \TCG\Voyager\Models\User
     {
         return $this->hasOne('App\CustomPage');
     }
+
+    public function userDetail()
+    {
+        return $this->hasOne('App\UserDetail');
+    }
 }
