@@ -30,6 +30,9 @@ class Product extends Model
             return number_format($this->secondprice / 100,2,'.',',');
         }
     }
+    public function subTotalOfItem($qty) {
+        return number_format(($this->price * $qty) / 100,2,'.',',');
+    }
 
     public function brand()
     {
