@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Voyager;
 
+use App\Events\Order\AdminOrderStatus;
 use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -96,6 +97,10 @@ class OrdersController extends VoyagerBaseController
             $this->insertUpdateData($requestNew, $slug, $dataType->editRows, $data);
 
             event(new BreadDataUpdated($dataType, $data));
+
+
+            $order = Order::where('id',$id)->first();
+            event(new AdminOrderStatus($order,$request->status));
 
             return redirect()
                 ->route("voyager.{$dataType->slug}.index")
