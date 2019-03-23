@@ -1,5 +1,6 @@
 <?php
 
+use App\Order;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -53,7 +54,7 @@ class CreateOrdersTable extends Migration
             $table->string('delivery_gateway');
             $table->string('payment_gateway');
             $table->string('name_on_card')->nullable();
-            $table->boolean('shipped')->default(false);
+            $table->enum('status', Order::$statuses)->default(Order::STATUS_ORDER_PENDING);
             $table->string('error')->nullable();
             $table->timestamps();
         });

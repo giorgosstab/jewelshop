@@ -6,6 +6,28 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+    /**
+     * Statuses.
+     */
+    const STATUS_ORDER_PENDING = 'PENDING';
+    const STATUS_ORDER_CONFIRMED = 'CONFIRMED';
+    const STATUS_ORDER_PAIDED = 'PAIDED';
+    const STATUS_ORDER_SENTED = 'SENTED';
+    const STATUS_ORDER_CANCELLED = 'CANCELLED';
+
+    /**
+     * List of statuses.
+     *
+     * @var array
+     */
+    public static $statuses = [
+        self::STATUS_ORDER_PENDING,
+        self::STATUS_ORDER_CONFIRMED,
+        self::STATUS_ORDER_PAIDED,
+        self::STATUS_ORDER_SENTED,
+        self::STATUS_ORDER_CANCELLED
+    ];
+
     protected $fillable = [
         'unique_id','user_id','billing_fname','billing_lname','billing_address','billing_housenumber','billing_locality','billing_email',
         'billing_city','billing_phone','billing_country','billing_postalcode','different_shipping_address','second_billing_fname','second_billing_lname',

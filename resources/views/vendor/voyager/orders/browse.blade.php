@@ -144,7 +144,25 @@
                                                     @if($data->{$row->field . '_page_slug'})
                                                         <a href="{{ $data->{$row->field . '_page_slug'} }}">{!! $row->details->options->{$data->{$row->field}} !!}</a>
                                                     @else
-                                                        {!! isset($row->details->options->{$data->{$row->field}}) ?  $row->details->options->{$data->{$row->field}} : '' !!}
+                                                        @if($row->display_name == 'Status')
+                                                            @if($row->details->options->{$data->{$row->field}} == 'PENDING')
+                                                                <span class="badge badge-primary">{{ $data->{$row->field} }}</span>
+                                                            @endif
+                                                            @if($row->details->options->{$data->{$row->field}} == 'CONFIRMED')
+                                                                <span class="badge badge-info">{{ $data->{$row->field} }}</span>
+                                                            @endif
+                                                            @if($row->details->options->{$data->{$row->field}} == 'PAIDED')
+                                                                <span class="badge badge-dark">{{ $data->{$row->field} }}</span>
+                                                            @endif
+                                                            @if($row->details->options->{$data->{$row->field}} == 'SENTED')
+                                                                <span class="badge badge-success">{{ $data->{$row->field} }}</span>
+                                                            @endif
+                                                            @if($row->details->options->{$data->{$row->field}} == 'CANCELLED')
+                                                                <span class="badge badge-danger">{{ $data->{$row->field} }}</span>
+                                                            @endif
+                                                        @else
+                                                            {!! isset($row->details->options->{$data->{$row->field}}) ?  $row->details->options->{$data->{$row->field}} : '' !!}
+                                                        @endif
                                                     @endif
 
                                                 @elseif($row->type == 'select_dropdown' && $data->{$row->field . '_page_slug'})

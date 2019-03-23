@@ -1676,11 +1676,11 @@ class DataRowsTableSeederCustom extends Seeder
                 'order' => 32,
             ])->save();
         }
-        $dataRow = $this->dataRow($paymentDataType, 'shipped');
+        $dataRow = $this->dataRow($paymentDataType, 'status');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type' => 'checkbox',
-                'display_name' => 'Shipped',
+                'type' => 'select_dropdown',
+                'display_name' => 'Status',
                 'required' => 1,
                 'browse' => 1,
                 'read' => 1,
@@ -1688,9 +1688,14 @@ class DataRowsTableSeederCustom extends Seeder
                 'add' => 1,
                 'delete' => 0,
                 'details'      => [
-                    "on" => "Yse",
-                    "off" => "No",
-                    "checked" => "false"
+                    "default" => 'PENDING',
+                    "options" => [
+                        'PENDING' => 'PENDING',
+                        'CONFIRMED' => 'CONFIRMED',
+                        'PAIDED' => 'PAIDED',
+                        'SENTED' => 'SENTED',
+                        'CANCELLED' => 'CANCELLED'
+                    ]
                 ],
                 'order' => 33,
             ])->save();
