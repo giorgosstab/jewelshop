@@ -47,7 +47,13 @@ Route::post('/contact','ContactController@store')->name('shop.contact.store');
 
 Route::post('/newsletter','NewsletterController@mailChimp')->name('shop.newsletter.mailChimp');
 
-Route::get('/customer-profile','ProfileController@index')->name('shop.profile.index');
+Route::middleware('auth')->group(function (){
+    Route::get('/customer-profile','ProfileController@index')->name('shop.profile.index');
+    Route::patch('/update-password','ProfileController@updatePassword')->name('shop.profile.updatePassword');
+    Route::patch('/update-details','ProfileController@updateDetails')->name('shop.profile.updateDetails');
+    Route::patch('/update-addresses','ProfileController@updateAddresses')->name('shop.profile.updateAddresses');
+    Route::get('/customer-order/{order}','OrderController@customerShow')->name('shop.order.customerShow');
+});
 
 Route::get('empty', function(){
     Cart::destroy();

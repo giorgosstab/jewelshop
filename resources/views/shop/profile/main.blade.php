@@ -90,6 +90,8 @@
                         </ul>
                     </div>
                 </div>
+                <div class="clearfix"> </div>
+                @include('shop.messages.error')
                 <div class="clearfix"> </div><br>
                 <div class="row">
                     <!--left-side-->
@@ -102,13 +104,20 @@
                                         <a href="#" class="d-inline-block">
                                             <img src="{{ secure_asset('storage/' . $user->avatar) }}" class="img-fluid rounded-circle customer-image"></a>
                                         <h5>{{ $user->name }}</h5>
-                                        <p class="text-muted text-small">Ostrava, Czech republic</p>
+                                        @if(!empty($user->userDetail))
+                                            <p class="text-muted text-small">{{ $user->userDetail->city }}, {{ $user->userDetail->country }}</p>
+                                        @else
+                                            <p class="text-muted text-small">City, COUNTRY</p>
+                                        @endif
                                     </div>
                                     <nav class="list-group customer-nav">
-                                        <a href="#order-tab" data-toggle="pill" class="list-group-item d-flex justify-content-between align-items-center"><span><span class="fa fa-shopping-bag"></span>Orders</span><small class="badge badge-pill badge-primary">5</small></a>
+                                        <a href="#order-tab" data-toggle="pill" class="list-group-item d-flex justify-content-between align-items-center"><span><span class="fa fa-shopping-bag"></span>Orders</span><small class="badge badge-pill badge-primary">{{ $user->orders()->count() }}</small></a>
                                         <a href="#profile-tab" data-toggle="pill" class="active list-group-item d-flex justify-content-between align-items-center"><span><span class="fa fa-user"></span>Profile</span></a>
                                         <a href="#addresses-tab" data-toggle="pill" class="list-group-item d-flex justify-content-between align-items-center"><span><span class="fa fa-map-o"></span>Addresses</span></a>
-                                        <a href="#" class="list-group-item d-flex justify-content-between align-items-center"><span><span class="fa fa-sign-out"></span>Log out</span></a>
+                                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form-pill').submit();" class="list-group-item d-flex justify-content-between align-items-center"><span><span class="fa fa-sign-out"></span>Log out</span></a>
+                                        <form id="logout-form-pill" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
                                     </nav>
                                 </div>
                             </div>
@@ -123,43 +132,45 @@
                                     <div class="tab-pane fade" id="order-tab">
                                         <table class="table table-hover table-responsive-md" id="dataTable">
                                             <thead>
-                                            <tr>
-                                                <th>Order</th>
-                                                <th>Date</th>
-                                                <th>Total</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
-                                            </tr>
+                                                <tr>
+                                                    <th>Order</th>
+                                                    <th>Date</th>
+                                                    <th>Total</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+                                                </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <th># 1735</th>
-                                                <td>22/6/2017</td>
-                                                <td>$150.00</td>
-                                                <td><span class="badge badge-info">Being prepared</span></td>
-                                                <td><a href="{{ route('shop.order.customerShow') }}" class="btn btn-default button-1 btn-sm">View</a></td>
-                                            </tr>
-                                            <tr>
-                                                <th># 1734</th>
-                                                <td>7/5/2017</td>
-                                                <td>$150.00</td>
-                                                <td><span class="badge badge-warning">Action needed</span></td>
-                                                <td><a href="#" class="btn btn-default button-1 btn-sm">View</a></td>
-                                            </tr>
-                                            <tr>
-                                                <th># 1730</th>
-                                                <td>30/9/2016</td>
-                                                <td>$150.00</td>
-                                                <td><span class="badge badge-success">Received</span></td>
-                                                <td><a href="#" class="btn btn-default button-1 btn-sm">View</a></td>
-                                            </tr>
-                                            <tr>
-                                                <th># 1705</th>
-                                                <td>22/6/2016</td>
-                                                <td>$150.00</td>
-                                                <td><span class="badge badge-danger">Cancelled</span></td>
-                                                <td><a href="#" class="btn btn-default button-1 btn-sm">View</a></td>
-                                            </tr>
+                                                @foreach($user->orders as $order)
+                                                    <tr>
+                                                        <th># {{ $order->id }}</th>
+                                                        <td>{{ $order->created_at->format('j F Y') }}</td>
+                                                        <td>€{{ $order->presentTotal() }}</td>
+                                                        <td><span class="badge badge-info">Being prepared</span></td>
+                                                        <td><a href="{{ route('shop.order.customerShow', $order->unique_id) }}" class="btn btn-default button-1 btn-sm">View</a></td>
+                                                    </tr>
+                                                @endforeach
+                                                {{--<tr>--}}
+                                                    {{--<th># 1734</th>--}}
+                                                    {{--<td>7/5/2017</td>--}}
+                                                    {{--<td>$150.00</td>--}}
+                                                    {{--<td><span class="badge badge-warning">Action needed</span></td>--}}
+                                                    {{--<td><a href="#" class="btn btn-default button-1 btn-sm">View</a></td>--}}
+                                                {{--</tr>--}}
+                                                {{--<tr>--}}
+                                                    {{--<th># 1730</th>--}}
+                                                    {{--<td>30/9/2016</td>--}}
+                                                    {{--<td>$150.00</td>--}}
+                                                    {{--<td><span class="badge badge-success">Received</span></td>--}}
+                                                    {{--<td><a href="#" class="btn btn-default button-1 btn-sm">View</a></td>--}}
+                                                {{--</tr>--}}
+                                                {{--<tr>--}}
+                                                    {{--<th># 1705</th>--}}
+                                                    {{--<td>22/6/2016</td>--}}
+                                                    {{--<td>$150.00</td>--}}
+                                                    {{--<td><span class="badge badge-danger">Cancelled</span></td>--}}
+                                                    {{--<td><a href="#" class="btn btn-default button-1 btn-sm">View</a></td>--}}
+                                                {{--</tr>--}}
                                             </tbody>
                                         </table>
                                     </div>
@@ -175,22 +186,26 @@
                                                 </div>
                                                 <div id="collapsePassword" class="panel-collapse collapse show" role="tabpanel">
                                                     <div class="panel-body">
-                                                        <div class="row">
-                                                            <div class="form-group col-md-6 col-md-offset-6">
-                                                                <input type="password" id="old_password" name="old_password" placeholder="Old Password">
+                                                        {!! Form::open(['method' => 'POST','route' => 'shop.profile.updatePassword']) !!}
+                                                            @method('PATCH')
+                                                            {{ csrf_field() }}
+                                                            <div class="row">
+                                                                <div class="form-group col-md-6 col-md-offset-6">
+                                                                    <input type="password" id="old_password" name="old_password" placeholder="Old Password">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="form-group col-md-6">
-                                                                <input type="password" id="password" name="password" placeholder="New Paswword">
+                                                            <div class="row">
+                                                                <div class="form-group col-md-6">
+                                                                    <input type="password" id="password" name="password" placeholder="New Paswword">
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Retype New Password">
+                                                                </div>
                                                             </div>
-                                                            <div class="form-group col-md-6">
-                                                                <input type="password" id="confirm_password" name="confirm_password" placeholder="Retype New Password">
+                                                            <div class="sub-bt">
+                                                                <button class="submit-css" type="submit">SAVE PASSWORD <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
                                                             </div>
-                                                        </div>
-                                                        <div class="sub-bt">
-                                                            <button class="submit-css" type="submit">SAVE PASSWORD <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
-                                                        </div>
+                                                        {!! Form::close() !!}
                                                     </div>
                                                 </div>
                                             </div>
@@ -204,25 +219,29 @@
                                                 </div>
                                                 <div id="collapseDetails" class="panel-collapse collapse show" role="tabpanel">
                                                     <div class="panel-body">
-                                                        <div class="row">
-                                                            <div class="form-group col-md-6">
-                                                                <input type="text" id="fname" name="fname" placeholder="First Name">
+                                                        {!! Form::open(['method' => 'POST','route' => 'shop.profile.updateDetails']) !!}
+                                                        @method('PATCH')
+                                                        {{ csrf_field() }}
+                                                            <div class="row">
+                                                                <div class="form-group col-md-6">
+                                                                    <input type="text" id="name" name="name" placeholder="Full Name" value="{{ old('name', $user->name) }}">
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <input type="text" id="email" name="email" placeholder="E-mail" value="{{ old('email', $user->email) }}">
+                                                                </div>
                                                             </div>
-                                                            <div class="form-group col-md-6">
-                                                                <input type="text" id="lname" name="lname" placeholder="Last Name">
+                                                            <div class="row">
+                                                                <div class="form-group col-md-6">
+                                                                    <input type="text" id="phone" name="phone" placeholder="Phone Number" value="{{ old('phone', !empty($user->userDetail->phone) ? $user->userDetail->phone : '') }}">
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <input type="text" id="company" name="company" placeholder="Company Name" value="{{ old('company', !empty($user->userDetail->company) ? $user->userDetail->company : '') }}">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="form-group col-md-6">
-                                                                <input type="text" id="phone" name="phone" placeholder="Phone Number">
+                                                            <div class="sub-bt">
+                                                                <button class="submit-css" type="submit">SAVE CHANGES <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
                                                             </div>
-                                                            <div class="form-group col-md-6">
-                                                                <input type="text" id="company" name="company" placeholder="Company Name">
-                                                            </div>
-                                                        </div>
-                                                        <div class="sub-bt">
-                                                            <button class="submit-css" type="submit">SAVE CHANGES <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
-                                                        </div>
+                                                        {!! Form::close() !!}
                                                     </div>
                                                 </div>
                                             </div>
@@ -240,37 +259,41 @@
                                                 </div>
                                                 <div id="collapseAddress" class="panel-collapse collapse show" role="tabpanel">
                                                     <div class="panel-body">
-                                                        <div class="row">
-                                                            <div class="form-group col-md-6">
-                                                                <input type="text" id="city" name="city" placeholder="City">
+                                                        {!! Form::open(['method' => 'POST','route' => 'shop.profile.updateAddresses']) !!}
+                                                            @method('PATCH')
+                                                            {{ csrf_field() }}
+                                                            <div class="row">
+                                                                <div class="form-group col-md-6">
+                                                                    <input type="text" id="city" name="city" placeholder="City" value="{{ old('city', !empty($user->userDetail->city) ? $user->userDetail->city : '') }}">
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <select class="js-countries" name="country">
+                                                                        <option value="" disabled="" selected="selected">Please select your country</option>
+                                                                        <option @if(!empty($user->userDetail->country))@if($user->userDetail->country == 'GREECE'){{ 'selected' }}@else{{ old('country') == 'GREECE' ? 'selected' : '' }}@endif @endif value="GREECE">GREECE </option>
+                                                                        <option @if(!empty($user->userDetail->country))@if($user->userDetail->country == 'CYPRUS'){{ 'selected' }}@else{{ old('country') == 'CYPRUS' ? 'selected' : '' }}@endif @endif value="CYPRUS">CYPRUS </option>
+                                                                    </select>
+                                                                </div>
                                                             </div>
-                                                            <div class="form-group col-md-6">
-                                                                <select class="js-countries" name="country">
-                                                                    <option value="" disabled="" selected="selected">Please select your country</option>
-                                                                    <option value="GREECE">GREECE </option>
-                                                                    <option value="CYPRUS">CYPRUS </option>
-                                                                </select>
+                                                            <div class="row">
+                                                                <div class="form-group col-md-8">
+                                                                    <input type="text" id="address" name="address" placeholder="Address" value="{{ old('address', !empty($user->userDetail->address) ? $user->userDetail->address : '') }}">
+                                                                </div>
+                                                                <div class="form-group col-md-4">
+                                                                    <input type="number" id="house_number" name="house_number" placeholder="House Number" value="{{ old('house_number', !empty($user->userDetail->house_number) ? $user->userDetail->house_number : '') }}">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="form-group col-md-8">
-                                                                <input type="text" id="address" name="address" placeholder="Address">
+                                                            <div class="row">
+                                                                <div class="form-group col-md-4">
+                                                                    <input type="text" id="postal_code" name="postal_code" placeholder="Postal Code" value="{{ old('postal_code', !empty($user->userDetail->postal_code) ? $user->userDetail->postal_code : '') }}">
+                                                                </div>
+                                                                <div class="form-group col-md-8">
+                                                                    <input type="text" id="locality" name="locality" placeholder="Locality" value="{{ old('locality', !empty($user->userDetail->locality) ? $user->userDetail->locality : '') }}">
+                                                                </div>
                                                             </div>
-                                                            <div class="form-group col-md-4">
-                                                                <input type="number" id="house_number" name="house_noumber" placeholder="House Number">
+                                                            <div class="sub-bt">
+                                                                <button class="submit-css" type="submit">SAVE CHANGES <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
                                                             </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="form-group col-md-4">
-                                                                <input type="text" id="postal_code" name="postal_code" placeholder="Postal Code">
-                                                            </div>
-                                                            <div class="form-group col-md-8">
-                                                                <input type="text" id="locality" name="locality" placeholder="Locality">
-                                                            </div>
-                                                        </div>
-                                                        <div class="sub-bt">
-                                                            <button class="submit-css" type="submit">SAVE CHANGES <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
-                                                        </div>
+                                                        {!! Form::close() !!}
                                                     </div>
                                                 </div>
                                             </div>

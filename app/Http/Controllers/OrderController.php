@@ -64,16 +64,18 @@ class OrderController extends Controller
      * Display the specified resource.
      *
      * @param  int  $unique_id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function customerShow()
+    public function customerShow($unique_id)
     {
-        $user = User::find(Auth::user()->id);
-//        $order = Order::where('unique_id', $unique_id)->firstOrFail();
+        $user = User::where('id',auth()->id())->with('userDetail')->firstOrFail();
+        $order = User::find(Auth::user()->id)->orders()->where('unique_id',$unique_id)->firstOrFail();
+
+//        dd($order);
 
         return view('shop.profile.order')->with([
             'user' => $user,
-//            'order' => $order
+            'order' => $order
         ]);
     }
 

@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Illuminate\Http\Request;
+use App\UserDetail;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UpdateProfileAddressesRequest;
+use App\Http\Requests\UpdateProfileDetailsRequest;
+use App\Http\Requests\UpdateProfilePasswordRequest;
 
 class ProfileController extends Controller
 {
@@ -15,53 +19,11 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $user = User::find(Auth::user()->id);
+        $user = User::where('id',auth()->id())->with('orders')->with('userDetail')->first();
 
         return view('shop.profile.main')->with('user',$user);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -76,13 +38,107 @@ class ProfileController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param  \App\Http\Requests\UpdateProfilePasswordRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function updatePassword(UpdateProfilePasswordRequest $request)
     {
-        //
+            $user = User::where('id',auth()->id())->first();
+
+            if(Hash::check($request->old_password,$user->password)){
+                $user->password = Hash::make($request->password);
+                $user->save();
+
+                //logout other user with old password after change
+//                $user->logoutOtherDevices($user->password);
+                Auth::login($user);
+                return back()->with('success_message','Password Update Successfully!');
+            } else {
+                return back()->withErrors('Old Password is Wrong!');
+            }
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Requests\UpdateProfileDetailsRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function updateDetails(UpdateProfileDetailsRequest $request)
+    {
+        $user = User::where('id',auth()->id())->first();
+
+        $user->name = $request->name ? $request->name : $user->name;
+        $user->email = $request->email ? $request->email : $user->email;
+        $user->save();
+
+        if($user->userDetail()->first()) {
+            $details = new userDetail;
+
+            $details->phone = $request->phone ? $request->phone : $details->phone;
+            $details->company = $request->company ? $request->company : $details->company;
+
+            $user->userDetail()->update([
+                'phone' => $details->phone,
+                'company' => $details->company
+            ]);
+        } else {
+            $details = new userDetail;
+
+            $details->phone = $request->phone ? $request->phone : $details->phone;
+            $details->company = $request->company ? $request->company : $details->company;
+            $user->userDetail()->save($details);
+        }
+        return back()->with('success_message','Profile Details Update Successfully!');
+
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Requests\UpdateProfileAddressesRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function updateAddresses(UpdateProfileAddressesRequest $request)
+    {
+        $user = User::where('id',auth()->id())->first();
+
+        if($user->userDetail()->first()){
+            $details= new userDetail;
+
+            $details->city = $request->city ? $request->city : $details->city;
+            $details->country = $request->country ? $request->country : $details->country;
+            $details->address = $request->address ? $request->address : $details->address;
+            $details->house_number = $request->house_number ? $request->house_number : $details->house_number;
+            $details->postal_code = $request->postal_code ? $request->postal_code : $details->postal_code;
+            $details->locality = $request->locality ? $request->locality : $details->locality;
+
+            $user->userDetail()->update([
+                'city' => $details->city,
+                'country' => $details->country,
+                'address' => $details->address,
+                'house_number' => $details->house_number,
+                'postal_code' => $details->postal_code,
+                'locality' => $details->locality,
+            ]);
+        } else {
+            $details= new userDetail;
+
+            $details->city = $request->city ? $request->city : $details->city;
+            $details->country = $request->country ? $request->country : $details->country;
+            $details->address = $request->address ? $request->address : $details->address;
+            $details->house_number = $request->house_number ? $request->house_number : $details->house_number;
+            $details->postal_code = $request->postal_code ? $request->postal_code : $details->postal_code;
+            $details->locality = $request->locality ? $request->locality : $details->locality;
+
+            $user->userDetail()->save($details);
+        }
+
+        return redirect()->route('shop.profile.index','#addresses-tab')->with('success_message','Profile Addresses Update Successfully!');
+
+    }
+
 }
+
