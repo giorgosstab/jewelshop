@@ -118,9 +118,6 @@ class CheckoutController extends Controller
             $this->addToOrdersTables($request, $e->getMessage());
             return back()->withErrors('Error! ' . $e->getMessage());
         }
-
-        event(new UserOrderPlace($order));
-
     }
 
     protected function addToOrdersTables($request, $error){
@@ -179,6 +176,8 @@ class CheckoutController extends Controller
                 'quantity' => $item->qty
             ]);
         }
+
+        event(new UserOrderPlace($order));
     }
 
     protected function decreaseQuantities() {
