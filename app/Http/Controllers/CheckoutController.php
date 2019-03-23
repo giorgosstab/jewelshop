@@ -73,7 +73,7 @@ class CheckoutController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Requests\CheckoutRequest $request
+     * @param  \App\Http\Requests\CheckoutRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(CheckoutRequest $request)
