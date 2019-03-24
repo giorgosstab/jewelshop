@@ -87,6 +87,16 @@ class OrdersController extends VoyagerBaseController
         }
 
         if (!$request->ajax()) {
+            $order = Order::where('id',$id)->first();
+
+            if($order->unique_id != $request->unique_id){
+                return redirect()
+                    ->back()
+                    ->with([
+                        'message'    => "You cant change unique identity of an order!",
+                        'alert-type' => 'error',
+                    ]);
+            }
 
             //make price from demical to float
             $requestNew = $request;
@@ -98,9 +108,9 @@ class OrdersController extends VoyagerBaseController
 
             event(new BreadDataUpdated($dataType, $data));
 
-
-            $order = Order::where('id',$id)->first();
-            event(new AdminOrderStatus($order,$request->status));
+            if($order->status != $request->status){
+                event(new AdminOrderStatus($order,$request->status));
+            }
 
             return redirect()
                 ->route("voyager.{$dataType->slug}.index")
