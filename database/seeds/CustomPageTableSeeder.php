@@ -18,7 +18,7 @@ class CustomPageTableSeeder extends Seeder
             [
                 'title' => 'About Us',
                 'slug' => 'about',
-                'image_parallax' => 'custom_pages/dummy/about.jpg',
+                'image_parallax' => 'custom-pages/dummy/about.jpg',
                 'body' => '     <!--About Us-->
                                 <section class="content-section specific-module">
                                     <div class="col-lg-8  div-center div-center2">
@@ -123,7 +123,7 @@ class CustomPageTableSeeder extends Seeder
             [
                 'title' => 'Terms & Conditions',
                 'slug' => 'terms',
-                'image_parallax' => 'custom_pages/dummy/terms.jpg',
+                'image_parallax' => 'custom-pages/dummy/terms.jpg',
                 'body' => ' <div class="text-style2"><p class="wow fadeIn">The following terms and conditions Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p></div>
                             <div class="inner-section terms-text">
                                 <div class="wow fadeIn">
@@ -183,7 +183,7 @@ class CustomPageTableSeeder extends Seeder
             [
                 'title' => 'Privacy',
                 'slug' => 'privacy',
-                'image_parallax' => 'custom_pages/dummy/privacy.jpg',
+                'image_parallax' => 'custom-pages/dummy/privacy.jpg',
                 'body' => ' <div class="text-style2"><p class="wow fadeIn">The following terms and conditions Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p></div>
                             <div class="inner-section terms-text">
                                 <div class="wow fadeIn">
@@ -243,7 +243,7 @@ class CustomPageTableSeeder extends Seeder
             [
                 'title' => 'FAQ',
                 'slug' => 'faq',
-                'image_parallax' => 'custom_pages/dummy/faq.jpg',
+                'image_parallax' => 'custom-pages/dummy/faq.jpg',
                 'body' => '<div class="inner-section">
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                         <div class="panel panel-default">
