@@ -291,7 +291,7 @@
                                                                 <div class="text-color"><strong>E-mail Address :</strong> {{ $order->billing_email }}</div>
                                                                 <div class="text-color"><strong>Address :</strong> {{ $order->billing_address }}, {{ $order->billing_housenumber }}</div>
                                                                 <div class="text-color"><strong>City :</strong> {{ $order->billing_city }}, {{ $order->billing_postalcode }}</div>
-                                                                <div class="text-color"><strong>Country :</strong> {{ $order->billing_locality }},  {{ $order->billing_country }}}</div>
+                                                                <div class="text-color"><strong>Country :</strong> {{ $order->billing_locality }},  {{ $order->billing_country }}</div>
                                                                 <div class="text-color"><strong>Phone Number :</strong> {{ $order->billing_phone }}</div>
                                                             </div>
                                                         </div>

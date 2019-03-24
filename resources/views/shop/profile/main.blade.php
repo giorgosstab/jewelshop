@@ -146,7 +146,23 @@
                                                         <th># {{ $order->id }}</th>
                                                         <td>{{ $order->created_at->format('j F Y') }}</td>
                                                         <td>€{{ $order->presentTotal() }}</td>
-                                                        <td><span class="badge badge-info">Being prepared</span></td>
+                                                        <td>
+                                                            @if($order->status == 'PENDING')
+                                                                <span class="badge badge-primary">{{ $order->status }}</span>
+                                                            @endif
+                                                            @if($order->status == 'CONFIRMED')
+                                                                <span class="badge badge-info">{{ $order->status }}</span>
+                                                            @endif
+                                                            @if($order->status == 'PAIDED')
+                                                                <span class="badge badge-dark">{{ $order->status }}</span>
+                                                            @endif
+                                                            @if($order->status == 'SENTED')
+                                                                <span class="badge badge-success">{{ $order->status }}</span>
+                                                            @endif
+                                                            @if($order->status == 'CANCELLED')
+                                                                <span class="badge badge-danger">{{ $order->status }}</span>
+                                                            @endif
+                                                        </td>
                                                         <td><a href="{{ route('shop.order.customerShow', $order->unique_id) }}" class="btn btn-default button-1 btn-sm">View</a></td>
                                                     </tr>
                                                 @endforeach
