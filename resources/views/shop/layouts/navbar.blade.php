@@ -28,7 +28,7 @@
                             <li><a href="{{ route('login') }}"><img src="{{ secure_asset('assets/images/padlock.png') }}" alt="" title="Login"></a></li>
                             <li><a href="{{ route('register') }}"><img src="{{ secure_asset('assets/images/user2.png') }}" alt="" title="Register"></a></li>
                         @else
-                            <li><a href="#"><img src="{{ secure_asset('assets/images/profile.png') }}" alt="" title=""></a></li>
+                            <li><a href="{{ route('shop.profile.index') }}"><img src="{{ secure_asset('assets/images/profile.png') }}" alt="" title=""></a></li>
                             <li>
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" ><img src="{{ secure_asset('assets/images/logout.png') }}" alt="" title=""></a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

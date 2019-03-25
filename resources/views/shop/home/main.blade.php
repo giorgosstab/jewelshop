@@ -233,7 +233,7 @@
             <div class="best-div">
                 <div class="best-of-our-store">
                     <h2 class="wow fadeInUp"><span>Best</span> of our store</h2>
-                    <div class="owl-carousel owl-theme wow fadeIn">
+                    <div class="owl-carousel owl-theme wow fadeIn owl-loaded">
                         @foreach($bestProducts as $bestof)
                             <div class="item img-title">
                                 <div class="owl-item-boder">
@@ -275,8 +275,23 @@
                             @foreach($categories->chunk(5) as $chunk)
                                 <div class="carousel-item {{ $loop->first ? "active" : "" }}">
                                     <ul>
-                                        @foreach($chunk as $category)
+                                        @foreach($chunk->slice(0, 2) as $category)
                                             <li>
+                                                <div class="grid">
+                                                    <figure class="effect-moses">
+                                                        <div class="zoom-hover">
+                                                            <a href="{{ route('shop.products.index', ['cat' => $category->slug]) }}">
+                                                                <span class="glyphicon glyphicon-search"></span>
+                                                            </a>
+                                                        </div>
+                                                        <img src="{{ categoryImage($category->image) }}" alt="{{ $category->name }}" title="{{ $category->name }}" class="img-fluid">
+                                                    </figure>
+                                                </div>
+                                                <h2>{{ $category->name }}</h2>
+                                            </li>
+                                        @endforeach
+                                        @foreach($chunk->slice(2, 5) as $category)
+                                            <li class="div-n">
                                                 <div class="grid">
                                                     <figure class="effect-moses">
                                                         <div class="zoom-hover">

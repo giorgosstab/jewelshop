@@ -90,7 +90,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="clearfix"> </div>
+                <div class="clearfix"> </div><br>
                 @include('shop.messages.error')
                 <div class="clearfix"> </div><br>
                 <div class="row">
@@ -128,6 +128,7 @@
                     <div class="col-lg-9 col-md-12 col-sm-12">
                         <div class="row">
                             <div class="col-md-12">
+                                <div class="clearfix"> </div><br>
                                 <div class="tab-content">
                                     <div class="tab-pane fade" id="order-tab">
                                         <table class="table table-hover table-responsive-md" id="dataTable">
