@@ -561,3 +561,8 @@ input.error, select.error ~ strong{
         -webkit-overflow-scrolling: touch;
     }
 }
+
+/*________________ blog comment reply  _______________ */
+.comment-reply {
+    margin-left: 60px; !important;
+}

@@ -63,6 +63,125 @@
                                 {!! $post->body !!}
                                 <div class="clearfix"></div>
                             </div>
+                            @foreach($post->comments as $comment)
+                                <div class="clearfix"></div>
+                                <hr class="pro-hr">
+                                <div class="clearfix"></div>
+                                <div class="comment-section">
+                                    <div class="row">
+                                        <div class="col-md-2 col-sm-2  text-center">
+                                            <img src="{{ $comment->user_id == null ? "https://www.gravatar.com/avatar/".md5(strtolower(trim($comment->email))) : secure_asset('storage/' . $comment->user->avatar) }}" class="img-fluid rounded-circle small-img" alt="">
+                                        </div>
+                                        <div class="col-md-10 col-sm-10 main-comment">
+                                            <h4>{{ $comment->user_id == null ? $comment->name : $comment->user->name }} <span>{{ $comment->created_at->format('d F, Y \\A\\T h:i A') }}</span></h4>
+                                            <p>{{ $comment->comment }}</p>
+                                            <p><a href="">Delete</a> | <a data-toggle="collapse" href="#collapseReply{{ $comment->id }}">Reply</a></p>
+                                        </div>
+                                    </div>
+                                    <div class="comment-section comment-reply">
+                                        @foreach($comment->replies as $reply)
+                                            <hr class="pro-hr">
+                                            <div class="row">
+                                                <div class="col-md-2 col-sm-2  text-center">
+                                                    <img src="{{ $reply->user_id == null ? "https://www.gravatar.com/avatar/".md5(strtolower(trim($reply->email))) : secure_asset('storage/' . $reply->user->avatar) }}" width="50" class="img-fluid rounded-circle small-img" alt="">
+                                                </div>
+                                                <div class="col-md-10 col-sm-10 main-comment">
+                                                    <h4>{{ $reply->user_id == null ? $reply->name : $reply->user->name }} <span>{{ $reply->created_at->format('d F, Y \\A\\T h:i A') }}</span></h4>
+                                                    <p>{{ $reply->comment }}</p>
+                                                    <p><a href="">Delete</a> | <a data-toggle="collapse" href="#collapseReply{{ $comment->id }}">Reply</a></p>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                        <div class="collapse" id="collapseReply{{ $comment->id }}">
+                                                <div class="reply-form no-margin no-background no-border no-padding">
+                                                    @guest
+                                                        {!! Form::open(['method' => 'POST','route' => ['shop.comment.reply',$post->id,$comment->id]]) !!}
+                                                        {{ csrf_field() }}
+                                                        <h3>Reply the comment</h3>
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <input class="form-group name-input" name="name" placeholder="Name" type="text" autofocus>
+                                                            </div>
+                                                            <div class="col-sm-6 no-padding-left2">
+                                                                <input class="form-group name-input" name="email" placeholder="Email" type="email">
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <textarea  name="comment" placeholder="Message"></textarea>
+                                                                <div class="clearfix"></div>
+                                                                <button type="submit" class="continue2 montserrat">SUBMIT <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </button>
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                        {!! Form::close() !!}
+                                                    @else
+                                                        {!! Form::open(['method' => 'POST','route' => ['shop.comment.reply',$post->id,$comment->id]]) !!}
+                                                        {{ csrf_field() }}
+                                                        <h3>Reply the comment</h3>
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <textarea  name="comment" placeholder="Message" autofocus></textarea>
+                                                                <div class="clearfix"></div>
+                                                                <button type="submit" class="continue2 montserrat">SUBMIT <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </button>
+                                                            </div>
+                                                            <input class="hidden" name="name" type="text" value="{{ auth()->user()->name }}">
+                                                            <input class="hidden" name="email" type="email" value="{{ auth()->user()->email }}">
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                        {!! Form::close() !!}
+                                                    @endguest
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                            @endforeach
+
+
+                            <hr class="pro-hr">
+                            <div class="clearfix"></div>
+                            <div class="reply-form no-margin no-background no-border no-padding">
+                                @guest
+                                    {!! Form::open(['method' => 'POST','route' => ['shop.comment.store',$post->id]]) !!}
+                                        {{ csrf_field() }}
+                                        <h3>Leave the comment</h3>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <input class="form-group name-input" name="name" placeholder="Name" type="text">
+                                            </div>
+                                            <div class="col-sm-6 no-padding-left2">
+                                                <input class="form-group name-input" name="email" placeholder="Email" type="email">
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <textarea  name="comment" placeholder="Message"></textarea>
+                                                <div class="clearfix"></div>
+                                                <button type="submit" class="continue2 montserrat">SUBMIT <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </button>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    {!! Form::close() !!}
+                                @else
+                                    {!! Form::open(['method' => 'POST','route' => ['shop.comment.store',$post->id]]) !!}
+                                        {{ csrf_field() }}
+                                        <h3>
+                                            Leave the comment as {{ auth()->user()->name }}
+                                            {{--<a style="color: #dfb859" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form-pill').submit();"><span>Log out?</span></a>--}}
+                                            {{--<form id="logout-form-pill" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
+                                                {{--@csrf--}}
+                                            {{--</form>--}}
+                                        </h3>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <textarea  name="comment" placeholder="Message"></textarea>
+                                                <div class="clearfix"></div>
+                                                <button type="submit" class="continue2 montserrat">SUBMIT <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </button>
+                                            </div>
+                                            <input class="hidden" name="name" type="text" value="{{ auth()->user()->name }}">
+                                            <input class="hidden" name="email" type="email" value="{{ auth()->user()->email }}">
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    {!! Form::close() !!}
+                                @endguest
+
+                            </div>
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -156,4 +275,8 @@
         <div class="clearfix"></div>
     </div>
     <div class="clearfix"></div>
+@endsection
+
+@section('extra-script')
+
 @endsection

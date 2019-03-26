@@ -40,6 +40,8 @@ Route::get('/search','SearchController@show')->name('shop.search.show');
 
 Route::get('/blog','BlogController@index')->name('shop.blog.index');
 Route::get('/blog/{post}','BlogController@show')->name('shop.blog.show');
+Route::post('/comments/{blog_post}','CommentController@store')->name('shop.comment.store');
+Route::post('/comments/{blog_post}/reply/{comment_id}','CommentController@reply')->name('shop.comment.reply');
 
 
 Route::get('/contact','ContactController@index')->name('shop.contact.index');

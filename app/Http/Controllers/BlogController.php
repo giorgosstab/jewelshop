@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 
 use App\BlogCategory;
 use App\BlogPost;
+use App\Comment;
 use App\Tag;
+use function foo\func;
 
 class BlogController extends Controller
 {
@@ -74,7 +76,7 @@ class BlogController extends Controller
      */
     public function show($slug)
     {
-        $post = BlogPost::where('status', 'like', 'PUBLISHED')->where('slug', $slug)->with('tags')->whereHas('tags', function ($query) {
+        $post = BlogPost::where('status', 'like', 'PUBLISHED')->where('slug', $slug)->with('tags','comments')->whereHas('tags', function ($query) {
             $query->where('status', 'like', 'PUBLISHED');
         })->firstOrFail();
 
@@ -84,12 +86,6 @@ class BlogController extends Controller
 
         // add in visit table for popular post
         $post->visit();
-
-        // Retrieving the count of visitors in a timeframe
-//        $post->visitsDay();
-//        $post->visitsWeek();
-//        $post->visitsMonth();
-//        $post->visitsForever();
 
         $blogCategories = BlogCategory::where('status', 'like', 'PUBLISHED')->inRandomOrder()->get();
         $tags = Tag::where('status', 'like', 'PUBLISHED')->inRandomOrder()->get();
