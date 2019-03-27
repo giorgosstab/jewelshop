@@ -272,6 +272,26 @@ class DataTypesTableSeederCustom extends Seeder
                 'server_side'           => 1,
             ])->save();
         }
+
+        /*
+          |--------------------------------------------------------------------------
+          | replies
+          |--------------------------------------------------------------------------
+          */
+        $dataType = $this->dataType('slug', 'replies');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'replies',
+                'display_name_singular' => 'Reply',
+                'display_name_plural'   => 'Replies',
+                'icon'                  => 'fa fa-mail-reply-all',
+                'model_name'            => 'App\Reply',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 1,
+            ])->save();
+        }
     }
 
     /**

@@ -26,5 +26,6 @@ class PermissionsTableSeederCustom extends Seeder
         Permission::generateFor('tags');
 //        Permission::generateFor('post_tag');
         Permission::generateFor('comments');
+        Permission::generateFor('replies');
     }
 }

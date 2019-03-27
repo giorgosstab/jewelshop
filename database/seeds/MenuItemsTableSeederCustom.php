@@ -287,7 +287,19 @@ class MenuItemsTableSeederCustom extends Seeder
                 'parent_id'  => $commentMenuItem->id,
                 'order'      => 1,
             ])->save();
-
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'Replies',
+                'url'     => '/admin/replies',
+                'route'   => null,
+            ]);
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'fa fa-mail-reply-all',
+                'color'      => null,
+                'parent_id'  => $commentMenuItem->id,
+                'order'      => 2,
+            ])->save();
 
             /*
             |--------------------------------------------------------------------------

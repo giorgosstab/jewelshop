@@ -2501,7 +2501,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'type'         => 'select_dropdown',
                 'display_name' => 'User Id',
                 'required'     => 0,
-                'browse'       => 0,
+                'browse'       => 1,
                 'read'         => 1,
                 'edit'         => 1,
                 'add'          => 1,
@@ -2545,7 +2545,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'type'         => 'select_dropdown',
                 'display_name' => 'Blog Post Id',
                 'required'     => 0,
-                'browse'       => 0,
+                'browse'       => 1,
                 'read'         => 1,
                 'edit'         => 1,
                 'add'          => 1,
@@ -2640,14 +2640,14 @@ class DataRowsTableSeederCustom extends Seeder
                 'order'        => 8,
             ])->save();
         }
-        $dataRow = $this->dataRow($tagsDataType, 'created_at');
+        $dataRow = $this->dataRow($commentsDataType, 'created_at');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'timestamp',
                 'display_name' => 'Created At',
                 'required'     => 0,
-                'browse'       => 1,
-                'read'         => 1,
+                'browse'       => 0,
+                'read'         => 0,
                 'edit'         => 0,
                 'add'          => 0,
                 'delete'       => 0,
@@ -2655,7 +2655,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'order'        => 9,
             ])->save();
         }
-        $dataRow = $this->dataRow($tagsDataType, 'updated_at');
+        $dataRow = $this->dataRow($commentsDataType, 'updated_at');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'timestamp',
@@ -2676,8 +2676,8 @@ class DataRowsTableSeederCustom extends Seeder
         | Replies
         |--------------------------------------------------------------------------
         */
-        $commentsDataType = DataType::where('slug', 'comments')->firstOrFail();
-        $dataRow = $this->dataRow($commentsDataType, 'id');
+        $repliesDataType = DataType::where('slug', 'replies')->firstOrFail();
+        $dataRow = $this->dataRow($repliesDataType, 'id');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type' => 'hidden',
@@ -2692,13 +2692,40 @@ class DataRowsTableSeederCustom extends Seeder
                 'order' => 1,
             ])->save();
         }
-        $dataRow = $this->dataRow($commentsDataType, 'user_id');
+        $dataRow = $this->dataRow($repliesDataType, 'comment_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Comment Id',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "default" => "null",
+                    "options" => [
+                      "" => "-- None --"
+                    ],
+                    "relationship" => [
+                        "key" => "id",
+                        "label" => "comment"
+                    ],
+                    "validation" => [
+                        "rule" => 'required'
+                    ]
+                ],
+                'order'        => 2,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($repliesDataType, 'user_id');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'select_dropdown',
                 'display_name' => 'User Id',
                 'required'     => 0,
-                'browse'       => 0,
+                'browse'       => 1,
                 'read'         => 1,
                 'edit'         => 1,
                 'add'          => 1,
@@ -2708,10 +2735,10 @@ class DataRowsTableSeederCustom extends Seeder
                         "rule" => 'sometimes|nullable'
                     ]
                 ],
-                'order'        => 2,
+                'order'        => 3,
             ])->save();
         }
-        $dataRow = $this->dataRow($commentsDataType, 'comment_belongsto_user_relationship');
+        $dataRow = $this->dataRow($repliesDataType, 'reply_belongsto_user_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'relationship',
@@ -2733,16 +2760,16 @@ class DataRowsTableSeederCustom extends Seeder
                     'pivot' => 0,
                     'taggable' => 0,
                 ],
-                'order'        => 3,
+                'order'        => 4,
             ])->save();
         }
-        $dataRow = $this->dataRow($commentsDataType, 'blog_post_id');
+        $dataRow = $this->dataRow($repliesDataType, 'blog_post_id');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'select_dropdown',
                 'display_name' => 'Blog Post Id',
                 'required'     => 0,
-                'browse'       => 0,
+                'browse'       => 1,
                 'read'         => 1,
                 'edit'         => 1,
                 'add'          => 1,
@@ -2752,10 +2779,10 @@ class DataRowsTableSeederCustom extends Seeder
                         "rule" => 'required'
                     ]
                 ],
-                'order'        => 4,
+                'order'        => 5,
             ])->save();
         }
-        $dataRow = $this->dataRow($commentsDataType, 'comment_belongsto_blog_post_relationship');
+        $dataRow = $this->dataRow($repliesDataType, 'reply_belongsto_blog_post_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'relationship',
@@ -2777,10 +2804,10 @@ class DataRowsTableSeederCustom extends Seeder
                     'pivot' => 0,
                     'taggable' => 0,
                 ],
-                'order'        => 5,
+                'order'        => 6,
             ])->save();
         }
-        $dataRow = $this->dataRow($commentsDataType, 'name');
+        $dataRow = $this->dataRow($repliesDataType, 'name');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'text',
@@ -2796,10 +2823,10 @@ class DataRowsTableSeederCustom extends Seeder
                         "rule" => "required_with:email"
                     ]
                 ],
-                'order'        => 6,
+                'order'        => 7,
             ])->save();
         }
-        $dataRow = $this->dataRow($commentsDataType, 'email');
+        $dataRow = $this->dataRow($repliesDataType, 'email');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'text',
@@ -2815,10 +2842,10 @@ class DataRowsTableSeederCustom extends Seeder
                         "rule" => "required_with:name"
                     ]
                 ],
-                'order'        => 7,
+                'order'        => 8,
             ])->save();
         }
-        $dataRow = $this->dataRow($commentsDataType, 'comment');
+        $dataRow = $this->dataRow($repliesDataType, 'comment');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'rich_text_box',
@@ -2834,25 +2861,25 @@ class DataRowsTableSeederCustom extends Seeder
                         "rule" => "required|min:5|max:2000"
                     ]
                 ],
-                'order'        => 8,
+                'order'        => 9,
             ])->save();
         }
-        $dataRow = $this->dataRow($tagsDataType, 'created_at');
+        $dataRow = $this->dataRow($repliesDataType, 'created_at');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'timestamp',
                 'display_name' => 'Created At',
                 'required'     => 0,
-                'browse'       => 1,
-                'read'         => 1,
+                'browse'       => 0,
+                'read'         => 0,
                 'edit'         => 0,
                 'add'          => 0,
                 'delete'       => 0,
                 'details'      => null,
-                'order'        => 9,
+                'order'        => 10,
             ])->save();
         }
-        $dataRow = $this->dataRow($tagsDataType, 'updated_at');
+        $dataRow = $this->dataRow($repliesDataType, 'updated_at');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'timestamp',
@@ -2864,7 +2891,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'details'      => null,
-                'order'        => 10,
+                'order'        => 11,
             ])->save();
         }
     }
