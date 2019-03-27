@@ -112,18 +112,17 @@
                                             <div class="collapse" id="collapseReply{{ $comment->id }}">
                                                 <div class="reply-form no-margin no-background no-border no-padding">
                                                     @guest
-                                                        {!! Form::open(['method' => 'POST','route' => ['shop.comment.reply',$post->id,$comment->id]]) !!}
+                                                        {!! Form::open(['method' => 'POST','route' => ['shop.comment.reply',$post->id,$comment->id], 'class' => 'reply-form-validation']) !!}
                                                         {{ csrf_field() }}
-                                                        <h3>Reply the comment</h3>
                                                         <div class="row">
                                                             <div class="col-sm-6">
-                                                                <input class="form-group name-input" name="name" placeholder="Name" type="text" autofocus>
+                                                                <input class="form-group name-input" name="name" placeholder="Name" type="text">
                                                             </div>
                                                             <div class="col-sm-6 no-padding-left2">
                                                                 <input class="form-group name-input" name="email" placeholder="Email" type="email">
                                                             </div>
                                                             <div class="col-sm-12">
-                                                                <textarea  name="comment" placeholder="Message"></textarea>
+                                                                <textarea  name="comment" placeholder="Message" required></textarea>
                                                                 <div class="clearfix"></div>
                                                                 <button type="submit" class="continue2 montserrat">SUBMIT <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </button>
                                                             </div>
@@ -131,9 +130,8 @@
                                                         </div>
                                                         {!! Form::close() !!}
                                                     @else
-                                                        {!! Form::open(['method' => 'POST','route' => ['shop.comment.reply',$post->id,$comment->id]]) !!}
+                                                        {!! Form::open(['method' => 'POST','route' => ['shop.comment.reply',$post->id,$comment->id], 'class' => 'reply-form-validation']) !!}
                                                         {{ csrf_field() }}
-                                                        <h3>Reply the comment</h3>
                                                         <div class="row">
                                                             <div class="col-sm-12">
                                                                 <textarea  name="comment" placeholder="Message" autofocus></textarea>
@@ -155,7 +153,7 @@
                                 <div class="clearfix"></div>
                                 <div class="reply-form no-margin no-background no-border no-padding">
                                     @guest
-                                        {!! Form::open(['method' => 'POST','route' => ['shop.comment.store',$post->id]]) !!}
+                                        {!! Form::open(['method' => 'POST','route' => ['shop.comment.store',$post->id], 'id' => 'comment-form']) !!}
                                             {{ csrf_field() }}
                                             <h3>Leave the comment</h3>
                                             <div class="row">
@@ -174,7 +172,7 @@
                                             </div>
                                         {!! Form::close() !!}
                                     @else
-                                        {!! Form::open(['method' => 'POST','route' => ['shop.comment.store',$post->id]]) !!}
+                                        {!! Form::open(['method' => 'POST','route' => ['shop.comment.store',$post->id], 'id' => 'comment-form']) !!}
                                             {{ csrf_field() }}
                                             <h3>Leave the comment as {{ auth()->user()->name }}</h3>
                                             <div class="row">
@@ -287,6 +285,9 @@
 @endsection
 
 @section('extra-script')
-
+    {{ Html::script('assets/js/validator/jquery.validate.min.js') }}
+    {{ Html::script('assets/js/validator/additional-methods.min.js') }}
+    {{ Html::script('assets/js/validator/comment/validationComment.js') }}
+    {{ Html::script('assets/js/validator/comment/validationReply.js') }}
 @endsection
                                                                                                                                           
