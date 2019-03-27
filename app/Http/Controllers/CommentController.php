@@ -64,7 +64,6 @@ class CommentController extends Controller
 
             return back()->with('success_message','Comment successfully added!');
         }
-
     }
 
     /**
@@ -142,11 +141,41 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Comment $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comment $comment)
     {
-        //
+        if(auth()->id() == $comment->user_id) {
+            $reply = Reply::where(['comment_id'=>$comment->id]);
+            $com = Comment::where(['user_id'=>auth()->id(), 'id'=>$comment->id]);
+            if ($reply->count() > 0 && $com->count() > 0) {
+                $reply->delete();
+                $com->delete();
+                return back()->with('success_message','Comment with replies successfully deleted!');
+            } else if($com->count() > 0){
+                $com->delete();
+                return back()->with('success_message','Comment successfully deleted!');
+            } else{
+                return back()->withErrors('Comment can deleted only from owner!');
+            }
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Reply  $reply
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyReply(Reply $reply)
+    {
+        if(auth()->id() == $reply->user_id) {
+            $rep = Reply::where(['id'=>$reply->id,'user_id'=>auth()->id()]);
+            $rep->delete();
+            return back()->with('success_message','Comment successfully deleted!');
+        } else{
+            return back()->withErrors('Comment can deleted only from owner!');
+        }
     }
 }

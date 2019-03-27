@@ -42,6 +42,8 @@ Route::get('/blog','BlogController@index')->name('shop.blog.index');
 Route::get('/blog/{post}','BlogController@show')->name('shop.blog.show');
 Route::post('/comments/{blog_post}','CommentController@store')->name('shop.comment.store');
 Route::post('/comments/{blog_post}/reply/{comment_id}','CommentController@reply')->name('shop.comment.reply');
+Route::delete('/delete/comment/{comment}','CommentController@destroy')->name('shop.comment.destroy');
+Route::delete('/delete/reply/{reply}','CommentController@destroyReply')->name('shop.comment.destroyReply');
 
 
 Route::get('/contact','ContactController@index')->name('shop.contact.index');
