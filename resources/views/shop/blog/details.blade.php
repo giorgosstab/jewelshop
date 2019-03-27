@@ -73,7 +73,7 @@
                                             </div>
                                             <div class="col-md-10 col-sm-10 main-comment">
                                                 <h4>{{ $comment->user_id == null ? $comment->name : $comment->user->name }} <span>{{ $comment->created_at->format('d F, Y \\A\\T h:i A') }}</span></h4>
-                                                <p>{{ $comment->comment }}</p>
+                                                <p>{!! $comment->comment !!}</p>
                                                 <p>
                                                     @if(auth()->id() == $comment->user_id)
                                                         {!! Form::open(['method' => 'POST','route' => ['shop.comment.destroy',$comment], 'id' => 'deleteComment'.$comment->id]) !!}
@@ -95,7 +95,7 @@
                                                     </div>
                                                     <div class="col-md-10 col-sm-10 main-comment">
                                                         <h4>{{ $reply->user_id == null ? $reply->name : $reply->user->name }} <span>{{ $reply->created_at->format('d F, Y \\A\\T h:i A') }}</span></h4>
-                                                        <p>{{ $reply->comment }}</p>
+                                                        <p>{!! $reply->comment !!}</p>
                                                         <p>
                                                             @if(auth()->id() == $reply->user_id)
                                                                 {!! Form::open(['method' => 'POST','route' => ['shop.comment.destroyReply',$reply], 'id' => 'deleteReply'.$reply->id]) !!}

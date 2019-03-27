@@ -255,6 +255,41 @@ class MenuItemsTableSeederCustom extends Seeder
 
 
             /*
+           |--------------------------------------------------------------------------
+           | Comments
+           |--------------------------------------------------------------------------
+           */
+            $commentMenuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'Comments',
+                'url'     => '',
+            ]);
+            if (!$commentMenuItem->exists) {
+                $commentMenuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => 'fa fa-comments',
+                    'color'      => null,
+                    'parent_id'  => null,
+                    'order'      => 4,
+                ])->save();
+            }
+            //Comments submenu
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'Comments',
+                'url'     => '/admin/comments',
+                'route'   => null,
+            ]);
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'fa fa-comment',
+                'color'      => null,
+                'parent_id'  => $commentMenuItem->id,
+                'order'      => 1,
+            ])->save();
+
+
+            /*
             |--------------------------------------------------------------------------
             | Users
             |--------------------------------------------------------------------------
@@ -270,7 +305,7 @@ class MenuItemsTableSeederCustom extends Seeder
                     'icon_class' => 'voyager-people',
                     'color'      => null,
                     'parent_id'  => null,
-                    'order'      => 4,
+                    'order'      => 5,
                 ])->save();
             }
             //User submenu
@@ -317,7 +352,7 @@ class MenuItemsTableSeederCustom extends Seeder
                 'icon_class' => 'voyager-images',
                 'color'      => null,
                 'parent_id'  => null,
-                'order'      => 5,
+                'order'      => 6,
             ])->save();
 
             /*
@@ -394,7 +429,7 @@ class MenuItemsTableSeederCustom extends Seeder
                 'icon_class' => 'voyager-tools',
                 'color'      => null,
                 'parent_id'  => null,
-                'order'      => 6,
+                'order'      => 7,
             ])->save();
 
             //Tools submenu
@@ -455,7 +490,7 @@ class MenuItemsTableSeederCustom extends Seeder
                 'icon_class' => 'voyager-settings',
                 'color'      => null,
                 'parent_id'  => null,
-                'order'      => 7,
+                'order'      => 8,
             ])->save();
 
 

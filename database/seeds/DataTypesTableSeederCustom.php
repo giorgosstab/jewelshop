@@ -252,6 +252,26 @@ class DataTypesTableSeederCustom extends Seeder
                 'server_side'           => 1,
             ])->save();
         }
+
+        /*
+          |--------------------------------------------------------------------------
+          | comments
+          |--------------------------------------------------------------------------
+          */
+        $dataType = $this->dataType('slug', 'comments');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'comments',
+                'display_name_singular' => 'Comment',
+                'display_name_plural'   => 'Comments',
+                'icon'                  => 'fa fa-comments',
+                'model_name'            => 'App\Comment',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 1,
+            ])->save();
+        }
     }
 
     /**

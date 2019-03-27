@@ -2473,6 +2473,400 @@ class DataRowsTableSeederCustom extends Seeder
                 'order'        => 6,
             ])->save();
         }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Comments
+        |--------------------------------------------------------------------------
+        */
+        $commentsDataType = DataType::where('slug', 'comments')->firstOrFail();
+        $dataRow = $this->dataRow($commentsDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'hidden',
+                'display_name' => 'Id',
+                'required' => 1,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 1,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($commentsDataType, 'user_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'User Id',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "validation" => [
+                        "rule" => 'sometimes|nullable'
+                    ]
+                ],
+                'order'        => 2,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($commentsDataType, 'comment_belongsto_user_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'users',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model' => 'App\User',
+                    'table' => 'users',
+                    'type' => 'belongsTo',
+                    'column' => 'user_id',
+                    'key' => 'id',
+                    'label' => 'name',
+                    'pivot_table' => 'blog_categories',
+                    'pivot' => 0,
+                    'taggable' => 0,
+                ],
+                'order'        => 3,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($commentsDataType, 'blog_post_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Blog Post Id',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "validation" => [
+                        "rule" => 'required'
+                    ]
+                ],
+                'order'        => 4,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($commentsDataType, 'comment_belongsto_blog_post_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'blog_posts',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model' => 'App\BlogPost',
+                    'table' => 'blog_posts',
+                    'type' => 'belongsTo',
+                    'column' => 'blog_post_id',
+                    'key' => 'id',
+                    'label' => 'slug',
+                    'pivot_table' => 'blog_categories',
+                    'pivot' => 0,
+                    'taggable' => 0,
+                ],
+                'order'        => 5,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($commentsDataType, 'name');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Name',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "validation" => [
+                        "rule" => "required_with:email"
+                    ]
+                ],
+                'order'        => 6,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($commentsDataType, 'email');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Email',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "validation" => [
+                        "rule" => "required_with:name"
+                    ]
+                ],
+                'order'        => 7,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($commentsDataType, 'comment');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'rich_text_box',
+                'display_name' => 'Comment',
+                'required'     => 1,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "validation" => [
+                        "rule" => "required|min:5|max:2000"
+                    ]
+                ],
+                'order'        => 8,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($tagsDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'Created At',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => null,
+                'order'        => 9,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($tagsDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'Updated At',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => null,
+                'order'        => 10,
+            ])->save();
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Replies
+        |--------------------------------------------------------------------------
+        */
+        $commentsDataType = DataType::where('slug', 'comments')->firstOrFail();
+        $dataRow = $this->dataRow($commentsDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'hidden',
+                'display_name' => 'Id',
+                'required' => 1,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 1,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($commentsDataType, 'user_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'User Id',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "validation" => [
+                        "rule" => 'sometimes|nullable'
+                    ]
+                ],
+                'order'        => 2,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($commentsDataType, 'comment_belongsto_user_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'users',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model' => 'App\User',
+                    'table' => 'users',
+                    'type' => 'belongsTo',
+                    'column' => 'user_id',
+                    'key' => 'id',
+                    'label' => 'name',
+                    'pivot_table' => 'blog_categories',
+                    'pivot' => 0,
+                    'taggable' => 0,
+                ],
+                'order'        => 3,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($commentsDataType, 'blog_post_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Blog Post Id',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "validation" => [
+                        "rule" => 'required'
+                    ]
+                ],
+                'order'        => 4,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($commentsDataType, 'comment_belongsto_blog_post_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'blog_posts',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model' => 'App\BlogPost',
+                    'table' => 'blog_posts',
+                    'type' => 'belongsTo',
+                    'column' => 'blog_post_id',
+                    'key' => 'id',
+                    'label' => 'slug',
+                    'pivot_table' => 'blog_categories',
+                    'pivot' => 0,
+                    'taggable' => 0,
+                ],
+                'order'        => 5,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($commentsDataType, 'name');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Name',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "validation" => [
+                        "rule" => "required_with:email"
+                    ]
+                ],
+                'order'        => 6,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($commentsDataType, 'email');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Email',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "validation" => [
+                        "rule" => "required_with:name"
+                    ]
+                ],
+                'order'        => 7,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($commentsDataType, 'comment');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'rich_text_box',
+                'display_name' => 'Comment',
+                'required'     => 1,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "validation" => [
+                        "rule" => "required|min:5|max:2000"
+                    ]
+                ],
+                'order'        => 8,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($tagsDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'Created At',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => null,
+                'order'        => 9,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($tagsDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'Updated At',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => null,
+                'order'        => 10,
+            ])->save();
+        }
     }
     /**
      * [dataRow description].
