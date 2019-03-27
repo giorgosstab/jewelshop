@@ -2486,10 +2486,10 @@ class DataRowsTableSeederCustom extends Seeder
                 'type' => 'hidden',
                 'display_name' => 'Id',
                 'required' => 1,
-                'browse' => 0,
-                'read' => 1,
-                'edit' => 1,
-                'add' => 1,
+                'browse' => 1,
+                'read' => 0,
+                'edit' => 0,
+                'add' => 0,
                 'delete' => 0,
                 'details' => null,
                 'order' => 1,
@@ -2684,9 +2684,9 @@ class DataRowsTableSeederCustom extends Seeder
                 'display_name' => 'Id',
                 'required' => 1,
                 'browse' => 0,
-                'read' => 1,
-                'edit' => 1,
-                'add' => 1,
+                'read' => 0,
+                'edit' => 0,
+                'add' => 0,
                 'delete' => 0,
                 'details' => null,
                 'order' => 1,
@@ -2719,6 +2719,31 @@ class DataRowsTableSeederCustom extends Seeder
                 'order'        => 2,
             ])->save();
         }
+        $dataRow = $this->dataRow($repliesDataType, 'reply_belongsto_comment_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'comments',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model' => 'App\Comment',
+                    'table' => 'users',
+                    'type' => 'belongsTo',
+                    'column' => 'comment_id',
+                    'key' => 'id',
+                    'label' => 'id',
+                    'pivot_table' => 'blog_categories',
+                    'pivot' => 0,
+                    'taggable' => 1,
+                ],
+                'order'        => 3,
+            ])->save();
+        }
         $dataRow = $this->dataRow($repliesDataType, 'user_id');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -2735,7 +2760,7 @@ class DataRowsTableSeederCustom extends Seeder
                         "rule" => 'sometimes|nullable'
                     ]
                 ],
-                'order'        => 3,
+                'order'        => 4,
             ])->save();
         }
         $dataRow = $this->dataRow($repliesDataType, 'reply_belongsto_user_relationship');
@@ -2760,51 +2785,7 @@ class DataRowsTableSeederCustom extends Seeder
                     'pivot' => 0,
                     'taggable' => 0,
                 ],
-                'order'        => 4,
-            ])->save();
-        }
-        $dataRow = $this->dataRow($repliesDataType, 'blog_post_id');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'select_dropdown',
-                'display_name' => 'Blog Post Id',
-                'required'     => 0,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'details'      => [
-                    "validation" => [
-                        "rule" => 'required'
-                    ]
-                ],
                 'order'        => 5,
-            ])->save();
-        }
-        $dataRow = $this->dataRow($repliesDataType, 'reply_belongsto_blog_post_relationship');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'relationship',
-                'display_name' => 'blog_posts',
-                'required'     => 0,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'details'      => [
-                    'model' => 'App\BlogPost',
-                    'table' => 'blog_posts',
-                    'type' => 'belongsTo',
-                    'column' => 'blog_post_id',
-                    'key' => 'id',
-                    'label' => 'slug',
-                    'pivot_table' => 'blog_categories',
-                    'pivot' => 0,
-                    'taggable' => 0,
-                ],
-                'order'        => 6,
             ])->save();
         }
         $dataRow = $this->dataRow($repliesDataType, 'name');
@@ -2823,7 +2804,7 @@ class DataRowsTableSeederCustom extends Seeder
                         "rule" => "required_with:email"
                     ]
                 ],
-                'order'        => 7,
+                'order'        => 6,
             ])->save();
         }
         $dataRow = $this->dataRow($repliesDataType, 'email');
@@ -2842,7 +2823,7 @@ class DataRowsTableSeederCustom extends Seeder
                         "rule" => "required_with:name"
                     ]
                 ],
-                'order'        => 8,
+                'order'        => 7,
             ])->save();
         }
         $dataRow = $this->dataRow($repliesDataType, 'comment');
@@ -2861,7 +2842,7 @@ class DataRowsTableSeederCustom extends Seeder
                         "rule" => "required|min:5|max:2000"
                     ]
                 ],
-                'order'        => 9,
+                'order'        => 8,
             ])->save();
         }
         $dataRow = $this->dataRow($repliesDataType, 'created_at');
@@ -2876,7 +2857,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'details'      => null,
-                'order'        => 10,
+                'order'        => 9,
             ])->save();
         }
         $dataRow = $this->dataRow($repliesDataType, 'updated_at');
@@ -2891,7 +2872,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'details'      => null,
-                'order'        => 11,
+                'order'        => 10,
             ])->save();
         }
     }

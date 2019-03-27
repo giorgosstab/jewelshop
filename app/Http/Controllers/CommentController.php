@@ -70,19 +70,16 @@ class CommentController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\CommentRequest  $request
-     * @param  \App\BlogPost  $id
      * @param  \App\Comment  $comment_id
      * @return \Illuminate\Http\Response
      */
-    public function reply(CommentRequest $request, $id, $comment_id)
+    public function reply(CommentRequest $request, $comment_id)
     {
         $user = Auth::user();
+        $comment = Comment::find($comment_id);
         if(!$user){
-            $post = BlogPost::find($id);
-
             $reply = new Reply();
-            $reply->comment_id = $comment_id;
-            $reply->post()->associate($post);
+            $reply->comment()->associate($comment);
             $reply->name = $request->name;
             $reply->email = $request->email;
             $reply->comment = $request->comment;
@@ -90,12 +87,9 @@ class CommentController extends Controller
 
             return back()->with('success_message','Comment successfully added!');
         } else {
-            $post = BlogPost::find($id);
-
             $reply = new Reply();
-            $reply->comment_id = $comment_id;
+            $reply->comment()->associate($comment);
             $reply->user()->associate($user);
-            $reply->post()->associate($post);
             $reply->comment = $request->comment;
             $reply->save();
 

@@ -112,7 +112,7 @@
                                             <div class="collapse" id="collapseReply{{ $comment->id }}">
                                                 <div class="reply-form no-margin no-background no-border no-padding">
                                                     @guest
-                                                        {!! Form::open(['method' => 'POST','route' => ['shop.comment.reply',$post->id,$comment->id], 'class' => 'reply-form-validation']) !!}
+                                                        {!! Form::open(['method' => 'POST','route' => ['shop.comment.reply',$comment->id], 'class' => 'reply-form-validation']) !!}
                                                         {{ csrf_field() }}
                                                         <div class="row">
                                                             <div class="col-sm-6">
@@ -130,7 +130,7 @@
                                                         </div>
                                                         {!! Form::close() !!}
                                                     @else
-                                                        {!! Form::open(['method' => 'POST','route' => ['shop.comment.reply',$post->id,$comment->id], 'class' => 'reply-form-validation']) !!}
+                                                        {!! Form::open(['method' => 'POST','route' => ['shop.comment.reply',$comment->id], 'class' => 'reply-form-validation']) !!}
                                                         {{ csrf_field() }}
                                                         <div class="row">
                                                             <div class="col-sm-12">
