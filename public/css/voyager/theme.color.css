@@ -1,3 +1,29 @@
 .panel-content > .btn-primary {
     background-color: #deb75b !important;
 }
+.voyager .side-menu.sidebar-inverse {
+    background: url(../../assets/images/footer-bg.jpg) repeat !important;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+    color: #deb75b !important;
+}
+.voyager .btn.btn-primary {
+    background: #deb75b !important;
+}
+.voyager .btn.btn-warning {
+    background: #31adea !important;
+}
+.voyager .btn.btn-danger {
+    background: #ea3e3e !important;
+}
+.voyager .btn.btn-success {
+    background: #2db97c !important;
+}
+.voyager .btn.btn-info {
+    background: #343a40 !important;
+    border-color: #343a40 !important;
+}
+.voyager .btn.btn-info:hover {
+    background: #000 !important;
+    border-color: #000 !important;
+}
