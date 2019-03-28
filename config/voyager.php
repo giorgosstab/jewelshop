@@ -161,8 +161,19 @@ return [
 
         'widgets' => [
             'TCG\\Voyager\\Widgets\\UserDimmer',
-            'TCG\\Voyager\\Widgets\\PostDimmer',
-            'TCG\\Voyager\\Widgets\\PageDimmer',
+//            'TCG\\Voyager\\Widgets\\PostDimmer',
+//            'TCG\\Voyager\\Widgets\\PageDimmer',
+            'App\\Widgets\\ProductDimmer',
+            'App\\Widgets\\CategoryDimmer',
+            'App\\Widgets\\BrandDimmer',
+            'App\\Widgets\\BlogPostDimmer',
+            'App\\Widgets\\OrderDimmer',
+            'App\\Widgets\\PaymentDimmer',
+            'App\\Widgets\\DeliveryDimmer',
+            'App\\Widgets\\CommentDimmer',
+            'App\\Widgets\\CouponDimmer',
+            'App\\Widgets\\PageDimmer',
+            'App\\Widgets\\TagDimmer',
         ],
 
     ],
@@ -199,16 +210,19 @@ return [
     |
     */
 
-    'primary_color' => '#22A7F0',
+//    'primary_color' => '#22A7F0',
+    'primary_color' => '#deb75b',
 
-    'show_dev_tips' => true, // Show development tip "How To Use:" in Menu and Settings
+//    'show_dev_tips' => true, // Show development tip "How To Use:" in Menu and Settings
+    'show_dev_tips' => false,
 
     // Here you can specify additional assets you would like to be included in the master.blade
     'additional_css' => [
         //'css/custom.css',
         'fonts/fontawesome/4.7/css/font-awesome.min.css',
         'css/voyager/switcher.edit-add.css',
-        'css/voyager/order.read.css'
+        'css/voyager/order.read.css',
+        'css/voyager/theme.color.css'
     ],
 
     'additional_js' => [
