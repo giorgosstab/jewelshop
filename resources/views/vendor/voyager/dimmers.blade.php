@@ -5,7 +5,7 @@ $classes = [
     'col-xs-12',
     'col-sm-'.($count >= 2 ? '6' : '12'),
     /*'col-md-'.($count >= 3 ? '4' : ($count >= 2 ? '6' : '12')),*/
-    'col-md-'.($count >= 4 ? '3' : ($count >= 2 ? '6' : '12')),
+    'col-md-'.($count >= 4 ? '3' : ($count >= 3 ? '4' : '6')),
 ];
 $class = implode(' ', $classes);
 $prefix = "<div class='{$class}'>";
