@@ -98,12 +98,22 @@ class EcommerceInstall extends Command
             '--seed' => true,
         ]);
 
-        $this->call('scout:flush', [
-            'model' => 'App\Product'
-        ]);
-        $this->call('scout:import', [
-            'model' => 'App\Product'
-        ]);
+        try {
+            $this->call('scout:flush', [
+                'model' => 'App\Product',
+            ]);
+            $this->call('scout:import', [
+                'model' => 'App\Product',
+            ]);
+        } catch (\Exception $e) {
+            $this->error('Algolia credentials incorrect. Check your .env file. Make sure ALGOLIA_APP_ID and ALGOLIA_SECRET are correct.');
+        }
+//        $this->call('scout:flush', [
+//            'model' => 'App\Product'
+//        ]);
+//        $this->call('scout:import', [
+//            'model' => 'App\Product'
+//        ]);
 
         $this->call('db:seed', [
             '--class' => 'VoyagerDatabaseSeeder',
@@ -126,11 +136,22 @@ class EcommerceInstall extends Command
             '--class' => 'MenuItemsTableSeederCustom',
         ]);
         $this->call('db:seed', [
+            '--class' => 'RolesTableSeederCustom',
+        ]);
+        $this->call('db:seed', [
             '--class' => 'PermissionsTableSeederCustom',
         ]);
         $this->call('db:seed', [
             '--class' => 'PermissionRoleTableSeeder',
         ]);
+        $this->call('db:seed', [
+            '--class' => 'PermissionRoleTableSeederCustom',
+        ]);
+        $this->call('db:seed', [
+            '--class' => 'UsersTableSeederCustom',
+        ]);
+
+
         $this->call('db:seed', [
             '--class' => 'SettingsTableSeederCustom',
         ]);

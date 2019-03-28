@@ -13,7 +13,7 @@ class PermissionRoleTableSeeder extends Seeder
      */
     public function run()
     {
-        $role = Role::where('name', 'admin')->firstOrFail();
+        $role = Role::where('name', 'super_admin')->firstOrFail();
 
         $permissions = Permission::all();
 
