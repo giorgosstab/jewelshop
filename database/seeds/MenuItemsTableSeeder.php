@@ -134,7 +134,7 @@ class MenuItemsTableSeeder extends Seeder
                 'icon_class' => 'voyager-tools',
                 'color'      => null,
                 'parent_id'  => null,
-                'order'      => 7,
+                'order'      => 8,
             ])->save();
         }
 
@@ -220,7 +220,7 @@ class MenuItemsTableSeeder extends Seeder
                 'icon_class' => 'voyager-settings',
                 'color'      => null,
                 'parent_id'  => null,
-                'order'      => 8,
+                'order'      => 9,
             ])->save();
         }
     }

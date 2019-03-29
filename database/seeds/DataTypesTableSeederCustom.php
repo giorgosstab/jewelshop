@@ -292,6 +292,26 @@ class DataTypesTableSeederCustom extends Seeder
                 'server_side'           => 1,
             ])->save();
         }
+
+        /*
+          |--------------------------------------------------------------------------
+          | Voyager Themes
+          |--------------------------------------------------------------------------
+          */
+        $dataType = $this->dataType('slug', 'voyager_themes');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'voyager_themes',
+                'display_name_singular' => 'Voyager Theme',
+                'display_name_plural'   => 'Voyager Themes',
+                'icon'                  => 'voyager-paint-bucket',
+                'model_name'            => 'App\VoyagerTheme',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 1,
+            ])->save();
+        }
     }
 
     /**

@@ -427,6 +427,58 @@ class MenuItemsTableSeederCustom extends Seeder
 //            ])->save();
 
             /*
+            |--------------------------------------------------------------------------
+            | Themes Voyager
+            |--------------------------------------------------------------------------
+            */
+            $themeMenuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'Themes',
+                'url'     => '',
+            ]);
+            if (!$themeMenuItem->exists) {
+                $themeMenuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => 'voyager-paint-bucket',
+                    'color'      => null,
+                    'parent_id'  => null,
+                    'order'      => 7,
+                ])->save();
+            }
+
+            //voyager theme submenu
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title' => 'Add Themes',
+                'url' => '/admin/voyager_themes',
+                'route' => null,
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target' => '_self',
+                    'icon_class' => 'voyager-edit',
+                    'color' => null,
+                    'parent_id' => $themeMenuItem->id,
+                    'order' => 1,
+                ])->save();
+            }
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title' => 'Customize Themes',
+                'url' => '/admin/themes',
+                'route' => null,
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target' => '_self',
+                    'icon_class' => 'voyager-brush',
+                    'color' => null,
+                    'parent_id' => $themeMenuItem->id,
+                    'order' => 2,
+                ])->save();
+            }
+
+            /*
            |--------------------------------------------------------------------------
            | Tools
            |--------------------------------------------------------------------------
@@ -441,7 +493,7 @@ class MenuItemsTableSeederCustom extends Seeder
                 'icon_class' => 'voyager-tools',
                 'color'      => null,
                 'parent_id'  => null,
-                'order'      => 7,
+                'order'      => 8,
             ])->save();
 
             //Tools submenu
@@ -502,7 +554,7 @@ class MenuItemsTableSeederCustom extends Seeder
                 'icon_class' => 'voyager-settings',
                 'color'      => null,
                 'parent_id'  => null,
-                'order'      => 8,
+                'order'      => 9,
             ])->save();
 
 

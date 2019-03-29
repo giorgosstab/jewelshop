@@ -2875,6 +2875,138 @@ class DataRowsTableSeederCustom extends Seeder
                 'order'        => 10,
             ])->save();
         }
+
+        /*
+       |--------------------------------------------------------------------------
+       | Voyager Themes
+       |--------------------------------------------------------------------------
+       */
+        $themesDataType = DataType::where('slug', 'voyager_themes')->firstOrFail();
+        $dataRow = $this->dataRow($themesDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'hidden',
+                'display_name' => 'Id',
+                'required' => 1,
+                'browse' => 0,
+                'read' => 0,
+                'edit' => 0,
+                'add' => 0,
+                'delete' => 0,
+                'details' => null,
+                'order' => 1,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($themesDataType, 'name');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Name',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "validation" => [
+                        "rule" => 'required|regex:/^[a-zA-Z0-9& ]+$/u|min:3|max:30'
+                    ]
+                ],
+                'order'        => 2,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($themesDataType, 'folder');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Folder',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "slugify" => [
+                        "origin" => "name",
+                        "forceUpdate" => false
+                    ],
+                    "validation" => [
+                        "rule" => "required|regex:/^[a-zA-Z0-9-]+$/u|unique:voyager_themes,folder"
+                    ]
+                ],
+                'order'        => 3,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($themesDataType, 'active');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'checkbox',
+                'display_name' => 'Active',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "on" => 'True',
+                    "off" => 'False',
+                    "checked" => 'false'
+                ],
+                'order'        => 4,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($themesDataType, 'version');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Version',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "validation" => [
+                        "rule" => 'required|min:3|max:20'
+                    ]
+                ],
+                'order'        => 5,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($themesDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'Created At',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => null,
+                'order'        => 6,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($themesDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'Updated At',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => null,
+                'order'        => 7,
+            ])->save();
+        }
     }
     /**
      * [dataRow description].

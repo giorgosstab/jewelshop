@@ -22,6 +22,12 @@ class PermissionRoleTableSeederCustom extends Seeder
 
                 'delete_settings',
 
+                'browse_voyager_themes',
+                'read_voyager_themes',
+                'edit_voyager_themes',
+                'add_voyager_themes',
+                'delete_voyager_themes',
+
                 'delete_roles',
                 'edit_roles',
 
