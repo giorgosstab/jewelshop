@@ -84,7 +84,13 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('themes/options/{theme}', ['uses' => 'ThemesController@options', 'as' => 'theme.options']);
     Route::post('themes/options/{theme}', ['uses' => 'ThemesController@options_save', 'as' => 'theme.options.post']);
     Route::get('themes/options', function () {
-        return redirect(route('voyager.theme.index'));
+        return redirect(route('theme.index'));
+    });
+    Route::get('themes/activate', function () {
+        return redirect(route('theme.index'));
+    });
+    Route::get('themes/deactivate', function () {
+        return redirect(route('theme.index'));
     });
     Route::delete('themes/delete', ['uses' => 'ThemesController@delete', 'as' => 'theme.delete']);
 
