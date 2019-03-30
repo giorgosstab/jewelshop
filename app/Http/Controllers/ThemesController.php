@@ -84,6 +84,7 @@ class ThemesController extends Controller
     public function activate($theme_folder){
 
         Voyager::canOrFail('browse_themes');
+        Voyager::canOrFail('activate_themes');
 
         $theme = VoyagerTheme::where('folder', '=', $theme_folder)->first();
 
@@ -111,6 +112,7 @@ class ThemesController extends Controller
     public function deactivate($theme_folder){
 
         Voyager::canOrFail('browse_themes');
+        Voyager::canOrFail('deactivate_themes');
 
         $theme = VoyagerTheme::where('folder', '=', $theme_folder)->first();
 
@@ -138,6 +140,7 @@ class ThemesController extends Controller
     public function delete(Request $request){
 
         Voyager::canOrFail('browse_themes');
+        Voyager::canOrFail('delete_themes');
 
         $theme = VoyagerTheme::find($request->id);
         if(!isset($theme)){
@@ -170,6 +173,7 @@ class ThemesController extends Controller
     public function options($theme_folder){
 
         Voyager::canOrFail('browse_themes');
+        Voyager::canOrFail('edit_themes');
 
         $theme = VoyagerTheme::where('folder', '=', $theme_folder)->first();
 
@@ -192,6 +196,7 @@ class ThemesController extends Controller
     public function options_save(Request $request, $theme_folder){
 
         Voyager::canOrFail('browse_themes');
+        Voyager::canOrFail('edit_themes');
 
         $theme = VoyagerTheme::where('folder', '=', $theme_folder)->first();
 

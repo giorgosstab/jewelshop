@@ -203,12 +203,20 @@
 		        					<h4>{{ $theme->name }}<span>@if(isset($theme->version)){{ 'version ' . $theme->version }}@endif</span></h4>
 
 		        					@if($theme->active)
-		        						<a class="btn btn-outline-danger pull-right" href="{{ route('theme.deactivate', $theme->folder) }}"><i class="voyager-x"></i>Deactivate Theme</a>
+                                        @if(\Voyager::can('deactivate_themes'))
+		        						    <a class="btn btn-outline-danger pull-right" href="{{ route('theme.deactivate', $theme->folder) }}"><i class="voyager-x"></i>Deactivate Theme</a>
+                                        @endif
 		        					@else
-		        						<a class="btn btn-outline-success pull-right" href="{{ route('theme.activate', $theme->folder) }}"><i class="voyager-check"></i> Activate Theme</a>
-		        					@endif
-		        					<a href="{{ route('theme.options', $theme->folder) }}" class="voyager-params theme-options"></a>
-		        					<div class="voyager-trash theme-options-trash" data-id="{{ $theme->id }}"></div>
+                                        @if(\Voyager::can('activate_themes'))
+		        						    <a class="btn btn-outline-success pull-right" href="{{ route('theme.activate', $theme->folder) }}"><i class="voyager-check"></i> Activate Theme</a>
+                                        @endif
+                                    @endif
+                                    @if(\Voyager::can('edit_themes'))
+		        					    <a href="{{ route('theme.options', $theme->folder) }}" class="voyager-params theme-options"></a>
+                                    @endif
+                                    @if(\Voyager::can('delete_themes'))
+		        					    <div class="voyager-trash theme-options-trash" data-id="{{ $theme->id }}"></div>
+                                    @endif
 		        				</div>
 		        			</div>
 	        			</div>
