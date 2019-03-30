@@ -145,7 +145,7 @@ class ThemesController extends Controller
         $theme = VoyagerTheme::find($request->id);
         if(!isset($theme)){
             return redirect()
-                ->route("voyager.theme.index")
+                ->route("theme.index")
                 ->with([
                     'message'    => "Could not find theme to delete",
                     'alert-type' => 'error',
@@ -202,7 +202,7 @@ class ThemesController extends Controller
 
         if(!isset($theme->id)){
             return redirect()
-                ->route("voyager.theme.index")
+                ->route("theme.index")
                 ->with([
                     'message'    => "Could not find theme " . $theme_folder . ".",
                     'alert-type' => 'error',
@@ -246,7 +246,7 @@ class ThemesController extends Controller
 
 
         return redirect()
-            ->back()
+            ->route("theme.index")
             ->with([
                 'message'    => "Successfully Saved Theme Options",
                 'alert-type' => 'success',
