@@ -245,8 +245,8 @@
                         <input type="hidden" name="id" value="0" id="delete_id">
                         <input type="submit" class="btn btn-danger pull-right delete-confirm"
                                  value="Yes, Permanantly Delete Theme">
+                        <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancel</button>
                     </form>
-                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">{{ __('voyager.generic.cancel') }}</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
