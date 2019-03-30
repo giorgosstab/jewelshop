@@ -172,7 +172,7 @@ function theme_field($type, $key, $title, $content = '', $details = '', $placeho
     $dataTypeContent = (object)[$key => $content];
 
     if(config('themes.show_dev_tips')) {
-        $label = '<label for="'. $key . '">' . $title . '<span class="how_to">You can reference this value with <code>theme(\'' . $key . '\'</code></span>}</label>';
+        $label = '<label for="'. $key . '">' . $title . '<span class="how_to">You can reference this value with <code>theme(\'' . $key . '\')</code></span></label>';
     } else {
         $label = '<label for="'. $key . '">' . $title . '</label>';
     }
