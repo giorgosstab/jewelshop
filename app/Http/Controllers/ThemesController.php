@@ -6,6 +6,7 @@ use App\VoyagerTheme;
 use App\VoyagerThemeOption;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Http\Controllers\Controller;
 
 class ThemesController extends Controller
@@ -18,6 +19,7 @@ class ThemesController extends Controller
 
     public function index(){
 
+        Voyager::canOrFail('browse_themes');
         // Anytime the admin visits the theme page we will check if we
         // need to add any more themes to the database
         $this->installThemes();
@@ -81,6 +83,8 @@ class ThemesController extends Controller
 
     public function activate($theme_folder){
 
+        Voyager::canOrFail('browse_themes');
+
         $theme = VoyagerTheme::where('folder', '=', $theme_folder)->first();
 
         if(isset($theme->id)){
@@ -106,6 +110,8 @@ class ThemesController extends Controller
 
     public function deactivate($theme_folder){
 
+        Voyager::canOrFail('browse_themes');
+
         $theme = VoyagerTheme::where('folder', '=', $theme_folder)->first();
 
         if(isset($theme->id)){
@@ -130,6 +136,9 @@ class ThemesController extends Controller
     }
 
     public function delete(Request $request){
+
+        Voyager::canOrFail('browse_themes');
+
         $theme = VoyagerTheme::find($request->id);
         if(!isset($theme)){
             return redirect()
@@ -160,6 +169,8 @@ class ThemesController extends Controller
 
     public function options($theme_folder){
 
+        Voyager::canOrFail('browse_themes');
+
         $theme = VoyagerTheme::where('folder', '=', $theme_folder)->first();
 
         if(isset($theme->id)){
@@ -179,6 +190,9 @@ class ThemesController extends Controller
     }
 
     public function options_save(Request $request, $theme_folder){
+
+        Voyager::canOrFail('browse_themes');
+
         $theme = VoyagerTheme::where('folder', '=', $theme_folder)->first();
 
         if(!isset($theme->id)){
