@@ -1,6 +1,6 @@
 @extends('shop.main')
 
-@section('title', '| ' . $page->title)
+@section('title', $page->title)
 
 @section('extra-css')
     <style>
