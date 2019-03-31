@@ -1,5 +1,7 @@
 @extends('shop.main')
 
+@section('title', theme('home_title'))
+
 @section('extra-css')
     <!--owlcarousel-Best Of Our Store and Popular Brands-->
     {{ Html::style('assets/css/owl.theme.default.min.css') }}
@@ -11,7 +13,7 @@
     <style>
         .product-bg {
             padding:73px 15px 60px 15px;
-            background: url("{{ settingsAdminImageExist(setting('site.home_parallax'),"homepage") }}") no-repeat center center fixed;
+            background: url("{{ settingsAdminImageExist(theme('home_parallax'),"homepage") }}") no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -27,7 +29,7 @@
                 <!-- SLIDE  -->
                 <li data-transition="fade" data-slotamount="7" data-masterspeed="100" data-delay="5000" >
                     <!-- MAIN IMAGE -->
-                    <img src="assets/images/slider1.jpg"  alt="slidebg1" data-bgfit="cover" data-bgposition="left center" data-bgrepeat="no-repeat">
+                    <img src="{{ theme('home_slider1') ? Voyager::image(theme('home_slider1')) : secure_asset('assets/images/dummyThemes/home-slider1.jpg') }}"  alt="slidebg1" data-bgfit="cover" data-bgposition="left center" data-bgrepeat="no-repeat">
                     <!-- LAYERS -->
                     <div class="tp-caption huge_red skewfromleft customout"
                          data-x="center"
@@ -47,7 +49,7 @@
                          data-endeasing="Power3.easeInOut"
                          data-captionhidden="on"
                          style="z-index:5"
-                    >Jewellery </div>
+                    >{{ theme('home_slider1_header_big') }} </div>
                     <div class="tp-caption middle_yellow customin customout"
                          data-x="center"
                          data-y="180"
@@ -66,12 +68,12 @@
                          data-endspeed="1500"
                          data-endeasing="Power3.easeInOut"
                          data-captionhidden="on"
-                    >Welcome To Jewellery Store</div>
+                    >{{ theme('home_slider1_header_small') }}</div>
                 </li>
                 <!-- SLIDE -->
                 <li data-transition="fade" data-slotamount="7" data-masterspeed="500" data-delay="5000">
                     <!-- MAIN IMAGE -->
-                    <img src="assets/images/slider2.jpg"  alt="slidebg1" data-bgfit="cover" data-bgposition="left center" data-bgrepeat="no-repeat">
+                    <img src="{{ theme('home_slider2') ? Voyager::image(theme('home_slider2')) : secure_asset('assets/images/dummyThemes/home-slider2.jpg') }}"  alt="slidebg1" data-bgfit="cover" data-bgposition="left center" data-bgrepeat="no-repeat">
                     <!-- LAYERS -->
                     <div class="tp-caption huge_red skewfromrightshort customout"
                          data-x="center"
@@ -93,7 +95,7 @@
                          data-endeasing="Power3.easeInOut"
                          data-captionhidden="on"
                          style="z-index:5"
-                    >Latest jewellery</div>
+                    >{{ theme('home_slider2_header_big') }}</div>
                     <div class="tp-caption middle_yellow customin customout"
                          data-x="center"
                          data-y="180"
@@ -112,12 +114,12 @@
                          data-endspeed="1500"
                          data-endeasing="Power3.easeInOut"
                          data-captionhidden="on"
-                    >Popular Collections</div>
+                    >{{ theme('home_slider2_header_small') }}</div>
                 </li>
                 <!-- SLIDE -->
                 <li data-transition="fade" data-slotamount="7" data-masterspeed="500" data-delay="5000" >
                     <!-- MAIN IMAGE -->
-                    <img src="assets/images/slider3.jpg"  alt="slidebg1" data-bgfit="cover" data-bgposition="left center" data-bgrepeat="no-repeat">
+                    <img src="{{ theme('home_slider3') ? Voyager::image(theme('home_slider3')) : secure_asset('assets/images/dummyThemes/home-slider3.jpg') }}"  alt="slidebg1" data-bgfit="cover" data-bgposition="left center" data-bgrepeat="no-repeat">
                     <!-- LAYERS -->
                     <div class="tp-caption huge_red skewfromrightshort customout"
                          data-x="center"
@@ -137,7 +139,8 @@
                          data-endspeed="1500"
                          data-endeasing="Power3.easeInOut"
                          data-captionhidden="on"
-                         style="z-index:5">Jewelleries</div>
+                         style="z-index:5"
+                    >{{ theme('home_slider3_header_big') }}</div>
                     <div class="tp-caption middle_yellow randomrotate customout tp-resizeme"
                          data-x="center"
                          data-y="180"
@@ -156,7 +159,7 @@
                          data-endspeed="1500"
                          data-endeasing="Power3.easeInOut"
                          data-captionhidden="on"
-                    >Our Specials</div>
+                    >{{ theme('home_slider3_header_small') }}</div>
                 </li>
             </ul>
             <div class="tp-bannertimer"></div>
@@ -211,7 +214,7 @@
                     <div class="col-md-6 col-sm-6 wow fadeInLeft">
                         <a href="{{ route('shop.products.index') }}" class="right-img">
                             <div>
-                                <img src="{{ secure_asset('assets/images/products/1.jpg') }}" class="img-fluid grayscale" alt="" title="">
+                                <img src="{{ theme('home_parallax_image1') ? Voyager::image(theme('home_parallax_image1')) : secure_asset('assets/images/dummyThemes/parallax_left.jpg') }}" class="img-fluid grayscale" alt="" title="">
                             </div>
                         </a>
                         <div class="clearfix"></div>
@@ -219,7 +222,7 @@
                     <div class="col-md-6 col-sm-6 wow fadeInRight">
                         <a href="{{ route('shop.products.index') }}" class="right-img">
                             <div>
-                                <img src="{{ secure_asset('assets/images/products/2.jpg') }}" class="img-fluid grayscale" alt="" title="">
+                                <img src="{{ theme('home_parallax_image2') ? Voyager::image(theme('home_parallax_image2')) : secure_asset('assets/images/dummyThemes/parallax_right.jpg') }}" class="img-fluid grayscale" alt="" title="">
                             </div>
                         </a>
                     </div>
