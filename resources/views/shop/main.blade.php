@@ -11,7 +11,7 @@
         <meta name="author" content="{{ setting('site.title') }}">
         <link rel="shortcut icon" type="image/x-icon" href="{{ secure_asset('storage/'.jsonDecode(setting('site.favicon'))) }}">
 
-        <title>{{ config('app.name', 'JewelShop') }} @yield('title' , '| Home')</title>
+        <title>{{ config('app.name') }} | @yield('title') </title>
         <!--all-->
         {{ Html::style('assets/css/mega-menu.css') }}
         {{ Html::style('assets/css/default.css') }}
