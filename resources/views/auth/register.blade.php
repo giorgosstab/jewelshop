@@ -1,12 +1,12 @@
 @extends('shop.main')
 
-@section('title', '| Sign Up')
+@section('title',  theme('register_title'))
 
 @section('extra-css')
     {!!  GoogleReCaptchaV3::requireJs() !!}
     <style>
         .inner-bg {
-            background: url("{{ settingsAdminImageExist(setting('site.register_parallax'),"register") }}") no-repeat center center fixed;
+            background: url("{{ settingsAdminImageExist(theme('register_parallax'),"register") }}") no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -21,7 +21,7 @@
     <section>
         <div class="inner-bg">
             <div class="inner-head wow fadeInDown">
-                <h3>Sign Up</h3>
+                <h3>{{ theme('register_title') }}</h3>
             </div>
         </div>
     </section>
@@ -35,7 +35,7 @@
                         <ul>
                             <li><a href="{{ route('shop.home.index') }}">HOME</a>
                             <li>/</li>
-                            <li>Sign Up</li>
+                            <li>{{ theme('register_title') }}</li>
                         </ul>
                     </div>
                 </div>

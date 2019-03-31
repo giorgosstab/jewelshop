@@ -1,18 +1,18 @@
 @extends('shop.main')
 
-@section('title', '| Shop')
+@section('title', theme('shop_title'))
 
 @section('extra-css')
     <style>
         .inner-bg1 {
-            background: url("{{ settingsAdminImageExist(setting('site.shop_parallax'),"shop") }}") no-repeat center center fixed;
+            background: url("{{ settingsAdminImageExist(theme('shop_parallax'),"shop") }}") no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
             background-size: cover;
             padding:150px 0
         }
-</style>
+    </style>
 @endsection
 
 @section('content')
@@ -21,7 +21,7 @@
         <section>
             <div class="inner-bg1">
                 <div class="inner-head wow fadeInDown">
-                    <h3>Shop</h3>
+                    <h3>{{ theme('shop_title') }}</h3>
                 </div>
             </div>
         </section>
@@ -32,10 +32,10 @@
                 <div class="col-md-12">
                     <div class="bread2">
                         <ul>
-                            <li><a href="{{ route('shop.home.index') }}">HOME</a></li>
+                            <li><a href="{{ route('shop.home.index') }}">{{ theme('home_title') }}</a></li>
                             <li>/</li>
                             @if(request()->category || request()->categories)
-                                <li><a href="{{ route('shop.products.index') }}">SHOP</a></li>
+                                <li><a href="{{ route('shop.products.index') }}">{{ theme('shop_title') }}</a></li>
                                 <li>/</li>
                                 @if(request()->category)
                                     <li>{{ request()->category }}</li>
@@ -44,7 +44,7 @@
                                     <li>{{ request()->categories }}</li>
                                 @endif
                             @else
-                                <li>SHOP</li>
+                                <li>{{ theme('shop_title') }}</li>
                             @endif
                         </ul>
                     </div>

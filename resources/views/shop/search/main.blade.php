@@ -1,11 +1,11 @@
 @extends('shop.main')
 
-@section('title', '| Search Result')
+@section('title', theme('search_title').' for '. request()->q)
 
 @section('extra-css')
     <style>
-        .inner-bg1 {
-            background: url("{{ settingsAdminImageExist(setting('site.shop_parallax'),"shop") }}") no-repeat center center fixed;
+        .inner-bg3 {
+            background: url("{{ settingsAdminImageExist(theme('search_parallax'),"search") }}") no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -22,7 +22,7 @@
     <section>
         <div class="inner-bg3">
             <div class="inner-head wow fadeInDown">
-                <h3>Search Result</h3>
+                <h3>{{ theme('search_title') }}</h3>
             </div>
         </div>
     </section>
@@ -33,9 +33,9 @@
             <!--breadcrumbs -->
             <div class="bread2">
                 <ul>
-                    <li><a href="{{ route('shop.home.index') }}">HOME</a>
+                    <li><a href="{{ route('shop.home.index') }}">{{ theme('home_title') }}</a>
                     <li>/</li>
-                    <li>search</li>
+                    <li>{{ theme('search_title').' for '. request()->q }}</li>
                 </ul>
             </div>
             <!--breadcrumbs -->

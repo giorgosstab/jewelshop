@@ -1,9 +1,18 @@
 @extends('shop.main')
 
-@section('title', '| Shopping Cart')
+@section('title', theme('cart_title'))
 
 @section('extra-css')
-
+    <style>
+        .inner-bg {
+            background: url("{{ settingsAdminImageExist(theme('cart_parallax'),"cart") }}") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            padding:150px 0
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -11,7 +20,7 @@
     <section>
         <div class="inner-bg">
             <div class="inner-head wow fadeInDown">
-                <h3>Shopping Cart</h3>
+                <h3>{{ theme('cart_title') }}</h3>
                 <h4>
                     <div class="shopping-cart">
                         @if(Cart::count() > 0)
@@ -29,11 +38,11 @@
             <!--breadcrumbs -->
             <div class="bread2">
                 <ul>
-                    <li><a href="{{ route('shop.home.index') }}">HOME</a>
+                    <li><a href="{{ route('shop.home.index') }}">{{ theme('home_title') }}</a>
                     <li>/</li>
-                    <li><a href="{{ route('shop.products.index') }}">SHOP</a></li>
+                    <li><a href="{{ route('shop.products.index') }}">{{ theme('shop_title') }}</a></li>
                     <li>/</li>
-                    <li>Shopping Cart</li>
+                    <li>{{ theme('cart_title') }}</li>
                 </ul>
             </div>
             <!--breadcrumbs -->

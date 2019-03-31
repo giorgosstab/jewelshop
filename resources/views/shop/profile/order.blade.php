@@ -1,11 +1,11 @@
 @extends('shop.main')
 
-@section('title', '| Profile')
+@section('title', theme('order_title'))
 
 @section('extra-css')
     <style>
         .inner-bg1 {
-            background: url("{{ settingsAdminImageExist(setting('site.shop_parallax'),"shop") }}") no-repeat center center fixed;
+            background: url("{{ settingsAdminImageExist(theme('order_parallax'),"order") }}") no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -13,57 +13,8 @@
             padding:150px 0
         }
     </style>
-    <style>
-        /* customer profile*/
-        .customer-profile {
-            text-align: center;
-            background: #f5f5f5;
-            border: 1px solid #e9ecef;
-            border-bottom: none;
-            border-top-left-radius: 1.25rem;
-            border-top-right-radius: 1.25rem;
-            padding: 2rem
-        }
 
-        .customer-image {
-            padding: 0.5rem;
-            background: #dfb859;
-            border: solid 1px rgba(0, 0, 0, 0.125);
-            max-width: 10rem;
-            margin-bottom: 1.5rem
-        }
-
-        .customer-nav .list-group-item {
-            border: 1px solid #e9ecef;
-            color: #495057;
-            font-weight: 500;
-            font-size: 0.9rem
-        }
-
-        .customer-nav .list-group-item:first-child {
-            border-top-left-radius: 0;
-            border-top-right-radius: 0
-        }
-
-        .customer-nav .list-group-item:focus,
-        .customer-nav .list-group-item:hover {
-            background: #dfb859
-        }
-
-        .customer-nav .list-group-item .icon,
-        .customer-nav .list-group-item .fa {
-            margin-right: 0.5rem
-        }
-
-        .customer-nav .list-group-item.active {
-            background: #dfb859;
-            border-color: #dfb859;
-            color: #fff
-        }
-        .customer-nav .list-group-item .badge-pill {
-             background: #4c4c4c;
-        }
-    </style>
+    {{ Html::style('assets/css/profile-order.css') }}
     {{ Html::style('https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css') }}
 @endsection
 
@@ -73,7 +24,7 @@
         <section>
             <div class="inner-bg1">
                 <div class="inner-head wow fadeInDown">
-                    <h3>Order #1735</h3><br>
+                    <h3>{{ theme('order_title') }} #{{ $order->id }}</h3><br>
                 </div>
             </div>
         </section>
@@ -84,11 +35,11 @@
                 <div class="col-md-12">
                     <div class="bread2">
                         <ul>
-                            <li><a href="{{ route('shop.home.index') }}">HOME</a></li>
+                            <li><a href="{{ route('shop.home.index') }}">{{ theme('home_title') }}</a></li>
                             <li>/</li>
-                            <li><a href="{{ route('shop.profile.index') }}#order-tab">ORDERS</a></li>
+                            <li><a href="{{ route('shop.profile.index') }}#order-tab">{{ theme('order_title') }}</a></li>
                             <li>/</li>
-                            <li>ORDER #1735</li>
+                            <li>{{ theme('order_title') }} #{{ $order->id }}</li>
                         </ul>
                     </div>
                 </div>

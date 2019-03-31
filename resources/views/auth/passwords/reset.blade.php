@@ -1,11 +1,11 @@
 @extends('shop.main')
 
-@section('title', '| New Password')
+@section('title',  theme('reset_title'))
 
 @section('extra-css')
     <style>
         .inner-bg {
-            background: url("{{ settingsAdminImageExist(setting('site.reset-new_parallax'),"reset_password") }}") no-repeat center center fixed;
+            background: url("{{ settingsAdminImageExist(theme('reset_parallax'),"reset_password") }}") no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -20,7 +20,7 @@
     <section>
         <div class="inner-bg">
             <div class="inner-head wow fadeInDown">
-                <h3>New Password</h3>
+                <h3>{{ theme('reset_title') }}</h3>
             </div>
         </div>
     </section>
@@ -33,7 +33,7 @@
                     <ul>
                         <li><a href="{{ route('shop.home.index') }}">HOME</a>
                         <li>/</li>
-                        <li>New Password</li>
+                        <li>{{ theme('reset_title') }}</li>
                     </ul>
                 </div>
             </div>

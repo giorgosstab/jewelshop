@@ -1,11 +1,11 @@
 @extends('shop.main')
 
-@section('title', '| Resend Activation')
+@section('title', theme('resend_title'))
 
 @section('extra-css')
     <style>
         .inner-bg {
-            background: url("{{ settingsAdminImageExist(setting('site.resend-code_parallax'),"resend_activation") }}") no-repeat center center fixed;
+            background: url("{{ settingsAdminImageExist(theme('resend_parallax'),"resend_activation") }}") no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -20,7 +20,7 @@
     <section>
         <div class="inner-bg">
             <div class="inner-head wow fadeInDown">
-                <h3>Resend Activation</h3>
+                <h3>{{ theme('resend_title') }}</h3>
             </div>
         </div>
     </section>
@@ -33,7 +33,7 @@
                     <ul>
                         <li><a href="{{ route('shop.home.index') }}">HOME</a>
                         <li>/</li>
-                        <li>Resend Activation</li>
+                        <li>{{ theme('resend_title') }}</li>
                     </ul>
                 </div>
             </div>

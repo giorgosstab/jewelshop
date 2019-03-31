@@ -1,12 +1,12 @@
 @extends('shop.main')
 
-@section('title', '| Contact Us')
+@section('title', theme('contact_title'))
 
 @section('extra-css')
     {!!  GoogleReCaptchaV3::requireJs() !!}
     <style>
         .inner-bg3 {
-            background: url("{{ settingsAdminImageExist(setting('site.contact_parallax'),"contact") }}") no-repeat center center fixed;
+            background: url("{{ settingsAdminImageExist(theme('contact_parallax'),"contact") }}") no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -21,7 +21,7 @@
     <section>
         <div class="inner-bg3">
             <div class="inner-head wow fadeInDown">
-                <h3>Contact Us</h3>
+                <h3>{{ theme('contact_title') }}</h3>
             </div>
         </div>
     </section>
@@ -32,9 +32,9 @@
             <!--breadcrumbs -->
             <div class="bread2">
                 <ul>
-                    <li><a href="{{ route('shop.home.index') }}">HOME</a>
+                    <li><a href="{{ route('shop.home.index') }}">{{ theme('home_title') }}</a>
                     <li>/</li>
-                    <li>CONTACT US</li>
+                    <li>{{ theme('contact_title') }}</li>
                 </ul>
             </div>
             <!--breadcrumbs -->

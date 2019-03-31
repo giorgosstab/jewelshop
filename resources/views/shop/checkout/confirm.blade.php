@@ -1,9 +1,18 @@
 @extends('shop.main')
 
-@section('title', '| Thank You')
+@section('title', 'Thank You')
 
 @section('extra-css')
-
+    <style>
+        .inner-bg {
+            background: url("{{ settingsAdminImageExist(theme('checkout_parallax'),"checkout") }}") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            padding:150px 0
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -22,9 +31,9 @@
             <div>
                 <div class="bread2">
                     <ul>
-                        <li><a href="{{ route('shop.home.index') }}">HOME</a>
+                        <li><a href="{{ route('shop.home.index') }}">{{ theme('home_title') }}</a>
                         <li>/</li>
-                        <li><a href="{{ route('shop.products.index') }}">SHOP</a></li>
+                        <li><a href="{{ route('shop.products.index') }}">{{ theme('shop_title') }}</a></li>
                         <li>/</li>
                         <li>Thank you</li>
                     </ul>

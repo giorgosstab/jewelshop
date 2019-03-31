@@ -31,31 +31,52 @@ function brandImage($path) {
 
 function settingsAdminImageExist($path, $page) {
     if($page === "homepage"){
-        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/bg-img.jpg');
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/dummyThemes/bg-img.jpg');
     }
     if($page === "aboutUs"){
-        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/bg1.jpg');
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/dummyThemes/bg1.jpg');
     }
     if($page === "shop"){
-        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/bg1.jpg');
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/dummyThemes/bg1.jpg');
+    }
+    if($page === "search"){
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/dummyThemes/bg1.jpg');
+    }
+    if($page === "shop_details"){
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/dummyThemes/bg3.jpg');
+    }
+    if($page === "cart"){
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/dummyThemes/bg1.jpg');
+    }
+    if($page === "checkout"){
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/dummyThemes/bg1.jpg');
+    }
+    if($page === "order"){
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/dummyThemes/bg1.jpg');
+    }
+    if($page === "profile"){
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/dummyThemes/blog-top.jpg');
     }
     if($page === "blog"){
-        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/blog-top.jpg');
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/dummyThemes/blog-top.jpg');
+    }
+    if($page === "blog_details"){
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/dummyThemes/blog-top.jpg');
     }
     if($page === "contact"){
-        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/bg3.jpg');
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/dummyThemes/bg3.jpg');
     }
     if($page === "register"){
-        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/bg3.jpg');
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/dummyThemes/register.jpg');
     }
     if($page === "login"){
-        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/bg1.jpg');
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/dummyThemes/login.jpg');
     }
     if($page === "reset_password"){
-        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/blog-top.jpg');
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/dummyThemes/reset.jpg');
     }
     if($page === "resend_activation"){
-        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/blog-top.jpg');
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/dummyThemes/reset.jpg');
     }
     if($page === "logo"){
         return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/logo.png');

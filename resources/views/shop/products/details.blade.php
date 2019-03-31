@@ -1,12 +1,22 @@
 @extends('shop.main')
 
-@section('title', '| ' . $product->name)
+@section('title', $product->name)
 
 @section('extra-css')
     {{ Html::style('assets/css/xzoom.css') }}
     {{ Html::script('assets/js/jquery2.js') }}
     {{ Html::script('assets/js/xzoom.min.js') }}
     {{ Html::script('assets/js/setup.js') }}
+    <style>
+        .inner-bg {
+            background: url("{{ settingsAdminImageExist(theme('shop_details_parallax'),"shop_details") }}") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            padding:150px 0
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -28,9 +38,9 @@
                         <!--breadcrumbs -->
                         <div class="bread2">
                             <ul>
-                                <li><a href="{{ route('shop.home.index') }}">HOME</a></li>
+                                <li><a href="{{ route('shop.home.index') }}">{{ theme('home_title') }}</a></li>
                                 <li>/</li>
-                                <li><a href="{{ route('shop.products.index') }}">SHOP</a></li>
+                                <li><a href="{{ route('shop.products.index') }}">{{ theme('shop_title') }}</a></li>
                                 <li>/</li>
                                 <li>{{ $product->name }}</li>
                             </ul>

@@ -1,11 +1,11 @@
 @extends('shop.main')
 
-@section('title', '| Blog')
+@section('title', theme('blog_title'))
 
 @section('extra-css')
     <style>
         .blog {
-            background: url("{{ settingsAdminImageExist(setting('site.blog_parallax'),"blog") }}") no-repeat center top fixed;
+            background: url("{{ settingsAdminImageExist(theme('blog_parallax'),"blog") }}") no-repeat center top fixed;
             padding:150px 0
         }
     </style>
@@ -16,7 +16,7 @@
     <section>
         <div class="blog">
             <div class="inner-head wow fadeInDown">
-                <h3>blog</h3>
+                <h3>{{ theme('blog_title') }}</h3>
             </div>
         </div>
     </section>
@@ -27,9 +27,9 @@
                 <!--breadcrumbs -->
                 <div class="bread2">
                     <ul>
-                        <li><a href="{{ route('shop.home.index') }}">HOME</a>
+                        <li><a href="{{ route('shop.home.index') }}">{{ theme('home_title') }}</a>
                         <li>/</li>
-                        <li>BLOG</li>
+                        <li>{{ theme('blog_title') }}</li>
                     </ul>
                 </div>
                 <!--breadcrumbs -->
