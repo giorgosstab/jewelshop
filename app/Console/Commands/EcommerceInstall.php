@@ -59,6 +59,8 @@ class EcommerceInstall extends Command
         File::deleteDirectory(public_path('storage/payments/dummy'));
         File::deleteDirectory(public_path('storage/custom-pages/dummy'));
         File::deleteDirectory(public_path('storage/custom-posts/dummy'));
+        File::deleteDirectory(public_path('storage/blog-posts/dummy'));
+        File::deleteDirectory(public_path('storage/themes/dummy'));
         $this->callSilent('storage:link');
 
         $copySuccess = File::copyDirectory(public_path('assets/images/dummySettings'), public_path('storage/settings/dummy'));
@@ -89,9 +91,13 @@ class EcommerceInstall extends Command
         if($copySuccess){
             $this->info('Image Custom Pages copied successfully on storage folder.');
         }
-        $copySuccess = File::copyDirectory(public_path('assets/images/dummyBlogPosts'), public_path('storage/BLOG-posts/dummy'));
+        $copySuccess = File::copyDirectory(public_path('assets/images/dummyBlogPosts'), public_path('storage/blog-posts/dummy'));
         if($copySuccess){
             $this->info('Image Blog Posts copied successfully on storage folder.');
+        }
+        $copySuccess = File::copyDirectory(public_path('assets/images/dummyThemes'), public_path('storage/themes/dummy'));
+        if($copySuccess){
+            $this->info('Image Themes copied successfully on storage folder.');
         }
 
         $this->call('migrate:fresh', [
