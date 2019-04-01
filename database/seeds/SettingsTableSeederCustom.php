@@ -125,94 +125,94 @@ class SettingsTableSeederCustom extends Seeder
                 'group'        => 'Site',
             ])->save();
         }
-        $setting = $this->findSetting('site.home_parallax');
-        if (!$setting->exists) {
-            $setting->fill([
-                'display_name' => 'Home Page Parallax',
-                'value'        => 'settings\dummy\home.jpg',
-                'details'      => '',
-                'type'         => 'image',
-                'order'        => 11,
-                'group'        => 'Site',
-            ])->save();
-        }
-        $setting = $this->findSetting('site.about_parallax');
-        if (!$setting->exists) {
-            $setting->fill([
-                'display_name' => 'About US Page Parallax',
-                'value'        => 'settings\dummy\about.jpg',
-                'details'      => '',
-                'type'         => 'image',
-                'order'        => 12,
-                'group'        => 'Site',
-            ])->save();
-        }
-        $setting = $this->findSetting('site.shop_parallax');
-        if (!$setting->exists) {
-            $setting->fill([
-                'display_name' => 'Shop Page Parallax',
-                'value'        => 'settings\dummy\shop.jpg',
-                'details'      => '',
-                'type'         => 'image',
-                'order'        => 13,
-                'group'        => 'Site',
-            ])->save();
-        }
-        $setting = $this->findSetting('site.blog_parallax');
-        if (!$setting->exists) {
-            $setting->fill([
-                'display_name' => 'Blog Page Parallax',
-                'value'        => 'settings\dummy\blog.jpg',
-                'details'      => '',
-                'type'         => 'image',
-                'order'        => 14,
-                'group'        => 'Site',
-            ])->save();
-        }
-        $setting = $this->findSetting('site.register_parallax');
-        if (!$setting->exists) {
-            $setting->fill([
-                'display_name' => 'Register Parallax',
-                'value'        => 'settings\dummy\register.jpg',
-                'details'      => '',
-                'type'         => 'image',
-                'order'        => 15,
-                'group'        => 'Site',
-            ])->save();
-        }
-        $setting = $this->findSetting('site.login_parallax');
-        if (!$setting->exists) {
-            $setting->fill([
-                'display_name' => 'Login Parallax',
-                'value'        => 'settings\dummy\login.jpg',
-                'details'      => '',
-                'type'         => 'image',
-                'order'        => 16,
-                'group'        => 'Site',
-            ])->save();
-        }
-        $setting = $this->findSetting('site.reset-new_parallax');
-        if (!$setting->exists) {
-            $setting->fill([
-                'display_name' => 'Reset Password - New Password Parallax',
-                'value'        => 'settings\dummy\reset.jpg',
-                'details'      => '',
-                'type'         => 'image',
-                'order'        => 17,
-                'group'        => 'Site',
-            ])->save();
-        }
-        $setting = $this->findSetting('site.resend-code_parallax');
-        if (!$setting->exists) {
-            $setting->fill([
-                'display_name' => 'Resend Activation Code Parallax',
-                'value'        => 'settings\dummy\resend.jpg',
-                'details'      => '',
-                'type'         => 'image',
-                'order'        => 18,
-                'group'        => 'Site',
-            ])->save();
-        }
+//        $setting = $this->findSetting('site.home_parallax');
+//        if (!$setting->exists) {
+//            $setting->fill([
+//                'display_name' => 'Home Page Parallax',
+//                'value'        => 'settings\dummy\home.jpg',
+//                'details'      => '',
+//                'type'         => 'image',
+//                'order'        => 11,
+//                'group'        => 'Site',
+//            ])->save();
+//        }
+//        $setting = $this->findSetting('site.about_parallax');
+//        if (!$setting->exists) {
+//            $setting->fill([
+//                'display_name' => 'About US Page Parallax',
+//                'value'        => 'settings\dummy\about.jpg',
+//                'details'      => '',
+//                'type'         => 'image',
+//                'order'        => 12,
+//                'group'        => 'Site',
+//            ])->save();
+//        }
+//        $setting = $this->findSetting('site.shop_parallax');
+//        if (!$setting->exists) {
+//            $setting->fill([
+//                'display_name' => 'Shop Page Parallax',
+//                'value'        => 'settings\dummy\shop.jpg',
+//                'details'      => '',
+//                'type'         => 'image',
+//                'order'        => 13,
+//                'group'        => 'Site',
+//            ])->save();
+//        }
+//        $setting = $this->findSetting('site.blog_parallax');
+//        if (!$setting->exists) {
+//            $setting->fill([
+//                'display_name' => 'Blog Page Parallax',
+//                'value'        => 'settings\dummy\blog.jpg',
+//                'details'      => '',
+//                'type'         => 'image',
+//                'order'        => 14,
+//                'group'        => 'Site',
+//            ])->save();
+//        }
+//        $setting = $this->findSetting('site.register_parallax');
+//        if (!$setting->exists) {
+//            $setting->fill([
+//                'display_name' => 'Register Parallax',
+//                'value'        => 'settings\dummy\register.jpg',
+//                'details'      => '',
+//                'type'         => 'image',
+//                'order'        => 15,
+//                'group'        => 'Site',
+//            ])->save();
+//        }
+//        $setting = $this->findSetting('site.login_parallax');
+//        if (!$setting->exists) {
+//            $setting->fill([
+//                'display_name' => 'Login Parallax',
+//                'value'        => 'settings\dummy\login.jpg',
+//                'details'      => '',
+//                'type'         => 'image',
+//                'order'        => 16,
+//                'group'        => 'Site',
+//            ])->save();
+//        }
+//        $setting = $this->findSetting('site.reset-new_parallax');
+//        if (!$setting->exists) {
+//            $setting->fill([
+//                'display_name' => 'Reset Password - New Password Parallax',
+//                'value'        => 'settings\dummy\reset.jpg',
+//                'details'      => '',
+//                'type'         => 'image',
+//                'order'        => 17,
+//                'group'        => 'Site',
+//            ])->save();
+//        }
+//        $setting = $this->findSetting('site.resend-code_parallax');
+//        if (!$setting->exists) {
+//            $setting->fill([
+//                'display_name' => 'Resend Activation Code Parallax',
+//                'value'        => 'settings\dummy\resend.jpg',
+//                'details'      => '',
+//                'type'         => 'image',
+//                'order'        => 18,
+//                'group'        => 'Site',
+//            ])->save();
+//        }
         $setting = $this->findSetting('site.stock_threshold');
         if (!$setting->exists) {
             $setting->fill([
@@ -220,7 +220,7 @@ class SettingsTableSeederCustom extends Seeder
                 'value'        => '5',
                 'details'      => '',
                 'type'         => 'text',
-                'order'        => 19,
+                'order'        => 11,
                 'group'        => 'Site',
             ])->save();
         }
