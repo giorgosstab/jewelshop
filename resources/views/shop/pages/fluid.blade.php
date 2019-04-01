@@ -12,6 +12,9 @@
             background-size: cover;
             padding:150px 0
         }
+        .product-bg {
+            background: url({{secure_asset('assets/images/dummyThemes/bg-img.jpg')}}) no-repeat center center fixed;
+        }
     </style>
     {!! $page->extra_css_top !!}
 @endsection
