@@ -185,7 +185,7 @@
                                     <div class="col-lg-12 padd0">
                                         <div class="product-hover">
                                             <div>
-                                                {!! Form::open(array('route'=>'shop.shopping-cart.store','method' => 'POST','id' => 'addToCart'.$product->id)) !!}
+                                                {!! Form::open(array('route'=>'shop.shopping-cart.addToCart','method' => 'POST','id' => 'addToCart'.$product->id)) !!}
                                                     {{ csrf_field() }}
                                                     {{ Form::hidden('id', $product->id) }}
                                                     {{ Form::hidden('name', $product->name) }}

@@ -19,6 +19,7 @@ Route::get('/shop/{product}','ShopController@show')->name('shop.products.show');
 
 Route::get('/cart','CartController@index')->name('shop.shopping-cart.index');
 Route::post('/cart','CartController@store')->name('shop.shopping-cart.store');
+Route::post('/shop','CartController@addToCart')->name('shop.shopping-cart.addToCart');
 Route::delete('/cart/{product}','CartController@destroy')->name('shop.shopping-cart.destroy');
 Route::patch('/cart/{product}','CartController@update')->name('shop.shopping-cart.update');
 Route::post('/cart/saveForLater/{product}','CartController@saveForLater')->name('shop.shopping-cart.saveForLater');
