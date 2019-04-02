@@ -79,21 +79,25 @@ Route::get('emptySaves', function(){
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 
-    Route::get('themes', ['uses' => 'ThemesController@index', 'as' => 'theme.index']);
-    Route::get('themes/activate/{theme}', ['uses' => 'ThemesController@activate', 'as' => 'theme.activate']);
-    Route::get('themes/deactivate/{theme}', ['uses' => 'ThemesController@deactivate', 'as' => 'theme.deactivate']);
-    Route::get('themes/options/{theme}', ['uses' => 'ThemesController@options', 'as' => 'theme.options']);
-    Route::post('themes/options/{theme}', ['uses' => 'ThemesController@options_save', 'as' => 'theme.options.post']);
-    Route::get('themes/options', function () {
-        return redirect(route('theme.index'));
+
+    Route::group(['middleware' => 'admin.user'], function () {
+        Route::get('themes', ['uses' => 'ThemesController@index', 'as' => 'theme.index']);
+        Route::get('themes/activate/{theme}', ['uses' => 'ThemesController@activate', 'as' => 'theme.activate']);
+        Route::get('themes/deactivate/{theme}', ['uses' => 'ThemesController@deactivate', 'as' => 'theme.deactivate']);
+        Route::get('themes/options/{theme}', ['uses' => 'ThemesController@options', 'as' => 'theme.options']);
+        Route::post('themes/options/{theme}', ['uses' => 'ThemesController@options_save', 'as' => 'theme.options.post']);
+        Route::get('themes/options', function () {
+            return redirect(route('theme.index'));
+        });
+        Route::get('themes/activate', function () {
+            return redirect(route('theme.index'));
+        });
+        Route::get('themes/deactivate', function () {
+            return redirect(route('theme.index'));
+        });
+        Route::delete('themes/delete', ['uses' => 'ThemesController@delete', 'as' => 'theme.delete']);
     });
-    Route::get('themes/activate', function () {
-        return redirect(route('theme.index'));
-    });
-    Route::get('themes/deactivate', function () {
-        return redirect(route('theme.index'));
-    });
-    Route::delete('themes/delete', ['uses' => 'ThemesController@delete', 'as' => 'theme.delete']);
+
 
     // Menu Routes
     Route::group([
