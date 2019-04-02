@@ -52,12 +52,12 @@ class CustomPageTableSeeder extends Seeder
                                     <div class="img-div3">
                                         <div class="row">
                                             <div class="col-md-6 col-sm-6 wow fadeInLeft"> <a href="product.html" class="right-img">
-                                                    <div><img  src="assets/images/products/2.jpg" class="img-fluid grayscale" alt="" title=""></div>
+                                                    <div><img  src="assets/images/dummyThemes/parallax_right.jpg" class="img-fluid grayscale" alt="" title=""></div>
                                                 </a>
                                                 <div class="clearfix"></div>
                                             </div>
                                             <div class="col-md-6 col-sm-6 wow fadeInRight"> <a href="product.html" class="right-img">
-                                                    <div><img  src="assets/images/products/1.jpg" class="img-fluid grayscale" alt="" title=""></div>
+                                                    <div><img  src="assets/images/dummyThemes/parallax_left.jpg" class="img-fluid grayscale" alt="" title=""></div>
                                                 </a> </div>
                                         </div>
                                         <div class="clearfix"></div>
