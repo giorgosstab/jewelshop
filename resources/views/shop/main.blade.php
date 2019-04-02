@@ -42,9 +42,93 @@
             {{--.instaimg img:hover{--}}
                 {{--opacity:0.4;--}}
                 {{----moz-opacity:0.4;--}}
+                {{----moz-opacity:0.4;--}}
                 {{----webkit-opacity:0.4;--}}
             {{--}--}}
         {{--</style>--}}
+        {!! theme('top_navbar_color') ? '<style>.top-bar {background:'.theme('top_navbar_color'). '!important;}</style>' : ''!!}
+        {!! theme('middle_navbar_color') ? '<style>.top-bar1 ul{display: flex !important}.top-bar1 ul>li, .top-bar1, .top-bar2{background:'.theme('middle_navbar_color'). '!important;}</style>' : ''!!}
+        {!! theme('bottom_navbar_color') ? '<style>.navbar-fixed-top2 {padding:0;background:'.theme('bottom_navbar_color'). '!important;}</style>' : ''!!}
+        {!! theme('main_color') ?
+            '<style>
+                .cart-btn a.button.adc:before {background:'.theme('main_color').';}
+                .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+		            background:'.theme('main_color').'!important;
+                }
+                .navbar-light .navbar-nav .nav-link:hover {background:'.theme('main_color').'!important;}
+                .opacitybox > div {border: 1px solid '.theme('main_color').'!important;}
+                .tp-caption.middle_yellow {color: '.theme('main_color').'!important;}
+                .View-all a{background:'.theme('main_color').';}
+                .right-img img { border: solid 8px '.theme('main_color').';}
+                .title-heading, .title-heading h3 { border: 2px solid '.theme('main_color').'; !important}
+                .owl-next {background: url('.secure_asset('assets/js/carousel/owlcarousel/assets/next.png').') no-repeat center center '.theme('main_color').'!important;}
+                .owl-prev {background: url('.secure_asset('assets/js/carousel/owlcarousel/assets/prev.png').') no-repeat center center '.theme('main_color').'!important;}
+                .price{color: '.theme('main_color').'!important}
+                .our-store:hover {background:'.theme('main_color').'!important; opacity:0.9;}
+                .owl-item-boder {border: solid 1px '.theme('main_color').'!important}
+                .category-in li h2 {background: '.theme('main_color').'!important}
+                .zoom-hover .glyphicon-search {color:'.theme('main_color').'!important}
+                .carousel-control {color: '.theme('main_color').'!important}
+                figure.effect-apollo p{border-right:4px solid '.theme('main_color').'!important}
+                .newsletter .container {background: '.theme('main_color').' none repeat scroll 0 0;}
+                .footer-address ul li .fa {color: '.theme('main_color').'!important}
+                .copyright a {color: '.theme('main_color').'!important}
+                .specific-content h5 {color: '.theme('main_color').'!important}
+                .clients-name {color: '.theme('main_color').'!important}
+                .breadcrumbs li .active {border-bottom: solid 2px '.theme('main_color').'!important;}
+                .breadcrumbs li a:hover {border-bottom:solid 2px '.theme('main_color').'!important}
+                .breadcrumbs li a:focus {border-bottom:solid 2px '.theme('main_color').'!important}
+                .pagination span {color: '.theme('main_color').'!important}
+                .filter2 {background: '.theme('main_color').'}
+                .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+                    border: 1px solid '.theme('main_color').'!important;
+	                background: '.theme('main_color').'!important;
+                }
+                .name-pro span {color: '.theme('main_color').'!important}
+                .product-hover div {border: 1px solid '.theme('main_color').'!important;}
+                .rate-css span {color: '.theme('main_color').'!important;}
+                .AlsoLike-border:hover {outline: solid 3px '.theme('main_color').'!important;}
+                .share2 a:hover {color: '.theme('main_color').'!important;}
+                .posts-arrow a {background: '.theme('main_color').';}
+                .blog-right h4 a:hover { color:'.theme('main_color').'!important;}
+                .cat-list li a:hover { color:'.theme('main_color').'!important;}
+                .tag-list li a {background: '.theme('main_color').';}
+                .continue2 {border-bottom: 3px solid '.theme('main_color').';}
+                .continue2:hover {background: '.theme('main_color').';border-bottom:3px solid '.theme('main_color').';}
+                .list-div li span {color: '.theme('main_color').'!important;}
+                .price-2 li span {color: '.theme('main_color').'!important;}
+                .price-2 a:hover {color:'.theme('main_color').'!important;}
+                .product-info h6 span {color:'.theme('main_color').'!important;}
+                .dropdown-item.active, .dropdown-item:active {background-color:'.theme('main_color').'!important;}
+                .dropdown-item:focus, .dropdown-item:hover {background-color:'.theme('main_color').'!important;}
+                .bread2 li a:hover {color:'.theme('main_color').'!important;}
+                .navbar .dropdown-menu.mega-menu .sub-menu a.menu-item:hover {
+                    color: '.theme('main_color').' !important;
+                }
+                .submit-css {border:solid 2px '.theme('main_color').' !important;}
+                .check-ct { background:'.theme('main_color').';}
+                .product-name a:hover {color: '.theme('main_color').' !important;}
+                .remove-css a:hover { color:'.theme('main_color').' !important;;}
+                .cost {background:'.theme('main_color').';}
+                .secure a {background:'.theme('main_color').';}
+                .apply:hover {background:'.theme('main_color').';}
+                .scrollbar-ripe-malinka::-webkit-scrollbar-thumb {
+                    background-image: -webkit-linear-gradient(330deg, '.theme('main_color').' 0%, #5f5f5f 100%);
+                    background-image: linear-gradient(120deg, '.theme('main_color').' 0%, #5f5f5f 100%);
+                }
+                .cart-btn .badge { background: '.theme('main_color').'}
+                .badge-count { background: '.theme('main_color').'}
+                .rate-css2 {background: '.theme('main_color').'}
+                .panel-border-circle a{background: '.theme('main_color').';border-color:rgba(0,0,0, 0.3);}
+                .ship2 a {color: '.theme('main_color').' !important;}
+                .buy-this button {border: solid 2px '.theme('main_color').';}
+                .customer-image {background: '.theme('main_color').'}
+                .customer-nav .list-group-item.active {background: '.theme('main_color').';border-color: '.theme('main_color').';}
+                .customer-nav .list-group-item:hover, .customer-nav .list-group-item:focus {background: '.theme('main_color').';border-color: '.theme('main_color').';}
+                .thanks-text a {border: solid 2px '.theme('main_color').';}
+                .button-1 {background: '.theme('main_color').'}
+                .tab-pane h3 a span.contact {color: '.theme('main_color').' !important;}
+            </style>' : ''!!}
     </head>
     <body class="top-body">
         <div id="preloader"></div>

@@ -114,6 +114,9 @@
     <li>
         <a data-toggle="tab" href="#order" aria-expanded="false">Order</a>
     </li>
+    <li>
+        <a data-toggle="tab" href="#color" aria-expanded="false">Colors</a>
+    </li>
 </ul>
 <div class="tab-content">
     <div id="home" class="tab-pane fade active in">
@@ -184,6 +187,12 @@
     <div id="order" class="tab-pane fade">
         {!! theme_field('text', 'order_title', 'Order Title', '', '{}', 'Add the SEO title for your Order page') !!}
         {!! theme_field('image', 'order_parallax', 'Order Page Parallax') !!}
+    </div>
+    <div id="color" class="tab-pane fade">
+        {!! theme_field('color', 'top_navbar_color', 'Top Navbar Color') !!}
+        {!! theme_field('color', 'middle_navbar_color', 'Middle Navbar Color') !!}
+        {!! theme_field('color', 'bottom_navbar_color', 'Bottom Navbar Color') !!}
+        {!! theme_field('color', 'main_color', 'Main Color') !!}
     </div>
 </div>
 
