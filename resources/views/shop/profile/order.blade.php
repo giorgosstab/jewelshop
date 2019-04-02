@@ -76,7 +76,7 @@
                             <div class="col-md-12">
                                 <div class="tab-pane fade show active" id="profile-tab">
                                     <p><h2>Order #{{ $order->id }} was placed on {{ $order->created_at->format('d/m/Y') }} and is currently Being prepared.</h2></p>
-                                    <p><h3>If you have any questions, please feel free to <a style="color: #dfb859" href="{{ route('shop.contact.index') }}">contact us</a>, our customer service center is working for you 24/7.</h3></p>
+                                    <p><h3>If you have any questions, please feel free to <a style="color: #dfb859" href="{{ route('shop.contact.index') }}"><span class="contact">contact us</span></a>, our customer service center is working for you 24/7.</h3></p>
                                     <div class="clearfix"> </div><br>
                                     <div class="collapse-group">
                                         <div class="panel panel-default">
