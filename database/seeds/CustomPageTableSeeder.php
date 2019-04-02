@@ -86,7 +86,7 @@ class CustomPageTableSeeder extends Seeder
                                                             <div class="row">
                                                                 <div class="col-sm-9 col-center text-center"> <img class="img-circle"  src="assets/images/testimonial-be.jpg" alt="" title=""> </div>
                                                                 <div class="col-sm-9 col-center">
-                                                                    <div class="clients text-center"><img  src="assets/images/coma.jpg" class="coma1" alt="" title=""> Lorem Ipsum ist ein einfacher Demo-Text für die Print- und Schriftindustrie. Lorem Ipsum ist in der Industrie bereits der Standard Demo-Text seit 1500, als ein unbekannter Schriftsteller <img  src="assets/images/coma2.jpg" class="coma12" alt="" title=""></div>
+                                                                    <div class="clients text-center"><img  src="assets/images/coma.png" class="coma1" alt="" title=""> Lorem Ipsum ist ein einfacher Demo-Text für die Print- und Schriftindustrie. Lorem Ipsum ist in der Industrie bereits der Standard Demo-Text seit 1500, als ein unbekannter Schriftsteller <img  src="assets/images/coma2.png" class="coma12" alt="" title=""></div>
                                                                     <p class="clients-name">- Clients name - </p>
                                                                 </div>
                                                             </div>
@@ -96,7 +96,7 @@ class CustomPageTableSeeder extends Seeder
                                                             <div class="row">
                                                                 <div class="col-sm-9 col-center text-center"> <img class="img-circle"  src="assets/images/testimonial-be2.jpg" alt="" title=""> </div>
                                                                 <div class="col-sm-9 col-center">
-                                                                    <div class="clients text-center"><img  src="assets/images/coma.jpg" class="coma1" alt="" title=""> Lorem Ipsum ist ein einfacher Demo-Text für die Print- und Schriftindustrie. Lorem Ipsum ist in der Industrie bereits der Standard Demo-Text seit 1500, als ein unbekannter Schriftsteller <img  src="assets/images/coma2.jpg" class="coma12" alt="" title=""></div>
+                                                                    <div class="clients text-center"><img  src="assets/images/coma.png" class="coma1" alt="" title=""> Lorem Ipsum ist ein einfacher Demo-Text für die Print- und Schriftindustrie. Lorem Ipsum ist in der Industrie bereits der Standard Demo-Text seit 1500, als ein unbekannter Schriftsteller <img  src="assets/images/coma2.png" class="coma12" alt="" title=""></div>
                                                                     <p class="clients-name"> - Clients name - </p>
                                                                 </div>
                                                             </div>
