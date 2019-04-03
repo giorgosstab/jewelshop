@@ -97,17 +97,45 @@
                                     <div class="xzoom-container">
                                         <img class="xzoom" id="xzoom-default" src="{{ productImage($product->image) }}" xoriginal="{{ productImage($product->image) }}"  />
                                         <div class="xzoom-thumbs">
-                                            @if($product->images && $product->images!=="[]")
-                                                <a href="{{ productImage($product->image) }}">
-                                                    <img class="xzoom-gallery" width="80" src="{{ productImage($product->image) }}"  xpreview="{{ productImage($product->image) }}" title="">
-                                                </a>
-                                                @foreach(json_decode($product->images, true) as $images)
-                                                    <a href="{{ productImage($images) }}">
-                                                        <img class="xzoom-gallery" width="80" src="{{ productImage($images) }}"  xpreview="{{ productImage($images) }}" title="">
-                                                    </a>
-                                                @endforeach
-                                            @endif
+                                            <?php
+                                                $images = collect([]);
+                                                if($product->images && $product->images!=="[]"){
+                                                    foreach(json_decode($product->images, true) as $img){
+                                                        $images->push($img);
+                                                    }
+                                                }
+                                            ?>
                                             {!! $stockLevel !!}
+                                            <div class="clearfix"> </div><br>
+                                            @if($product->images && $product->images!=="[]")
+                                                <div class="older-posts wow fadeInDown">
+                                                    <div id="myCarousel" class="carousel slide">
+                                                        <!-- Carousel items -->
+                                                        <div class="posts-arrow">
+                                                            <a class="" href="#myCarousel" data-slide="prev">‹</a>
+                                                            <a class="" href="#myCarousel" data-slide="next">›</a>
+                                                        </div>
+                                                        <div class="carousel-inner">
+                                                            @foreach($images->chunk(5) as $chunk)
+                                                                <div class="carousel-item {{ $loop->first ? "active" : "" }}">
+                                                                    <div class="row">
+                                                                        @if($loop->first)
+                                                                            <a href="{{ productImage($product->image) }}">
+                                                                                <img class="xzoom-gallery" width="80" src="{{ productImage($product->image) }}"  xpreview="{{ productImage($product->image) }}" title="">
+                                                                            </a>
+                                                                        @endif
+                                                                        @foreach($chunk as $image)
+                                                                            <a href="{{ productImage($image) }}">
+                                                                                <img class="xzoom-gallery" width="80" src="{{ productImage($image) }}"  xpreview="{{ productImage($image) }}" title="">
+                                                                            </a>
+                                                                        @endforeach
+                                                                    </div>
+                                                                </div>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
