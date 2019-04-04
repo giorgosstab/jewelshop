@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UpdateProfileAddressesRequest;
 use App\Http\Requests\UpdateProfileDetailsRequest;
 use App\Http\Requests\UpdateProfilePasswordRequest;
-use Yajra\DataTables\Utilities\Request;
 
 class ProfileController extends Controller
 {
