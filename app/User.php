@@ -46,8 +46,8 @@ class User extends \TCG\Voyager\Models\User
         return $this->hasOne('App\UserDetail');
     }
 
-    public function rate()
+    public function ratings()
     {
-        return $this->hasOne('App\Rating');
+        return $this->hasMany('App\Rating');
     }
 }

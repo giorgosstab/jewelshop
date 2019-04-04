@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UpdateProfileAddressesRequest;
 use App\Http\Requests\UpdateProfileDetailsRequest;
 use App\Http\Requests\UpdateProfilePasswordRequest;
+use Yajra\DataTables\Utilities\Request;
 
 class ProfileController extends Controller
 {
@@ -21,8 +22,27 @@ class ProfileController extends Controller
     {
         $user = User::where('id',auth()->id())->with('orders')->with('userDetail')->first();
 
-        return view('shop.profile.main')->with('user',$user);
+        $rates = $user->ratings()->with('product')->latest()->paginate(5);
+
+        return view('shop.profile.main')->with([
+            'user' => $user,
+            'rates' => $rates,
+        ]);
     }
+
+//    public function getRates(Request $request){
+//
+//        if($request->ajax()){
+//            $user = User::where('id',auth()->id())->first();
+//
+//
+//            $rates = $user->ratings()->with('product');
+//            return Datatables::of($rates)
+//                ->addColumn('image_path', function ($rates) {
+//                    return secure_asset('storage/'.$rates->product->image);
+//                })->make(true);
+//        }
+//    }
 
 
     /**

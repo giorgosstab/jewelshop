@@ -54,11 +54,14 @@ Route::post('/newsletter','NewsletterController@mailChimp')->name('shop.newslett
 
 Route::middleware('auth')->group(function (){
     Route::post('/rating/{product}','RatingController@store')->name('shop.rating.store');
+
     Route::get('/customer-profile','ProfileController@index')->name('shop.profile.index');
     Route::patch('/update-password','ProfileController@updatePassword')->name('shop.profile.updatePassword');
     Route::patch('/update-details','ProfileController@updateDetails')->name('shop.profile.updateDetails');
     Route::patch('/update-addresses','ProfileController@updateAddresses')->name('shop.profile.updateAddresses');
     Route::get('/customer-order/{order}','OrderController@customerShow')->name('shop.order.customerShow');
+
+//    Route::get('/customer-rates','ProfileController@getRates')->name('shop.rates.getRates');
 });
 
 Route::get('empty', function(){

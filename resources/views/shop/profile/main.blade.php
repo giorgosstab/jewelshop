@@ -64,6 +64,7 @@
                                     </div>
                                     <nav class="list-group customer-nav">
                                         <a href="#order-tab" data-toggle="pill" class="list-group-item d-flex justify-content-between align-items-center"><span><span class="fa fa-shopping-bag"></span>Orders</span><small class="badge badge-pill badge-primary">{{ $user->orders()->count() }}</small></a>
+                                        <a href="#star-tab" data-toggle="pill" class="list-group-item d-flex justify-content-between align-items-center"><span><span class="fa fa-star"></span>Reviews Stars</span><small class="badge badge-pill badge-primary">{{ $user->ratings()->count() }}</small></a>
                                         <a href="#profile-tab" data-toggle="pill" class="active list-group-item d-flex justify-content-between align-items-center"><span><span class="fa fa-user"></span>Profile</span></a>
                                         <a href="#addresses-tab" data-toggle="pill" class="list-group-item d-flex justify-content-between align-items-center"><span><span class="fa fa-map-o"></span>Addresses</span></a>
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form-pill').submit();" class="list-group-item d-flex justify-content-between align-items-center"><span><span class="fa fa-sign-out"></span>Log out</span></a>
@@ -119,29 +120,44 @@
                                                         <td><a href="{{ route('shop.order.customerShow', $order->unique_id) }}" class="btn btn-default button-1 btn-sm">View</a></td>
                                                     </tr>
                                                 @endforeach
-                                                {{--<tr>--}}
-                                                    {{--<th># 1734</th>--}}
-                                                    {{--<td>7/5/2017</td>--}}
-                                                    {{--<td>$150.00</td>--}}
-                                                    {{--<td><span class="badge badge-warning">Action needed</span></td>--}}
-                                                    {{--<td><a href="#" class="btn btn-default button-1 btn-sm">View</a></td>--}}
-                                                {{--</tr>--}}
-                                                {{--<tr>--}}
-                                                    {{--<th># 1730</th>--}}
-                                                    {{--<td>30/9/2016</td>--}}
-                                                    {{--<td>$150.00</td>--}}
-                                                    {{--<td><span class="badge badge-success">Received</span></td>--}}
-                                                    {{--<td><a href="#" class="btn btn-default button-1 btn-sm">View</a></td>--}}
-                                                {{--</tr>--}}
-                                                {{--<tr>--}}
-                                                    {{--<th># 1705</th>--}}
-                                                    {{--<td>22/6/2016</td>--}}
-                                                    {{--<td>$150.00</td>--}}
-                                                    {{--<td><span class="badge badge-danger">Cancelled</span></td>--}}
-                                                    {{--<td><a href="#" class="btn btn-default button-1 btn-sm">View</a></td>--}}
-                                                {{--</tr>--}}
                                             </tbody>
                                         </table>
+                                    </div>
+                                    <div class="tab-pane fade" id="star-tab">
+                                        <div class="col-md-12 col-sm-12 col-xs-12 bread">
+                                            <div class="breadcrumbs">
+                                                {!! $rates->fragment('star-tab')->render('pagination::shopPagination') !!}
+                                            </div>
+                                        </div>
+                                        <div class="table-responsive table-none wow fadeIn">
+                                            <table class="table checkout-table">
+                                                @foreach($rates as $rate)
+                                                    <tr>
+                                                        <td class="text-center">
+                                                            <a href="{{ route('shop.products.show',$rate->product->slug) }}">
+                                                                <img src="{{ secure_asset('storage/'.$rate->product->image) }}" class="img-fluid" alt="" title="" width="110">
+                                                            </a>
+                                                        </td>
+                                                        <td class="product-name">
+                                                            <h1>
+                                                                <a href="{{ route('shop.products.show',$rate->product->slug) }}"><span>{{ $rate->product->name }}</span></a>
+                                                            </h1>
+                                                        </td>
+                                                        <td>
+                                                            @for($i=0; $i<$rate->rating; $i++)
+                                                                <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
+                                                            @endfor
+                                                        </td>
+                                                        <td class="text-center"><a href="#" class="btn btn-default button-1 btn-sm">Edit</a></td>
+                                                    </tr>
+                                                @endforeach
+                                            </table>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 col-xs-12 bread">
+                                            <div class="breadcrumbs">
+                                                {!! $rates->render('pagination::shopPagination') !!}
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="tab-pane fade show active" id="profile-tab">
                                         <div class="collapse-group">
@@ -285,6 +301,22 @@
     <script>
         $(document).ready( function () {
             $('#dataTable').DataTable();
+
+            {{--$('#dataTableRatings').DataTable({--}}
+            {{--    "processing": true,--}}
+            {{--    "serverSide": true,--}}
+            {{--    "ajax": "{{ route('shop.rates.getRates') }}",--}}
+            {{--    "columns": [--}}
+            {{--        {data: 'rating', name: 'rating'},--}}
+            {{--        {data: 'product.name', name: 'name',"searchable": true},--}}
+            {{--        {data: 'image_path', name: 'image_path',--}}
+            {{--            "render": function (data, type, full, meta) {--}}
+            {{--                return "<img src=\"" + data + "\" width=\"110\"/>";--}}
+            {{--            },--}}
+            {{--        },--}}
+            {{--    ]--}}
+
+            {{--});--}}
 
             let url = document.location.toString();
             if (url.match('#')) {
