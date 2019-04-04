@@ -7,6 +7,7 @@
     {{ Html::script('assets/js/jquery2.js') }}
     {{ Html::script('assets/js/xzoom.min.js') }}
     {{ Html::script('assets/js/setup.js') }}
+    {{ Html::style('assets/css/rating/star.css') }}
     <style>
         .inner-bg {
             background: url("{{ settingsAdminImageExist(theme('shop_details_parallax'),"shop_details") }}") no-repeat center center fixed;
@@ -137,74 +138,92 @@
                                                 </div>
                                             @endif
                                         </div>
+                                        {!! Form::open(['method' => 'POST','route' => ['shop.rating.store',$product->id]]) !!}
+                                            {{ csrf_field() }}
+                                            <div class="row">
+                                                <div class="col-lg-{{ $rate == null ? '9' : '12'  }} col-md-6 col-sm-12">
+                                                    <div class="pt-3">
+                                                        <input id="input-5" name="star" class="rating rating-loading" data-min="0" data-max="5" data-step="1" value="{{ $rate != null ? $rate->rating : 0 }}" data-size="xl" required>
+                                                    </div>
+                                                </div>
+                                                @if($rate == null)
+                                                    <div class="col-lg-3 col-md-6 col-sm-12">
+                                                        <div class="sub-bt">
+                                                            <button class="submit-css" type="submit">RATE <i class="fa fa-star" aria-hidden="true"></i></button>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                        {!! Form::close() !!}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 col-md-6 col-sm-12">
+                                    <div class="list-div border-0">
+                                        <h2 class="mt-2 mb-2">Specification</h2>
+                                        <div class="clearfix"></div>
+                                        <ul>
+                                            <li>
+                                                <div class="row 0">
+                                                    <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ secure_asset('assets/images/products/icon1.jpg') }}" alt="" title=""> </div>
+                                                    <div class="col-md-10 col-sm-10 col-10"> Neque porro quisquam est qui dolorem ipsum quia
+                                                        dolor sit amet, consectetur, adipisci velit.</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row 0">
+                                                    <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ secure_asset('assets/images/products/icon2.jpg') }}" alt="" title=""> </div>
+                                                    <div class="col-md-10 col-sm-10 col-10"> Neque porro quisquam est qui dolorem ipsum quia
+                                                        dolor sit amet, consectetur, adipisci velit.</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row 0">
+                                                    <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ secure_asset('assets/images/products/icon3.jpg') }}" alt="" title=""> </div>
+                                                    <div class="col-md-10 col-sm-10 col-10"> Neque porro quisquam est qui dolorem ipsum quia
+                                                        dolor sit amet, consectetur, adipisci velit.</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row 0">
+                                                    <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ secure_asset('assets/images/products/icon4.jpg') }}" alt="" title=""> </div>
+                                                    <div class="col-md-10 col-sm-10 col-10"> Neque porro quisquam est qui dolorem ipsum quia
+                                                        dolor sit amet, consectetur, adipisci velit.</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row 0">
+                                                    <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ secure_asset('assets/images/products/icon-5.jpg') }}" alt="" title=""> </div>
+                                                    <div class="col-md-10 col-sm-10 col-10"> Neque porro quisquam est qui dolorem ipsum quia
+                                                        dolor sit amet, consectetur, adipisci velit.</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row 0">
+                                                    <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ secure_asset('assets/images/products/icon-6.jpg') }}" alt="" title=""> </div>
+                                                    <div class="col-md-10 col-sm-10 col-10"> Neque porro quisquam est qui dolorem ipsum quia
+                                                        dolor sit amet, consectetur, adipisci velit.</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row 0">
+                                                    <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ secure_asset('assets/images/products/icon-7.jpg') }}" alt="" title=""> </div>
+                                                    <div class="col-md-10 col-sm-10 col-10" style="margin-top:1em;">
+                                                        <span style="color:#dfb859;"><b>{{ $product->sku }}</b></span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-5 col-md-6 col-sm-12">
-                                <div class="list-div border-0">
-                                    <h2 class="mt-2 mb-2">Specification</h2>
-                                    <div class="clearfix"></div>
-                                    <ul>
-                                        <li>
-                                            <div class="row 0">
-                                                <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ secure_asset('assets/images/products/icon1.jpg') }}" alt="" title=""> </div>
-                                                <div class="col-md-10 col-sm-10 col-10"> Neque porro quisquam est qui dolorem ipsum quia
-                                                    dolor sit amet, consectetur, adipisci velit.</div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="row 0">
-                                                <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ secure_asset('assets/images/products/icon2.jpg') }}" alt="" title=""> </div>
-                                                <div class="col-md-10 col-sm-10 col-10"> Neque porro quisquam est qui dolorem ipsum quia
-                                                    dolor sit amet, consectetur, adipisci velit.</div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="row 0">
-                                                <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ secure_asset('assets/images/products/icon3.jpg') }}" alt="" title=""> </div>
-                                                <div class="col-md-10 col-sm-10 col-10"> Neque porro quisquam est qui dolorem ipsum quia
-                                                    dolor sit amet, consectetur, adipisci velit.</div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="row 0">
-                                                <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ secure_asset('assets/images/products/icon4.jpg') }}" alt="" title=""> </div>
-                                                <div class="col-md-10 col-sm-10 col-10"> Neque porro quisquam est qui dolorem ipsum quia
-                                                    dolor sit amet, consectetur, adipisci velit.</div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="row 0">
-                                                <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ secure_asset('assets/images/products/icon-5.jpg') }}" alt="" title=""> </div>
-                                                <div class="col-md-10 col-sm-10 col-10"> Neque porro quisquam est qui dolorem ipsum quia
-                                                    dolor sit amet, consectetur, adipisci velit.</div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="row 0">
-                                                <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ secure_asset('assets/images/products/icon-6.jpg') }}" alt="" title=""> </div>
-                                                <div class="col-md-10 col-sm-10 col-10"> Neque porro quisquam est qui dolorem ipsum quia
-                                                    dolor sit amet, consectetur, adipisci velit.</div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="row 0">
-                                                <div class="col-md-2 col-sm-2 col-2 pt-0"> <img src="{{ secure_asset('assets/images/products/icon-7.jpg') }}" alt="" title=""> </div>
-                                                <div class="col-md-10 col-sm-10 col-10" style="margin-top:1em;">
-                                                    <span style="color:#dfb859;"><b>{{ $product->sku }}</b></span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clearfix">&nbsp;</div>
-                        <div class="price-2">
-                            <ul>
-                                <li class="tab1">PRICE: <span>€{{ presentPrice($product->price) }}</span></li>
-                                <li>
-                                    {!! Form::open(array('route'=>'shop.shopping-cart.store','method' => 'POST','id' => 'addToCart')) !!}
+                            <div class="clearfix">&nbsp;</div>
+                            <div class="price-2">
+                                <ul>
+                                    <li class="tab1">PRICE: <span>€{{ presentPrice($product->price) }}</span></li>
+                                    <li>
+                                        {!! Form::open(array('route'=>'shop.shopping-cart.store','method' => 'POST','id' => 'addToCart')) !!}
                                         {{ csrf_field() }}
                                         {{ Form::hidden('id', $product->id) }}
                                         {{ Form::hidden('name', $product->name) }}
@@ -312,6 +331,7 @@
 @endsection
 
 @section('extra-script')
+    {{ Html::script('assets/js/rating/star.js') }}
     <script>
         $(function () {
             $('[data-toggle="tooltip"]').tooltip();

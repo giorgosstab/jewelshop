@@ -43,6 +43,11 @@ class Product extends Model
         return $this->belongsTo('App\Brand');
     }
 
+    public function rate()
+    {
+        return $this->hasOne('App\Rating');
+    }
+
     /**
      * Get the indexable data array for the model.
      *

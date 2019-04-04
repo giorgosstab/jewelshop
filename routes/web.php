@@ -53,6 +53,7 @@ Route::post('/contact','ContactController@store')->name('shop.contact.store');
 Route::post('/newsletter','NewsletterController@mailChimp')->name('shop.newsletter.mailChimp');
 
 Route::middleware('auth')->group(function (){
+    Route::post('/rating/{product}','RatingController@store')->name('shop.rating.store');
     Route::get('/customer-profile','ProfileController@index')->name('shop.profile.index');
     Route::patch('/update-password','ProfileController@updatePassword')->name('shop.profile.updatePassword');
     Route::patch('/update-details','ProfileController@updateDetails')->name('shop.profile.updateDetails');

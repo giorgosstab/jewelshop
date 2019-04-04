@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Brand;
 use App\CategoryJewel;
 use App\Product;
+use App\Rating;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 use function request;
 
 class ShopController extends Controller
@@ -152,6 +155,13 @@ class ShopController extends Controller
         $product = Product::where('status', 'like', 'PUBLISHED')->where('slug',$slug)->firstOrFail();
         $mightAlsoLike = Product::where('status', 'like', 'PUBLISHED')->where('slug','!=',$slug)->inRandomOrder()->take(20)->get();
 
+        if(Auth::user()){
+            $user = Auth::user()->id;
+        } else {
+            $user = 0;
+        }
+        $rate = Rating::where('user_id',$user)->where('product_id',$product->id)->first();
+
         //appear badge for quantity of product
         $stockLevel = getStockLevel($product->quantity);
 
@@ -162,6 +172,7 @@ class ShopController extends Controller
             'product' => $product,
             'mightAlsoLike' => $mightAlsoLike,
             'stockLevel' => $stockLevel,
+            'rate' => $rate,
         ]);
     }
 }

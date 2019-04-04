@@ -45,4 +45,9 @@ class User extends \TCG\Voyager\Models\User
     {
         return $this->hasOne('App\UserDetail');
     }
+
+    public function rate()
+    {
+        return $this->hasOne('App\Rating');
+    }
 }

@@ -156,10 +156,11 @@ class EcommerceInstall extends Command
         $this->call('db:seed', [
             '--class' => 'UsersTableSeederCustom',
         ]);
-
-
         $this->call('db:seed', [
             '--class' => 'SettingsTableSeederCustom',
+        ]);
+        $this->call('db:seed', [
+            '--class' => 'RatingTableSeeder',
         ]);
 
 
