@@ -20,11 +20,18 @@
                                         <div class="col-md-6 col-sm-9 col-8">
                                             <h3>{{ $product->name }}</h3>
                                             <div>
-                                                <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
-                                                <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
-                                                <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
-                                                <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
-                                                <img  src="{{ asset('assets/images/str2.jpg') }}" alt="" title="">
+                                                <?php
+                                                    $filled_star = round($product->ratings->avg('rating'));
+                                                    $empty_star = 5-$filled_star;
+                                                ?>
+                                                @for($i=0; $i<$filled_star; $i++)
+                                                    <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
+                                                @endfor
+                                                @if($filled_star / 5 != 0)
+                                                    @for($i=0; $i<$empty_star; $i++)
+                                                        <img  src="{{ asset('assets/images/str2.jpg') }}" alt="" title="">
+                                                    @endfor
+                                                @endif
                                             </div>
                                             <h4>€{{ $product->presentPrice() }}</h4>
                                         </div>

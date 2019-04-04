@@ -43,9 +43,9 @@ class Product extends Model
         return $this->belongsTo('App\Brand');
     }
 
-    public function rate()
+    public function ratings()
     {
-        return $this->hasOne('App\Rating');
+        return $this->hasMany('App\Rating');
     }
 
     /**
