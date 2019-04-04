@@ -156,6 +156,7 @@ return [
         Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
         Cornford\Googlmapper\MapperServiceProvider::class,
         JordanMiguel\LaravelPopular\LaravelPopularServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -222,6 +223,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
         'Mapper' => Cornford\Googlmapper\Facades\MapperFacade::class,
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
     ],
 
 ];
