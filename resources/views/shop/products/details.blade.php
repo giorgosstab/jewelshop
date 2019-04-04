@@ -141,7 +141,7 @@
                                         {!! Form::open(['method' => 'POST','route' => ['shop.rating.store',$product->id]]) !!}
                                             {{ csrf_field() }}
                                             <div class="row">
-                                                <div class="col-lg-{{ $rate == null ? '9' : '12'  }} col-md-6 col-sm-12">
+                                                <div class="col-lg-9 col-md-6 col-sm-12">
                                                     <div class="pt-3">
                                                         <input id="input-5" name="star" class="rating rating-loading" data-min="0" data-max="5" data-step="1" value="{{ $rate != null ? $rate->rating : 0 }}" data-size="xl" required>
                                                     </div>
@@ -150,6 +150,12 @@
                                                     <div class="col-lg-3 col-md-6 col-sm-12">
                                                         <div class="sub-bt">
                                                             <button class="submit-css" type="submit">RATE <i class="fa fa-star" aria-hidden="true"></i></button>
+                                                        </div>
+                                                    </div>
+                                                @else
+                                                    <div class="col-lg-3 col-md-6 col-sm-12">
+                                                        <div class="pt-3">
+                                                            <a href="{{ route('shop.rating.edit', $rate->id) }}" class="btn btn-default button-1 btn-sm">Edit</a>
                                                         </div>
                                                     </div>
                                                 @endif
