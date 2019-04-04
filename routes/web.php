@@ -60,7 +60,8 @@ Route::middleware('auth')->group(function (){
     Route::patch('/update-details','ProfileController@updateDetails')->name('shop.profile.updateDetails');
     Route::patch('/update-addresses','ProfileController@updateAddresses')->name('shop.profile.updateAddresses');
     Route::get('/customer-order/{order}','OrderController@customerShow')->name('shop.order.customerShow');
-
+    Route::get('/customer-rate/{rating}','RatingController@edit')->name('shop.rating.edit');
+    Route::post('/customer-rate/{rating}','RatingController@update')->name('shop.rating.update');
 //    Route::get('/customer-rates','ProfileController@getRates')->name('shop.rates.getRates');
 });
 

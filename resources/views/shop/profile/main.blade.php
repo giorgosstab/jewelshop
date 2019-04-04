@@ -148,7 +148,7 @@
                                                                 <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
                                                             @endfor
                                                         </td>
-                                                        <td class="text-center"><a href="#" class="btn btn-default button-1 btn-sm">Edit</a></td>
+                                                        <td class="text-center"><a href="{{ route('shop.rating.edit', $rate->id) }}" class="btn btn-default button-1 btn-sm">Edit</a></td>
                                                     </tr>
                                                 @endforeach
                                             </table>

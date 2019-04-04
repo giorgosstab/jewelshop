@@ -7,6 +7,7 @@ use App\Rating;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class RatingController extends Controller
 {
@@ -38,17 +39,6 @@ class RatingController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -56,29 +46,37 @@ class RatingController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::where('id',auth()->id())->with('userDetail')->firstOrFail();
+
+        $rate = Rating::where('id',$id)->where('user_id',$user->id)->first();
+
+        return view('shop.profile.review')->with([
+            'user' => $user,
+            'rate' => $rate,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Rating  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $validator = Validator::make($request->all(),[
+            'star' => 'required|numeric|gt:0'
+        ]);
+        if($validator->fails()){
+            return back()->withErrors('Stars must be greater than zero!');
+        } else {
+            $user = User::find(Auth::user()->id)->first();
+            $rate = Rating::where('id',$id)->where('user_id',$user->id);
+            $rate->update([
+                'rating' => $request->star,
+            ]);
+            return back()->with('success_message','Rate successfully updated!');
+        }
     }
 }
