@@ -72,6 +72,9 @@ class VoyagerThemeOptionsTableSeeder extends Seeder
             ['voyager_theme_id' => $theme->id,'key' => 'order_title','value' => 'Order','created_at' => $now, 'updated_at' => $now],
             ['voyager_theme_id' => $theme->id,'key' => 'order_parallax','value' => 'themes/dummy/order.jpg','created_at' => $now, 'updated_at' => $now],
 
+            ['voyager_theme_id' => $theme->id,'key' => 'review_title','value' => 'Edit Review','created_at' => $now, 'updated_at' => $now],
+            ['voyager_theme_id' => $theme->id,'key' => 'review_parallax','value' => 'themes/dummy/review.jpg','created_at' => $now, 'updated_at' => $now],
+
             ['voyager_theme_id' => $theme->id,'key' => 'top_navbar_color','value' => '#f5f5f5','created_at' => $now, 'updated_at' => $now],
             ['voyager_theme_id' => $theme->id,'key' => 'middle_navbar_color','value' => '#fefefe','created_at' => $now, 'updated_at' => $now],
             ['voyager_theme_id' => $theme->id,'key' => 'bottom_navbar_color','value' => '#000000','created_at' => $now, 'updated_at' => $now],

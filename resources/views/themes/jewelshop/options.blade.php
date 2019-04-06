@@ -115,6 +115,9 @@
         <a data-toggle="tab" href="#order" aria-expanded="false">Order</a>
     </li>
     <li>
+        <a data-toggle="tab" href="#rate" aria-expanded="false">Ratings</a>
+    </li>
+    <li>
         <a data-toggle="tab" href="#color" aria-expanded="false">Colors</a>
     </li>
 </ul>
@@ -187,6 +190,10 @@
     <div id="order" class="tab-pane fade">
         {!! theme_field('text', 'order_title', 'Order Title', '', '{}', 'Add the SEO title for your Order page') !!}
         {!! theme_field('image', 'order_parallax', 'Order Page Parallax') !!}
+    </div>
+    <div id="rate" class="tab-pane fade">
+        {!! theme_field('text', 'review_title', 'Review Title', '', '{}', 'Add the SEO title for your Review page') !!}
+        {!! theme_field('image', 'review_parallax', 'Review Page Parallax') !!}
     </div>
     <div id="color" class="tab-pane fade">
         {!! theme_field('color', 'top_navbar_color', 'Top Navbar Color') !!}

@@ -54,6 +54,9 @@ function settingsAdminImageExist($path, $page) {
     if($page === "order"){
         return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/dummyThemes/bg1.jpg');
     }
+    if($page === "review"){
+        return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/dummyThemes/bg3.jpg');
+    }
     if($page === "profile"){
         return $path && file_exists('storage/' . $path) ? Voyager::image($path) : secure_asset('assets/images/dummyThemes/blog-top.jpg');
     }

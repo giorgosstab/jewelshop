@@ -1,11 +1,11 @@
 @extends('shop.main')
 
-@section('title', 'Review for product '.$rate->product->name)
+@section('title', theme('review_title').' for product '.$rate->product->name)
 
 @section('extra-css')
     <style>
         .inner-bg1 {
-            background: url("{{ settingsAdminImageExist(theme('order_parallax'),"order") }}") no-repeat center center fixed;
+            background: url("{{ settingsAdminImageExist(theme('review_parallax'),"review") }}") no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -23,7 +23,7 @@
         <section>
             <div class="inner-bg1">
                 <div class="inner-head wow fadeInDown">
-                    <h3>Review for product {{ $rate->product->name }}</h3><br>
+                    <h3>{{ theme('review_title') }}</h3><br>
                 </div>
             </div>
         </section>
@@ -38,7 +38,7 @@
                             <li>/</li>
                             <li><a href="{{ route('shop.profile.index') }}#star-tab">Reviews</a></li>
                             <li>/</li>
-                            <li>reviews</li>
+                            <li>{{ theme('review_title') }}</li>
                         </ul>
                     </div>
                 </div>
@@ -74,6 +74,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="tab-pane fade show active" id="profile-tab">
+                                    <div class="clearfix"> </div><br>
                                     <div class="table-responsive table-none wow fadeIn">
                                         {!! Form::open(['method' => 'POST','route' => ['shop.rating.update',$rate->id]]) !!}
                                             {{ csrf_field() }}
