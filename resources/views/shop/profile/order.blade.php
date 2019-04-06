@@ -105,7 +105,7 @@
                                                                 <tr>
                                                                     <td class="text-center">
                                                                         <a href="{{ route('shop.products.show',$product->slug) }}">
-                                                                            <img src="{{ secure_asset('storage/'.$product->image) }}" class="img-fluid" alt="" title="" width="110">
+                                                                            <img src="{{ secure_asset('storage/'.$product->image) }}" class="img-fluid" alt="{{$product->name}}" title="{{$product->name}}" width="110">
                                                                         </a>
                                                                     </td>
                                                                     <td class="product-name">
@@ -142,56 +142,35 @@
                                                         <div class="cat-div  wow fadeIn">
                                                             <h2>
                                                                 <div class="save-for-later">
-                                                                    <div class="count">2 item(s) <span>in purchase list</span></div>
+                                                                    <div class="count">{{ $order->products->count() }} item(s) <span>in purchase list</span></div>
                                                                 </div>
                                                                 <div class="clearfix"></div>
                                                             </h2>
                                                             <div class="clearfix"></div><br>
-                                                            <table class="table checkout-table">
-                                                                <tr>
-                                                                    <td colspan="3" class="text-center">
-                                                                        <a href="https://jewelshop.io/shop/diamond-ring-16">
-                                                                            <img src="https://jewelshop.io/storage/products/dummy/diamond-ring-16.jpg" class="img-fluid" alt="" title="">
-                                                                        </a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr class="product-name">
-                                                                    <td>
-                                                                        <h1>
-                                                                            <br><a href="https://jewelshop.io/shop/diamond-ring-16"><span> DIAMOND RING PRODUCT 16</span></a>
-                                                                        </h1>
-                                                                    </td>
-                                                                    <td><div class="cost2">€1,366.94</div></td>
-                                                                    <td><div class="cost2">5x</div></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="3"><div class="cost">€2,733.88</div></td>
-                                                                </tr>
-                                                            </table>
-                                                            <div class="clearfix"></div><br>
-                                                            <table class="table checkout-table">
-                                                                <tr>
-                                                                    <td colspan="3" class="text-center">
-                                                                        <a href="https://jewelshop.io/shop/diamond-ring-16">
-                                                                            <img src="https://jewelshop.io/storage/products/dummy/diamond-ring-16.jpg" class="img-fluid" alt="" title="">
-                                                                        </a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr class="product-name">
-                                                                    <td>
-                                                                        <h1>
-                                                                            <br><a href="https://jewelshop.io/shop/diamond-ring-16"><span> DIAMOND RING PRODUCT 16</span></a>
-                                                                        </h1>
-                                                                    </td>
-                                                                    <td><div class="cost2">€1,366.94</div></td>
-                                                                    <td><div class="cost2">5</div></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="3"><div class="cost">€2,733.88</div></td>
-                                                                </tr>
-                                                            </table>
-
-                                                            <div class="clearfix"></div><br>
+                                                            @foreach($order->products as $product)
+                                                                <table class="table checkout-table">
+                                                                    <tr>
+                                                                        <td colspan="3" class="text-center">
+                                                                            <a href="{{ route('shop.products.show',$product->slug) }}">
+                                                                                <img src="{{ secure_asset('storage/'.$product->image) }}" class="img-fluid" alt="{{$product->name}}" title="{{$product->name}}">
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="product-name">
+                                                                        <td>
+                                                                            <h1>
+                                                                                <br><a href="{{ route('shop.products.show',$product->slug) }}"><span>{{ $product->name }}</span></a>
+                                                                            </h1>
+                                                                        </td>
+                                                                        <td><div class="cost2">€{{ $product->presentPrice() }}</div></td>
+                                                                        <td><div class="cost2">{{ $product->pivot->quantity }}x</div></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="3"><div class="cost">€{{ $product->subTotalOfItem($product->pivot->quantity) }}</div></td>
+                                                                    </tr>
+                                                                </table>
+                                                                <div class="clearfix"></div><br>
+                                                            @endforeach
                                                             <table class="table checkout-table">
                                                                 <tr>
                                                                     <td>
@@ -199,7 +178,7 @@
                                                                             <h5>Order subtotal</h5>
                                                                         </div>
                                                                     </td>
-                                                                    <td><div class="cost2">€5,366.94</div></td>
+                                                                    <td><div class="cost2">€{{ $order->presentSubTotal() }}</div></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
@@ -207,7 +186,7 @@
                                                                             <h5>Tax</h5>
                                                                         </div>
                                                                     </td>
-                                                                    <td><div class="cost2">€1,366.94</div></td>
+                                                                    <td><div class="cost2">€{{ $order->presentTax() }}</div></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
@@ -215,7 +194,7 @@
                                                                             <h5>Order Total</h5>
                                                                         </div>
                                                                     </td>
-                                                                    <td><div class="cost">€6,366.94</div></td>
+                                                                    <td><div class="cost">€{{ $order->presentTotal() }}</div></td>
                                                                 </tr>
                                                             </table>
                                                         </div>

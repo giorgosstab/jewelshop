@@ -102,6 +102,46 @@
                                             </table>
                                         {!! Form::close() !!}
                                     </div>
+                                    <!--Table review rating small devices-->
+                                    <div class="table-responsive table-none2 wow fadeIn">
+                                        <div class="cat-div  wow fadeIn">
+                                            <div class="clearfix"></div><br>
+                                            {!! Form::open(['method' => 'POST','route' => ['shop.rating.update',$rate->id]]) !!}
+                                                {{ csrf_field() }}
+                                                <table class="table checkout-table">
+                                                    <tr>
+                                                        <td colspan="2" class="text-center">
+                                                            <a href="{{ route('shop.products.show',$rate->product->slug) }}">
+                                                                <img src="{{ secure_asset('storage/'.$rate->product->image) }}" class="img-fluid" alt="{{$rate->product->name}}" title="{{$rate->product->name}}">
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="product-name">
+                                                        <td>
+                                                            <h1>
+                                                                <br><a href="{{ route('shop.products.show',$rate->product->slug) }}"><span>{{ $rate->product->name }}</span></a>
+                                                            </h1>
+                                                        </td>
+                                                        <td>
+                                                            <div class="text-center">
+                                                                <input id="input-5" name="star" class="rating rating-loading" data-min="0" data-max="5" data-step="1" value="{{ $rate->rating }}" data-size="md" data-showcaption=false required>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            <div class="text-center">
+                                                                <div class="sub-bt">
+                                                                    <button class="submit-css" type="submit">Update <i class="fa fa-star" aria-hidden="true"></i></button>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <div class="clearfix"></div><br>
+                                            {!! Form::close() !!}
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>
