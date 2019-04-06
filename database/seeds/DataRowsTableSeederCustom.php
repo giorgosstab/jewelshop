@@ -3013,7 +3013,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'delete'       => 1,
                 'details'      => [
                     "validation" => [
-                        "rule" => "required"
+                        "rule" => "required|numeric|min:1|max:5"
                     ]
                 ],
                 'order'        => 6,
