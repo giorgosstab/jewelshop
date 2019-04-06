@@ -2877,6 +2877,165 @@ class DataRowsTableSeederCustom extends Seeder
         }
 
         /*
+        |--------------------------------------------------------------------------
+        | Ratings
+        |--------------------------------------------------------------------------
+        */
+        $ratingsDataType = DataType::where('slug', 'ratings')->firstOrFail();
+        $dataRow = $this->dataRow($ratingsDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'hidden',
+                'display_name' => 'Id',
+                'required' => 1,
+                'browse' => 0,
+                'read' => 0,
+                'edit' => 0,
+                'add' => 0,
+                'delete' => 0,
+                'details' => null,
+                'order' => 1,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($ratingsDataType, 'user_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'User Id',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "validation" => [
+                        "rule" => 'required'
+                    ]
+                ],
+                'order'        => 2,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($ratingsDataType, 'rating_belongsto_user_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'users',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model' => 'App\User',
+                    'table' => 'users',
+                    'type' => 'belongsTo',
+                    'column' => 'user_id',
+                    'key' => 'id',
+                    'label' => 'name',
+                    'pivot_table' => 'blog_categories',
+                    'pivot' => 0,
+                    'taggable' => 0,
+                ],
+                'order'        => 3,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($ratingsDataType, 'product_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Product Id',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "validation" => [
+                        "rule" => 'required'
+                    ]
+                ],
+                'order'        => 4,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($ratingsDataType, 'rating_belongsto_product_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'products',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model' => 'App\Product',
+                    'table' => 'products',
+                    'type' => 'belongsTo',
+                    'column' => 'product_id',
+                    'key' => 'id',
+                    'label' => 'name',
+                    'pivot_table' => 'blog_categories',
+                    'pivot' => 0,
+                    'taggable' => 0,
+                ],
+                'order'        => 5,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($ratingsDataType, 'rating');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Rating',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    "validation" => [
+                        "rule" => "required"
+                    ]
+                ],
+                'order'        => 6,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($ratingsDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'Created At',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => null,
+                'order'        => 7,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($ratingsDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'Updated At',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => null,
+                'order'        => 8,
+            ])->save();
+        }
+
+        /*
        |--------------------------------------------------------------------------
        | Voyager Themes
        |--------------------------------------------------------------------------

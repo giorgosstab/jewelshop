@@ -295,6 +295,26 @@ class DataTypesTableSeederCustom extends Seeder
 
         /*
           |--------------------------------------------------------------------------
+          | Ratings
+          |--------------------------------------------------------------------------
+          */
+        $dataType = $this->dataType('slug', 'ratings');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'ratings',
+                'display_name_singular' => 'Rating',
+                'display_name_plural'   => 'Ratings',
+                'icon'                  => 'voyager-star-two',
+                'model_name'            => 'App\Rating',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 1,
+            ])->save();
+        }
+
+        /*
+          |--------------------------------------------------------------------------
           | Voyager Themes
           |--------------------------------------------------------------------------
           */

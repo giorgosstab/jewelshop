@@ -177,6 +177,21 @@ class MenuItemsTableSeederCustom extends Seeder
                     'order'      => 8,
                 ])->save();
             }
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'Ratings',
+                'url'     => '/admin/ratings',
+                'route'   => null,
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => 'voyager-star-two',
+                    'color'      => null,
+                    'parent_id'  => $shopMenuItem->id,
+                    'order'      => 9,
+                ])->save();
+            }
 //            $menuItem = MenuItem::firstOrNew([
 //                'menu_id' => $menu->id,
 //                'title'   => 'Category Products',
