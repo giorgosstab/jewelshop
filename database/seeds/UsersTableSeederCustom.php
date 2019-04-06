@@ -21,6 +21,7 @@ class UsersTableSeederCustom extends Seeder
             'password'       => bcrypt('adminpassword'),
             'remember_token' => str_random(60),
             'role_id'        => $role->id,
+            'email_verified' => 1,
         ]);
 
         $role = Role::where('name', 'editor')->firstOrFail();
@@ -31,6 +32,7 @@ class UsersTableSeederCustom extends Seeder
             'password'       => bcrypt('editorpassword'),
             'remember_token' => str_random(60),
             'role_id'        => $role->id,
+            'email_verified' => 1,
         ]);
 
         $role = Role::where('name', 'author')->firstOrFail();
@@ -41,6 +43,7 @@ class UsersTableSeederCustom extends Seeder
             'password'       => bcrypt('authorpassword'),
             'remember_token' => str_random(60),
             'role_id'        => $role->id,
+            'email_verified' => 1,
         ]);
     }
 }
