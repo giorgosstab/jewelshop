@@ -27,9 +27,9 @@ Route::post('/cart/saveForLater/{product}','CartController@saveForLater')->name(
 Route::delete('/saveForLater/{product}','SaveForLaterController@destroy')->name('shop.shopping-cart.destroyForLater');
 Route::post('/saveForLater/switchToCart/{product}','SaveForLaterController@switchToCart')->name('shop.shopping-cart.switchToCart');
 
-Route::get('/checkout-user','CheckoutController@index')->name('shop.checkout.index')->middleware('auth');
+Route::post('/checkout-user','CheckoutController@index')->name('shop.checkout.index')->middleware('auth');
 Route::get('/checkout-guest','CheckoutController@guest')->name('shop.checkout.guest');
-Route::post('/checkout','CheckoutController@store')->name('shop.checkout.store');
+Route::post('/checkout/{instructions}','CheckoutController@store')->name('shop.checkout.store');
 Route::get('/thankyou','ConfirmationController@index')->name('shop.checkout.confirm');
 
 Route::post('/coupon','CouponsController@store')->name('shop.coupons.store');

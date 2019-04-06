@@ -115,7 +115,7 @@
                         <div class="col-md-6 col-sm-12  wow fadeIn">
                             <div class="clearfix"> </div>
                             <div class="right-form">
-                                <form action="{{ route('shop.checkout.store') }}" method="POST" id="payment-form">
+                                <form action="{{ route('shop.checkout.store',[$instructions]) }}" method="POST" id="payment-form">
                                     {{ csrf_field() }}
                                     <div class="clearfix"> </div><br>
                                     <div class="collapse-group">

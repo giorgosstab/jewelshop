@@ -12,7 +12,9 @@ use App\Product;
 use Cartalyst\Stripe\Exception\CardErrorException;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use function request;
 use function sha1;
 
 
@@ -21,10 +23,13 @@ class CheckoutController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $instructions = $request->instruction;
         $deliveries = Delivery::where('status', 'like', 'PUBLISHED')->get();
         $payments = Payment::where('status', 'like', 'PUBLISHED')->get();
 
@@ -39,6 +44,7 @@ class CheckoutController extends Controller
             'newTotal' => getNumbers()->get('newTotal'),
             'deliveries' => $deliveries,
             'payments' => $payments,
+            'instructions' => $instructions,
         ]);
     }
 
@@ -74,9 +80,10 @@ class CheckoutController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\CheckoutRequest $request
+     * @param  string $instructions
      * @return \Illuminate\Http\Response
      */
-    public function store(CheckoutRequest $request)
+    public function store(CheckoutRequest $request,$instructions)
     {
         //method to check before purchase process start if we have multi user and one of them is faster than other
         if($this->productsAreNoLongerAvailable()){
@@ -104,7 +111,7 @@ class CheckoutController extends Controller
                 ],
             ]);
 
-            $this->addToOrdersTables($request, null);
+            $this->addToOrdersTables($request, $instructions,null);
 
             //decrease quantity from all items in cart
             $this->decreaseQuantities();
@@ -115,12 +122,12 @@ class CheckoutController extends Controller
 
             return redirect()->route('shop.checkout.confirm')->with('success_message','Thank you! Your payment has been successfully accepted!');
         } catch (CardErrorException $e) {
-            $this->addToOrdersTables($request, $e->getMessage());
+            $this->addToOrdersTables($request, $instructions, $e->getMessage());
             return back()->withErrors('Error! ' . $e->getMessage());
         }
     }
 
-    protected function addToOrdersTables($request, $error){
+    protected function addToOrdersTables($request, $instructions, $error){
         $random_id = str::random(60);
         $random_id .= microtime();
         $hash_id = sha1($random_id);
@@ -164,6 +171,7 @@ class CheckoutController extends Controller
             'delivery_gateway' => $request->delivery,
             'payment_gateway' => $request->card,
             'name_on_card' => !empty($request->holder_name) ? $request->holder_name : null,
+            'instructions' => $instructions,
 
             'error' => $error
         ]);

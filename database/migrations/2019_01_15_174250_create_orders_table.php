@@ -55,6 +55,7 @@ class CreateOrdersTable extends Migration
             $table->string('payment_gateway');
             $table->string('name_on_card')->nullable();
             $table->enum('status', Order::$statuses)->default(Order::STATUS_ORDER_PENDING);
+            $table->text('instructions')->nullable();
             $table->string('error')->nullable();
             $table->timestamps();
         });

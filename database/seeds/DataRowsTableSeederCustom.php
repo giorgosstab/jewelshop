@@ -1700,6 +1700,21 @@ class DataRowsTableSeederCustom extends Seeder
                 'order' => 33,
             ])->save();
         }
+        $dataRow = $this->dataRow($paymentDataType, 'instructions');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type' => 'text_area',
+                'display_name' => 'Instructions',
+                'required' => 0,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 0,
+                'details' => null,
+                'order' => 34,
+            ])->save();
+        }
         $dataRow = $this->dataRow($paymentDataType, 'error');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -1712,7 +1727,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'add' => 1,
                 'delete' => 0,
                 'details' => null,
-                'order' => 34,
+                'order' => 35,
             ])->save();
         }
         $dataRow = $this->dataRow($paymentDataType, 'created_at');
@@ -1727,7 +1742,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'details'      => null,
-                'order'        => 35,
+                'order'        => 36,
             ])->save();
         }
         $dataRow = $this->dataRow($paymentDataType, 'updated_at');
@@ -1742,7 +1757,7 @@ class DataRowsTableSeederCustom extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'details'      => null,
-                'order'        => 36,
+                'order'        => 37,
             ])->save();
         }
         /*

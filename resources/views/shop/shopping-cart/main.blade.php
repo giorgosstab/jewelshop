@@ -280,9 +280,17 @@
                     <div class="col-md-6 col-sm-6 pull-right ">
                         <div class="subtotal">
                             <div class="secure">
+                                <!--checkout form-->
+                                {!! Form::open(['method' => 'POST','route' => 'shop.checkout.index', 'id' => 'checkout']) !!}
+                                {{ csrf_field() }}
+                                <input type="hidden" id="instruction" name="instruction" value="">
                                 <a href="{{ route('shop.products.index') }}">
-                                    <i class="fa fa-chevron-left" aria-hidden="true"></i> Continue Shopping
+                                    <i class="fa fa-chevron-left" aria-hidden="true"></i> Shopping
                                 </a>
+                                <a href="#" onclick="document.getElementById('checkout').submit()">
+                                    Checkout <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </a>
+                                {{ Form::close() }}
                             </div>
                         </div>
                         <div class="clearfix"></div>
@@ -306,7 +314,7 @@
                             <div class="row">
                                 <div class="discount-div">
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <textarea name="instructions" rows="5" cols=55" placeholder="Write something here..."></textarea>
+                                        <textarea id="instructions" name="instructions" rows="5" cols=55" placeholder="Write something here..."></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -522,14 +530,6 @@
                 </div>
             </div>
             <div class="clearfix"></div><br>
-            <!--checkout button-->
-            @if(Cart::instance('default')->count() > 0)
-                <div class="col-lg-12 text-center secure">
-                    <a href="{{ route('shop.checkout.index') }}">
-                        Proceed to checkout <i class="fa fa-long-arrow-right"></i>
-                    </a>
-                </div>
-            @endif
         </div>
         <div class="clearfix"></div>
     </div>
@@ -575,6 +575,10 @@
                         window.location.href = '{{ route('shop.shopping-cart.index') }}';
                     });
                 });
+            });
+
+            $('#instructions').keyup(function () {
+                $('#instruction').val($(this).val());
             });
         });
     </script>
