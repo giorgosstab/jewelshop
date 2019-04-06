@@ -123,17 +123,9 @@ class ProfileController extends Controller
     public function updateAddresses(UpdateProfileAddressesRequest $request)
     {
         $user = User::where('id',auth()->id())->first();
+        $details = $this->updateDetailsUser($request);
 
         if($user->userDetail()->first()){
-            $details= new userDetail;
-
-            $details->city = $request->city ? $request->city : $details->city;
-            $details->country = $request->country ? $request->country : $details->country;
-            $details->address = $request->address ? $request->address : $details->address;
-            $details->house_number = $request->house_number ? $request->house_number : $details->house_number;
-            $details->postal_code = $request->postal_code ? $request->postal_code : $details->postal_code;
-            $details->locality = $request->locality ? $request->locality : $details->locality;
-
             $user->userDetail()->update([
                 'city' => $details->city,
                 'country' => $details->country,
@@ -143,20 +135,24 @@ class ProfileController extends Controller
                 'locality' => $details->locality,
             ]);
         } else {
-            $details= new userDetail;
-
-            $details->city = $request->city ? $request->city : $details->city;
-            $details->country = $request->country ? $request->country : $details->country;
-            $details->address = $request->address ? $request->address : $details->address;
-            $details->house_number = $request->house_number ? $request->house_number : $details->house_number;
-            $details->postal_code = $request->postal_code ? $request->postal_code : $details->postal_code;
-            $details->locality = $request->locality ? $request->locality : $details->locality;
-
             $user->userDetail()->save($details);
         }
 
         return redirect()->route('shop.profile.index','#addresses-tab')->with('success_message','Profile Addresses Update Successfully!');
 
+    }
+
+    protected function updateDetailsUser($request){
+        $details = new userDetail;
+        $details->phone = $request->phone;
+        $details->company = $request->company;
+        $details->city = $request->city;
+        $details->country = $request->country;
+        $details->address = $request->address;
+        $details->house_number = $request->house_number;
+        $details->postal_code = $request->postal_code;
+        $details->locality = $request->locality;
+        return $details;
     }
 
 }
