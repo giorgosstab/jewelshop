@@ -63,11 +63,19 @@
                             </div>
                             <div class=" dropdown">
                                 <div class="cart-btn ">
-                                    <a href="#" class="button adc"   id="MenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">€{{ presentPrice(Cart::total()) }}
-                                        @if(Cart::instance('default')->count() > 0)
-                                            <span class="badge badge-warning">{{ Cart::instance('default')->count() }}</span>
-                                        @endif
-                                    </a>
+                                    @if( Request::is('cart'))
+                                        <a href="#" class="button adc"   id="MenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">€{{ presentPrice($newTotal) }}
+                                            @if(Cart::instance('default')->count() > 0)
+                                                <span class="badge badge-warning">{{ Cart::instance('default')->count() }}</span>
+                                            @endif
+                                        </a>
+                                    @else
+                                        <a href="#" class="button adc"   id="MenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">€{{ presentPrice(Cart::total()) }}
+                                            @if(Cart::instance('default')->count() > 0)
+                                                <span class="badge badge-warning">{{ Cart::instance('default')->count() }}</span>
+                                            @endif
+                                        </a>
+                                    @endif
                                 </div>
                                 <div class="dropdown-menu dropdown-menu2" aria-labelledby="MenuButton">
 
