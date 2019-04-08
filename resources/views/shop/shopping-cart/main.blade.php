@@ -265,32 +265,17 @@
                 <div class="clearfix"></div><br>
                 <!--Free! - Ground Shipping / Continue Shopping other position if cart have items-->
                 <div class="row">
-                    <div class="col-md-6 col-sm-6">
-                        <div class="discount-div">
-                            <div class="row">
-                                <div class="col-md-2 col-sm-2 col-xs-12 text-center"><img  src="assets/images/products/icon.png" alt="" title="" class="img-fluid"></div>
-                                <div class="col-md-10 shipping col-sm-10 col-xs-12">
-                                    <h3>Always Free! - Ground Shipping & Returns</h3>
-                                    <h4>Expedited shipping options available at checkout</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
+                    <div class="col-md-6 col-sm-6"></div>
                     <div class="col-md-6 col-sm-6 pull-right ">
                         <div class="subtotal">
                             <div class="secure">
-                                <!--checkout form-->
-                                {!! Form::open(['method' => 'POST','route' => 'shop.checkout.index', 'id' => 'checkout']) !!}
-                                {{ csrf_field() }}
                                 <input type="hidden" id="instruction" name="instruction" value="">
                                 <a href="{{ route('shop.products.index') }}">
                                     <i class="fa fa-chevron-left" aria-hidden="true"></i> Shopping
                                 </a>
-                                <a href="#" onclick="document.getElementById('checkout').submit()">
+                                <a href="{{ route('shop.checkout.index') }}">
                                     Checkout <i class="fa fa-chevron-right" aria-hidden="true"></i>
                                 </a>
-                                {{ Form::close() }}
                             </div>
                         </div>
                         <div class="clearfix"></div>
@@ -302,24 +287,7 @@
             <!--Order Summary/coupon/Instructions-->
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="cat-div  wow fadeIn">
-                            <h2>instructions for seller</h2>
-                            <div class="clearfix"></div><br>
-                            <div class="row">
-                                <div class="col-md-10 shipping col-sm-10 col-xs-12">
-                                    <h4>If you have some information for the seller you can leave them in the box below</h4>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div><br>
-                            <div class="row">
-                                <div class="discount-div">
-                                    <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <textarea id="instructions" name="instructions" rows="5" cols=55" placeholder="Write something here..."></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
+                        @include('shop.messages.warning')
                         @if(! session()->has('coupon'))
                             <div class="col-md-12 cat-div  wow fadeIn">
                                 <h2>Coupon Code</h2>
@@ -340,6 +308,15 @@
                                 </div>
                             </div>
                         @endif
+                            <div class="discount-div">
+                                <div class="row">
+                                    <div class="col-md-2 col-sm-2 col-xs-12 text-center"><img  src="assets/images/products/icon.png" alt="" title="" class="img-fluid"></div>
+                                    <div class="col-md-10 shipping col-sm-10 col-xs-12">
+                                        <h3>Always Free! - Ground Shipping & Returns</h3>
+                                        <h4>Expedited shipping options available at checkout</h4>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="cat-div  wow fadeIn">

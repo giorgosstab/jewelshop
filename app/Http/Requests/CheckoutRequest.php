@@ -35,6 +35,7 @@ class CheckoutRequest extends FormRequest
             'locality' => 'required|regex:/^[a-zA-Z]+$/u|min:5|max:20',
             'country' => 'required|not_in:0',
             'phone' => 'required|regex:/^[0-9]+$/u|min:10|max:10',
+            'instructions' => 'sometimes',
 
             'dif_shipping' => 'sometimes',
 
