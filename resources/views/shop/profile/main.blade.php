@@ -65,6 +65,7 @@
                                     <nav class="list-group customer-nav">
                                         <a href="#order-tab" data-toggle="pill" class="list-group-item d-flex justify-content-between align-items-center"><span><span class="fa fa-shopping-bag"></span>Orders</span><small class="badge badge-pill badge-primary">{{ $user->orders()->count() }}</small></a>
                                         <a href="#star-tab" data-toggle="pill" class="list-group-item d-flex justify-content-between align-items-center"><span><span class="fa fa-star"></span>Reviews Stars</span><small class="badge badge-pill badge-primary">{{ $user->ratings()->count() }}</small></a>
+                                        <a href="#wishlist-tab" data-toggle="pill" class="list-group-item d-flex justify-content-between align-items-center"><span><span class="fa fa-heart"></span>Wish List</span><small class="badge badge-pill badge-primary">{{ $user->wishlist()->count() }}</small></a>
                                         <a href="#profile-tab" data-toggle="pill" class="active list-group-item d-flex justify-content-between align-items-center"><span><span class="fa fa-user"></span>Profile</span></a>
                                         <a href="#addresses-tab" data-toggle="pill" class="list-group-item d-flex justify-content-between align-items-center"><span><span class="fa fa-map-o"></span>Addresses</span></a>
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form-pill').submit();" class="list-group-item d-flex justify-content-between align-items-center"><span><span class="fa fa-sign-out"></span>Log out</span></a>
@@ -156,6 +157,81 @@
                                         <div class="col-md-12 col-sm-12 col-xs-12 bread">
                                             <div class="breadcrumbs">
                                                 {!! $rates->render('pagination::shopPagination') !!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="wishlist-tab">
+                                        <div class="col-md-12 col-sm-12 col-xs-12 bread">
+                                            <div class="breadcrumbs">
+                                                {!! $wishlists->fragment('wishlist-tab')->render('pagination::shopPagination') !!}
+                                            </div>
+                                        </div>
+                                        <div class="table-responsive table-none wow fadeIn">
+                                            <table class="table checkout-table">
+                                                @foreach($wishlists as $wishlist)
+                                                    <tr>
+                                                        <td class="text-center">
+                                                            <a href="{{ route('shop.products.show',$wishlist->product->slug) }}">
+                                                                <img src="{{ secure_asset('storage/'.$wishlist->product->image) }}" class="img-fluid" alt="" title="" width="110">
+                                                            </a>
+                                                        </td>
+                                                        <td class="product-name">
+                                                            <h1>
+                                                                <a href="{{ route('shop.products.show',$wishlist->product->slug) }}"><span>{{ $wishlist->product->name }}</span></a>
+                                                            </h1>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            {!! Form::open(['method' => 'POST','route' => ['shop.wishlist.destroy',$wishlist->id], 'id' => 'deleteWish'.$wishlist->id]) !!}
+                                                                {{ csrf_field() }}
+                                                                {{ method_field('DELETE') }}
+                                                                <a href="#" onclick="document.getElementById('deleteWish{{ $wishlist->id }}').submit()"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></a>
+                                                            {!! Form::close() !!}
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </table>
+                                        </div>
+                                        <!--Table products list for small devices-->
+                                        <div class="table-responsive table-none2 wow fadeIn">
+                                            <div class="cat-div  wow fadeIn">
+                                                <h2>
+                                                    <div class="save-for-later">
+                                                        <div class="count">{{ $user->wishlist->count() }} item(s) <span>in wish list</span></div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </h2>
+                                                <div class="clearfix"></div><br>
+                                                @foreach($wishlists as $wishlist)
+                                                    <table class="table checkout-table">
+                                                        <tr>
+                                                            <td colspan="2" class="text-center">
+                                                                <a href="{{ route('shop.products.show',$wishlist->product->slug) }}">
+                                                                    <img src="{{ secure_asset('storage/'.$wishlist->product->image) }}" class="img-fluid" alt="{{$wishlist->product->name}}" title="{{$wishlist->product->name}}">
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="product-name">
+                                                            <td>
+                                                                <h1>
+                                                                    <br><a href="{{ route('shop.products.show',$wishlist->product->slug) }}"><span>{{ $wishlist->product->name }}</span></a>
+                                                                </h1>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                {!! Form::open(['method' => 'POST','route' => ['shop.wishlist.destroy',$wishlist->id], 'id' => 'deleteWishMin'.$wishlist->id]) !!}
+                                                                    {{ csrf_field() }}
+                                                                    {{ method_field('DELETE') }}
+                                                                    <a href="#" onclick="document.getElementById('deleteWishMin{{ $wishlist->id }}').submit()"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></a>
+                                                                {!! Form::close() !!}
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <div class="clearfix"></div><br>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 col-xs-12 bread">
+                                            <div class="breadcrumbs">
+                                                {!! $wishlists->render('pagination::shopPagination') !!}
                                             </div>
                                         </div>
                                     </div>

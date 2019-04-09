@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\UserDetail;
+use App\Wishlist;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UpdateProfileAddressesRequest;
@@ -20,12 +21,13 @@ class ProfileController extends Controller
     public function index()
     {
         $user = User::where('id',auth()->id())->with('orders')->with('userDetail')->first();
-
         $rates = $user->ratings()->with('product')->latest()->paginate(5);
+        $wishlists = Wishlist::where("user_id", "=", $user->id)->with('product')->orderby('id', 'desc')->paginate(5);
 
         return view('shop.profile.main')->with([
             'user' => $user,
             'rates' => $rates,
+            'wishlists' => $wishlists,
         ]);
     }
 

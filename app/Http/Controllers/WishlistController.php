@@ -53,7 +53,7 @@ class WishlistController extends Controller
             $wishlist->product_id = $request->product_id;
             $wishlist->save();
 
-            return redirect()->route('shop.products.index')->with('success_message','Item, '. $wishlist->product->name.' Added to your wishlist!');
+            return redirect()->back()->with('success_message','Item, '. $wishlist->product->name.' Added to your wishlist!');
         }
     }
 
@@ -99,6 +99,10 @@ class WishlistController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find(Auth::user()->id);
+        $wishlist = Wishlist::where('user_id',$user->id)->findOrFail($id);
+        $wishlist->delete();
+
+        return redirect()->route('shop.profile.index')->with('flash_message', 'Item successfully deleted from Wishlist!');
     }
 }
