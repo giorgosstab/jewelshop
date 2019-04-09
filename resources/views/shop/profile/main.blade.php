@@ -154,6 +154,45 @@
                                                 @endforeach
                                             </table>
                                         </div>
+                                        <!--Table products list for small devices-->
+                                        <div class="table-responsive table-none2 wow fadeIn">
+                                            <div class="cat-div  wow fadeIn">
+                                                <h2>
+                                                    <div class="save-for-later">
+                                                        <div class="count">{{ $rate->product->count() }} item(s) <span>in wish list</span></div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </h2>
+                                                <div class="clearfix"></div><br>
+                                                @foreach($rates as $rate)
+                                                    <table class="table checkout-table">
+                                                        <tr>
+                                                            <td colspan="3" class="text-center">
+                                                                <a href="{{ route('shop.products.show',$rate->product->slug) }}">
+                                                                    <img src="{{ secure_asset('storage/'.$rate->product->image) }}" class="img-fluid" alt="{{$rate->product->name}}" title="{{$rate->product->name}}">
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="product-name">
+                                                            <td>
+                                                                <h1>
+                                                                    <br><a href="{{ route('shop.products.show',$rate->product->slug) }}"><span>{{ $rate->product->name }}</span></a>
+                                                                </h1>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                @for($i=0; $i<$rate->rating; $i++)
+                                                                    <img  src="{{ asset('assets/images/str1.jpg') }}" alt="" title="">
+                                                                @endfor
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <a href="{{ route('shop.rating.edit', $rate->id) }}" class="btn btn-default button-1 btn-sm">Edit</a>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <div class="clearfix"></div><br>
+                                                @endforeach
+                                            </div>
+                                        </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12 bread">
                                             <div class="breadcrumbs">
                                                 {!! $rates->render('pagination::shopPagination') !!}
