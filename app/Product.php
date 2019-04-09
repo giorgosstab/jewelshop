@@ -47,6 +47,9 @@ class Product extends Model
     {
         return $this->hasMany('App\Rating');
     }
+    public function wishlist(){
+        return $this->hasMany('App\Wishlist');
+    }
 
     /**
      * Get the indexable data array for the model.

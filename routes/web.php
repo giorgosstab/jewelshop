@@ -62,6 +62,7 @@ Route::middleware('auth')->group(function (){
     Route::get('/customer-order/{order}','OrderController@customerShow')->name('shop.order.customerShow');
     Route::get('/customer-rate/{rating}','RatingController@edit')->name('shop.rating.edit');
     Route::post('/customer-rate/{rating}','RatingController@update')->name('shop.rating.update');
+    Route::post('/wishlist','WishlistController@store')->name('shop.wishlist.store');
 //    Route::get('/customer-rates','ProfileController@getRates')->name('shop.rates.getRates');
 });
 

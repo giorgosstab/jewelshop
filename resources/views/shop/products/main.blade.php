@@ -184,17 +184,25 @@
                                 <div id="updatedProducts" class="col-lg-3 col-md-4 col-sm-6 col-12 thum-mrg wow fadeIn">
                                     <div class="col-lg-12 padd0">
                                         <div class="product-hover">
-                                            <div>
-                                                {!! Form::open(array('route'=>'shop.shopping-cart.addToCart','method' => 'POST','id' => 'addToCart'.$product->id)) !!}
+                                            <div style="text-align: center;">
+                                                {!! Form::open(array('route'=>'shop.shopping-cart.addToCart','method' => 'POST','id' => 'addToCart'.$product->id,'style' => ' display: inline-block')) !!}
                                                     {{ csrf_field() }}
                                                     {{ Form::hidden('id', $product->id) }}
                                                     {{ Form::hidden('name', $product->name) }}
                                                     {{ Form::hidden('price', $product->price) }}
                                                     <a href="{{ route('shop.products.show', $product->slug) }}">
-                                                        <img  src="{{ asset('assets/images/magnifier.svg') }}"  width="20" height="20" alt="" title="">
+                                                        <img  src="{{ asset('assets/images/magnifier.svg') }}"  width="25" height="25" alt="" title="">
                                                     </a> &nbsp;&nbsp;
                                                     <a href="#" onclick="document.getElementById('addToCart{{ $product->id }}').submit()">
                                                         <img  src="{{ asset('assets/images/add-to-cart.svg') }}"  width="25" height="25" alt="" title="">
+                                                    </a> &nbsp;&nbsp;
+
+                                                {!! Form::close() !!}
+                                                {!! Form::open(array('route'=>'shop.wishlist.store','method' => 'POST','id' => 'addToWishlist'.$product->id, 'style' => ' display: inline-block')) !!}
+                                                    {{ csrf_field() }}
+                                                    {{ Form::hidden('product_id', $product->id) }}
+                                                    <a href="#" onclick="document.getElementById('addToWishlist{{ $product->id }}').submit()">
+                                                        <img  src="{{ asset('assets/images/wishlist.svg') }}"  width="25" height="25" alt="" title="">
                                                     </a>
                                                 {!! Form::close() !!}
                                             </div>

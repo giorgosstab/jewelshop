@@ -50,4 +50,7 @@ class User extends \TCG\Voyager\Models\User
     {
         return $this->hasMany('App\Rating');
     }
+    public function wishlist(){
+        return $this->hasMany('App\Wishlist');
+    }
 }
