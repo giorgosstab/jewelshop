@@ -312,6 +312,25 @@ class DataTypesTableSeederCustom extends Seeder
                 'server_side'           => 1,
             ])->save();
         }
+        /*
+          |--------------------------------------------------------------------------
+          | wishlists
+          |--------------------------------------------------------------------------
+          */
+        $dataType = $this->dataType('slug', 'wishlists');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'wishlists',
+                'display_name_singular' => 'Wishlist',
+                'display_name_plural'   => 'Wishlists',
+                'icon'                  => 'voyager-heart',
+                'model_name'            => 'App\Wishlist',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 1,
+            ])->save();
+        }
 
         /*
           |--------------------------------------------------------------------------

@@ -192,6 +192,21 @@ class MenuItemsTableSeederCustom extends Seeder
                     'order'      => 9,
                 ])->save();
             }
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'Wishlists',
+                'url'     => '/admin/wishlists',
+                'route'   => null,
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => 'voyager-heart',
+                    'color'      => null,
+                    'parent_id'  => $shopMenuItem->id,
+                    'order'      => 10,
+                ])->save();
+            }
 //            $menuItem = MenuItem::firstOrNew([
 //                'menu_id' => $menu->id,
 //                'title'   => 'Category Products',

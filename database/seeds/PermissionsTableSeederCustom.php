@@ -30,6 +30,7 @@ class PermissionsTableSeederCustom extends Seeder
         Permission::generateFor('replies');
         Permission::generateFor('voyager_themes');
         Permission::generateFor('ratings');
+        Permission::generateFor('wishlists');
 //        Permission::generateFor('voyager_theme_options');
         Permission::firstOrCreate(['key' => 'browse_themes', 'table_name' => 'themes']);
         Permission::firstOrCreate(['key' => 'edit_themes', 'table_name' => 'themes']);
