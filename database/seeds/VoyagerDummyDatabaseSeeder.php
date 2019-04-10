@@ -16,12 +16,13 @@ class VoyagerDummyDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->seedersPath = database_path('seeds').'/';
+        $this->seedersPath = database_path('seeds').'/VoyagerDummySeeder/';
 //        $this->seed('CategoriesTableSeeder');
         $this->seed('UsersTableSeeder');
+        $this->seed('UsersTableSeederCustom');
 //        $this->seed('PostsTableSeeder');
 //        $this->seed('PagesTableSeeder');
 //        $this->seed('TranslationsTableSeeder');
-        $this->seed('PermissionRoleTableSeeder');
+//        $this->seed('PermissionRoleTableSeeder');
     }
 }

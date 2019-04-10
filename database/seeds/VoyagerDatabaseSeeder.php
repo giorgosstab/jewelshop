@@ -7,7 +7,7 @@ class VoyagerDatabaseSeeder extends Seeder
 {
     use Seedable;
 
-    protected $seedersPath = __DIR__.'/';
+    protected $seedersPath = __DIR__.'/VoyagerBackendSeeder/';
 
     /**
      * Run the database seeds.
@@ -22,7 +22,7 @@ class VoyagerDatabaseSeeder extends Seeder
         $this->seed('MenuItemsTableSeeder');
         $this->seed('RolesTableSeeder');
         $this->seed('PermissionsTableSeeder');
-        $this->seed('PermissionRoleTableSeeder');
+//        $this->seed('PermissionRoleTableSeeder');
         $this->seed('SettingsTableSeeder');
     }
 }

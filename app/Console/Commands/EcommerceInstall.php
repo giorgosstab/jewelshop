@@ -124,41 +124,18 @@ class EcommerceInstall extends Command
         $this->call('db:seed', [
             '--class' => 'VoyagerDatabaseSeeder',
         ]);
+
+        $this->call('db:seed', [
+            '--class' => 'VoyagerDatabaseSeederCustom',
+        ]);
+
         $this->call('db:seed', [
             '--class' => 'VoyagerDummyDatabaseSeeder',
         ]);
-
         $this->call('db:seed', [
-            '--class' => 'DataTypesTableSeederCustom',
-        ]);
-        $this->call('db:seed', [
-            '--class' => 'DataRowsTableSeederCustom',
+            '--class' => 'VoyagerPermissionDatabaseSeeder',
         ]);
 
-        $this->call('db:seed', [
-            '--class' => 'MenusTableSeederCustom',
-        ]);
-        $this->call('db:seed', [
-            '--class' => 'MenuItemsTableSeederCustom',
-        ]);
-        $this->call('db:seed', [
-            '--class' => 'RolesTableSeederCustom',
-        ]);
-        $this->call('db:seed', [
-            '--class' => 'PermissionsTableSeederCustom',
-        ]);
-        $this->call('db:seed', [
-            '--class' => 'PermissionRoleTableSeeder',
-        ]);
-        $this->call('db:seed', [
-            '--class' => 'PermissionRoleTableSeederCustom',
-        ]);
-        $this->call('db:seed', [
-            '--class' => 'UsersTableSeederCustom',
-        ]);
-        $this->call('db:seed', [
-            '--class' => 'SettingsTableSeederCustom',
-        ]);
         $this->call('db:seed', [
             '--class' => 'RatingTableSeeder',
         ]);
