@@ -21,11 +21,11 @@ class ShopController extends Controller
     {
         $specialOffers = Product::where('status', 'like', 'PUBLISHED')->where('offer', true)->inRandomOrder()->get();
         $hotDeals = Product::where('status', 'like', 'PUBLISHED')->where('hotdeals', true)->inRandomOrder()->get();
-        $allBrands = Brand::where('status', 'like', 'PUBLISHED')->groupBy('name')->with('products')->whereHas('products', function ($query) {
+        $allBrands = Brand::where('status', 'like', 'PUBLISHED')->orderBy('name','ASC')->with('products')->whereHas('products', function ($query) {
             $query->where('status', 'like', 'PUBLISHED');
         })->get();
 
-        $allCategories = CategoryJewel::where('status', 'like', 'PUBLISHED')->groupBy('name')->with('products')->whereHas('products', function ($query) {
+        $allCategories = CategoryJewel::where('status', 'like', 'PUBLISHED')->orderBy('name','ASC')->with('products')->whereHas('products', function ($query) {
             $query->where('status', 'like', 'PUBLISHED');
         })->get();
 
