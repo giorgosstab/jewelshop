@@ -108,6 +108,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     // Menu Routes
     Route::group([
+        'middleware' => 'admin.user',
         'as'     => 'voyager.menus.',
         'prefix' => 'menus/{menu}',
     ], function () {

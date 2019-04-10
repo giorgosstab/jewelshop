@@ -663,7 +663,7 @@ class MenuItemsTableSeederCustom extends Seeder
                     $menuItem = MenuItem::firstOrNew([
                         'menu_id' => $menu->id,
                         'title'   => 'Rings',
-                        'url'     => '/shop?cat=rings',
+                        'url'     => '/shop?category=rings',
                         'route'   => null,
                     ]);
                     if (!$menuItem->exists) {
@@ -680,7 +680,7 @@ class MenuItemsTableSeederCustom extends Seeder
                             $menuItemSub = MenuItem::firstOrNew([
                                 'menu_id' => $menu->id,
                                 'title'   => 'Wedding Rings',
-                                'url'     => 'wedding-rings',
+                                'url'     => '/shop?categories=wedding-rings',
                                 'route'   => null,
                             ]);
                             if (!$menuItemSub->exists) {
@@ -695,7 +695,7 @@ class MenuItemsTableSeederCustom extends Seeder
                             $menuItemSub = MenuItem::firstOrNew([
                                 'menu_id' => $menu->id,
                                 'title'   => 'Solitaires Rings',
-                                'url'     => 'solitaires-rings',
+                                'url'     => '/shop?categories=solitaires-rings',
                                 'route'   => null,
                             ]);
                             if (!$menuItemSub->exists) {
@@ -710,7 +710,7 @@ class MenuItemsTableSeederCustom extends Seeder
                             $menuItemSub = MenuItem::firstOrNew([
                                 'menu_id' => $menu->id,
                                 'title'   => 'Diamonds Rings',
-                                'url'     => 'diamond-rings',
+                                'url'     => '/shop?categories=diamond-rings',
                                 'route'   => null,
                             ]);
                             if (!$menuItemSub->exists) {
@@ -725,7 +725,7 @@ class MenuItemsTableSeederCustom extends Seeder
                             $menuItemSub = MenuItem::firstOrNew([
                                 'menu_id' => $menu->id,
                                 'title'   => 'Pearls Rings',
-                                'url'     => 'pearl-rings',
+                                'url'     => '/shop?categories=pearl-rings',
                                 'route'   => null,
                             ]);
                             if (!$menuItemSub->exists) {
@@ -740,7 +740,7 @@ class MenuItemsTableSeederCustom extends Seeder
                             $menuItemSub = MenuItem::firstOrNew([
                                 'menu_id' => $menu->id,
                                 'title'   => 'Zircon Rings',
-                                'url'     => 'zircon-rings',
+                                'url'     => '/shop?categories=zircon-rings',
                                 'route'   => null,
                             ]);
                             if (!$menuItemSub->exists) {
@@ -755,7 +755,7 @@ class MenuItemsTableSeederCustom extends Seeder
                     $menuItem = MenuItem::firstOrNew([
                         'menu_id' => $menu->id,
                         'title'   => 'Necklaces',
-                        'url'     => 'necklaces',
+                        'url'     => '/shop?category=necklaces',
                         'route'   => null,
                     ]);
                     if (!$menuItem->exists) {
@@ -771,7 +771,7 @@ class MenuItemsTableSeederCustom extends Seeder
                             $menuItemSub = MenuItem::firstOrNew([
                                 'menu_id' => $menu->id,
                                 'title'   => 'Wedding Necklaces',
-                                'url'     => 'wedding-necklaces',
+                                'url'     => '/shop?categories=wedding-necklaces',
                                 'route'   => null,
                             ]);
                             if (!$menuItemSub->exists) {
@@ -786,7 +786,7 @@ class MenuItemsTableSeederCustom extends Seeder
                             $menuItemSub = MenuItem::firstOrNew([
                                 'menu_id' => $menu->id,
                                 'title'   => 'Minerals Necklaces',
-                                'url'     => 'minerals-necklaces',
+                                'url'     => '/shop?categories=minerals-necklaces',
                                 'route'   => null,
                             ]);
                             if (!$menuItemSub->exists) {
@@ -801,7 +801,7 @@ class MenuItemsTableSeederCustom extends Seeder
                             $menuItemSub = MenuItem::firstOrNew([
                                 'menu_id' => $menu->id,
                                 'title'   => 'Monograms',
-                                'url'     => 'monograms',
+                                'url'     => '/shop?categories=monograms',
                                 'route'   => null,
                             ]);
                             if (!$menuItemSub->exists) {
@@ -816,7 +816,7 @@ class MenuItemsTableSeederCustom extends Seeder
                             $menuItemSub = MenuItem::firstOrNew([
                                 'menu_id' => $menu->id,
                                 'title'   => 'Pendants Necklaces',
-                                'url'     => 'pendant-necklaces',
+                                'url'     => '/shop?categories=pendant-necklaces',
                                 'route'   => null,
                             ]);
                             if (!$menuItemSub->exists) {
@@ -831,7 +831,7 @@ class MenuItemsTableSeederCustom extends Seeder
                             $menuItemSub = MenuItem::firstOrNew([
                                 'menu_id' => $menu->id,
                                 'title'   => 'Choker Necklaces',
-                                'url'     => 'choker-necklaces',
+                                'url'     => '/shop?categories=choker-necklaces',
                                 'route'   => null,
                             ]);
                             if (!$menuItemSub->exists) {
@@ -846,7 +846,7 @@ class MenuItemsTableSeederCustom extends Seeder
                     $menuItem = MenuItem::firstOrNew([
                         'menu_id' => $menu->id,
                         'title'   => 'Watches',
-                        'url'     => 'watches',
+                        'url'     => '/shop?category=watches',
                         'route'   => null,
                     ]);
                     if (!$menuItem->exists) {
@@ -862,7 +862,7 @@ class MenuItemsTableSeederCustom extends Seeder
                             $menuItemSub = MenuItem::firstOrNew([
                                 'menu_id' => $menu->id,
                                 'title'   => 'Quartz Watches',
-                                'url'     => 'quartz-watches',
+                                'url'     => '/shop?categories=quartz-watches',
                                 'route'   => null,
                             ]);
                             if (!$menuItemSub->exists) {
@@ -877,7 +877,7 @@ class MenuItemsTableSeederCustom extends Seeder
                             $menuItemSub = MenuItem::firstOrNew([
                                 'menu_id' => $menu->id,
                                 'title'   => 'Automatic Watches',
-                                'url'     => 'automatic-watches',
+                                'url'     => '/shop?categories=automatic-watches',
                                 'route'   => null,
                             ]);
                             if (!$menuItemSub->exists) {
@@ -892,7 +892,7 @@ class MenuItemsTableSeederCustom extends Seeder
                             $menuItemSub = MenuItem::firstOrNew([
                                 'menu_id' => $menu->id,
                                 'title'   => 'Kinetic Watches',
-                                'url'     => 'kinetic-watches',
+                                'url'     => '/shop?categories=kinetic-watches',
                                 'route'   => null,
                             ]);
                             if (!$menuItemSub->exists) {
@@ -907,7 +907,7 @@ class MenuItemsTableSeederCustom extends Seeder
                             $menuItemSub = MenuItem::firstOrNew([
                                 'menu_id' => $menu->id,
                                 'title'   => 'Waterproof Watches',
-                                'url'     => 'waterproof-watches',
+                                'url'     => '/shop?categories=waterproof-watches',
                                 'route'   => null,
                             ]);
                             if (!$menuItemSub->exists) {
@@ -922,7 +922,7 @@ class MenuItemsTableSeederCustom extends Seeder
                     $menuItem = MenuItem::firstOrNew([
                         'menu_id' => $menu->id,
                         'title'   => 'Earrings',
-                        'url'     => 'earrings',
+                        'url'     => '/shop?category=earrings',
                         'route'   => null,
                     ]);
                     if (!$menuItem->exists) {
@@ -938,7 +938,7 @@ class MenuItemsTableSeederCustom extends Seeder
                             $menuItemSub = MenuItem::firstOrNew([
                                 'menu_id' => $menu->id,
                                 'title'   => 'Nose piercings',
-                                'url'     => 'nose-piercings',
+                                'url'     => '/shop?categories=nose-piercings',
                                 'route'   => null,
                             ]);
                             if (!$menuItemSub->exists) {
@@ -953,7 +953,7 @@ class MenuItemsTableSeederCustom extends Seeder
                             $menuItemSub = MenuItem::firstOrNew([
                                 'menu_id' => $menu->id,
                                 'title'   => 'Zircon Earrings',
-                                'url'     => 'zircon-earrings',
+                                'url'     => '/shop?categories=zircon-earrings',
                                 'route'   => null,
                             ]);
                             if (!$menuItemSub->exists) {
@@ -968,7 +968,7 @@ class MenuItemsTableSeederCustom extends Seeder
                             $menuItemSub = MenuItem::firstOrNew([
                                 'menu_id' => $menu->id,
                                 'title'   => 'Precious Earrings',
-                                'url'     => 'stones-earrings',
+                                'url'     => '/shop?categories=stones-earrings',
                                 'route'   => null,
                             ]);
                             if (!$menuItemSub->exists) {
@@ -983,7 +983,7 @@ class MenuItemsTableSeederCustom extends Seeder
                             $menuItemSub = MenuItem::firstOrNew([
                                 'menu_id' => $menu->id,
                                 'title'   => 'Hoops Earrings',
-                                'url'     => 'hoops-earrings',
+                                'url'     => '/shop?categories=hoops-earrings',
                                 'route'   => null,
                             ]);
                             if (!$menuItemSub->exists) {
@@ -998,7 +998,7 @@ class MenuItemsTableSeederCustom extends Seeder
                     $menuItem = MenuItem::firstOrNew([
                         'menu_id' => $menu->id,
                         'title'   => 'Bracelets',
-                        'url'     => 'bracelets',
+                        'url'     => '/shop?category=bracelets',
                         'route'   => null,
                     ]);
                     if (!$menuItem->exists) {
@@ -1013,7 +1013,7 @@ class MenuItemsTableSeederCustom extends Seeder
                     $menuItem = MenuItem::firstOrNew([
                         'menu_id' => $menu->id,
                         'title'   => 'Hairpins',
-                        'url'     => 'hairpins',
+                        'url'     => '/shop?category=hairpins',
                         'route'   => null,
                     ]);
                     if (!$menuItem->exists) {
@@ -1028,7 +1028,7 @@ class MenuItemsTableSeederCustom extends Seeder
                     $menuItem = MenuItem::firstOrNew([
                         'menu_id' => $menu->id,
                         'title'   => 'Chatelaine',
-                        'url'     => 'chatelaine',
+                        'url'     => '/shop?category=chatelaine',
                         'route'   => null,
                     ]);
                     if (!$menuItem->exists) {
@@ -1043,7 +1043,7 @@ class MenuItemsTableSeederCustom extends Seeder
                     $menuItem = MenuItem::firstOrNew([
                         'menu_id' => $menu->id,
                         'title'   => 'Anklet',
-                        'url'     => 'anklet',
+                        'url'     => '/shop?category=anklet',
                         'route'   => null,
                     ]);
                     if (!$menuItem->exists) {
@@ -1058,7 +1058,7 @@ class MenuItemsTableSeederCustom extends Seeder
                     $menuItem = MenuItem::firstOrNew([
                         'menu_id' => $menu->id,
                         'title'   => 'Cuff Links',
-                        'url'     => 'cuff-links',
+                        'url'     => '/shop?category=cuff-links',
                         'route'   => null,
                     ]);
                     if (!$menuItem->exists) {
@@ -1073,7 +1073,7 @@ class MenuItemsTableSeederCustom extends Seeder
                     $menuItem = MenuItem::firstOrNew([
                         'menu_id' => $menu->id,
                         'title'   => 'Crosses',
-                        'url'     => 'crosses',
+                        'url'     => '/shop?category=crosses',
                         'route'   => null,
                     ]);
                     if (!$menuItem->exists) {

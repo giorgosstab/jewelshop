@@ -37,10 +37,10 @@
                                         {{--@endforeach--}}
                                         @foreach($item->children as $category)
                                             <div class="col-sm-4 col-md-4 col-lg-3 col-xl-2 sub-menu my-xl-5 mt-md-5 mt-1 mb-1">
-                                                <a class="menu-item" target="{{ $category->target }}" href="{{ route('shop.products.index', ['category' => $category->link()]) }}"><h6 class="sub-title text-uppercase font-weight-bold white-text">{{ $category->title }}</h6></a>
+                                                <a class="menu-item" target="{{ $category->target }}" href="{{ url($category->link()) }}"><h6 class="sub-title text-uppercase font-weight-bold white-text">{{ $category->title }}</h6></a>
                                                 <ul class="caret-style pl-0">
                                                     @foreach($category->children as $subCategory)
-                                                        <li class=""><a class="menu-item" target="{{ $subCategory->target }}" href="{{ route('shop.products.index', ['categories' => $subCategory->link()]) }}">{{ $subCategory->title }}</a></li>
+                                                        <li class=""><a class="menu-item" target="{{ $subCategory->target }}" href="{{ url($subCategory->link()) }}">{{ $subCategory->title }}</a></li>
                                                         {{--@foreach($firstNestedSub->children as $secondNestedSub)--}}
                                                         {{--SecondNested : {{ $secondNestedSub->name }}<br>--}}
                                                         {{--@foreach($secondNestedSub->subCategory as $thirdNestedSub)--}}
@@ -57,7 +57,7 @@
                         </div>
                     </li>
                 @else
-                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" target="{{ $item->target }}" href="{{ $item->link() }}" data-toggle="dropdown">{{ $item->title }}</a>
+                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" target="{{ $item->target }}" href="{{ url($item->link()) }}" data-toggle="dropdown">{{ $item->title }}</a>
                         <div class="dropdown-menu">
                             @foreach($item->children as $subItem)
                                 {{--@if($subItem->children->count())--}}
