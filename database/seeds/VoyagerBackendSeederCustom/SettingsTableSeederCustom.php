@@ -42,6 +42,7 @@ class SettingsTableSeederCustom extends Seeder
         $setting = $this->findSetting('site.google_analytics_tracking_id');
         if ($setting->exists) {
             $setting->fill([
+                'value'        => env('SITE_GOOGLE_ANALYTICS_TRACKING_ID', ''),
                 'order'        => 20,
             ])->update();
         }
@@ -269,6 +270,7 @@ class SettingsTableSeederCustom extends Seeder
         $setting = $this->findSetting('admin.google_analytics_client_id');
         if ($setting->exists) {
             $setting->fill([
+                'value'        => env('ADMIN_GOOGLE_ANALYTICS_CLIENT_ID', ''),
                 'order'        => 6,
             ])->update();
         }

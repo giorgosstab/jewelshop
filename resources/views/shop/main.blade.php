@@ -36,6 +36,16 @@
         {{Html::script('assets/slider/js/jquery.themepunch.plugins.min.js')}}
         {{Html::script('assets/slider/js/jquery.themepunch.revolution.min.js')}}
 
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ setting('site.google_analytics_tracking_id') }}"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', '{{ setting('site.google_analytics_tracking_id') }}');
+        </script>
+
         {{--mine instagram hover--}}
         {{--<style>--}}
             {{--.instaimg img{margin-bottom: 30px;}--}}
@@ -192,7 +202,7 @@
         <!--nav bar small devices-->
         {{ Html::script('assets/js/navbar/clickable.navbar.js') }}
 
-        <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script>
+        <script type="text/javascript" src="https://downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script>
         <script type="text/javascript">
             window.dojoRequire(["mojo/signup-forms/Loader"], function(L) {
                 L.start({"baseUrl":"mc.us20.list-manage.com","uuid":"75ae64ec7c9d1dd64ea2fc91e","lid":"d7ce10dc96","uniqueMethods":true})
