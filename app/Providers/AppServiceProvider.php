@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +14,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //for mariadb (xampp server) and not MySQL (laragon server)
+//        Schema::defaultStringLength(191);
+
+        //for redirect routes only up to https protocol
+        if($this->app->environment('production')) {
+            \URL::forceScheme('https');
+        }
     }
 
     /**
