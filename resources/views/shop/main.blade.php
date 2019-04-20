@@ -46,6 +46,15 @@
             gtag('config', '{{ setting('site.google_analytics_tracking_id') }}');
         </script>
 
+        <!-- Global site tag (adsbygoogle.js) - Google Adsense -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({
+                google_ad_client: "ca-pub-8642153110066826",
+                enable_page_level_ads: true
+            });
+        </script>
+
         {{--mine instagram hover--}}
         {{--<style>--}}
             {{--.instaimg img{margin-bottom: 30px;}--}}
