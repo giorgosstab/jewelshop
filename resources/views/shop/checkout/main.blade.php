@@ -115,7 +115,7 @@
                         <div class="col-md-6 col-sm-12  wow fadeIn">
                             <div class="clearfix"> </div>
                             <div class="right-form">
-                                <form action="{{ route('shop.checkout.store',[$instructions]) }}" method="POST" id="payment-form">
+                                <form action="{{ route('shop.checkout.store') }}" method="POST" id="payment-form">
                                     {{ csrf_field() }}
                                     <div class="clearfix"> </div><br>
                                     <div class="collapse-group">
@@ -179,6 +179,12 @@
                                                                 <option value="CYPRUS" {{ old('country') == 'CYPRUS' ? 'selected' : '' }}>CYPRUS </option>
                                                             </select>
                                                         </div>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <textarea id="instructions" name="instructions" rows="5" cols=55" placeholder="Write information for seller here..."></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="clearfix"></div>
@@ -352,4 +358,20 @@
     @foreach($payments as $payment)
         {!! $payment->extra_js_bottom !!}
     @endforeach
+    <script>
+        $(document).ready(function () {
+
+            $('#stripe').on('change',function(){
+                if ($(this).is(':checked')) {
+                    handleFormSubmit();
+                }
+            });
+            $('#complete-order').on('click',function(){
+                if ($('#cash-on-delivery').is(':checked')) {
+                    let form = document.getElementById('payment-form');
+                    form.submit();
+                }
+            });
+        });
+    </script>
 @endsection

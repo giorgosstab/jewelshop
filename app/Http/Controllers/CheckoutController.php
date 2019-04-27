@@ -12,7 +12,6 @@ use App\Product;
 use Cartalyst\Stripe\Exception\CardErrorException;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use function request;
 use function sha1;
@@ -23,13 +22,10 @@ class CheckoutController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param  \Illuminate\Http\Request $request
-     *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $instructions = $request->instruction;
         $deliveries = Delivery::where('status', 'like', 'PUBLISHED')->get();
         $payments = Payment::where('status', 'like', 'PUBLISHED')->get();
 
@@ -44,7 +40,6 @@ class CheckoutController extends Controller
             'newTotal' => getNumbers()->get('newTotal'),
             'deliveries' => $deliveries,
             'payments' => $payments,
-            'instructions' => $instructions,
         ]);
     }
 
@@ -80,14 +75,14 @@ class CheckoutController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\CheckoutRequest $request
-     * @param  string $instructions
+     *
      * @return \Illuminate\Http\Response
      */
-    public function store(CheckoutRequest $request,$instructions)
+    public function store(CheckoutRequest $request)
     {
         //method to check before purchase process start if we have multi user and one of them is faster than other
         if($this->productsAreNoLongerAvailable()){
-            return back()->withErrors('Sorry! One of the item in your cart is no longer available!');
+            return back()->withErrors($request->errors());
         }
 
         $content = Cart::content()->map(function($item){
@@ -97,21 +92,37 @@ class CheckoutController extends Controller
             'Name' => session()->get('coupon')['name'],
             'Discount' =>  number_format(session()->get('coupon')['discount'] / 100,2,'.',',')
         ];
-        try {
-            $charge = Stripe::charges()->create([
-                'amount' => getNumbers()->get('newTotal') / 100,
-                'currency' => 'EUR',
-                'source' => $request->stripeToken,
-                'description' => 'Order',
-                'receipt_email' => $request->email,
-                'metadata' => [
-                    'contents' => $content,
-                    'discount' => collect($discount)->toJson(),
-                    'quantity' => Cart::instance('default')->count(),
-                ],
-            ]);
+        if(!empty($request->holder_name)) {
+            try {
+                $charge = Stripe::charges()->create([
+                    'amount' => getNumbers()->get('newTotal') / 100,
+                    'currency' => 'EUR',
+                    'source' => $request->stripeToken,
+                    'description' => 'Order',
+                    'receipt_email' => $request->email,
+                    'metadata' => [
+                        'contents' => $content,
+                        'discount' => collect($discount)->toJson(),
+                        'quantity' => Cart::instance('default')->count(),
+                    ],
+                ]);
 
-            $this->addToOrdersTables($request, $instructions,null);
+                $this->addToOrdersTables($request,null);
+
+                //decrease quantity from all items in cart
+                $this->decreaseQuantities();
+
+                //SUCCESSFUL
+                Cart::instance('default')->destroy();
+                session()->forget('coupon');
+
+                return redirect()->route('shop.checkout.confirm')->with('success_message','Thank you! Your payment has been successfully accepted!');
+            } catch (CardErrorException $e) {
+                $this->addToOrdersTables($request, $e->getMessage());
+                return back()->withErrors('Error! ' . $e->getMessage());
+            }
+        } else {
+            $this->addToOrdersTables($request,null);
 
             //decrease quantity from all items in cart
             $this->decreaseQuantities();
@@ -121,13 +132,10 @@ class CheckoutController extends Controller
             session()->forget('coupon');
 
             return redirect()->route('shop.checkout.confirm')->with('success_message','Thank you! Your payment has been successfully accepted!');
-        } catch (CardErrorException $e) {
-            $this->addToOrdersTables($request, $instructions, $e->getMessage());
-            return back()->withErrors('Error! ' . $e->getMessage());
         }
     }
 
-    protected function addToOrdersTables($request, $instructions, $error){
+    protected function addToOrdersTables($request, $error){
         $random_id = str::random(60);
         $random_id .= microtime();
         $hash_id = sha1($random_id);
@@ -171,7 +179,7 @@ class CheckoutController extends Controller
             'delivery_gateway' => $request->delivery,
             'payment_gateway' => $request->card,
             'name_on_card' => !empty($request->holder_name) ? $request->holder_name : null,
-            'instructions' => $instructions,
+            'instructions' => !empty($request->instructions) ? $request->instructions : null,
 
             'error' => $error
         ]);

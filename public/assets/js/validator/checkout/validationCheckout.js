@@ -249,6 +249,32 @@ $(document).ready(function () {
             for (var i=0;i<validator.errorList.length;i++){
                 $(validator.errorList[i].element).parents('.panel-collapse.collapse').collapse('show');
             }
-        }
+        },
+        // submitHandler: submitForm,
+
+            // if ($('#stripe').is(':checked')) {
+            //     handleFormSubmit();
+            // } else {
+
+        //     alert("Submitted!")
+            // do other things for a valid form
+            // $('#complete-order').on('click',function(){
+            //             if ($('#cash-on-delivery').is(':checked')) {
+            //                 let form = document.getElementById('payment-form');
+            //                 form.submit();
+            //             }
+            //         });
+            // if ($('#stripe').is(':checked')) {
+            //     handleFormSubmit();
+            // } else {
+            //     console.log('twar');
+            //     form.submit();
+            // }
+            // $('#stripe').on('change',function(){
+            //     if ($(this).is(':checked')) {
+            //         handleFormSubmit();
+            //     }
+            // });
+        // }
     });
 });

@@ -1,5 +1,7 @@
-$( document ).ready(function() {
+$(document).ready(function () {
     // Create a Stripe client.
+    var self = this;
+    var token = null;
     var stripe = Stripe('pk_test_AmF3jzei7BUbdYiGC3x2TKKY');
 
     // Create an instance of Elements.
@@ -34,7 +36,7 @@ $( document ).ready(function() {
     card.mount('#card-element');
 
     // Handle real-time validation errors from the card Element.
-    card.addEventListener('change', function(event) {
+    card.addEventListener('change', function (event) {
         var displayError = document.getElementById('card-errors');
         if (event.error) {
             displayError.textContent = event.error.message;
@@ -45,7 +47,7 @@ $( document ).ready(function() {
 
     // Handle form submission.
     var form = document.getElementById('payment-form');
-    form.addEventListener('submit', function(event) {
+    form.addEventListener('submit', function (event) {
         event.preventDefault();
         $('#complete-order').prop('disabled', true);
 
@@ -57,7 +59,7 @@ $( document ).ready(function() {
             address_zip: document.getElementById('zip_code').value
         }
 
-        stripe.createToken(card, options).then(function(result) {
+        stripe.createToken(card, options).then(function (result) {
             if (result.error) {
                 // Inform the user if there was an error.
                 var errorElement = document.getElementById('card-errors');
@@ -65,10 +67,16 @@ $( document ).ready(function() {
                 $('#complete-order').prop('disabled', false);
             } else {
                 // Send the token to your server.
+                this.token = result.token;
                 stripeTokenHandler(result.token);
             }
         });
     });
+    function handleFormSubmit(){
+        if (self.token !== null) {
+            stripeTokenHandler(self.token)
+        }
+    }
     function stripeTokenHandler(token) {
         // Insert the token ID into the form so it gets submitted to the server
         var form = document.getElementById('payment-form');
@@ -82,3 +90,5 @@ $( document ).ready(function() {
         form.submit();
     }
 });
+
+
