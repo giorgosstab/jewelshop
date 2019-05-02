@@ -157,6 +157,7 @@ return [
         Cornford\Googlmapper\MapperServiceProvider::class,
         JordanMiguel\LaravelPopular\LaravelPopularServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        Dingo\Api\Provider\LaravelServiceProvider::class,
 
         /*
          * Application Service Providers...

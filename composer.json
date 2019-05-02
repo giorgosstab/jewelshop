@@ -12,6 +12,7 @@
         "algolia/algoliasearch-client-php": "1.27",
         "cartalyst/stripe-laravel": "8.0.*",
         "cornford/googlmapper": "2.*",
+        "dingo/api": "^2.2",
         "fideloper/proxy": "^4.0",
         "gloudemans/shoppingcart": "^2.5",
         "jordanmiguel/laravel-popular": "^1.0",
