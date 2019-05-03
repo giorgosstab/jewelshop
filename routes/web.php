@@ -125,5 +125,6 @@ Route::post('auth/activate/resend', 'Auth\ActivationController@resend')->name('a
 
 Route::get('{slug}', [
     'uses' => 'PagesController@getPage'
-])->where('slug', '([A-Za-z0-9\-\/]+)')->name('shop.pages.getPage');
+])->where('slug', '([A-Za-z0-9-]+)')->name('shop.pages.getPage');
+//])->where('slug', '([A-Za-z0-9\-\/]+)')->name('shop.pages.getPage');
 
