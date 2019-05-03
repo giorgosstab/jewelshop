@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\API\v1;
 
 use App\BlogPost;
 use App\CategoryJewel;

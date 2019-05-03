@@ -13,16 +13,18 @@ use Illuminate\Http\Request;
 |
 */
 $params = [
-    'version' => 'v1',
+    'version' =>  env('API_VERSION'),
     'prefix' => 'api',
     'domain' => env('APP_DOMAIN'),
-    'namespace' => 'App\\Http\\Controllers\\Api',
+    'namespace' => 'App\\Http\\Controllers\\API\\v1',
 ];
 $api = app('Dingo\Api\Routing\Router');
 $api->group($params, function ($api) {
-    $api->get('popular-products', 'HomePageController@popularProducts');
-    $api->get('popular-blog-posts', 'HomePageController@popularBlogPosts');
-    $api->get('parent-categories', 'HomePageController@parentCategories');
+    $api->group(['prefix' => 'v1'], function ($api) {
+        $api->get('popular-products', 'HomePageController@popularProducts');
+        $api->get('popular-blog-posts', 'HomePageController@popularBlogPosts');
+        $api->get('parent-categories', 'HomePageController@parentCategories');
+    });
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
