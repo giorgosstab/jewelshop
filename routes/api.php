@@ -21,9 +21,15 @@ $params = [
 $api = app('Dingo\Api\Routing\Router');
 $api->group($params, function ($api) {
     $api->group(['prefix' => 'v1'], function ($api) {
-        $api->get('popular-products', 'HomePageController@popularProducts');
-        $api->get('popular-blog-posts', 'HomePageController@popularBlogPosts');
-        $api->get('parent-categories', 'HomePageController@parentCategories');
+        $api->post('authenticate', 'AuthenticateController@authenticate');
+        $api->post('logout', 'AuthenticateController@logout');
+        $api->get('token', 'AuthenticateController@getToken');
+        $api->group(['middleware' => 'api.auth'], function ($api) {
+            $api->get('user', 'AuthenticateController@authenticatedUser');
+            $api->get('popular-products', 'HomePageController@popularProducts');
+            $api->get('popular-blog-posts', 'HomePageController@popularBlogPosts');
+            $api->get('parent-categories', 'HomePageController@parentCategories');
+        });
     });
 });
 
