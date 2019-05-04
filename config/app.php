@@ -158,6 +158,7 @@ return [
         JordanMiguel\LaravelPopular\LaravelPopularServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
         Dingo\Api\Provider\LaravelServiceProvider::class,
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -225,6 +226,8 @@ return [
         'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
         'Mapper' => Cornford\Googlmapper\Facades\MapperFacade::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
     ],
 
 ];

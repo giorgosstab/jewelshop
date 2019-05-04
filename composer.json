@@ -23,6 +23,7 @@
         "spatie/laravel-newsletter": "^4.2",
         "tcg/voyager": "^1.1",
         "timehunter/laravel-google-recaptcha-v3": "^1.1.2",
+        "tymon/jwt-auth": "^0.5.12",
         "yajra/laravel-datatables-oracle": "~8"
     },
     "require-dev": {
