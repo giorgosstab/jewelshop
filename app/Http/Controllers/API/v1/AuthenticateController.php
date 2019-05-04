@@ -15,7 +15,7 @@ class AuthenticateController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function authenticate(Request $request)
+    public function login(Request $request)
     {
         // grab credentials from the request
         $credentials = $request->only('email', 'password');
@@ -31,6 +31,7 @@ class AuthenticateController extends Controller
         // all good so return the token
         return response()->json(compact('token'));
     }
+
 
     /**
      * Log out
@@ -67,22 +68,23 @@ class AuthenticateController extends Controller
         // the token is valid and we have found the user via the sub claim
         return response()->json(compact('user'));
     }
+
     /**
      * Refresh the token
      *
      * @return mixed
      */
-    public function getToken()
-    {
+    public function getToken(){
         $token = JWTAuth::getToken();
+
         if (!$token) {
-            return $this->response->errorMethodNotAllowed('Token not provided');
+            return response()->json(['message'=>'405 Method Not Allowed', 'status_code'=>405]);
         }
         try {
             $refreshedToken = JWTAuth::refresh($token);
-        } catch (JWTException $e) {
-            return $this->response->errorInternal('Not able to refresh Token');
+        } catch (\JWTException $e) {
+            return response()->json(['token_invalid'], $e->getStatusCode());
         }
-        return $this->response->withArray(['token' => $refreshedToken]);
+        return response()->json(compact('refreshedToken'));
     }
 }

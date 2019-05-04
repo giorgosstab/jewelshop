@@ -21,7 +21,7 @@ $params = [
 $api = app('Dingo\Api\Routing\Router');
 $api->group($params, function ($api) {
     $api->group(['prefix' => 'v1'], function ($api) {
-        $api->post('authenticate', 'AuthenticateController@authenticate');
+        $api->post('login', 'AuthenticateController@login');
         $api->post('logout', 'AuthenticateController@logout');
         $api->get('token', 'AuthenticateController@getToken');
         $api->group(['middleware' => 'api.auth'], function ($api) {
