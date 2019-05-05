@@ -26,9 +26,7 @@ $api->group($params, function ($api) {
         $api->get('token', 'AuthenticateController@getToken');
         $api->group(['middleware' => 'api.auth'], function ($api) {
             $api->get('user', 'AuthenticateController@authenticatedUser');
-            $api->get('popular-products', 'HomePageController@popularProducts');
-            $api->get('popular-blog-posts', 'HomePageController@popularBlogPosts');
-            $api->get('parent-categories', 'HomePageController@parentCategories');
+            $api->get('home', 'HomePageController@index');
         });
     });
 });

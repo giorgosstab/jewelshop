@@ -6,43 +6,65 @@ use App\BlogPost;
 use App\CategoryJewel;
 use App\Product;
 use App\Http\Controllers\Controller;
+use App\Transformer\ParentCategoriesTransformer;
+use App\Transformer\PopularBlogPostsTransformer;
+use App\Transformer\PopularProductsTransformer;
+use League\Fractal\Manager;
+use League\Fractal\Resource\Collection;
 
 class HomePageController extends Controller
 {
     /**
+     * @var Manager
+     */
+    private $fractal;
+
+    /**
+     * @var PopularProductsTransformer
+     */
+    private $popularProductsTransformer,$popularBlogPostsTransformer,$parentCategoriesTransformer;
+
+    function __construct(Manager $fractal, PopularProductsTransformer $popularProductsTransformer,PopularBlogPostsTransformer $popularBlogPostsTransformer, ParentCategoriesTransformer $parentCategoriesTransformer)
+    {
+        $this->fractal = $fractal;
+        $this->popularProductsTransformer = $popularProductsTransformer;
+        $this->popularBlogPostsTransformer = $popularBlogPostsTransformer;
+        $this->parentCategoriesTransformer = $parentCategoriesTransformer;
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function popularProducts()
+    public function index()
     {
         $products = Product::popularDay()->where(function($query) {
             return $query->where('status', 'like', 'PUBLISHED')->groupBy('visits_count');
         })->take(8)->get();
-        return response()->json($products);
-    }
+        $products = new Collection($products, $this->popularProductsTransformer); // Create a resource collection transformer
+        $products = $this->fractal->createData($products); // Transform data
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function popularBlogPosts()
-    {
         $posts = BlogPost::popularDay()->where(function($query) {
             return $query->where('status', 'like', 'PUBLISHED')->groupBy('visits_count');
         })->take(3)->get();
-        return response()->json($posts);
-    }
+        $posts = new Collection($posts, $this->popularBlogPostsTransformer); // Create a resource collection transformer
+        $posts = $this->fractal->createData($posts); // Transform data
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function parentCategories()
-    {
         $categories = CategoryJewel::where('parent_id',null)->where('status', 'like', 'PUBLISHED')->get();
-        return response()->json($categories);
+        $categories = new Collection($categories, $this->parentCategoriesTransformer); // Create a resource collection transformer
+        $categories = $this->fractal->createData($categories); // Transform data
+
+        return response()->json([
+            'products' =>[
+                $products->toArray(),
+            ],
+            'posts' =>[
+                $posts->toArray(),
+            ],
+            'categories' =>[
+                $categories->toArray(),
+            ],
+        ]);
+
     }
 }
