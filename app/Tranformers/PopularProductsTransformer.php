@@ -14,7 +14,7 @@ class PopularProductsTransformer extends TransformerAbstract
             'id'     => (int) $product->id,
             'name'   => $product->name,
             'slug'   => $product->slug,
-            'price'  => $product->presentPrice(),
+            'price'  => '€ '.$product->presentPrice(),
             'image' => productImage($product->image),
             'created_at' => $product->created_at->format('d M Y - H:i:s'),
         ];
