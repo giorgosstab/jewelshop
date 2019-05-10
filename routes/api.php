@@ -27,6 +27,7 @@ $api->group($params, function ($api) {
         $api->group(['middleware' => 'api.auth'], function ($api) {
             $api->get('user', 'AuthenticateController@authenticatedUser');
             $api->get('home', 'HomePageController@index');
+            $api->get('products', 'ShopController@index');
         });
     });
 });
