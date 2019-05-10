@@ -15,6 +15,7 @@ class ProductsTransformer extends TransformerAbstract
             'name'   => $product->name,
             'slug'    => $product->slug,
             'image' => productImage($product->image),
+            'rating' => round($product->ratings->avg('rating')),
             'created_at' => $product->created_at->format('d M Y - H:i:s'),
         ];
     }
