@@ -21,6 +21,8 @@ class HomePageController extends Controller
 
     /**
      * @var PopularProductsTransformer
+     * @var PopularBlogPostsTransformer
+     * @var ParentCategoriesTransformer
      */
     private $popularProductsTransformer,$popularBlogPostsTransformer,$parentCategoriesTransformer;
 
