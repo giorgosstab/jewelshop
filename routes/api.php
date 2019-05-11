@@ -28,6 +28,7 @@ $api->group($params, function ($api) {
             $api->get('user', 'AuthenticateController@authenticatedUser');
             $api->get('home', 'HomePageController@index');
             $api->get('products', 'ShopController@index');
+            $api->get('product/{product}', 'ShopController@show');
         });
     });
 });
