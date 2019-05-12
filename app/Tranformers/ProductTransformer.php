@@ -21,8 +21,8 @@ class ProductTransformer extends TransformerAbstract
             'name'        => $product->name,
             'slug'        => $product->slug,
             'sku'         => $product->sku,
-            'price'       => $product->price,
-            'secondprice'       => $product->secondprice,
+            'price'       => $product->presentPrice(),
+            'secondprice'       => $product->presentPriceDeals(),
             'quantity'       => $product->quantity,
             'hotdeals'       => $product->hotdeals,
             'brand'       => [
