@@ -16,15 +16,20 @@ class ProductTransformer extends TransformerAbstract
                 $images->push(url('storage/'.$img));
             }
         }
+
+        $discount = $product->price - $product->secondprice;
+        $percent = $product->presentPriceDeals() != null ? ($discount / $product->price) * 100 : 0;
+
         return [
             'id'          => (int) $product->id,
             'name'        => $product->name,
             'slug'        => $product->slug,
             'sku'         => $product->sku,
             'price'       => $product->presentPrice(),
-            'secondprice'       => $product->presentPriceDeals(),
-            'quantity'       => $product->quantity,
-            'hotdeals'       => $product->hotdeals,
+            'secondprice' => $product->presentPriceDeals(),
+            'discount'    => number_format((float)$percent, 2, '.', ''),
+            'quantity'    => $product->quantity,
+            'hotdeals'    => $product->hotdeals,
             'brand'       => [
                 'name' => $product->brand->name,
             ],
