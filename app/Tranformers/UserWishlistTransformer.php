@@ -20,6 +20,7 @@ class UserWishlistTransformer extends TransformerAbstract
     public function transform(Wishlist $wishlist)
     {
         return [
+            'id'    => (int) $wishlist->id,
             'name'    => $wishlist->user->name,
             'email'   => $wishlist->user->email,
         ];
