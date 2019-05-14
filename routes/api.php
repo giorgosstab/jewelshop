@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,6 +27,7 @@ $api->group($params, function ($api) {
             $api->get('home', 'HomePageController@index');
             $api->get('products', 'ShopController@index');
             $api->get('product/{product}', 'ShopController@show');
+            $api->get('user/{user}/wishlists', 'WishlistController@index');
         });
     });
 });
