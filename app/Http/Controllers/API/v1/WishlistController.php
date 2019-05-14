@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Transformer\UserWishlistTransformer;
 use App\Wishlist;
 use League\Fractal\Manager;
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use League\Fractal\Resource\Collection;
 
 class WishlistController extends Controller
@@ -34,11 +35,15 @@ class WishlistController extends Controller
      */
     public function index($id)
     {
-        $wishlists = Wishlist::where("user_id", "=", $id)->with('product')->orderby('id', 'desc')->get();
+        $pagination = 5;
 
-        $wishlists = new Collection($wishlists, $this->userWishlistTransformer); // Create a resource collection transformer
+        $paginator = Wishlist::where("user_id", "=", $id)->with('product')->orderby('id', 'desc')->paginate($pagination);
+        $wishlists = $paginator->getCollection();
+
+        $resource = new Collection($wishlists, $this->userWishlistTransformer); // Create a resource collection transformer
+        $resource->setPaginator(new IlluminatePaginatorAdapter($paginator));
         $this->fractal->parseIncludes('products'); // parse includes
-        $wishlists = $this->fractal->createData($wishlists); // Transform data
+        $wishlists = $this->fractal->createData($resource); // Transform data
 
         return response()->json($wishlists->toArray());
     }
