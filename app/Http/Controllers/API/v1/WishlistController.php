@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Transformer\UserWishlistTransformer;
 use App\User;
 use App\Wishlist;
+use Illuminate\Http\Request;
 use League\Fractal\Manager;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use League\Fractal\Resource\Collection;
@@ -52,14 +53,20 @@ class WishlistController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @param \Illuminate\Http\Request $request
      * @param  int  $user_id
-     * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($user_id,$id)
+    public function destroy(Request $request, $user_id)
     {
+        $this->validate($request, [
+            'id' => 'required|numeric'
+        ]);
+
         $user = User::find($user_id);
-        $wishlist = Wishlist::where('user_id',$user->id)->find($id);
+        $wishlist = Wishlist::where('user_id',$user->id)->find($request->id);
+
         if($wishlist){
             $wishlist->delete();
             if(!$wishlist){
