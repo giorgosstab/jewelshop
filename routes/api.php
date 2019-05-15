@@ -27,6 +27,7 @@ $api->group($params, function ($api) {
             $api->get('home', 'HomePageController@index');
             $api->get('products', 'ShopController@index');
             $api->get('product/{product}', 'ShopController@show');
+            $api->get('blog/{blog}', 'BlogController@show');
             $api->get('user/{user}/wishlists', 'WishlistController@index');
             $api->delete('user/{user}/wishlist', 'WishlistController@destroy');
             $api->post('user/wishlist/create', 'WishlistController@store');
