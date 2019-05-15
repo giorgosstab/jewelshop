@@ -51,11 +51,38 @@ class WishlistController extends Controller
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'product_id' => 'required|numeric',
+            'user_id' => 'required|numeric'
+        ]);
+
+        $user = User::find($request->user_id);
+        $status = Wishlist::where('user_id',$user->id)->where('product_id',$request->product_id)->first();
+
+        if(isset($status->user_id) and isset($request->product_id)) {
+            return response()->json(['message' => 'This item is already in your wishlist','status_code' => 204]);
+        } else {
+            $wishlist = new Wishlist;
+            $wishlist->user_id = $user->id;
+            $wishlist->product_id = $request->product_id;
+            $wishlist->save();
+
+            return response()->json(['message' => 'Successfully Add Items In Wishlist','status_code' => 200]);
+        }
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param \Illuminate\Http\Request $request
      * @param  int  $user_id
-     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, $user_id)
