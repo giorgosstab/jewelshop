@@ -98,7 +98,7 @@ class AuthenticateController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id)->with('userDetail')->first();
+        $user = User::where('id',$id)->with('userDetail')->first();
         $user = new Item($user, $this->userTransformer); // Create a resource collection transformer
         $user = $this->fractal->createData($user); // Transform data
         return response()->json($user->toArray());

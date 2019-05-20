@@ -34,6 +34,6 @@ class UserTransformer extends TransformerAbstract
      */
     public function includeDetails(User $user)
     {
-        return $this->item($user->userDetail, new UserDetailTransformer);
+        return $user->userDetail ? $this->item($user->userDetail, new UserDetailTransformer) : $this->null();
     }
 }
