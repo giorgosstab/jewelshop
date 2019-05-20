@@ -25,6 +25,7 @@ $api->group($params, function ($api) {
         $api->group(['middleware' => 'api.auth'], function ($api) {
             $api->get('user', 'AuthenticateController@authenticatedUser');
             $api->get('user/{user}/details', 'AuthenticateController@show');
+            $api->patch('user/{user}/details/update', 'AuthenticateController@updateDetails');
             $api->get('home', 'HomePageController@index');
             $api->get('products', 'ShopController@index');
             $api->get('product/{product}', 'ShopController@show');

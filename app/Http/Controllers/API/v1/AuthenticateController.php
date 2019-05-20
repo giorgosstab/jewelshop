@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\API\v1;
 
+use App\Http\Requests\UpdateProfileDetailsRequest;
 use App\Transformer\UserTransformer;
 use App\User;
+use App\UserDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use League\Fractal\Manager;
@@ -102,6 +104,49 @@ class AuthenticateController extends Controller
         $user = new Item($user, $this->userTransformer); // Create a resource collection transformer
         $user = $this->fractal->createData($user); // Transform data
         return response()->json($user->toArray());
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateDetails(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name' => 'sometimes|nullable|string|max:50',
+            'email' => 'required|email|min:10|max:40|unique:users,email,'.$id,
+            'phone' => 'sometimes|nullable|regex:/^[0-9]+$/u|min:10|max:10',
+            'company' => 'sometimes|nullable|string|min:3|max:40',
+        ]);
+
+        $user = User::where('id',$id)->first();
+
+        $user->name = $request->name ? $request->name : $user->name;
+        $user->email = $request->email ? $request->email : $user->email;
+        $user->save();
+
+        if($user->userDetail()->first()) {
+            $details = new userDetail;
+
+            $details->phone = $request->phone ? $request->phone : $details->phone;
+            $details->company = $request->company ? $request->company : $details->company;
+
+            $user->userDetail()->update([
+                'phone' => $details->phone,
+                'company' => $details->company
+            ]);
+        } else {
+            $details = new userDetail;
+
+            $details->phone = $request->phone ? $request->phone : $details->phone;
+            $details->company = $request->company ? $request->company : $details->company;
+            $user->userDetail()->save($details);
+        }
+
+        return response()->json(['message' => 'User Details Updated Successfully','status_code' => 200]);
     }
 
     /**
