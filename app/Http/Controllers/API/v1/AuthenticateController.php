@@ -2,12 +2,33 @@
 
 namespace App\Http\Controllers\API\v1;
 
+use App\Transformer\UserTransformer;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use League\Fractal\Manager;
+use League\Fractal\Resource\Item;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthenticateController extends Controller
 {
+    /**
+     * @var Manager
+     */
+    private $fractal;
+
+    /**
+     * @var ProductsTransformer
+     */
+    private $userTransformer;
+
+    function __construct(Manager $fractal, UserTransformer $userTransformer)
+    {
+        $this->fractal = $fractal;
+        $this->userTransformer = $userTransformer;
+    }
+
+
     /**
      *  API Login, on success return JWT Auth token
      *
@@ -67,6 +88,20 @@ class AuthenticateController extends Controller
         }
         // the token is valid and we have found the user via the sub claim
         return response()->json(compact('user'));
+    }
+
+    /**
+     * Returns the authenticated user details.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function show($id)
+    {
+        $user = User::find($id)->with('userDetail')->first();
+        $user = new Item($user, $this->userTransformer); // Create a resource collection transformer
+        $user = $this->fractal->createData($user); // Transform data
+        return response()->json($user->toArray());
     }
 
     /**
