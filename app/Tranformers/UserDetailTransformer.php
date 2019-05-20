@@ -16,8 +16,8 @@ class UserDetailTransformer extends TransformerAbstract
             'city'         => $user->city,
             'country'      => $user->country,
             'address'      => $user->address,
-            'house_number' => $user->house_number,
-            'zip'          => $user->postal_code,
+            'house_number' => (string) $user->house_number,
+            'zip'          => (string) $user->postal_code,
             'locality'     => $user->locality,
         ];
     }
