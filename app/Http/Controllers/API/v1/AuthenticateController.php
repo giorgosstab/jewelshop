@@ -8,6 +8,7 @@ use App\User;
 use App\UserDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use League\Fractal\Manager;
 use League\Fractal\Resource\Item;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -147,6 +148,32 @@ class AuthenticateController extends Controller
         }
 
         return response()->json(['message' => 'User Details Updated Successfully','status_code' => 200]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updatePassword(Request $request, $id)
+    {
+        $this->validate($request, [
+            'old_password' => 'required|min:8|different:password',
+            'password'     => 'required_with:old_password|min:8|confirmed',
+        ]);
+
+        $user = User::where('id',$id)->first();
+
+        if(Hash::check($request->old_password,$user->password)){
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+            return response()->json(['message' => 'Password Update Successfully','status_code' => 200]);
+        } else {
+            return response()->json(['message' => 'Old Password is Wrong','status_code' => 204]);
+        }
     }
 
     /**

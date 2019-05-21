@@ -26,6 +26,7 @@ $api->group($params, function ($api) {
             $api->get('user', 'AuthenticateController@authenticatedUser');
             $api->get('user/{user}/details', 'AuthenticateController@show');
             $api->patch('user/{user}/details/update', 'AuthenticateController@updateDetails');
+            $api->patch('user/{user}/password/update', 'AuthenticateController@updatePassword');
             $api->get('home', 'HomePageController@index');
             $api->get('products', 'ShopController@index');
             $api->get('product/{product}', 'ShopController@show');
