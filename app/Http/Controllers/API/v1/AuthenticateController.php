@@ -177,6 +177,43 @@ class AuthenticateController extends Controller
     }
 
     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateAddress(Request $request, $id)
+    {
+        $this->validate($request, [
+            'city' => 'sometimes|nullable|string|max:30',
+            'country' => 'sometimes|nullable|string|max:20',
+            'address' => 'sometimes|nullable|string|max:35',
+            'house_number' => 'sometimes|nullable|regex:/^[0-9]+$/u||min:1|max:3',
+            'postal_code' => 'sometimes|nullable|regex:/^[0-9]+$/u||min:5|max:5',
+            'locality' => 'sometimes|nullable|string|min:5|max:20',
+        ]);
+
+        $user = User::where('id',$id)->first();
+
+        $details = $this->updateDetailsUser($request);
+
+        if($user->userDetail()->first()){
+            $user->userDetail()->update([
+                'city' => $details->city,
+                'country' => $details->country,
+                'address' => $details->address,
+                'house_number' => $details->house_number,
+                'postal_code' => $details->postal_code,
+                'locality' => $details->locality,
+            ]);
+        } else {
+            $user->userDetail()->save($details);
+        }
+        return response()->json(['message' => 'User Addresses Updated','status_code' => 200]);
+    }
+
+    /**
      * Refresh the token
      *
      * @return mixed
@@ -193,5 +230,18 @@ class AuthenticateController extends Controller
             return response()->json(['token_invalid'], $e->getStatusCode());
         }
         return response()->json(compact('refreshedToken'));
+    }
+
+    protected function updateDetailsUser($request){
+        $details = new userDetail;
+        $details->phone = $request->phone;
+        $details->company = $request->company;
+        $details->city = $request->city;
+        $details->country = $request->country;
+        $details->address = $request->address;
+        $details->house_number = $request->house_number;
+        $details->postal_code = $request->postal_code;
+        $details->locality = $request->locality;
+        return $details;
     }
 }
