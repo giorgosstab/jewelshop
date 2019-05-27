@@ -8,7 +8,7 @@ $(document).ready(function () {
         return customzip.length > 4 && customzip.length <= 5;
     });
     $('#payment-form').validate({ // initialize the plugin
-        ignore: false,
+
         showErrors: function() {
             $(".agree").css('color', 'red');
             this.defaultShowErrors();
@@ -148,12 +148,14 @@ $(document).ready(function () {
                 },
                 customzip: true
             },
-            agree: "required"
+            agree: "required",
+            holder_name: "required"
         },
         onfocusout: function(e) {
             this.element(e);
         },
         onkeyup: false,
+        ignore: ".ignore",
         messages: {
             fname: {
                 required: "First Name Required!",
@@ -234,7 +236,8 @@ $(document).ready(function () {
                 customzip: "Format: 25100!"
             },
             delivery: "Please select delivery method!",
-            card: "Please select payment method!"
+            card: "Please select payment method!",
+            holder_name: "Card Holder Name Required!"
         },
         errorPlacement: function(error, element) {
             if (element.attr("name") == "delivery") {

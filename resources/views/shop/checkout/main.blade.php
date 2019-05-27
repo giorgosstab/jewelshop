@@ -360,18 +360,39 @@
     @endforeach
     <script>
         $(document).ready(function () {
-
+            $("#div-show").find(":input").addClass("ignore")
             $('#stripe').on('change',function(){
                 if ($(this).is(':checked')) {
-                    handleFormSubmit();
+                    stripeClass.handleFormSubmit();
                 }
             });
             $('#complete-order').on('click',function(){
-                if ($('#cash-on-delivery').is(':checked')) {
-                    let form = document.getElementById('payment-form');
-                    form.submit();
-                }
+                validateAndSubmit();
+            });
+
+            $("#div-show").on("hide.bs.collapse", function(){
+               $(this).find(":input").addClass("ignore")
+            });
+
+            $("#div-show").on("show.bs.collapse", function(){
+                $(this).find(":input").removeClass("ignore")
+            });
+
+            $("#show-stripe").on("hide.bs.collapse", function(){
+                $(this).find(":input").addClass("ignore")
+            });
+
+            $("#show-stripe").on("show.bs.collapse", function(){
+                $(this).find(":input").removeClass("ignore")
             });
         });
+        function validateAndSubmit(){
+            let form = $('#payment-form');
+
+            form.validate().form();
+            if (form.validate().valid()){
+                document.getElementById("payment-form").submit();
+            }
+        }
     </script>
 @endsection
