@@ -127,7 +127,9 @@
                                     <div class="tab-pane fade" id="star-tab">
                                         <div class="col-md-12 col-sm-12 col-xs-12 bread">
                                             <div class="breadcrumbs">
-                                                {!! $rates->fragment('star-tab')->render('pagination::shopPagination') !!}
+                                                @if ($rates)
+                                                    {!! $rates->fragment('star-tab')->render('pagination::shopPagination') !!}
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="table-responsive table-none wow fadeIn">
@@ -159,7 +161,7 @@
                                             <div class="cat-div  wow fadeIn">
                                                 <h2>
                                                     <div class="save-for-later">
-                                                        <div class="count">{{ $rate->product->count() }} item(s) <span>in wish list</span></div>
+{{--                                                        <div class="count">{{ $rate->product->count() }} item(s) <span>in wish list</span></div>--}}
                                                     </div>
                                                     <div class="clearfix"></div>
                                                 </h2>
