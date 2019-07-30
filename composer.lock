@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "62481baa9f67fe227367840b090e72a6",
+    "content-hash": "a7322b8b01fecd7e073ae18f08a21be1",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -5100,16 +5100,16 @@
         },
         {
             "name": "timehunter/laravel-google-recaptcha-v3",
-            "version": "1.1.2",
+            "version": "2.2.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RyanDaDeng/laravel-google-recaptcha-v3.git",
-                "reference": "b841f079954d38e6f0734672633fc69e377c224e"
+                "reference": "fcac9f1357ac14c4dcf2b59f75ef251120f65a5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RyanDaDeng/laravel-google-recaptcha-v3/zipball/b841f079954d38e6f0734672633fc69e377c224e",
-                "reference": "b841f079954d38e6f0734672633fc69e377c224e",
+                "url": "https://api.github.com/repos/RyanDaDeng/laravel-google-recaptcha-v3/zipball/fcac9f1357ac14c4dcf2b59f75ef251120f65a5b",
+                "reference": "fcac9f1357ac14c4dcf2b59f75ef251120f65a5b",
                 "shasum": ""
             },
             "require": {
@@ -5117,25 +5117,27 @@
                 "php": ">=5.5"
             },
             "require-dev": {
-                "mockery/mockery": "^1.1",
                 "orchestra/testbench": "~3.0",
-                "phpunit/phpunit": "~7.0",
-                "sempro/phpunit-pretty-print": "^1.0"
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpunit/phpunit": "~7.0"
             },
             "type": "library",
             "extra": {
                 "laravel": {
                     "providers": [
-                        "TimeHunter\\LaravelGoogleCaptchaV3\\Providers\\GoogleReCaptchaV3ServiceProvider"
+                        "TimeHunter\\LaravelGoogleReCaptchaV3\\Providers\\GoogleReCaptchaV3ServiceProvider"
                     ],
                     "aliases": {
-                        "GoogleReCaptchaV3": "TimeHunter\\LaravelGoogleCaptchaV3\\Facades\\GoogleReCaptchaV3"
+                        "GoogleReCaptchaV3": "TimeHunter\\LaravelGoogleReCaptchaV3\\Facades\\GoogleReCaptchaV3"
                     }
+                },
+                "branch-alias": {
+                    "dev-master": "3.0.*-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "TimeHunter\\LaravelGoogleCaptchaV3\\": "src/"
+                    "TimeHunter\\LaravelGoogleReCaptchaV3\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -5149,19 +5151,22 @@
                     "homepage": "https://ryandeng.com"
                 }
             ],
-            "description": "Laravel 5.x library for reCAPTCHA v3",
+            "description": "Laravel Package for google reCAPTCHA v3",
             "homepage": "https://github.com/RyanDaDeng/laravel-google-recaptcha-v3",
             "keywords": [
                 "Google ReCaptcha",
                 "GoogleReCaptcha",
                 "Laravel reCAPTCHA",
                 "google recaptcha v3",
+                "laravel",
                 "laravel google recaptcha",
                 "laravel google recaptcha v3",
+                "laravel recaptcha v3",
                 "recaptcha",
-                "recaptcha v3"
+                "recaptcha v3",
+                "recaptcha v3 laravel"
             ],
-            "time": "2018-11-25T02:02:34+00:00"
+            "time": "2019-07-09T12:44:11+00:00"
         },
         {
             "name": "tymon/jwt-auth",

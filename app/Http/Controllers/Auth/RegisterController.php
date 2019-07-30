@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Events\Auth\UserActivationEmail;
-use TimeHunter\LaravelGoogleCaptchaV3\Facades\GoogleReCaptchaV3;
+use TimeHunter\LaravelGoogleReCaptchaV3\Facades\GoogleReCaptchaV3;
 
 class RegisterController extends Controller
 {
@@ -96,7 +96,7 @@ class RegisterController extends Controller
             }
 
         } else {
-            return redirect()->route('register')->withErrors('Robot verification failed, please try again!');
+            return redirect()->route('register')->withErrors('Robot verification failed, please refresh and try again!');
         }
 //        $this->guard()->login($user);
     }

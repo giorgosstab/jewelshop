@@ -3,7 +3,6 @@
 @section('title', theme('contact_title'))
 
 @section('extra-css')
-    {!!  GoogleReCaptchaV3::requireJs() !!}
     <style>
         .inner-bg3 {
             background: url("{{ settingsAdminImageExist(theme('contact_parallax'),"contact") }}") no-repeat center center fixed;
@@ -65,7 +64,7 @@
                             <div class="form-2">
                                 <form action="{{ route('shop.contact.store') }}" method="post" id="contact-form">
                                     {{ csrf_field() }}
-                                    {!!  GoogleReCaptchaV3::render('contact_us') !!}
+                                    {!!  GoogleReCaptchaV3::renderField('contact_us_id','contact_us') !!}
                                     <div class="form-group">
                                         <input type="text" name="fname" placeholder="FIRST NAME" value="{{ old('fname') }}">
                                     </div>
@@ -110,6 +109,7 @@
 
 @section('extra-script')
     {{ Mapper::renderJavascript() }}
+    {!! GoogleReCaptchaV3::init() !!}
     {{ Html::script('assets/js/validator/jquery.validate.min.js') }}
     {{ Html::script('assets/js/validator/additional-methods.min.js') }}
     {{ Html::script('assets/js/validator/contact/validationContact.js') }}

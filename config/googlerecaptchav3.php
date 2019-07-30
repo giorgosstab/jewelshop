@@ -4,6 +4,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Default Request Method
+    |--------------------------------------------------------------------------
+    |
+    | If not provided, will use curl as default.
+    | Supported: "guzzle", "curl", if you want to use your own request method,
+    | please read document.
+    |
+    */
+    'request_method' => 'curl',
+    /*
+    |--------------------------------------------------------------------------
     | Enable/Disable Service
     |--------------------------------------------------------------------------
     | Type: bool
@@ -23,7 +34,7 @@ return [
     | Google reCAPTCHA host name, https://www.google.com/recaptcha/admin
     |
     */
-    'host_name' => 'jewelshop.io',
+    'host_name' => env('RECAPTCHA_HOST_NAME', ''),
     /*
     |--------------------------------------------------------------------------
     | Secret Key
@@ -42,16 +53,42 @@ return [
     |
     */
     'site_key' => env('RECAPTCHA_SITE_KEY', ''),
+
     /*
     |--------------------------------------------------------------------------
-    | Template
+    | Badge Style
     |--------------------------------------------------------------------------
-    | Type: string
-    | Template path, if your template locate at resources/views/template/test.blade.php
-    | your value should be template.test
+    | Type: boolean
+    | Support:
+    |  -  true: the badge will be shown inline with the form, also you can customise your style
+    |  -  false: the badge will be shown in the bottom right side
     |
     */
-    'template' => '',
+    'inline' => false,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Background Badge Style
+    |--------------------------------------------------------------------------
+    | Type: boolean
+    | Support:
+    |  -  true: the background badge will be displayed at the bottom right of page
+    |  -  false: the background badge will be invisible
+    |
+    */
+    'background_badge_display' => true,
+    /*
+    |--------------------------------------------------------------------------
+    | Background Mode
+    |--------------------------------------------------------------------------
+    | Type: boolean
+    | Support:
+    |  -  true: the script will run on every page if you put init() on the global page
+    |  -  false: the script will only be running if there is action defined
+    |
+    */
+    'background_mode' => false,
+
     /*
     |--------------------------------------------------------------------------
     | Score Comparision
@@ -67,7 +104,6 @@ return [
     | Type: array
     | Define your score threshold, define your action
     | action: Google reCAPTCHA required parameter
-    | id: <input> id
     | threshold: score threshold
     | score_comparision: true/false, if this is true, the system will do score comparsion against your threshold for the action
     */
@@ -83,6 +119,17 @@ return [
             'score_comparision' => true
         ]
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Setting
+    |--------------------------------------------------------------------------
+    | Type: array
+    | Define a list of ip that you want to skip
+    */
+    'skip_ips' => [
+
+    ],
     /*
     |--------------------------------------------------------------------------
     | Options
@@ -95,10 +142,27 @@ return [
     ],
     /*
     |--------------------------------------------------------------------------
+    | API JS Url
+    |--------------------------------------------------------------------------
+    | Type: string
+    | Google reCAPTCHA API JS URL
+    */
+    'api_js_url' => 'https://www.google.com/recaptcha/api.js',
+    /*
+    |--------------------------------------------------------------------------
     | Site Verify Url
     |--------------------------------------------------------------------------
     | Type: string
     | Google reCAPTCHA API
     */
     'site_verify_url' => 'https://www.google.com/recaptcha/api/siteverify',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Language
+    |--------------------------------------------------------------------------
+    | Type: string
+    | https://developers.google.com/recaptcha/docs/language
+    */
+    'language' => 'en',
 ];

@@ -3,7 +3,6 @@
 @section('title',  theme('register_title'))
 
 @section('extra-css')
-    {!!  GoogleReCaptchaV3::requireJs() !!}
     <style>
         .inner-bg {
             background: url("{{ settingsAdminImageExist(theme('register_parallax'),"register") }}") no-repeat center center fixed;
@@ -47,7 +46,7 @@
                         <div class="blog-in">
                             {!! Form::open(array('route'=>'register','method' => 'POST','class' => 'form-signup')) !!}
                                 {{ csrf_field() }}
-                                {!!  GoogleReCaptchaV3::render('register') !!}
+                                {!!  GoogleReCaptchaV3::renderField('register_id','register') !!}
                                 <div class="text-center mb-4">
                                     <h3 class="h3 mb-3 font-weight-normal">{{ __('Sign Un New Profile') }}</h3>
                                 </div>
@@ -133,4 +132,8 @@
         <!--container-->
         <div class="clearfix"></div>
     </div>
+@endsection
+
+@section('extra-script')
+    {!!  GoogleReCaptchaV3::init() !!}
 @endsection

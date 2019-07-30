@@ -23,7 +23,7 @@
         "league/fractal": "^0.17.0",
         "spatie/laravel-newsletter": "^4.2",
         "tcg/voyager": "^1.1",
-        "timehunter/laravel-google-recaptcha-v3": "^1.1.2",
+        "timehunter/laravel-google-recaptcha-v3": "~2.2.19",
         "tymon/jwt-auth": "^0.5.12",
         "yajra/laravel-datatables-oracle": "~8"
     },
