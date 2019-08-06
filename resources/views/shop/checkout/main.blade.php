@@ -132,45 +132,41 @@
                                                 <div class="row m-0">
                                                     <div class="col-md-6 col-sm-6 col-xs-6">
                                                         <div class="form-group">
-                                                            <input type="text" id="fname" name="fname" placeholder="FIRST NAME" value="{{ old('fname') }}">
+                                                            <input type="text" id="fname" name="fname" placeholder="FIRST NAME" value="@if(auth()->user()){{ strtok( auth()->user()->name,' ') }}@else {{ old('fname') }} @endif">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input id="address" type="text" name="address" placeholder="ADDRESS" value="{{ old('address') }}">
+                                                            <input id="address" type="text" name="address" placeholder="ADDRESS" value="@if(auth()->user()){{ auth()->user()->userDetail->address }} @else {{ old('address') }}@endif">
                                                         </div>
                                                         <div class="form-group">
-                                                            @if(auth()->user())
-                                                                <input type="text" name="email" placeholder="EMAIL ADDRESS" value="{{ auth()->user()->email }}">
-                                                            @else
-                                                                <input type="text" name="email" placeholder="EMAIL ADDRESS" value="{{ old('email') }}">
-                                                            @endif
+                                                            <input type="text" name="email" placeholder="EMAIL ADDRESS" value="@if(auth()->user()){{ auth()->user()->email }}@else {{ old('email') }} @endif">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input type="text" name="phone" placeholder="PHONE NUMBER" class="customphone" value="{{ old('phone') }}">
+                                                            <input type="text" name="phone" placeholder="PHONE NUMBER" class="customphone" value="@if(auth()->user()){{ auth()->user()->userDetail->phone }} @else {{ old('phone') }}@endif">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input id="zip_code" type="text" name="zip_code" placeholder="ZIPCODE" class="customzip" value="{{ old('zip_code') }}">
+                                                            <input id="zip_code" type="text" name="zip_code" placeholder="ZIPCODE" class="customzip" value="@if(auth()->user()){{ auth()->user()->userDetail->postal_code }} @else {{ old('zip_code') }}@endif">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-sm-6 col-xs-6">
                                                         <div class="form-group">
-                                                            <input type="text" name="lname" placeholder="LAST NAME" value="{{ old('lname') }}">
+                                                            <input type="text" name="lname" placeholder="LAST NAME" value="@if(auth()->user()){{ strstr( auth()->user()->name,' ') }}@else {{ old('lname') }} @endif">
                                                         </div>
                                                         <div class="clearfix"></div>
                                                         <div class="row m-0">
                                                             <div class="col-md-6 padd0">
                                                                 <div class="form-group">
-                                                                    <input type="text" name="hnumber" placeholder="HOUSE NO." value="{{ old('hnumber') }}">
+                                                                    <input type="text" name="hnumber" placeholder="HOUSE NO." value="@if(auth()->user()){{ auth()->user()->userDetail->house_number }} @else {{ old('hnumber') }}@endif">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 padd0">
                                                                 <div class="form-group">
-                                                                    <input id="locality" type="text" name="locality" placeholder="LOCALITY"  value="{{ old('locality') }}">
+                                                                    <input id="locality" type="text" name="locality" placeholder="LOCALITY"  value="@if(auth()->user()){{ auth()->user()->userDetail->locality }} @else {{ old('locality') }}@endif">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="clearfix"></div>
                                                         <div class="form-group">
-                                                            <input id="city" type="text" name="city" placeholder="CITY"  value="{{ old('city') }}">
+                                                            <input id="city" type="text" name="city" placeholder="CITY"  value="@if(auth()->user()){{ auth()->user()->userDetail->city }} @else {{ old('city') }}@endif">
                                                         </div>
                                                         <div class="form-group">
                                                             <select id="checkout-country" class="js-countries" name="country">
