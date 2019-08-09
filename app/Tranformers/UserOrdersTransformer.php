@@ -59,6 +59,7 @@ class UserOrdersTransformer extends TransformerAbstract
             'name_on_card'   => $order->name_on_card,
             'status'   => $order->status,
             'instructions'   => $order->instructions,
+            'created_at'  => $order->created_at->format('d M Y - H:i:s'),
         ];
     }
 
