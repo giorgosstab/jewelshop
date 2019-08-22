@@ -3,7 +3,6 @@
 namespace App\Transformer;
 
 use App\Order;
-use App\Product;
 use League\Fractal\Resource\Collection;
 use League\Fractal\TransformerAbstract;
 
@@ -22,6 +21,7 @@ class UserOrdersTransformer extends TransformerAbstract
     {
         return [
             'id'    => (int) $order->id,
+            'user_id'    => (int) $order->user->id,
             'unique_id'    => $order->unique_id,
             'billing_fname'   => $order->billing_fname,
             'billing_lname'   => $order->billing_lname,
