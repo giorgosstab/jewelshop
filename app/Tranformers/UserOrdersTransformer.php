@@ -70,6 +70,6 @@ class UserOrdersTransformer extends TransformerAbstract
      */
     public function includeProducts(Order $order)
     {
-        return $this->collection($order->products, new ProductTransformer);
+        return $this->collection($order->products, new ProductOrderTransformer);
     }
 }
