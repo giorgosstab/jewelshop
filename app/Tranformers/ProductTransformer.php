@@ -26,6 +26,7 @@ class ProductTransformer extends TransformerAbstract
             'slug'        => $product->slug,
             'sku'         => $product->sku,
             'price'       => $product->presentPrice(),
+            'price_int'       => $product->price,
             'secondprice' => $product->presentPriceDeals(),
             'discount'    => number_format((float)$percent, 2, '.', ''),
             'quantity'    => $product->quantity,
