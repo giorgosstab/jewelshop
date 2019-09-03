@@ -102,14 +102,14 @@ class CheckoutController extends Controller
             'second_billing_country' => !empty($request->addresses["second_country"]) ? $request->addresses["second_country"] : null,
             'second_billing_postalcode' => !empty($request->addresses["second_postal_code"]) ? $request->addresses["second_postal_code"] : null,
 
-            'billing_discount' => null,
-            'billing_discount_code' => null,
+            'billing_discount' => '',
+            'billing_discount_code' => '',
 
             'billing_subtotal' => $request->subtotal,
             'billing_tax' => $request->tax,
             'billing_total' => $request->total,
 
-            'delivery_gateway' => null,
+            'delivery_gateway' => '',
             'payment_gateway' => $request->payment,
 //            'name_on_card' => !empty($request->holder_name) ? $request->holder_name : null,
             'name_on_card' => $request->addresses["email"],
