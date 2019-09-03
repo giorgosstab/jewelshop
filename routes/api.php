@@ -37,6 +37,7 @@ $api->group($params, function ($api) {
             $api->post('user/wishlist/create', 'WishlistController@store');
             $api->get('user/{user}/orders', 'OrderController@index');
             $api->get('user/{user}/order/{id}', 'OrderController@show');
+            $api->post('charge', 'CheckoutController@store');
         });
     });
 });
