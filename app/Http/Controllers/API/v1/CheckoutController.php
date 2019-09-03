@@ -21,13 +21,15 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
+        $collection = collect($request->products);
+        // return response()->json($collection);
         $this->validate($request, [
             'products' => 'required',
             'stripeToken' => 'required'
         ]);
 
-        $content = $request->products->map(function($item){
-            return 'Product Name: '.$item->slug.', Quantity: '.$item->qty;
+        $content = $collection->map(function($item){
+            return 'Product Name: '.$item["slug"].', Quantity: '.$item["quantity_item"];
         })->values()->toJson();
 
         $user = User::find($request->user_id);
