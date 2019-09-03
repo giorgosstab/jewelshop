@@ -40,7 +40,7 @@ class CheckoutController extends Controller
 
         try {
             $charge = Stripe::charges()->create([
-                'amount' => $request->total,
+                'amount' => $request->total / 100,
                 'currency' => 'EUR',
                 'source' => $request->stripeToken,
                 'description' => 'Mobile Order',
