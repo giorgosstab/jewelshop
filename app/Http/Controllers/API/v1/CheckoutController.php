@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API\v1;
 
+use App\User;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Cartalyst\Stripe\Exception\CardErrorException;
 use Illuminate\Http\Request;
@@ -20,17 +21,24 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'products' => 'required',
+            'stripeToken' => 'required'
+        ]);
+
         $content = $request->products->map(function($item){
             return 'Product Name: '.$item->slug.', Quantity: '.$item->qty;
         })->values()->toJson();
 
+        $user = User::find($request->user_id);
+
         try {
             $charge = Stripe::charges()->create([
-                'amount' => getNumbers()->get('newTotal') / 100,
+                'amount' => $request->total,
                 'currency' => 'EUR',
                 'source' => $request->stripeToken,
-                'description' => 'Order',
-                'receipt_email' => $request->email,
+                'description' => 'Mobile Order',
+                'receipt_email' => $user->email,
                 'metadata' => [
                     'contents' => $content,
                     'discount' => '',
