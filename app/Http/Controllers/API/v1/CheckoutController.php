@@ -109,7 +109,7 @@ class CheckoutController extends Controller
             'billing_tax' => $request->tax,
             'billing_total' => $request->total,
 
-            'delivery_gateway' => 'Acs Courier',
+            'delivery_gateway' => 'ACS Courier',
             'payment_gateway' => $request->payment,
 //            'name_on_card' => !empty($request->holder_name) ? $request->holder_name : null,
             'name_on_card' => $request->addresses["email"],
