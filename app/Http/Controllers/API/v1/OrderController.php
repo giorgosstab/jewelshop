@@ -38,7 +38,7 @@ class OrderController extends Controller
     {
         $pagination = 5;
 
-        $paginator = Order::where("user_id", "=", $id)->paginate($pagination);
+        $paginator = Order::where("user_id", "=", $id)->orderBy('id', 'desc')->paginate($pagination);
         $orders = $paginator->getCollection();
 
         $resource = new Collection($orders, $this->userOrdersTransformer); // Create a resource collection transformer
