@@ -38,6 +38,7 @@ $api->group($params, function ($api) {
             $api->get('user/{user}/orders', 'OrderController@index');
             $api->get('user/{user}/order/{id}', 'OrderController@show');
             $api->post('charge', 'CheckoutController@store');
+            $api->get('deliveries', 'DeliveriesController@index');
         });
     });
 });
