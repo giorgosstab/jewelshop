@@ -26,10 +26,16 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'products' => 'required',
-            'stripeToken' => 'required'
-        ]);
+        if($request->delivery === "Stripe") {
+            $this->validate($request, [
+                'products' => 'required',
+                'stripeToken' => 'required'
+            ]);
+        } else {
+            $this->validate($request, [
+                'products' => 'required',
+            ]);
+        }
 
         $products = collect($request->products);
         $content = $products->map(function($item){
