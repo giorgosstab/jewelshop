@@ -38,33 +38,39 @@ class CheckoutController extends Controller
 
         $user = User::find($request->user_id);
 
-        try {
-            $charge = Stripe::charges()->create([
-                'amount' => $request->total / 100,
-                'currency' => 'EUR',
-                'source' => $request->stripeToken,
-                'description' => 'Mobile Order',
-                'receipt_email' => $user->email,
-                'metadata' => [
-                    'contents' => $content,
-                    'discount' => '',
-//                    'discount' => collect($discount)->toJson(),
-                    'quantity' => $products->count(),
-                ],
-            ]);
+        if($request->delivery === "Stripe") {
+            try {
+                $charge = Stripe::charges()->create([
+                    'amount' => $request->total / 100,
+                    'currency' => 'EUR',
+                    'source' => $request->stripeToken,
+                    'description' => 'Mobile Order',
+                    'receipt_email' => $user->email,
+                    'metadata' => [
+                        'contents' => $content,
+                        'discount' => '',
+                        //                    'discount' => collect($discount)->toJson(),
+                        'quantity' => $products->count(),
+                    ],
+                ]);
 
+                $this->addToOrdersTables($request, $products, null);
+
+                //decrease quantity from all items in cart
+                //            $this->decreaseQuantities();
+
+                //SUCCESSFUL
+                //            Cart::instance('default')->destroy();
+                //            session()->forget('coupon');
+                return response()->json(['message' => 'Thank you! Your payment has been successfully accepted!', 'status_code' => 200]);
+            } catch (CardErrorException $e) {
+                $this->addToOrdersTables($request, $products, $e->getMessage());
+                return response()->json(['message' => $e->getMessage(), 'status_code' => 204]);
+            }
+        } else {
             $this->addToOrdersTables($request, $products, null);
 
-            //decrease quantity from all items in cart
-//            $this->decreaseQuantities();
-
-            //SUCCESSFUL
-//            Cart::instance('default')->destroy();
-//            session()->forget('coupon');
-            return response()->json(['message' => 'Thank you! Your payment has been successfully accepted!','status_code' => 200]);
-        } catch (CardErrorException $e) {
-            $this->addToOrdersTables($request, $products, $e->getMessage());
-            return response()->json(['message' => $e->getMessage(),'status_code' => 204]);
+            return response()->json(['message' => 'Thank you! Your payment has been successfully accepted!', 'status_code' => 200]);
         }
     }
 
