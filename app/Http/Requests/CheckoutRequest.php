@@ -29,7 +29,7 @@ class CheckoutRequest extends FormRequest
             'fname' => 'required|regex:/^[a-zA-Z]+$/u|min:3|max:15',
             'lname' => 'required|regex:/^[a-zA-Z]+$/u|min:5|max:20',
             'email' => $emailValidation,
-            'address' => 'required|regex:/^[A-Za-z0-9 ]+$/u|min:5|max:45',
+            'address' => 'required|alpha_dash|numeric|min:5|max:45',
             'city' => 'required|regex:/^[a-zA-Z]+$/u|min:5|max:20',
             'zip_code' => 'required|numeric|min:10000|max:99999',
             'locality' => 'required|regex:/^[a-zA-Z]+$/u|min:5|max:20',
