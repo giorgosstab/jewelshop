@@ -357,6 +357,10 @@
     <script>
         $(document).ready(function () {
             $("#div-show").find(":input").addClass("ignore");
+
+            $('#stripe').prop('checked', true);
+            $('#show-stripe').collapse('show');
+
             $('#stripe').on('change',function(){
                 if ($(this).is(':checked')) {
                     stripeClass.handleFormSubmit();
