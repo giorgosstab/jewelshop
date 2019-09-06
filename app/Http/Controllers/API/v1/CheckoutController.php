@@ -26,7 +26,7 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->delivery === "Stripe") {
+        if($request->payment === "Stripe") {
             $this->validate($request, [
                 'products' => 'required',
                 'stripeToken' => 'required'
@@ -44,7 +44,7 @@ class CheckoutController extends Controller
 
         $user = User::find($request->user_id);
 
-        if($request->delivery === "Stripe") {
+        if($request->payment === "Stripe") {
             try {
                 $charge = Stripe::charges()->create([
                     'amount' => $request->total / 100,
