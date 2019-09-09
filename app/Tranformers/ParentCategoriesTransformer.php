@@ -12,7 +12,7 @@ class ParentCategoriesTransformer extends TransformerAbstract
     {
         return [
             'id'      => (int) $category->id,
-            'name'   => $category->name,
+            'category_name'   => $category->name,
             'slug'    => $category->slug,
             'image' => productImage($category->image),
             'created_at' => $category->created_at->format('d M Y - H:i:s'),
