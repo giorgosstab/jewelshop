@@ -139,7 +139,9 @@
                                 <div class="col-lg-12 col-md-6 col-sm-12">
                                     <div class="cat-div  wow fadeIn">
                                         <h2>Download our app</h2>
-                                        <div class="download-our"> <a href="#" class="pull-left"><img  src="assets/images/app.png" alt="" title="" class="img-fluid"></a> <a href="#" class="pull-left"><img  src="assets/images/google-play.png" alt="" title="" class="img-fluid"></a>
+                                        <div class="download-our">
+                                            <a href="#" class="pull-left"><img  src="assets/images/app.png" alt="" title="" class="img-fluid"></a>
+                                            <a href="{{ env('ANDROID_APP_URL') }}" target="_blank" class="pull-left"><img  src="assets/images/google-play.png" alt="" title="" class="img-fluid"></a>
                                             <div class="clearfix"></div>
                                         </div>
                                         <div class="clearfix"></div>
